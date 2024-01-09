@@ -1,0 +1,96 @@
+# ======================================================================================================================
+# Project - gitignore
+# ======================================================================================================================
+# >>>> PHP - Composer
+composer.phar
+
+# >>>> PHP - phing
+app/phing-latest.phar
+tools/ide/phpstorm/phing-latest.phar
+phing-latest.phar
+
+# ----------------------------------------------------------------------------------------------------------------------
+# App
+# ----------------------------------------------------------------------------------------------------------------------
+# >>>> asset-mapper
+app/public/assets/
+app/assets/vendor
+
+# >>>> app/config
+app/config/jwt/*.pem
+
+# >>>> app/migrations
+app/migrations
+
+# >>>> app/node_modules
+app/node_modules
+
+# >>>> app/public
+app/public/assets
+app/public/build
+app/public/bundles
+app/public/download
+
+# >>>> app/tests
+!app/tests/bootstrap.php
+app/tests/
+
+# >>>> app/var
+app/var/cache
+app/var/log
+app/var/sessions
+
+# >>>> app/vendor
+app/vendor
+
+# >>>> app/.env.*
+app/.env.*
+app/.env.*.local
+app/.env.local.php
+
+# >>>> app/composer
+app/composer.phar
+app/composer.lock
+
+# >>>> app/phpunit.*
+app/phpunit.xml
+app/.phpunit.result.cache
+
+# >>>> app/*.lock
+app/*.lock
+app/*-lock.json
+
+# >>>> app/*.log
+app/*.log
+app/*.phar
+app/webpack-stats.json
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Scripts
+# ----------------------------------------------------------------------------------------------------------------------
+# >>>> Base - Python
+.venv
+venv
+
+# >>>> Docker - Desktop                                                  https://www.docker.com/products/docker-desktop/
+var
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Tests
+# ----------------------------------------------------------------------------------------------------------------------
+tests
+test
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Tools
+# ----------------------------------------------------------------------------------------------------------------------
+# >>>> PhpStorm                                                                      https://www.jetbrains.com/phpstorm/
+.idea
+.run
+
+# >>>> Visual Studio Code                                                                  https://code.visualstudio.com
+.vscode
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Tutorial
+# ----------------------------------------------------------------------------------------------------------------------

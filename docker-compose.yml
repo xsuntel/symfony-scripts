@@ -1,0 +1,104 @@
+# ======================================================================================================================
+# Docker - Docker-Compose                                                   https://docs.docker.com/compose/compose-file
+# ======================================================================================================================
+# >>>> Default Environment                                     https://docs.docker.com/compose/compose-file/05-services/
+services:
+  # --------------------------------------------------------------------------------------------------------------------
+  # App                                                                                     https://hub.docker.com/_/php
+  # --------------------------------------------------------------------------------------------------------------------
+  php:
+    build:
+      context: .
+      dockerfile: scripts/docker/containers/app/php/Dockerfile
+    env_file:
+      - scripts/docker/containers/app/php/.env
+    networks:
+      - back-end
+    expose:
+      - 9000/tcp                                                                                 # PHP-FPM : Listen port
+    depends_on:
+      - redis
+      - postgres
+      - nginx
+    tty: true
+    restart: always
+  # --------------------------------------------------------------------------------------------------------------------
+  # Cache                                                                                 https://hub.docker.com/_/redis
+  # --------------------------------------------------------------------------------------------------------------------
+  redis:
+    build:
+      context: .
+      dockerfile: scripts/docker/containers/cache/redis/Dockerfile
+    env_file:
+      - scripts/docker/containers/cache/redis/.env
+    networks:
+      - back-end
+    expose:
+      - 6379/tcp
+    restart: always
+  # --------------------------------------------------------------------------------------------------------------------
+  # Database                                                                           https://hub.docker.com/_/postgres
+  # --------------------------------------------------------------------------------------------------------------------
+  postgres:
+    build:
+      context: .
+      dockerfile: scripts/docker/containers/database/postgres/Dockerfile
+    env_file:
+      - scripts/docker/containers/database/postgres/.env
+    networks:
+      - back-end
+    expose:
+      - 5432/tcp
+    volumes:
+      - type: volume
+        source: postgres_volume
+        target: /var/lib/postgres/data
+        volume:
+          nocopy: true
+    restart: always
+  # --------------------------------------------------------------------------------------------------------------------
+  # Server                                                                                https://hub.docker.com/_/nginx
+  # --------------------------------------------------------------------------------------------------------------------
+  nginx:
+    build:
+      context: .
+      dockerfile: scripts/docker/containers/server/nginx/Dockerfile
+      shm_size: 2gb
+    env_file:
+      - scripts/docker/containers/server/nginx/.env
+    networks:
+      - front-end
+      - back-end
+    expose:
+      - 80/tcp
+    restart: always
+# ----------------------------------------------------------------------------------------------------------------------
+# Networks                                                     https://docs.docker.com/compose/compose-file/06-networks/
+# ----------------------------------------------------------------------------------------------------------------------
+networks:
+  front-end:
+    driver: default
+    enable_ipv6: false
+  back-end:
+    driver: default
+    enable_ipv6: false
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Volumes                                                       https://docs.docker.com/compose/compose-file/07-volumes/
+# ----------------------------------------------------------------------------------------------------------------------
+volumes:
+  postgres_volume: { }
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Configs                                                       https://docs.docker.com/compose/compose-file/08-configs/
+# ----------------------------------------------------------------------------------------------------------------------
+#configs:
+#  http_config:
+#    external: false
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Secrets                                                       https://docs.docker.com/compose/compose-file/09-secrets/
+# ----------------------------------------------------------------------------------------------------------------------
+#secrets:
+#  server-certificate:
+#    file: ./server.cert

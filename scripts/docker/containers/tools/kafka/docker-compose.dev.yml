@@ -1,0 +1,54 @@
+# ======================================================================================================================
+# Dockerfile - Kafka                                                              https://hub.docker.com/r/bitnami/kafka
+# ======================================================================================================================
+# >>>> Environment
+services:
+  # --------------------------------------------------------------------------------------------------------------------
+  # Server
+  # --------------------------------------------------------------------------------------------------------------------
+  zookeeper:
+    container_name: ${ABSTRACT_NAME}_zookeeper_in_${DOCKER_ENVIRONMENT}
+    build:
+      args:
+        - ZOOKEEPER_VERSION=${ZOOKEEPER_VERSION}
+    env_file:
+      - scripts/docker/containers/server/zookeeper/.env.dev
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      front-end:
+        ipv4_address: ${ZOOKEEPER_NETWORK_FRONTEND_IP_ADDRESS}
+    ports:
+      - ${ZOOKEEPER_NETWORK_PORT_DEFAULT}:2181
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 1024M
+        reservations:
+          memory: 256M
+  kafka:
+    container_name: kafka_in_${DOCKER_ENVIRONMENT}
+    build:
+      args:
+        - KAFAKA_VERSION=${KAFAKA_VERSION}
+    env_file:
+      - scripts/docker/containers/server/kafka/.env.dev
+    networks:
+      front-end:
+        ipv4_address: ${KAFKA_NETWORK_FRONTEND_IP_ADDRESS}
+    ports:
+      - ${KAFKA_NETWORK_PORT_DEFAULT}:9092
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 1024M
+        reservations:
+          memory: 256M
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Volumes
+# ----------------------------------------------------------------------------------------------------------------------
+volumes:
+  openldap_volume: { }

@@ -1,0 +1,3 @@
+# PhpStorm Memory
+-Xms512m
+-Xmx2048m
