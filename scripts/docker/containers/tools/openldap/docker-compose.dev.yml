@@ -1,0 +1,44 @@
+# ======================================================================================================================
+# Docker - Docker-Compose                                                   https://docs.docker.com/compose/compose-file
+# ======================================================================================================================
+# >>>> Environment
+services:
+  # --------------------------------------------------------------------------------------------------------------------
+  # Server
+  # --------------------------------------------------------------------------------------------------------------------
+  openldap:
+    container_name: openldap_in_${DOCKER_ENVIRONMENT}
+    build:
+      context: ./
+      dockerfile: server/openldap/Dockerfile
+      args:
+        - OPENLADP_VERSION=${OPENLADP_VERSION}
+    env_file:
+      - server/openldap/.env
+    networks:
+      - backend
+    ports:
+      - 389:389
+      - 636:636
+    expose:
+      - 389/tcp
+      - 636/tcp
+    volumes:
+      - type: volume
+        source: openldap_volume
+        target: /var/lib/ldap
+        volume:
+          nocopy: true
+      - type: volume
+        source: openldap_volume
+        target: /etc/ldap/slapd.d
+        volume:
+          nocopy: true
+    stdin_open: true
+    restart: always
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Volumes
+# ----------------------------------------------------------------------------------------------------------------------
+volumes:
+  openldap_volume: { }

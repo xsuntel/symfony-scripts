@@ -1,0 +1,190 @@
+# ======================================================================================================================
+# Docker - Docker-Compose                                                   https://docs.docker.com/compose/compose-file
+# ======================================================================================================================
+# >>>> Dev Environment
+services:
+  # --------------------------------------------------------------------------------------------------------------------
+  # App                                                                                     https://hub.docker.com/_/php
+  # --------------------------------------------------------------------------------------------------------------------
+  php:
+    container_name: ${PROJECT_NAME}_php_in_${DOCKER_ENVIRONMENT}
+    build:
+      dockerfile: scripts/docker/containers/app/php/Dockerfile_${DOCKER_ENVIRONMENT}
+      args:
+        - PHP_VERSION=${PHP_VERSION}
+        - PHP_WORKDIR=${DOCKER_WORKDIR}
+    env_file:
+      - .env.${DOCKER_ENVIRONMENT}
+    environment:
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - POSTGRES_VERSION=${POSTGRES_VERSION}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-!ChangeMe!}
+      # >>>> PhpStorm Menu: File / Settings / PHP / Servers / Name: localhost
+      - XDEBUG_CONFIG=idekey=PHPSTORM
+      - PHP_IDE_CONFIG=serverName=localhost
+    networks:
+      back-end:
+        ipv4_address: ${PHP_NETWORK_BACKEND_IP_ADDRESS}
+    extra_hosts:
+      # >>>> PhpStorm Menu: File / Settings / PHP / Debug / Xdebug / Debug port
+      - host.docker.internal:host-gateway
+    expose:
+      - 9001/tcp
+      # >>>> PhpStorm Menu: File / Settings / PHP / Debug / Xdebug / Debug port ----> docker-php-ext-xdebug-mode.ini
+      - 9003/tcp
+    volumes:
+      - type: bind
+        source: app
+        target: ${DOCKER_WORKDIR}/app
+      - type: bind
+        source: var/log/app/php
+        target: ${DOCKER_WORKDIR}/app/var/log
+    depends_on:
+      - pgadmin
+      - mailer
+    deploy:
+      resources:
+        limits:
+          cpus: '0.80'
+          memory: 1024M
+        reservations:
+          memory: 512M
+  # --------------------------------------------------------------------------------------------------------------------
+  # Cache                                                                                 https://hub.docker.com/_/redis
+  # --------------------------------------------------------------------------------------------------------------------
+  redis:
+    container_name: ${PROJECT_NAME}_redis_in_${DOCKER_ENVIRONMENT}
+    build:
+      dockerfile: scripts/docker/containers/cache/redis/Dockerfile_${DOCKER_ENVIRONMENT}
+      args:
+        - REDIS_VERSION=${REDIS_VERSION}
+    networks:
+      back-end:
+        ipv4_address: ${REDIS_NETWORK_BACKEND_IP_ADDRESS}
+    deploy:
+      resources:
+        limits:
+          cpus: '0.80'
+          memory: 1024M
+        reservations:
+          memory: 512M
+  # --------------------------------------------------------------------------------------------------------------------
+  # Database                                                                           https://hub.docker.com/_/postgres
+  # --------------------------------------------------------------------------------------------------------------------
+  postgres:
+    container_name: ${PROJECT_NAME}_postgres_in_${DOCKER_ENVIRONMENT}
+    build:
+      dockerfile: scripts/docker/containers/database/postgres/Dockerfile_${DOCKER_ENVIRONMENT}
+      args:
+        - POSTGRES_VERSION=${POSTGRES_VERSION}
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-app}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    networks:
+      back-end:
+        ipv4_address: ${POSTGRES_NETWORK_BACKEND_IP_ADDRESS}
+    ports:
+      - ${POSTGRES_NETWORK_PORT}:5432
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-d", "${POSTGRES_DB}", "-U", "${POSTGRES_USER}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: '0.80'
+          memory: 2048M
+        reservations:
+          memory: 1024M
+    restart: unless-stopped
+  # --------------------------------------------------------------------------------------------------------------------
+  # Server                                                                                https://hub.docker.com/_/nginx
+  # --------------------------------------------------------------------------------------------------------------------
+  nginx:
+    container_name: ${PROJECT_NAME}_nginx_in_${DOCKER_ENVIRONMENT}
+    build:
+      dockerfile: scripts/docker/containers/server/nginx/Dockerfile_${DOCKER_ENVIRONMENT}
+      args:
+        - NGINX_VERSION=${NGINX_VERSION}
+    networks:
+      front-end:
+        ipv4_address: ${NGINX_NETWORK_FRONTEND_IP_ADDRESS}
+      back-end:
+        ipv4_address: ${NGINX_NETWORK_BACKEND_IP_ADDRESS}
+    ports:
+      - ${NGINX_NETWORK_PORT}:80
+    volumes:
+      - type: bind
+        source: app/public
+        target: ${DOCKER_WORKDIR}/app/public
+      - type: bind
+        source: var/log/server/nginx
+        target: /var/log/nginx
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://127.0.0.1:${NGINX_PORT}/${NGINX_HEALTHCHECK_FILE}" ]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: '0.80'
+          memory: 2048M
+        reservations:
+          memory: 1024M
+  # --------------------------------------------------------------------------------------------------------------------
+  # Tools
+  # --------------------------------------------------------------------------------------------------------------------
+  mailer:
+    container_name: ${PROJECT_NAME}_mailer_in_${DOCKER_ENVIRONMENT}
+    image: schickling/mailcatcher
+    networks:
+      back-end:
+        ipv4_address: ${MAILER_NETWORK_BACKEND_IP_ADDRESS}
+    expose:
+      - 1025/tcp
+    ports:
+      - ${MAILER_NETWORK_PORT}:1080
+    deploy:
+      resources:
+        limits:
+          cpus: '0.80'
+          memory: 256M
+        reservations:
+          memory: 128M
+    restart: unless-stopped
+  pgadmin:
+    container_name: ${PROJECT_NAME}_pgadmin_in_${DOCKER_ENVIRONMENT}
+    image: dpage/pgadmin4:latest
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_MAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PW}
+    networks:
+      front-end:
+        ipv4_address: ${PGADMIN_NETWORK_FRONTEND_IP_ADDRESS}
+      back-end:
+        ipv4_address: ${PGADMIN_NETWORK_BACKEND_IP_ADDRESS}
+    ports:
+      - ${PGADMIN_NETWORK_PORT}:80
+    restart: unless-stopped
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Networks
+# ----------------------------------------------------------------------------------------------------------------------
+networks:
+  front-end:
+    ipam:
+      config:
+        - subnet: ${DOCKER_NETWORK_FRONTEND_IPAM_CONFIG_SUBNET}
+  back-end:
+    ipam:
+      config:
+        - subnet: ${DOCKER_NETWORK_BACKEND_IPAM_CONFIG_SUBNET}
