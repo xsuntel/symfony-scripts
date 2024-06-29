@@ -1,0 +1,26 @@
+# ======================================================================================================================
+# Docker - Docker-Compose                                                   https://docs.docker.com/compose/compose-file
+# ======================================================================================================================
+# >>>> Environment
+services:
+  # --------------------------------------------------------------------------------------------------------------------
+  # Server
+  # --------------------------------------------------------------------------------------------------------------------
+  mailer:
+    container_name: ${PROJECT_NAME}_mailer_in_${DOCKER_ENVIRONMENT}
+    image: schickling/mailcatcher
+    networks:
+      back-end:
+        aliases:
+          - app
+    ports:
+      - ${MAILER_PORT1}:1025
+      - ${MAILER_PORT2}:1080
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 256M
+        reservations:
+          memory: 128M
+    restart: always
