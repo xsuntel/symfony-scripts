@@ -1,0 +1,12 @@
+# ======================================================================================================================
+# Docker - Docker-Compose                                                   https://docs.docker.com/compose/compose-file
+# ======================================================================================================================
+# >>>> Environment
+services:
+  # >>>> Tools
+  gitlab:
+    container_name: ${DOCKER_CONTAINER_NAME}_gitlab_in_${DOCKER_ENVIRONMENT}
+    build:
+      dockerfile: scripts/docker/tools/gitlab/Dockerfile
+      args:
+        - GITLAB_VERSION=${GITLAB_VERSION}
