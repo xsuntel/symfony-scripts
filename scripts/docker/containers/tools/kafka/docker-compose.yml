@@ -1,0 +1,60 @@
+# ======================================================================================================================
+# Docker - Docker-Compose                                                   https://docs.docker.com/compose/compose-file
+# ======================================================================================================================
+version: "3.9"
+services:
+  # --------------------------------------------------------------------------------------------------------------------
+  # Server
+  # --------------------------------------------------------------------------------------------------------------------
+  zookeeper:
+    build:
+      context: .
+      dockerfile: scripts/docker/containers/server/zookeeper/Dockerfile
+    env_file:
+      - scripts/docker/containers/server/zookeeper/.env
+    networks:
+      front-end:
+        aliases:
+          - application
+    ports:
+      - '2181:2181'
+    expose:
+      - 2181/tcp
+    restart: always
+  kafka:
+    build:
+      context: .
+      dockerfile: scripts/docker/containers/server/kafka/Dockerfile
+    env_file:
+      - scripts/docker/containers/server/kafka/.env
+    networks:
+      front-end:
+        aliases:
+          - application
+    ports:
+      - '9092:9092'
+    expose:
+      - 9092/tcp
+    depends_on:
+      - zookeeper
+    links:
+      - zookeeper
+    restart: always
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Networks
+# ----------------------------------------------------------------------------------------------------------------------
+networks:
+  default:
+    enable_ipv6: false
+  front-end:
+    enable_ipv6: false
+  backend:
+    enable_ipv6: false
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Volumes
+# ----------------------------------------------------------------------------------------------------------------------
+volumes:
+  mongo_volume: { }
+  mysql_volume: { }
