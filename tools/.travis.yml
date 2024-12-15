@@ -1,0 +1,19 @@
+# ======================================================================================================================
+# Tools - Travis - CI
+# ======================================================================================================================
+# >>>> Project
+sudo: required
+
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - echo "Creating an image with the dockerfile"
+
+#script:
+#  -
+
+after_success:
+  - echo "Test Success"
