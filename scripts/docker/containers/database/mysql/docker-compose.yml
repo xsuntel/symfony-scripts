@@ -1,0 +1,52 @@
+# ======================================================================================================================
+# Docker - Docker-Compose                                                   https://docs.docker.com/compose/compose-file
+# ======================================================================================================================
+version: "3.9"
+services:
+  # --------------------------------------------------------------------------------------------------------------------
+  # Database
+  # --------------------------------------------------------------------------------------------------------------------
+  mysql:
+    build:
+      context: .
+      dockerfile: scripts/docker/containers/database/mysql/Dockerfile
+    env_file:
+      - scripts/docker/containers/database/mysql/.env
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      backend:
+        aliases:
+          - database
+    ports:
+      - "3306:3306"
+      - "33060:33060"
+    expose:
+      - 3306/tcp
+      - 33060/tcp
+    volumes:
+      - type: volume
+        source: mysql_volume
+        target: /var/lib/mysql
+        volume:
+          nocopy: true
+      - type: bind
+        source: ./var/log/database/mysql
+        target: /var/log
+    restart: always
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Networks
+# ----------------------------------------------------------------------------------------------------------------------
+networks:
+  default:
+    enable_ipv6: false
+  front-end:
+    enable_ipv6: false
+  backend:
+    enable_ipv6: false
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Volumes
+# ----------------------------------------------------------------------------------------------------------------------
+volumes:
+  mysql_volume: { }
