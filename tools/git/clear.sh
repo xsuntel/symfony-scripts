@@ -175,6 +175,47 @@ setVM() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo
 
+  # >>>> Git - Clear history
+  if [ -d .git ]; then
+    echo ">>>> Git - Clear history"
+    echo
+
+    DEFAULT_BRANCH=$(git config --get init.defaultBranch)
+
+    rm -rf .git
+    echo
+
+    git init
+    echo
+
+    # >>>> Git - Config - Local
+    git config --local core.editor vi
+    git config --local core.autocrlf false
+    git config --local color.ui true
+    git config --local diff.ui auto
+    git config --local format.pretty oneline
+    git config --local pull.rebase true
+    git config --local push.default simple
+
+    git add .
+    echo
+
+    git commit -m "initial commit"
+    echo
+
+    # >>>> Git - Config - Remotes
+    git remote add origin ${GIT_REMOTE_ORIGIN_URL}
+    echo
+
+    git pull origin "${DEFAULT_BRANCH}" -f
+    echo
+
+    git status
+  else
+    echo "There is not .git file"
+  fi
+  echo
+
   # >>>> Git - Config - Global
   echo ">>>> Git - Config - Global"
   echo
@@ -187,35 +228,6 @@ setVM() {
   echo
 
   git config --local -l
-  echo
-
-  # >>>> Git - Clear history
-  if [ -d .git ]; then
-    echo ">>>> Git - Clear history"
-    echo
-
-    rm -rf .git
-    echo
-
-    git init
-    echo
-
-    git add .
-    echo
-
-    git commit -m "initial commit"
-    echo
-
-    git remote add origin ${GIT_REMOTE_ORIGIN_URL}
-    echo
-
-    git push --mirror --force
-    echo
-
-    git status
-  else
-    echo "There is not .git file"
-  fi
   echo
 }
 

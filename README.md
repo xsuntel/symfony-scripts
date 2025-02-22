@@ -68,24 +68,18 @@ git config --global --list
 
 ```
 git clone https://github.com/xsuntel/symfony-scripts.git symfony
-```
 
-```
 cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
 ```
 
 ```
-git config --local user.name "Your Name"
-git config --local user.email "you@examle.com"
-
-git config --local init.defaultBranch main
 git config --local core.editor vi
 git config --local core.autocrlf false
 git config --local color.ui true
 git config --local diff.ui auto
 git config --local format.pretty oneline
+git config --local pull.rebase true
 git config --local push.default simple
-git config --local credential.helper store
 
 git config --local --list
 ```

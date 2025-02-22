@@ -15,22 +15,45 @@
 * Update default branch
 
 ```
-git config --local init.defaultBranch main
-git config --get  init.defaultBranch
+git config --global user.name "Your Name"
+git config --global user.email "you@examle.com"
+
+git config --global init.defaultBranch main
+git config --global credential.helper store
+
+git config --global --list
 ```
 
 #### Git - Local
 
+* Download this project
+
+```
+git clone https://github.com/xsuntel/symfony-scripts.git symfony
+
+cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
+```
+
+```
+git config --local core.editor vi
+git config --local core.autocrlf false
+git config --local color.ui true
+git config --local diff.ui auto
+git config --local format.pretty oneline
+git config --local pull.rebase true
+git config --local push.default simple
+
+git config --local --list
+```
+
 * Reset password
 ```
 git config --local --unset credential.helper
-git config --local --list
 ```
 
 * Check global configurations
 ```
 git config --local credential.helper store
-git config --local --list
 ```
 
 ### Tools
