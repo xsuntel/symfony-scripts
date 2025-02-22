@@ -138,16 +138,6 @@ vi env.app
 * Docker
   * Containers            - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/docker/containers/Abstract.md)
 
-#### Update the project
-
-```
-git config pull.rebase true
-
-git reset --hard
-
-git pull origin main -f
-```
-
 ### Directories 
 
 * [Symfony Framework](https://symfony.com)
