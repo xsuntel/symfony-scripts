@@ -21,8 +21,8 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   echo "Memory"
   echo
   if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
-    sudo sysctl -w vm.min_free_kbytes=1024000                                                         # default :16384
-    sudo sysctl -w vm.vfs_cache_pressure=1000                                                         # default : 100
+    sudo sysctl -w vm.min_free_kbytes=32768                                                          # default :16384
+    sudo sysctl -w vm.vfs_cache_pressure=500                                                         # default : 100
     #sudo sysctl -w vm.drop_caches=2
     #sudo sysctl -w vm.swappiness=0
 
