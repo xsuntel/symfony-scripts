@@ -483,10 +483,6 @@ setVM() {
     sudo grep -v '#' /etc/hosts
     echo
 
-    HOSTIP=$(ip route get 1 | awk '{print $NF;exit}')
-    echo "- HOST     IP : ${HOSTIP}"
-    echo
-
     # >>>> Hardware
     echo ">>>> CPU"
     echo
