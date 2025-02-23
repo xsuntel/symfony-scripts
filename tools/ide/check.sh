@@ -541,9 +541,8 @@ setVM() {
     echo "Supervisor : ${SUPERVISOR_STATUS}"
     echo
 
-    ps -A | grep messenger:consume
+    sudo supervisorctl status
     echo
-
 
   elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
     # ------------------------------------------------------------------------------------------------------------------
