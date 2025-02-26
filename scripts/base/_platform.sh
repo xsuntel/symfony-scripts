@@ -67,7 +67,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   echo ">>>> Linux - User : ${USER}"
   echo
 
-  local delUserList="lp sync games uucp news tcpdump"
+  local delUserList="lp sync games uucp news tcpdump mail proxy irc"
   for userItem in ${delUserList}; do
     local USER_LIST
     USER_LIST=$(cat /etc/passwd | awk -F: '{print $1}' | grep -i "${userItem}")
@@ -81,6 +81,10 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     if [ ! -f /etc/sudoers.d/$USER ]; then
       sudo touch /etc/sudoers.d/$USER
       sudo echo "${USER} ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/$USER > /dev/null
+    fi
+  else
+    if [ -f /etc/sudoers.d/$USER ]; then
+      sudo rm -f /etc/sudoers.d/$USER
     fi
   fi
 
