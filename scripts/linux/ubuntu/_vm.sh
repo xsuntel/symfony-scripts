@@ -31,6 +31,9 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
 
     sudo swapoff -a && sudo swapon -a
     echo
+
+    sudo mount -o remount,size=2G tmpfs
+    echo
   fi
   free -m
   echo
