@@ -178,7 +178,6 @@ vi env.app
     .symfony.local.yaml
     docker-compose.yml
     LICENSE
-    phpunit.xml.dist
     README.md
 ```
 
