@@ -51,6 +51,8 @@ setPlatform() {
     # >>>> Release
     if [ -f /etc/lsb-release ]; then
       echo ">>>> Release"
+      echo
+
       cat /etc/lsb-release
       echo
     fi
@@ -61,6 +63,8 @@ setPlatform() {
     # ------------------------------------------------------------------------------------------------------------------
     # >>>> Release
     echo ">>>> Release"
+    echo
+
     sw_vers
     echo
 
@@ -70,6 +74,8 @@ setPlatform() {
     # ------------------------------------------------------------------------------------------------------------------
     # >>>> Release
     echo ">>>> Release"
+    echo
+
     ver
     echo
 
@@ -170,36 +176,6 @@ setPhp() {
         symfony check:security
       fi
       echo
-
-      # ----------------------------------------------------------------------------------------------------------------
-      # Symfony Framework - DotEnv
-      # ----------------------------------------------------------------------------------------------------------------
-      echo ">>>> PHP - Symfony Framework - DotEnv"
-      echo
-
-      # >>>> Message
-      php bin/console debug:dotenv
-      echo
-
-      # ----------------------------------------------------------------------------------------------------------------
-      # Symfony Framework - Messenger
-      # ----------------------------------------------------------------------------------------------------------------
-      echo ">>>> PHP - Symfony Framework - Message"
-      echo
-
-      # >>>> Message
-      #php bin/console messenger:stats
-      #echo
-
-      # ----------------------------------------------------------------------------------------------------------------
-      # Symfony Framework - Scheduler
-      # ----------------------------------------------------------------------------------------------------------------
-      echo ">>>> PHP - Symfony Framework - Scheduler"
-      echo
-
-      # >>>> Message
-      #php bin/console debug:scheduler
-      #echo
 
       # ----------------------------------------------------------------------------------------------------------------
       # Symfony Framework - Variable Export
@@ -470,6 +446,7 @@ setVM() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Scripts - VM"
   echo "---------------------------------------------------------------------------------------------------------------"
+  echo
 
   local HOSTIP
   # >>>> Platform
@@ -501,10 +478,14 @@ setVM() {
 
     echo ">>>> Network"
     echo
+
+    nmcli device status
+    echo
+
     netstat -napotl | grep -i LISTEN | grep -v tcp6
     echo
 
-    echo ">>>> Services"
+    echo ">>>> Processor"
     echo
 
     # >>>> Rsyslog
