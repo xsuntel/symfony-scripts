@@ -143,10 +143,6 @@ if [ -d app ]; then
         rm -f .phpunit.result.cache
       fi
 
-      if [ -f phpunit.xml.dist ]; then
-        rm -f phpunit.xml.dist
-      fi
-
       # >>>> symfony local server
       if [ -f .symfony.local.yaml ]; then
         rm -f .symfony.local.yaml
