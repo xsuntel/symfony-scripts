@@ -47,11 +47,6 @@ if [ -d app ]; then
         rm -f ./translations/.gitignore
       fi
 
-      # >>>> tests
-      if [ -f tests/bootstrap.php ]; then
-        rm -rf tests/*
-      fi
-
       # >>>> Remove cache files
       if [ -d var ]; then
 
