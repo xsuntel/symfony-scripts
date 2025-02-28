@@ -242,10 +242,10 @@ setVM() {
   echo
 
   # >>>> Import a platform file : Status
-  if [ -f ${PROJECT_PATH}/scripts/macos/device/_vm.sh ]; then
-    source ${PROJECT_PATH}/scripts/macos/device/_vm.sh
+  if [ -f ${PROJECT_PATH}/scripts/macos/device/_processor.sh ]; then
+    source ${PROJECT_PATH}/scripts/macos/device/_processor.sh
   else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/macos/device/_vm.sh" && exit
+    echo "Please check a file : ${PROJECT_PATH}/scripts/macos/device/_processor.sh" && exit
   fi
 }
 

@@ -262,10 +262,10 @@ setVM() {
   echo
 
   # >>>> Linux - Ubuntu - Status
-  if [ -f ${PROJECT_PATH}/scripts/linux/ubuntu/_vm.sh ]; then
-    source ${PROJECT_PATH}/scripts/linux/ubuntu/_vm.sh
+  if [ -f ${PROJECT_PATH}/scripts/linux/ubuntu/_processor.sh ]; then
+    source ${PROJECT_PATH}/scripts/linux/ubuntu/_processor.sh
   else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/linux/ubuntu/_vm.sh" && exit
+    echo "Please check a file : ${PROJECT_PATH}/scripts/linux/ubuntu/_processor.sh" && exit
   fi
   echo
 }

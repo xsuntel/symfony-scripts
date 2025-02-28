@@ -468,7 +468,29 @@ setVM() {
 
     echo ">>>> Memory"
     echo
+    if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+      sudo sysctl -w vm.min_free_kbytes=32768                                                          # default :16384
+      sudo sysctl -w vm.vfs_cache_pressure=500                                                         # default : 100
+      #sudo sysctl -w vm.drop_caches=2
+      #sudo sysctl -w vm.swappiness=0
+
+      #echo 2 > sudo /proc/sys/vm/drop_caches
+      #echo 0 > sudo /proc/sys/vm/swappiness
+
+      sudo swapoff -a && sudo swapon -a
+      echo
+
+      sudo mount -o remount,size=2G tmpfs
+      echo
+    fi
+
     free -m
+    echo
+
+    sudo slabtop -o | grep dentry
+    echo
+
+    cat /proc/meminfo | grep -i anon
     echo
 
     echo ">>>> SSD"
@@ -478,11 +500,22 @@ setVM() {
 
     echo ">>>> Network"
     echo
+    if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+      # >>>> Network - ipv6
+      sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+      sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+      sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
+      sudo cat /proc/sys/net/ipv6/conf/all/disable_ipv6
+      echo
+    fi
 
     nmcli device status
     echo
 
     netstat -napotl | grep -i LISTEN | grep -v tcp6
+    echo
+
+    netstat -napo | grep -i time_wait
     echo
 
     echo ">>>> Processor"
