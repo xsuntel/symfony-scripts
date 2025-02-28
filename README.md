@@ -149,15 +149,8 @@ vi env.app
 
     diagrams/
         cloud/
-          aws/
-        instance/
-          app/
-          cache/
-          database/
-          server/
-          tools/
+        servers/
         source/
-          ...
     scripts/
         base/
         cloud/
@@ -169,7 +162,7 @@ vi env.app
         console/
         git/
         ide/
-        tutorial/
+    tutorial/
     .env.app
     .env.dev
     .env.dev.local
