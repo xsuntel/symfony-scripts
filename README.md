@@ -165,7 +165,6 @@ vi env.app
         linux/
         macos/
         windows/
-    tests/
     tools/
         console/
         git/
