@@ -142,10 +142,19 @@ vi env.app
 
 * Linux
   * Ubuntu                - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/linux/ubuntu/ABSTRACT.md)
+```
+./scripts/linux/ubuntu/deploy.sh
+```
 * Macos
   * Desktop               - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/macos/device/ABSTRACT.md)
+```
+./scripts/macos/device/deploy.sh
+```
 * Windows
   * Desktop               - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/windows/device/ABSTRACT.md)
+```
+./scripts/windows/device/deploy.sh
+```
 
 #### Tools - IDE
 
