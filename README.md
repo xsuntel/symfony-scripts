@@ -104,7 +104,9 @@ git config --global --list
 
 ```
 git clone https://github.com/xsuntel/symfony-scripts.git symfony
+```
 
+```
 cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
 ```
 
