@@ -76,7 +76,7 @@ setPhp() {
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "clear" "create" "validate" "update" "migrate" "status" "exit"; do
+        select num in "clear" "create" "update" "migrate" "validate" "status" "exit"; do
           case "$REPLY" in
           1)
             DOCTRINE_COMMAND="clear"
@@ -87,15 +87,15 @@ setPhp() {
             break
             ;;
           3)
-            DOCTRINE_COMMAND="validate"
-            break
-            ;;
-          4)
             DOCTRINE_COMMAND="update"
             break
             ;;
-          5)
+          4)
             DOCTRINE_COMMAND="migrate"
+            break
+            ;;
+          5)
+            DOCTRINE_COMMAND="validate"
             break
             ;;
           6)
@@ -119,66 +119,101 @@ setPhp() {
         # ----------------------------------------------------------------------------------------------------------------
         if [ "${DOCTRINE_COMMAND}" == "clear" ]; then
           echo ">>>> Clear: Remove migrations files"
+          echo
+
           if [ -d migrations ]; then
             rm -rfv migrations/*
           fi
           echo
 
           echo ">>>> Clear: Update the current schema into a new single migration"
+          echo
+
           php bin/console doctrine:migrations:dump-schema
           echo
 
           echo ">>>> Clear: Clean Up the Database Tables/Schema"
+          echo
+
           php bin/console doctrine:migrations:rollup
+          echo
 
         # ----------------------------------------------------------------------------------------------------------------
         # 2) Create
         # ----------------------------------------------------------------------------------------------------------------
         elif [ "${DOCTRINE_COMMAND}" == "create" ]; then
-          echo ">>>> Create: Updating the Database Tables/Schema"
-          php bin/console doctrine:database:create -c default
-
-        # ----------------------------------------------------------------------------------------------------------------
-        # 3) Validate
-        # ----------------------------------------------------------------------------------------------------------------
-        elif [ "${DOCTRINE_COMMAND}" == "validate" ]; then
-          echo ">>>> Check: Updating the Database Tables/Schema"
-          symfony console doctrine:schema:validate
+          echo ">>>> Create: Updating the Database Tables/Schema - Default"
           echo
 
-        # ----------------------------------------------------------------------------------------------------------------
-        # 4) Schema
-        # ----------------------------------------------------------------------------------------------------------------
-        elif [ "${DOCTRINE_COMMAND}" == "update" ]; then
-          echo ">>>> Create: Updating the Database Tables/Schema"
-          php bin/console doctrine:schema:update --em default --force
+          php bin/console doctrine:database:create -c default
+
+          sleep 5
 
         # ----------------------------------------------------------------------------------------------------------------
-        # 5) Migrate
+        # 3) Schema
+        # ----------------------------------------------------------------------------------------------------------------
+        elif [ "${DOCTRINE_COMMAND}" == "update" ]; then
+          echo ">>>> Update: Updating the Database Tables/Schema - Default"
+          echo
+
+          php bin/console doctrine:schema:update --em default --force
+
+          sleep 5
+
+        # ----------------------------------------------------------------------------------------------------------------
+        # 4) Migrate
         # ----------------------------------------------------------------------------------------------------------------
         elif [ "${DOCTRINE_COMMAND}" == "migrate" ]; then
           echo ">>>> Migrate: Updating the Database Tables/Schema"
-          php bin/console doctrine:migration:current
           echo
 
+          php bin/console doctrine:migration:current
+          #php bin/console doctrine:migration:diff --allow-empty-diff --from-empty-schema
+          echo
+
+          sleep 5
+
           echo ">>>> Migrate: Updating the Database Tables/Schema"
+          echo
+
           php bin/console make:migration
           echo
 
+          sleep 5
+
           echo ">>>> Migrate: Updating the Database Tables/Schema"
+          echo
+
           php bin/console doctrine:migration:migrate
+          echo
+          
+          sleep 5
+
+        # ----------------------------------------------------------------------------------------------------------------
+        # 5) Validate
+        # ----------------------------------------------------------------------------------------------------------------
+        elif [ "${DOCTRINE_COMMAND}" == "validate" ]; then
+          echo ">>>> Check: Updating the Database Tables/Schema - Default"
+          echo
+
+          symfony console doctrine:schema:validate
+          echo
 
         # ----------------------------------------------------------------------------------------------------------------
         # 6) Status
         # ----------------------------------------------------------------------------------------------------------------
         elif [ "${DOCTRINE_COMMAND}" == "status" ]; then
           echo ">>>> Status: Checking the Database Tables/Schema"
+          echo
+
           php bin/console doctrine:migrations:status
         fi
         echo
 
         echo ">>>> Migrations: Check a list"
-          php bin/console doctrine:migration:list
+        echo
+
+        php bin/console doctrine:migration:list
 
       else
         echo "[ ERROR ] There is not a command : app/bin/console"
