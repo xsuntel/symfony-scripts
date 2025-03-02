@@ -88,7 +88,7 @@ cd ~/Applications/PhpStorm/GitHub
 
 ### Requirement
 
-* Update your name for Git
+* Update your name and email for Git
 
 ```
 git config --global user.name "Your Name"
@@ -104,22 +104,8 @@ git config --global --list
 
 ```
 git clone https://github.com/xsuntel/symfony-scripts.git symfony
-```
 
-```
 cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
-```
-
-```
-git config --local core.editor vi
-git config --local core.autocrlf false
-git config --local color.ui true
-git config --local diff.ui auto
-git config --local format.pretty oneline
-git config --local pull.rebase true
-git config --local push.default simple
-
-git config --local --list
 ```
 
 ### Download Symfony
@@ -172,7 +158,7 @@ vi env.app
 ./tools/ide/migrate.sh
 ```
 
-* Update some sources and Debugging it in Dev Environment
+* Clear cache
 
 ```
 ./tools/ide/update.sh
