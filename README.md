@@ -2,7 +2,7 @@
 
 ## Abstract
 
-This project includes some shell-scripts for Full-Stack developer to develop a web application using [Symfony Framework](https://symfony.com)
+This project includes some shell-scripts for Full-Stack developer to develop a web application using Symfony Framework
 
 * App : PHP
 * Cache : Redis
@@ -108,15 +108,13 @@ git clone https://github.com/xsuntel/symfony-scripts.git symfony
 cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
 ```
 
-### Download Symfony
+* Check default variables and the latest version of Symfony - [Releases](https://symfony.com/releases)
 
-* Check the latest version of Symfony - [Releases](https://symfony.com/releases)
-
-  * Update Default variables
-  
 ```
 vi env.app
 ```
+
+### Download Symfony
 
 * Creating Symfony Applications - [Installing & Setting up the Symfony Framework](https://symfony.com/doc/current/setup.html)
 
