@@ -138,7 +138,7 @@ vi env.app
 
 ### Deployment
 
-#### App
+#### Platform
 
 * Linux
   * Ubuntu                - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/linux/ubuntu/ABSTRACT.md)
@@ -147,7 +147,7 @@ vi env.app
 * Windows
   * Desktop               - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/windows/device/ABSTRACT.md)
 
-#### Tools
+#### Tools - IDE
 
 * Check status
 
@@ -167,19 +167,20 @@ vi env.app
 ./tools/ide/update.sh
 ```
 
+### Production
+* Public Cloud
+  * AWS (Amazon Web Services)
+    * Elastic Beanstalk   - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/cloud/aws/elasticbeanstalk/ABSTRACT.md)
+    * Lightsail           - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/cloud/aws/lightsail/ABSTRACT.md)
+
 ## Tutorial
 
 * [Symfony](https://symfony.com)
 * [SymfonyCasts](https://symfonycasts.com)
 
 ## Reference
-* Public Cloud
-  * AWS (Amazon Web Services)
-    * Elastic Beanstalk   - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/cloud/aws/elasticbeanstalk/Abstract.md)
-    * Lightsail           - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/cloud/aws/lightsail/Abstract.md)
+
 * Tools
-  * Docker
-    * Containers            - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/docker/containers/Abstract.md)
   * GitHub - [Wiki](https://github.com/xsuntel/symfony-scripts/wiki)
 
 ## License
