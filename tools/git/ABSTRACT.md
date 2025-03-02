@@ -56,6 +56,16 @@ git config --local --unset credential.helper
 git config --local credential.helper store
 ```
 
+#### Git - Update the project
+
+```
+git config pull.rebase true
+
+git reset --hard
+
+git pull origin main -f
+```
+
 ### Tools
 
 #### Git

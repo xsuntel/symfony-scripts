@@ -50,6 +50,42 @@ cd ~/Applications/PhpStorm/GitHub
 
 ## Project
 
+### Directories
+
+* [Symfony Framework](https://symfony.com)
+
+```
+    app/
+    
+        | -- Symfony Framework -- |
+
+    diagrams/
+        cloud/
+        servers/
+        source/
+    scripts/
+        base/
+        cloud/
+        docker/
+        linux/
+        macos/
+        windows/
+    tools/
+        console/
+        git/
+        ide/
+        tutorial/
+    .env.app
+    .env.dev
+    .env.dev.local
+    .env.prod
+    .gitignore
+    .symfony.local.yaml
+    docker-compose.yml
+    LICENSE
+    README.md
+```
+
 ### Requirement
 
 * Update your name for Git
@@ -83,6 +119,8 @@ git config --local push.default simple
 
 git config --local --list
 ```
+
+### Download Symfony
 
 * Check the latest version of Symfony - [Releases](https://symfony.com/releases)
 
@@ -129,58 +167,20 @@ vi env.app
 ./tools/ide/update.sh
 ```
 
-### Production
+## Tutorial
 
+* [Symfony](https://symfony.com)
+* [SymfonyCasts](https://symfonycasts.com)
+
+## Reference
 * Public Cloud
   * AWS (Amazon Web Services)
     * Elastic Beanstalk   - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/cloud/aws/elasticbeanstalk/Abstract.md)
     * Lightsail           - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/cloud/aws/lightsail/Abstract.md)
-* Docker
-  * Containers            - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/docker/containers/Abstract.md)
-
-### Directories 
-
-* [Symfony Framework](https://symfony.com)
-
-```
-    app/
-    
-        | -- Symfony Framework -- |
-
-    diagrams/
-        cloud/
-        servers/
-        source/
-    scripts/
-        base/
-        cloud/
-        docker/
-        linux/
-        macos/
-        windows/
-    tools/
-        console/
-        git/
-        ide/
-    tutorial/
-    .env.app
-    .env.dev
-    .env.dev.local
-    .env.prod
-    .gitignore
-    .symfony.local.yaml
-    docker-compose.yml
-    LICENSE
-    README.md
-```
-
-## Tutorial
-
-* [SymfonyCasts](https://symfonycasts.com)
-
-## Reference
-
-* GitHub - [Wiki](https://github.com/xsuntel/symfony-scripts/wiki)
+* Tools
+  * Docker
+    * Containers            - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/docker/containers/Abstract.md)
+  * GitHub - [Wiki](https://github.com/xsuntel/symfony-scripts/wiki)
 
 ## License
 This is available under the MIT License.
