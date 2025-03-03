@@ -6,7 +6,9 @@ This project includes some diagrams to develop a web application using Symfony F
 
 * Draw.io             - [Download](https://drawio.com/)
 
-## Cloud
+## Platform
+
+### Public Cloud
 
 * AWS
   * [Elastic Beanstalk](https://aws.amazon.com/ko/elasticbeanstalk)
@@ -15,7 +17,7 @@ This project includes some diagrams to develop a web application using Symfony F
 * NCloud
   * Solution - [WebHosting](https://www.ncloud.com/solution/type/webHosting)
 
-## Servers
+### Servers
 
 * App
 

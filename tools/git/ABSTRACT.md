@@ -1,16 +1,18 @@
 # Tools - Git - GitHub
 
-## Dev Environment
+## Abstract
 
-### Platform
+## Platform
 
 * Linux
 * MacOS
 * Windows
 
-### Project
+## Project
 
-#### Git - Global
+### Git - Config
+
+#### Global
 
 * Update default branch
 
@@ -24,7 +26,7 @@ git config --global credential.helper store
 git config --global --list
 ```
 
-#### Git - Local
+#### Local
 
 * Download this project
 
@@ -56,7 +58,9 @@ git config --local --unset credential.helper
 git config --local credential.helper store
 ```
 
-#### Git - Update the project
+### Git - Command
+
+#### Update the project
 
 ```
 git config pull.rebase true
@@ -66,9 +70,9 @@ git reset --hard
 git pull origin main -f
 ```
 
-### Tools
+## Tools
 
-#### Git
+### Git
 
 * Clear main branch
 

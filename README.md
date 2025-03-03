@@ -110,6 +110,9 @@ cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
 
 ```
 vi env.app
+
+# >>>> PHP
+SYMFONY_VERSION=7.2.*
 ```
 
 ### Download Symfony

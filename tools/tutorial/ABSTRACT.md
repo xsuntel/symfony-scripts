@@ -1,16 +1,20 @@
 # Tutorial
 
-This project includes some shell-scripts to develop a web application using Symfony Framework
-
 ## Abstract
 
-* Symfony Framework
+This project includes some shell-scripts to develop a web application using Symfony Framework
 
-## Dev Environment
+## Platform
+
+* Linux
+* MacOS
+* Windows
+
+## Project
 
 ### Symfony
 
-* [Releases](https://symfony.com/releases)
+* Check default variables and the latest version of Symfony - [Releases](https://symfony.com/releases)
 
 ```
 vi ./env.app
@@ -19,7 +23,7 @@ vi ./env.app
 SYMFONY_VERSION=7.2.*
 ```
 
-* [Installing & Setting up the Symfony Framework](https://symfony.com/doc/current/setup.html)
+* Creating Symfony Applications - [Installing & Setting up the Symfony Framework](https://symfony.com/doc/current/setup.html)
 
 ```
 ./tools/tutorial/create.sh
@@ -29,4 +33,5 @@ SYMFONY_VERSION=7.2.*
 
 ### Symfony
 
+* [Symfony](https://symfony.com)
 * [SymfonyCasts](https://symfonycasts.com)
