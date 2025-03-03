@@ -21,7 +21,7 @@ echo
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "config" "dotenv" "router" "autowiring" "container" "serializer" "validator" "asset-map" ; do
+        select num in "config" "dotenv" "firewall" "router" "autowiring" "container" ; do
           case "$REPLY" in
           1)
             CONSOLE_COMMANDS="config"
@@ -32,30 +32,22 @@ echo
             break
             ;;
           3)
-            CONSOLE_COMMANDS="router"
+            CONSOLE_COMMANDS="firewall"
             break
             ;;
           4)
-            CONSOLE_COMMANDS="autowiring"
+            CONSOLE_COMMANDS="router"
             break
             ;;
           5)
-            CONSOLE_COMMANDS="container"
+            CONSOLE_COMMANDS="autowiring"
             break
             ;;
           6)
-            CONSOLE_COMMANDS="serializer"
+            CONSOLE_COMMANDS="container"
             break
             ;;
           7)
-            CONSOLE_COMMANDS="validator"
-            break
-            ;;
-          8)
-            CONSOLE_COMMANDS="asset-map"
-            break
-            ;;
-          9)
             echo "exit()"
             exit
             ;;
@@ -82,45 +74,31 @@ echo
           php bin/console debug:dotenv
 
         # ----------------------------------------------------------------------------------------------------------------
-        # 3) router
+        # 3) firewall
+        # ----------------------------------------------------------------------------------------------------------------
+        elif [ "${CONSOLE_COMMANDS}" == "firewall" ]; then
+          echo ">>>> firewall"
+          php bin/console debug:firewall main
+
+        # ----------------------------------------------------------------------------------------------------------------
+        # 4) router
         # ----------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "router" ]; then
           echo ">>>> router"
           php bin/console debug:router
 
         # ----------------------------------------------------------------------------------------------------------------
-        # 4) autowiring
+        # 5) autowiring
         # ----------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "autowiring" ]; then
           echo ">>>> autowiring"
-          php bin/console debug:autowiring
+          php bin/console debug:autowiring --all
 
         # ----------------------------------------------------------------------------------------------------------------
-        # 5) container
+        # 6) container
         # ----------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "container" ]; then
           echo ">>>> container"
-          php bin/console debug:container
-
-        # ----------------------------------------------------------------------------------------------------------------
-        # 6) serializer
-        # ----------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "serializer" ]; then
-          echo ">>>> serializer"
-          php bin/console debug:serializer
-
-        # ----------------------------------------------------------------------------------------------------------------
-        # 7) validator
-        # ----------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "validator" ]; then
-          echo ">>>> validator"
-          php bin/console debug:validator
-
-        # ----------------------------------------------------------------------------------------------------------------
-        # 8) asset-map
-        # ----------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "asset-map" ]; then
-          echo ">>>> asset-map"
           php bin/console debug:container
 
         fi
