@@ -1,8 +1,6 @@
 # MacOS
 
-## Dev Environment
-
-### Platform
+## Abstract
 
 * App : PHP
 * Cache : Redis (Docker Container)
@@ -11,7 +9,15 @@
 * Server : Symfony Local Server
 * Tools : Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
 
-### Project
+## Platform
+
+* MacOS
+
+## Project
+
+### App
+
+#### Symfony Framework
 
 * Update default variables in Dev Environment
 
@@ -111,10 +117,6 @@ http:
   daemon: true
   use_gzip: true
 ```
-
-### App
-
-#### Symfony Framework
 
 * Deploy this project
 

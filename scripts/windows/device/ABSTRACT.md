@@ -1,8 +1,6 @@
 # Windows
 
-## Dev Environment
-
-### Platform
+## Abstract
 
 * App : PHP
 * Cache : Redis (Docker Container)
@@ -11,7 +9,15 @@
 * Server : Symfony Local Server
 * Tools : Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
 
-### Project
+## Platform
+
+* Windows
+
+## Project
+
+### App
+
+#### Symfony Framework
 
 * Create APP_SECRET
 
@@ -118,10 +124,6 @@ http:
   daemon: true
   use_gzip: true
 ```
-
-### App
-
-#### Symfony Framework
 
 * Deploy this project
 

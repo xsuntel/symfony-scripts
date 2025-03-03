@@ -1,8 +1,6 @@
 # AWS - Lightsail
 
-## Prod Environment
-
-### Platform
+## Abstract
 
 * App : PHP
 * Cache : Redis
@@ -10,7 +8,11 @@
 * Message : RabbitMQ
 * Server : Nginx
 
-#### Linux : [Ubuntu Server](https://ubuntu.com/download/server/arm)
+## Platform
+
+* Linux : [Ubuntu Server](https://ubuntu.com/download/server/arm)
+
+## Project
 
 * Connect Instance in LightSail - [Document](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-ssh-using-terminal.html)
 
@@ -48,7 +50,9 @@ sudo cat /etc/gshadow
 # Group Name : Group Password : Administrator : Group Members
 ```
 
-### Project
+### App
+
+#### Symfony Framework
 
 * Update default variables in Prod Environment
 
@@ -77,10 +81,6 @@ POSTGRES_PASSWORD={Your Password}
 NGINX_HOST={Your Domain}
 NGINX_PORT=80
 ```
-
-### App
-
-#### Symfony Framework
 
 * Update packages
 

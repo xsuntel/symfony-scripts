@@ -1,8 +1,6 @@
 # AWS - Elastic Beanstalk
 
-## Prod Environment
-
-### Platform - Linux : [Ubuntu Server](https://ubuntu.com/download/server/arm)
+## Abstract
 
 * App : PHP
 * Cache : Redis
@@ -10,7 +8,15 @@
 * Message : RabbitMQ
 * Server : Nginx
 
-### Project
+## Platform 
+
+* Linux : [Ubuntu Server](https://ubuntu.com/download/server/arm)
+
+## Project
+
+### App
+
+#### Symfony Framework
 
 * Update default variables in Prod Environment
 
@@ -39,10 +45,6 @@ POSTGRES_PASSWORD={Your Password}
 NGINX_HOST={Your Domain}
 NGINX_PORT=80
 ```
-
-### App
-
-#### Symfony Framework
 
 * Deploy this project
 

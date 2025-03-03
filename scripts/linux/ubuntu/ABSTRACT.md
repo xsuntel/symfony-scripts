@@ -1,8 +1,6 @@
 # Linux - Ubuntu Desktop
 
-## Dev Environment
-
-### Platform
+## Abstract
 
 * App : PHP
 * Cache : Redis
@@ -11,7 +9,15 @@
 * Server : Nginx
 * Tools
 
-### Project
+## Platform
+
+* Linux
+
+## Project
+
+### App
+
+#### Symfony Framework
 
 * Update default variables in Dev Environment
 
@@ -42,10 +48,6 @@ RABBITMQ_PORT=15672
 NGINX_HOST=127.0.0.1
 NGINX_PORT=8000
 ```
-
-### App
-
-#### Symfony Framework
 
 * Deploy this project
 

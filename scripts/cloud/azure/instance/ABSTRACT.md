@@ -1,8 +1,6 @@
 # Azure
 
-## Prod Environment
-
-### Platform
+## Abstract
 
 * App : PHP
 * Cache : Redis
@@ -10,7 +8,11 @@
 * Message : RabbitMQ
 * Server : Nginx
 
-#### Linux : [Ubuntu Server](https://ubuntu.com/download/server/arm)
+## Platform
+
+* Linux : [Ubuntu Server](https://ubuntu.com/download/server/arm)
+
+## Project
 
 * Connect Instance - [Document](https://guide.ncloud-docs.com/docs/ko/server-overview)
 
@@ -69,7 +71,9 @@ sudo gpasswd -a ubuntu ncloud
 sudo gpasswd -r ncloud
 ```
 
-### Project
+### App
+
+#### Symfony Framework
 
 * Create SSH Key for [SourceCommit](https://guide.ncloud-docs.com/docs/ko/sourcecommit-use-client)
 
@@ -126,10 +130,6 @@ POSTGRES_PASSWORD={Your Password}
 NGINX_HOST={Your Domain}
 NGINX_PORT=80
 ```
-
-### App
-
-#### Symfony Framework
 
 * Update packages
 

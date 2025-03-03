@@ -1,14 +1,25 @@
-# Scripts
+# Docker
 
-## Prod/Dev Environment
+## Abstract
 
-### Platform
+* App : PHP
+* Cache : Redis (Docker Container)
+* Database : PostgreSQL (Docker Container)
+* Message : RabbitMQ (Docker Container)
+* Server : Symfony Local Server
+* Tools : Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
+
+## Platform
 
 * Linux - Install Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
 * MacOS - Install Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
 * Windows - Install Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
 
-### Project
+## Project
+
+### App
+
+#### Symfony Framework
 
 * Update default variables in Prod Environment
 
@@ -104,10 +115,6 @@ MAILER_NETWORK_BACKEND_IP_ADDRESS=172.31.0.71
 MAILER_NETWORK_HTTP_PORT=1080
 MAILER_NETWORK_SMTP_PORT=1025
 ```
-
-### App
-
-#### Symfony Framework
 
 * Deploy this project
 
