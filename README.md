@@ -52,8 +52,6 @@ cd ~/Applications/PhpStorm/GitHub
 
 ### Directories
 
-* [Symfony Framework](https://symfony.com)
-
 ```
     app/
     
