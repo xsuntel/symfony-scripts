@@ -469,15 +469,10 @@ setVM() {
     echo ">>>> Memory"
     echo
     if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
-      sudo sysctl -w vm.min_free_kbytes=32768                                                          # default :16384
-      sudo sysctl -w vm.vfs_cache_pressure=500                                                         # default : 100
-      #sudo sysctl -w vm.drop_caches=2
-      #sudo sysctl -w vm.swappiness=0
+      sudo slabtop -o | grep dentry
+      echo
 
-      #echo 2 > sudo /proc/sys/vm/drop_caches
-      #echo 0 > sudo /proc/sys/vm/swappiness
-
-      sudo swapoff -a && sudo swapon -a
+      cat /proc/meminfo | grep -i anon
       echo
 
       sudo mount -o remount,size=2G tmpfs
@@ -485,12 +480,6 @@ setVM() {
     fi
 
     free -m
-    echo
-
-    sudo slabtop -o | grep dentry
-    echo
-
-    cat /proc/meminfo | grep -i anon
     echo
 
     echo ">>>> SSD"
