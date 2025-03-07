@@ -93,6 +93,12 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     sudo ufw deny from any to any port 139 comment 'SMB'
     sudo ufw deny from any to any port 445 comment 'SMB'
 
+    sudo ufw deny from any to any port 3389 comment 'Remote Desktop - Windows'
+    sudo ufw deny from any to any port 3390 comment 'Remote Desktop - Windows'
+
+    sudo ufw deny from any to any port 3283 comment 'Remote Desktop - MacOS'
+    sudo ufw deny from any to any port 5590 comment 'Remote Desktop - MacOS'
+
     # ------------------------------------------------------------------------------------------------------------------
     # UFW - Enable
     # ------------------------------------------------------------------------------------------------------------------
