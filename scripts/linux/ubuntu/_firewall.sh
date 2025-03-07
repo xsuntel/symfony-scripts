@@ -25,7 +25,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
       fi
     done
 
-    # >>>> Firewall
+    # >>>> Stop the process
     local UFW_STATUS
     UFW_STATUS=$(systemctl is-active ufw)
     if [ "${UFW_STATUS}" == "active" ]; then
@@ -36,11 +36,17 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     sudo ufw --force reset
     echo
 
-    # >>>> Update default rules
+    # ------------------------------------------------------------------------------------------------------------------
+    # UFW - default
+    # ------------------------------------------------------------------------------------------------------------------
     sudo ufw default allow outgoing
     sudo ufw default deny incoming
     sudo ufw logging on
     echo
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # UFW - allow
+    # ------------------------------------------------------------------------------------------------------------------
 
     # >>>> Update allowed services
     sudo ufw allow ntp comment 'NTP'
@@ -77,7 +83,19 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     # >>>> Update allowed ports for Tools    - Remote Desktop
     #sudo ufw allow 3389/tcp comment 'Remote Desktop'
 
-    # >>>> Restart
+    # ------------------------------------------------------------------------------------------------------------------
+    # UFW - deny
+    # ------------------------------------------------------------------------------------------------------------------
+    sudo ufw deny from any to any port 21 comment 'FTP'
+    sudo ufw deny from any to any port 22 comment 'SSH'
+    sudo ufw deny from any to any port 25 comment 'SMTP'
+
+    sudo ufw deny from any to any port 139 comment 'SMB'
+    sudo ufw deny from any to any port 445 comment 'SMB'
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # UFW - Enable
+    # ------------------------------------------------------------------------------------------------------------------
     echo
     sudo ufw disable
     sudo ufw enable
