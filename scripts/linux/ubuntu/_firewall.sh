@@ -76,11 +76,9 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8030 proto tcp comment 'Local server - 3'
 
     # >>>> Update allowed ports for Tools    - Remote Desktop
+    #sudo ufw allow 3389/tcp comment 'Remote Desktop'
     #sudo ufw allow from 192.168.0.0/24 to 192.168.0.0/24 port 3389 proto tcp comment 'Remote Desktop'
   fi
-
-  # >>>> Update allowed ports for Tools    - Remote Desktop
-  #sudo ufw allow 3389/tcp comment 'Remote Desktop'
 
   # --------------------------------------------------------------------------------------------------------------------
   # UFW - deny
@@ -91,12 +89,6 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
 
   sudo ufw deny from any to any port 139 comment 'SMB'
   sudo ufw deny from any to any port 445 comment 'SMB'
-
-  sudo ufw deny from any to any port 3389 comment 'Remote Desktop - Windows'
-  sudo ufw deny from any to any port 3390 comment 'Remote Desktop - Windows'
-
-  sudo ufw deny from any to any port 3283 comment 'Remote Desktop - MacOS'
-  sudo ufw deny from any to any port 5590 comment 'Remote Desktop - MacOS'
 
   # --------------------------------------------------------------------------------------------------------------------
   # UFW - Enable
