@@ -52,6 +52,8 @@ cd ~/Applications/PhpStorm/GitHub
 
 ### Directories
 
+*  [Symfony Framework](https://symfony.com)
+
 ```
     app/
     
@@ -172,7 +174,6 @@ SYMFONY_VERSION=7.2.*
 
 ## Tutorial
 
-* [Symfony](https://symfony.com)
 * [SymfonyCasts](https://symfonycasts.com)
 
 ## Reference
