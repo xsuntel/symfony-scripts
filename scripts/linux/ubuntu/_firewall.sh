@@ -1,6 +1,6 @@
 #!/bin/bash
 # ======================================================================================================================
-# Scripts - Linux - Ubuntu - Firewall
+# Scripts - Linux - Ubuntu - Firewall                                              https://help.ubuntu.com/community/UFW
 # ======================================================================================================================
 
 # >>>> Platform
@@ -28,6 +28,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   local UFW_STATUS
   UFW_STATUS=$(systemctl is-active ufw)
   if [ "${UFW_STATUS}" == "active" ]; then
+    sudo ufw logging off
     sudo ufw disable
   fi
 
@@ -36,19 +37,23 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   echo
 
   # --------------------------------------------------------------------------------------------------------------------
-  # UFW - default - deny
+  # UFW - default
   # --------------------------------------------------------------------------------------------------------------------
-  sudo ufw default allow outgoing
+  # >>>> Incoming
   sudo ufw default deny incoming
+  # >>>> Outgoing
+  sudo ufw default allow outgoing
+  # >>>> Logging
   sudo ufw logging on
   echo
 
   # --------------------------------------------------------------------------------------------------------------------
-  # UFW - allow
+  # UFW - incoming
   # --------------------------------------------------------------------------------------------------------------------
 
   # >>>> Update allowed services
   sudo ufw allow ntp comment 'NTP'
+  sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 53 proto tcp comment 'DNS'
 
   # >>>> Update allowed ports for Cache    - Redis
   sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 6379 proto tcp comment 'Redis'
@@ -81,16 +86,88 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   fi
 
   # --------------------------------------------------------------------------------------------------------------------
-  # UFW - deny
+  # UFW - outgoing - well-known port
   # --------------------------------------------------------------------------------------------------------------------
+
+  sudo ufw deny from any to any port 1 comment 'TCPMUX'
+  sudo ufw deny from any to any port 7 comment 'ECHO'
+  sudo ufw deny from any to any port 9 comment 'DISCARD'
+  sudo ufw deny from any to any port 13 comment 'DAYTIME'
+  sudo ufw deny from any to any port 17 comment 'QOTD'
+  sudo ufw deny from any to any port 19 comment 'CHARGEN'
+
+  sudo ufw deny from any to any port 20 comment 'FTP'
   sudo ufw deny from any to any port 21 comment 'FTP'
   sudo ufw deny from any to any port 22 comment 'SSH'
+  sudo ufw deny from any to any port 23 comment 'Telnet'
+  sudo ufw deny from any to any port 24 comment 'Mail'
   sudo ufw deny from any to any port 25 comment 'SMTP'
+
+  sudo ufw deny from any to any port 37 comment 'TIME'
+  sudo ufw deny from any to any port 49 comment 'TACACS'
+
+  sudo ufw deny from any to any port 69 comment 'TFTP'
+  sudo ufw deny from any to any port 70 comment 'Gopher'
+  sudo ufw deny from any to any port 79 comment 'Finger'
+  sudo ufw deny from any to any port 88 comment 'Kebelos'
+
+  sudo ufw deny from any to any port 109 comment 'POP2'
+  sudo ufw deny from any to any port 110 comment 'POP3'
+  sudo ufw deny from any to any port 111 comment 'RPC'
+  sudo ufw deny from any to any port 113 comment 'ident'
+  sudo ufw deny from any to any port 119 comment 'NNTP'
 
   sudo ufw deny from any to any port 137 comment 'SMB'
   sudo ufw deny from any to any port 138 comment 'SMB'
-  sudo ufw deny from any to any port 139 comment 'SMB'
-  sudo ufw deny from any to any port 445 comment 'SMB'
+  sudo ufw deny from any to any port 139 comment 'NetBIOS'
+  sudo ufw deny from any to any port 143 comment 'IMAP4'
+  sudo ufw deny from any to any port 161 comment 'SNMP'
+  sudo ufw deny from any to any port 162 comment 'SNMP'
+  sudo ufw deny from any to any port 220 comment 'IMAP3'
+  sudo ufw deny from any to any port 389 comment 'LDAP'
+  sudo ufw deny from any to any port 445 comment 'Active Directory'
+  sudo ufw deny from any to any port 465 comment 'SMTP'
+  sudo ufw deny from any to any port 514 comment 'Syslog'
+  sudo ufw deny from any to any port 515 comment 'LPD'
+  sudo ufw deny from any to any port 540 comment 'UUCP'
+  sudo ufw deny from any to any port 542 comment 'RFC'
+  sudo ufw deny from any to any port 587 comment 'SMTP'
+  sudo ufw deny from any to any port 592 comment 'File Maker'
+  sudo ufw deny from any to any port 631 comment 'Internet Print'
+  sudo ufw deny from any to any port 636 comment 'LDAP'
+  sudo ufw deny from any to any port 666 comment 'Game'
+  sudo ufw deny from any to any port 873 comment 'Rsync'
+  sudo ufw deny from any to any port 981 comment 'Firewall'
+  sudo ufw deny from any to any port 990 comment 'FTP'
+  sudo ufw deny from any to any port 992 comment 'Telnet'
+  sudo ufw deny from any to any port 993 comment 'IMAP4'
+  sudo ufw deny from any to any port 995 comment 'POP3'
+
+  # --------------------------------------------------------------------------------------------------------------------
+  # UFW - outgoing - registered port
+  # --------------------------------------------------------------------------------------------------------------------
+  #for i in `seq 1024 1030`; do
+  #  sudo ufw deny from any to any port $i comment 'registered port'
+  #done
+
+  sudo ufw deny from any to any port 1080 comment 'SOCKS'
+  sudo ufw deny from any to any port 1900 comment 'SSDP'
+
+  sudo ufw deny from any to any port 3283 comment 'Remote Desktop - RDP'
+  sudo ufw deny from any to any port 3389 comment 'Remote Desktop - RDP'
+
+  sudo ufw deny from any to any port 3479 comment 'Playstation'
+  sudo ufw deny from any to any port 3480 comment 'Playstation'
+  sudo ufw deny from any to any port 3690 comment 'Subversion'
+
+  sudo ufw deny from any to any port 3390 comment 'Remote Desktop - RDP'
+
+  sudo ufw deny from any to any port 5228 comment 'HP Virtual Room Service'
+  sudo ufw deny from any to any port 5353 comment 'Multicast DNS'
+
+  sudo ufw deny from any to any port 5590 comment 'Remote Desktop - MacOS'
+
+  sudo ufw deny from any to any port 17500 comment 'Dropbox LanSync'
 
   # --------------------------------------------------------------------------------------------------------------------
   # UFW - Enable

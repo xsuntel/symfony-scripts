@@ -501,6 +501,10 @@ setVM() {
     nmcli device status
     echo
 
+    # >>>> Ubuntu - UFW
+    sudo ufw status verbose
+    echo
+
     netstat -napotl | grep -i LISTEN | grep -v tcp6
     echo
 
