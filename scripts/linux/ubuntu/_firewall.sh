@@ -87,6 +87,8 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   sudo ufw deny from any to any port 22 comment 'SSH'
   sudo ufw deny from any to any port 25 comment 'SMTP'
 
+  sudo ufw deny from any to any port 137 comment 'SMB'
+  sudo ufw deny from any to any port 138 comment 'SMB'
   sudo ufw deny from any to any port 139 comment 'SMB'
   sudo ufw deny from any to any port 445 comment 'SMB'
 
