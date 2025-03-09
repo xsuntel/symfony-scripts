@@ -53,17 +53,32 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
 
   # >>>> Update allowed services
   sudo ufw allow ntp comment 'NTP'
-  sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 53 proto tcp comment 'DNS'
+
+  if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+    sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 53 proto tcp comment 'DNS'
+  fi
 
   # >>>> Update allowed ports for Cache    - Redis
-  sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 6379 proto tcp comment 'Redis'
+  if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+    sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 6379 proto tcp comment 'Redis'
+  else
+    sudo ufw allow 6379/tcp comment 'Redis'
+  fi
 
   # >>>> Update allowed ports for Database - PostgreSQL
-  sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 5432 proto tcp comment 'PostgreSQL'
+  if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+    sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 5432 proto tcp comment 'PostgreSQL'
+  else
+    sudo ufw allow 5432/tcp comment 'PostgreSQL'
+  fi
 
   # >>>> Update allowed ports for Message  - RabbitMQ
-  sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 5672 proto tcp comment 'RabbitMQ'
-  sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 15672 proto tcp comment 'RabbitMQ - UI'
+  if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+    sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 5672 proto tcp comment 'RabbitMQ'
+    sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 15672 proto tcp comment 'RabbitMQ - UI'
+  else
+    sudo ufw allow 5672/tcp comment 'RabbitMQ'
+  fi
 
   # >>>> Update allowed ports for Server   - Nginx
   sudo ufw allow 80/tcp  comment 'Nginx - HTTP'
