@@ -77,6 +77,7 @@ cd ~/Applications/PhpStorm/GitHub
     .env.dev
     .env.dev.local
     .env.prod
+    .env.prod.local
     .gitignore
     .symfony.local.yaml
     docker-compose.yml
