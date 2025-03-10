@@ -67,20 +67,6 @@ setPlatform() {
   else
     echo "Please check a file : ${PROJECT_PATH}/scripts/base/_platform.sh" && exit
   fi
-
-  # >>>> Import a platform file : Firewall
-  if [ -f ${PROJECT_PATH}/scripts/linux/ubuntu/_firewall.sh ]; then
-    source ${PROJECT_PATH}/scripts/linux/ubuntu/_firewall.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/linux/ubuntu/_firewall.sh" && exit
-  fi
-
-  # >>>> Import a platform file : Hosts
-  if [ -f ${PROJECT_PATH}/scripts/linux/ubuntu/_hosts.sh ]; then
-    source ${PROJECT_PATH}/scripts/linux/ubuntu/_hosts.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/linux/ubuntu/_hosts.sh" && exit
-  fi
 }
 
 # >>>> Project
@@ -230,7 +216,7 @@ setCDN() {
 
 setDocker() {
   echo "---------------------------------------------------------------------------------------------------------------"
-  echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Scripts - Docker"
+  echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Docker"
   echo "---------------------------------------------------------------------------------------------------------------"
   echo
 
@@ -261,12 +247,125 @@ setVM() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo
 
-  # >>>> Linux - Ubuntu - Status
-  if [ -f ${PROJECT_PATH}/scripts/linux/ubuntu/_processor.sh ]; then
-    source ${PROJECT_PATH}/scripts/linux/ubuntu/_processor.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/linux/ubuntu/_processor.sh" && exit
+  # --------------------------------------------------------------------------------------------------------------------
+  # Operating System
+  # --------------------------------------------------------------------------------------------------------------------
+  echo ">>>> Operating System"
+  echo
+
+  # >>>> TimeZone
+  echo "TimeZone"
+  timedatectl
+  echo
+
+  # >>>> Firewall
+  local UFW_STATUS
+  UFW_STATUS=$(systemctl is-active ufw)
+  if [ "${UFW_STATUS}" == "inactive" ]; then
+    sudo systemctl start ufw
+    sudo systemctl status ufw --no-pager
+    echo
   fi
+  echo "Firewall   : ${UFW_STATUS}"
+  echo
+
+  # >>>> Cron
+  local CRON_STATUS
+  CRON_STATUS=$(systemctl is-active cron)
+  if [ "${CRON_STATUS}" == "inactive" ]; then
+    sudo systemctl start cron
+    sudo systemctl status cron --no-pager
+    echo
+  fi
+  echo "Cron       : ${CRON_STATUS}"
+  echo
+
+  # >>>> Supervisor
+  local SUPERVISOR_STATUS
+  SUPERVISOR_STATUS=$(systemctl is-active supervisor)
+  if [ "${SUPERVISOR_STATUS}" == "inactive" ]; then
+    sudo systemctl start supervisor
+    sudo systemctl status supervisor --no-pager
+    echo
+  fi
+  echo "Supervisor : ${SUPERVISOR_STATUS}"
+  echo
+
+  # >>>> Rsyslog
+  local RSYSLOG_STATUS
+  RSYSLOG_STATUS=$(systemctl is-active rsyslog)
+  if [ "${RSYSLOG_STATUS}" == "inactive" ]; then
+    sudo systemctl start rsyslog
+    sudo systemctl status rsyslog --no-pager
+    echo
+  fi
+  echo "Rsyslog    : ${RSYSLOG_STATUS}"
+  echo
+
+  # --------------------------------------------------------------------------------------------------------------------
+  # Software Bundles
+  # --------------------------------------------------------------------------------------------------------------------
+  echo
+  echo ">>>> Software Bundles"
+  echo
+
+  # >>>> App
+  local PHP_STATUS
+  PHP_STATUS=$(systemctl is-active php${PHP_VERSION}-fpm)
+  if [ "${PHP_STATUS}" == "inactive" ]; then
+    sudo systemctl start php${PHP_VERSION}-fpm
+    sudo systemctl status php${PHP_VERSION}-fpm --no-pager
+    echo
+  fi
+  echo "PHP-FPM    : ${PHP_STATUS}"
+  echo
+
+  # >>>> Cache
+  local REDIS_STATUS
+  REDIS_STATUS=$(systemctl is-active redis)
+  if [ "${REDIS_STATUS}" == "inactive" ]; then
+    sudo systemctl start redis
+    sudo systemctl status redis --no-pager
+    echo
+  fi
+  echo "REDIS      : ${REDIS_STATUS}"
+  echo
+
+  # >>>> Database
+  if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+    local POSTGRESQL_STATUS
+    POSTGRESQL_STATUS=$(systemctl is-active postgresql)
+    if [ "${POSTGRESQL_STATUS}" == "inactive" ]; then
+      sudo systemctl start postgresql
+      sudo systemctl status postgresql --no-pager
+      echo
+    fi
+    echo "Database   : ${POSTGRESQL_STATUS}"
+    echo
+  fi
+
+  # >>>> Message
+  if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+    local RABBITMQ_STATUS
+    RABBITMQ_STATUS=$(systemctl is-active rabbitmq-server)
+    if [ "${RABBITMQ_STATUS}" == "inactive" ]; then
+      sudo systemctl start rabbitmq-server
+      sudo systemctl status rabbitmq-server --no-pager
+      echo
+    fi
+    echo "Message    : ${RABBITMQ_STATUS}"
+    echo
+  fi
+
+  # >>>> Server
+  local NGINX_STATUS
+  NGINX_STATUS=$(systemctl is-active nginx)
+  if [ "${NGINX_STATUS}" == "inactive" ]; then
+    sudo systemctl start nginx
+    sudo systemctl status nginx --no-pager
+    echo
+  fi
+  echo "NGINX      : ${NGINX_STATUS}"
   echo
 }
 

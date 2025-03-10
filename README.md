@@ -154,6 +154,18 @@ SYMFONY_VERSION=7.2.*
 ./tools/ide/check.sh
 ```
 
+* Update security rules for Firewall
+
+```
+./tools/ide/firewall.sh
+```
+
+* Update localhost
+
+```
+./tools/ide/hosts.sh
+```
+
 * Migrate databases
 
 ```

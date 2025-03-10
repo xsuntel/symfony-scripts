@@ -67,20 +67,6 @@ setPlatform() {
   else
     echo "Please check a file : ${PROJECT_PATH}/scripts/base/_platform.sh" && exit
   fi
-
-  # >>>> Import a platform file : Firewall
-  if [ -f ${PROJECT_PATH}/scripts/macos/device/_firewall.sh ]; then
-    source ${PROJECT_PATH}/scripts/macos/device/_firewall.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/macos/device/_firewall.sh" && exit
-  fi
-
-  # >>>> Import a platform file : Hosts
-  if [ -f ${PROJECT_PATH}/scripts/macos/device/_hosts.sh ]; then
-    source ${PROJECT_PATH}/scripts/macos/device/_hosts.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/macos/device/_hosts.sh" && exit
-  fi
 }
 
 # >>>> Project
@@ -241,12 +227,17 @@ setVM() {
   fi
   echo
 
-  # >>>> Import a platform file : Status
-  if [ -f ${PROJECT_PATH}/scripts/macos/device/_processor.sh ]; then
-    source ${PROJECT_PATH}/scripts/macos/device/_processor.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/macos/device/_processor.sh" && exit
-  fi
+  # --------------------------------------------------------------------------------------------------------------------
+  # Operating System
+  # --------------------------------------------------------------------------------------------------------------------
+  echo ">>>> Operating System"
+  echo
+
+  # --------------------------------------------------------------------------------------------------------------------
+  # Software Bundles
+  # --------------------------------------------------------------------------------------------------------------------
+  echo ">>>> Software Bundles"
+  echo
 }
 
 # ======================================================================================================================
