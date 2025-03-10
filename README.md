@@ -74,6 +74,7 @@ cd ~/Applications/PhpStorm/GitHub
         console/
         git/
         ide/
+        localhost/
         tutorial/
     .env.app
     .env.dev
@@ -154,18 +155,6 @@ SYMFONY_VERSION=7.2.*
 ./tools/ide/check.sh
 ```
 
-* Update security rules for Firewall
-
-```
-./tools/ide/firewall.sh
-```
-
-* Update localhost
-
-```
-./tools/ide/hosts.sh
-```
-
 * Migrate databases
 
 ```
@@ -176,6 +165,20 @@ SYMFONY_VERSION=7.2.*
 
 ```
 ./tools/ide/update.sh
+```
+
+#### Tools - Localhost
+
+* Update security rules for Firewall
+
+```
+./tools/ide/firewall.sh
+```
+
+* Update localhost
+
+```
+./tools/ide/hosts.sh
 ```
 
 ### Production
