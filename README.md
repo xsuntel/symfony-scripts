@@ -93,8 +93,8 @@ cd ~/Applications/PhpStorm/GitHub
 * Update your name and email for Git
 
 ```
-git config --global user.name "Your Name"
-git config --global user.email "you@examle.com"
+git config --global user.name "{Your Name}"
+git config --global user.email "{Your Email}"
 
 git config --global init.defaultBranch main
 git config --global credential.helper store
@@ -102,7 +102,7 @@ git config --global credential.helper store
 git config --global --list
 ```
 
-* Download this project 
+* Download this project
 
 ```
 git clone https://github.com/xsuntel/symfony-scripts.git symfony
@@ -110,13 +110,20 @@ git clone https://github.com/xsuntel/symfony-scripts.git symfony
 cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
 ```
 
-* Check default variables and the latest version of Symfony - [Releases](https://symfony.com/releases)
+* Update default variables and the latest version of Symfony - [Releases](https://symfony.com/releases)
+  * TimeZone - https://www.php.net/manual/en/timezones.php
 
 ```
 vi env.app
 
+# >>>> Platform                                                              
+PLATFORM_TIMEZONE="{Your TimeZone}"
+
+# >>>> Project
+PROJECT_DOMAIN="{Your Web domain}"
+
 # >>>> PHP
-SYMFONY_VERSION=7.2.*
+SYMFONY_VERSION=7.2.* 
 ```
 
 ### Download Symfony
