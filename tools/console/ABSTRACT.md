@@ -10,8 +10,15 @@
 
 ## Project
 
-### Symfony - Console
+### Symfony
 
+#### Console Commands
+
+* [Running Commands](https://symfony.com/doc/current/console.html)
+
+```
+php bin/console list
+```
 
 
 ## Reference
