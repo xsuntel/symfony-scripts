@@ -20,6 +20,20 @@
 php bin/console list
 ```
 
+#### AssetMapper
+
+* [Running Commands](https://symfony.com/doc/current/frontend/asset_mapper.html)
+
+```
+php bin/console importmap:audit
+
+
+php bin/console importmap:outdated
+
+
+php bin/console importmap:update
+```
+
 
 ## Reference
 
