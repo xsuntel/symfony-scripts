@@ -91,15 +91,6 @@ setPhp() {
               composer require php-cs-fixer/shim
             fi
             echo
-
-            # >>>> Symfony Framework - Bundles - Asset Mapper
-            echo ">>>> PHP - Symfony - Bundles - Asset Mapper"
-            echo
-            php bin/console importmap:outdated
-            echo
-
-            php bin/console importmap:update
-            echo
           fi
         fi
       fi

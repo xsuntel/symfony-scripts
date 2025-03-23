@@ -156,10 +156,10 @@ SYMFONY_VERSION=7.2.*
 
 #### Tools - IDE
 
-* Check status
+* Clear cache
 
 ```
-./tools/ide/check.sh
+./tools/ide/cache.sh
 ```
 
 * Migrate databases
@@ -168,7 +168,13 @@ SYMFONY_VERSION=7.2.*
 ./tools/ide/migrate.sh
 ```
 
-* Clear cache
+* Check status
+
+```
+./tools/ide/status.sh
+```
+
+* Update packages
 
 ```
 ./tools/ide/update.sh
