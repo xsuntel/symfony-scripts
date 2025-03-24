@@ -84,6 +84,13 @@ setProject() {
   else
     echo "Please check a file : ${PROJECT_PATH}/scripts/base/_project.sh" && exit
   fi
+
+  # >>>> Project - Base - Symfony - Git
+  if [ -f ${PROJECT_PATH}/scripts/base/symfony/_git.sh ]; then
+    source ${PROJECT_PATH}/scripts/base/symfony/_git.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_git.sh" && exit
+  fi
 }
 
 # ----------------------------------------------------------------------------------------------------------------------
