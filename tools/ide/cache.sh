@@ -65,54 +65,11 @@ setPhp() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo
 
-  # >>>> Symfony Framework
-  if [ -d app ]; then
-    (
-      cd app || return
-
-      # >>>> Symfony Framework
-      if [ -f bin/console ]; then
-
-        # --------------------------------------------------------------------------------------------------------------
-        # A) Local Web Server
-        # --------------------------------------------------------------------------------------------------------------
-        # >>>> Environment
-        if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
-
-          # >>>> Platform
-          if [ "${PLATFORM_TYPE}" != "Linux" ]; then
-
-            # >>>> Symfony Framework - Bundles - PHP-CS-Fixer
-            echo ">>>> PHP - Symfony - Bundles - PHP-CS-Fixer"
-            echo
-            if [ -f ./vendor/bin/php-cs-fixer ]; then
-              ./vendor/bin/php-cs-fixer fix ./src
-            else
-              composer require php-cs-fixer/shim
-            fi
-            echo
-          fi
-        fi
-      fi
-    )
-  else
-    echo "[ ERROR ] There is not a folder : app"
-    setExit
-  fi
-
   # >>>> PHP - Symfony Framework - Deployment
   if [ -f ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh ]; then
     source ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh
   else
     echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh" && exit
-  fi
-  echo
-
-  # >>>> PHP - Symfony Framework - Server
-  if [ -f ${PROJECT_PATH}/scripts/base/symfony/_server.sh ]; then
-    source ${PROJECT_PATH}/scripts/base/symfony/_server.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_server.sh" && exit
   fi
   echo
 }
@@ -179,8 +136,16 @@ setVM() {
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Scripts - VM"
   echo "---------------------------------------------------------------------------------------------------------------"
 
-  #echo
+  # >>>> PHP - Symfony Framework - Server
+  if [ -f ${PROJECT_PATH}/scripts/base/symfony/_server.sh ]; then
+    source ${PROJECT_PATH}/scripts/base/symfony/_server.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_server.sh" && exit
+  fi
+  echo
+
   #php bin/console messenger:consume --all
+  #echo
 }
 
 # ======================================================================================================================

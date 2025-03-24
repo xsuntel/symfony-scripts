@@ -116,14 +116,6 @@ setPhp() {
     echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh" && exit
   fi
   echo
-
-  # >>>> PHP - Symfony Framework - Server
-  if [ -f ${PROJECT_PATH}/scripts/base/symfony/_server.sh ]; then
-    source ${PROJECT_PATH}/scripts/base/symfony/_server.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_server.sh" && exit
-  fi
-  echo
 }
 
 # >>>> Cache
@@ -188,8 +180,16 @@ setVM() {
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Scripts - VM"
   echo "---------------------------------------------------------------------------------------------------------------"
 
-  #echo
+  # >>>> PHP - Symfony Framework - Server
+  if [ -f ${PROJECT_PATH}/scripts/base/symfony/_server.sh ]; then
+    source ${PROJECT_PATH}/scripts/base/symfony/_server.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_server.sh" && exit
+  fi
+  echo
+
   #php bin/console messenger:consume --all
+  #echo
 }
 
 # ======================================================================================================================
