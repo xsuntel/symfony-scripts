@@ -71,7 +71,6 @@ setPhp() {
     (
       cd app || return
 
-      # >>>> Symfony Framework
       if [ -f bin/console ]; then
 
         # >>>> Select one of some environments

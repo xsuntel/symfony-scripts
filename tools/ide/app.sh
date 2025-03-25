@@ -70,7 +70,6 @@ setPhp() {
     (
       cd app || return
 
-      # >>>> Symfony Framework
       if [ -f bin/console ]; then
 
         # >>>> Environment
@@ -178,9 +177,6 @@ setVM() {
     echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_server.sh" && exit
   fi
   echo
-
-  #php bin/console messenger:consume --all
-  #echo
 }
 
 # ======================================================================================================================
