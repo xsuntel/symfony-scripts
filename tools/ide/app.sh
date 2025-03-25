@@ -73,32 +73,25 @@ setPhp() {
       # >>>> Symfony Framework
       if [ -f bin/console ]; then
 
-        # --------------------------------------------------------------------------------------------------------------
-        # A) Local Web Server
-        # --------------------------------------------------------------------------------------------------------------
         # >>>> Environment
         if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
 
-          # >>>> Platform
-          if [ "${PLATFORM_TYPE}" != "Linux" ]; then
-
-            echo ">>>> PHP - Symfony - Bundles - PHP-CS-Fixer"
-            echo
-            if [ -f ./vendor/bin/php-cs-fixer ]; then
-              ./vendor/bin/php-cs-fixer fix ./src
-            else
-              composer require php-cs-fixer/shim
-            fi
-            echo
-
-            echo ">>>> PHP - Symfony - Bundles - Asset Mapper"
-            echo
-            php bin/console importmap:outdated
-            echo
-
-            #php bin/console importmap:update
-            #echo
+          echo ">>>> PHP - Symfony - Bundles - PHP-CS-Fixer"
+          echo
+          if [ -f ./vendor/bin/php-cs-fixer ]; then
+            ./vendor/bin/php-cs-fixer fix ./src
+          else
+            composer require php-cs-fixer/shim
           fi
+          echo
+
+          echo ">>>> PHP - Symfony - Bundles - Asset Mapper"
+          echo
+          php bin/console importmap:outdated
+          echo
+
+          #php bin/console importmap:update
+          #echo
         fi
       fi
     )
