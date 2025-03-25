@@ -159,25 +159,19 @@ SYMFONY_VERSION=7.2.*
 * Clear cache
 
 ```
-./tools/ide/cache.sh
+./tools/ide/app.sh
 ```
 
 * Migrate databases
 
 ```
-./tools/ide/migrate.sh
+./tools/ide/database.sh
 ```
 
 * Check status
 
 ```
-./tools/ide/status.sh
-```
-
-* Update packages
-
-```
-./tools/ide/update.sh
+./tools/ide/server.sh
 ```
 
 #### Tools - Localhost
