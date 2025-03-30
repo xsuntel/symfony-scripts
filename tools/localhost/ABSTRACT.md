@@ -94,16 +94,22 @@ sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' ~/.config/autostart/tracker-m
 
 ### Local Server
 
-* Update security rules for Firewall
-
-```
-./tools/ide/firewall.sh
-```
-
 * Update localhost
 
 ```
 ./tools/ide/hosts.sh
+```
+
+* Update security rules for Firewall
+
+```
+./tools/ide/network.sh
+```
+
+* Update packages
+
+```
+./tools/ide/packages.sh
 ```
 
 ## Reference

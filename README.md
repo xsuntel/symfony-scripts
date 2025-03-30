@@ -176,16 +176,22 @@ SYMFONY_VERSION=7.2.*
 
 #### Tools - Localhost
 
-* Update security rules for Firewall
-
-```
-./tools/ide/firewall.sh
-```
-
 * Update localhost
 
 ```
 ./tools/ide/hosts.sh
+```
+
+* Update security rules for Firewall
+
+```
+./tools/ide/network.sh
+```
+
+* Update packages
+
+```
+./tools/ide/packages.sh
 ```
 
 ### Production
