@@ -84,6 +84,11 @@ sudo cp /etc/xdg/autostart/tracker-miner-fs-3.desktop ~/.config/autostart/
 sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' ~/.config/autostart/tracker-miner-fs-3.desktop
 ```
 
+```
+sudo apt update
+sudo apt install nautilus
+```
+
 ### MacOS
 
 
