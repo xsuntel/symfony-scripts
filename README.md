@@ -10,34 +10,13 @@ This project includes some shell-scripts for Full-Stack developer to develop a w
 * Message : RabbitMQ
 * Server : Nginx
 
+## Platform
+
+* Linux
+* MacOS
+* Windows
+
 ## Dev Environment
-
-### Platform
-
-#### Linux
-
-* Work Directory
-
-```
-mkdir -p ~/Applications
-mkdir -p ~/Applications/GitHub
-chown -R "${LOGNAME}":"${LOGNAME}" ~/Applications/GitHub
-
-cd ~/Applications/GitHub
-```
-
-#### MacOS
-
-* Work Directory
-
-```
-mkdir -p ~/Applications
-mkdir -p ~/Applications/GitHub
-
-cd ~/Applications/GitHub
-```
-
-#### Windows
 
 * Work Directory
 
@@ -88,7 +67,7 @@ cd ~/Applications/GitHub
     README.md
 ```
 
-#### Requirement
+### Requirement
 
 * Update your name and email for Git
 
