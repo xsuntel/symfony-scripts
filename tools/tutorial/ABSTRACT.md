@@ -24,10 +24,9 @@ cd /var/www/github
 
 ```
 mkdir -p ~/Applications
-mkdir -p ~/Applications/PhpStorm
-mkdir -p ~/Applications/PhpStorm/GitHub
+mkdir -p ~/Applications/GitHub
 
-cd ~/Applications/PhpStorm/GitHub
+cd ~/Applications/GitHub
 ```
 
 ### Windows
@@ -36,10 +35,9 @@ cd ~/Applications/PhpStorm/GitHub
 
 ```
 mkdir -p ~/Applications
-mkdir -p ~/Applications/PhpStorm
-mkdir -p ~/Applications/PhpStorm/GitHub
+mkdir -p ~/Applications/GitHub
 
-cd ~/Applications/PhpStorm/GitHub
+cd ~/Applications/GitHub
 ```
 
 ## Project

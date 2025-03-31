@@ -17,11 +17,11 @@ This project includes some shell-scripts for Full-Stack developer to develop a w
 * Work Directory
 
 ```
-sudo mkdir -p /var/www
-sudo mkdir -p /var/www/github
-sudo chown -R "${LOGNAME}":"${LOGNAME}" /var/www/github
+mkdir -p ~/Applications
+mkdir -p ~/Applications/GitHub
+chown -R "${LOGNAME}":"${LOGNAME}" ~/Applications/GitHub
 
-cd /var/www/github
+cd ~/Applications/GitHub
 ```
 
 ### MacOS
@@ -30,10 +30,9 @@ cd /var/www/github
 
 ```
 mkdir -p ~/Applications
-mkdir -p ~/Applications/PhpStorm
-mkdir -p ~/Applications/PhpStorm/GitHub
+mkdir -p ~/Applications/GitHub
 
-cd ~/Applications/PhpStorm/GitHub
+cd ~/Applications/GitHub
 ```
 
 ### Windows
@@ -42,10 +41,9 @@ cd ~/Applications/PhpStorm/GitHub
 
 ```
 mkdir -p ~/Applications
-mkdir -p ~/Applications/PhpStorm
-mkdir -p ~/Applications/PhpStorm/GitHub
+mkdir -p ~/Applications/GitHub
 
-cd ~/Applications/PhpStorm/GitHub
+cd ~/Applications/GitHub
 ```
 
 ## Project
@@ -88,7 +86,7 @@ cd ~/Applications/PhpStorm/GitHub
     README.md
 ```
 
-### Requirement
+#### Requirement
 
 * Update your name and email for Git
 
@@ -126,7 +124,7 @@ PROJECT_DOMAIN="{Your Web domain}"
 SYMFONY_VERSION=7.2.* 
 ```
 
-### Download Symfony
+#### Download Symfony
 
 * Creating Symfony Applications - [Installing & Setting up the Symfony Framework](https://symfony.com/doc/current/setup.html)
 
@@ -154,7 +152,9 @@ SYMFONY_VERSION=7.2.*
 ./scripts/windows/device/deploy.sh
 ```
 
-#### Tools - IDE
+### Tools
+
+#### IDE
 
 * Clear cache
 
@@ -174,7 +174,7 @@ SYMFONY_VERSION=7.2.*
 ./tools/ide/status.sh
 ```
 
-#### Tools - Localhost
+#### Localhost
 
 * Update localhost
 
