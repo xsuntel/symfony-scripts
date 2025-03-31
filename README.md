@@ -10,9 +10,11 @@ This project includes some shell-scripts for Full-Stack developer to develop a w
 * Message : RabbitMQ
 * Server : Nginx
 
-## Platform
+## Dev Environment
 
-### Linux
+### Platform
+
+#### Linux
 
 * Work Directory
 
@@ -24,7 +26,7 @@ chown -R "${LOGNAME}":"${LOGNAME}" ~/Applications/GitHub
 cd ~/Applications/GitHub
 ```
 
-### MacOS
+#### MacOS
 
 * Work Directory
 
@@ -35,7 +37,7 @@ mkdir -p ~/Applications/GitHub
 cd ~/Applications/GitHub
 ```
 
-### Windows
+#### Windows
 
 * Work Directory
 
@@ -194,7 +196,7 @@ SYMFONY_VERSION=7.2.*
 ./tools/ide/packages.sh
 ```
 
-### Production
+## Production
 * Public Cloud
   * AWS (Amazon Web Services)
     * Elastic Beanstalk   - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/cloud/aws/elasticbeanstalk/ABSTRACT.md)
