@@ -1,4 +1,4 @@
-# Linux - Ubuntu Desktop
+# Dev Environment
 
 ## Abstract
 
@@ -11,7 +11,7 @@
 
 ## Platform
 
-* Linux
+* Linux - Ubuntu Desktop
 
 ## Project
 
