@@ -111,7 +111,7 @@ cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
 ```
 
 * Update default variables and the latest version of Symfony - [Releases](https://symfony.com/releases)
-  * TimeZone - https://www.php.net/manual/en/timezones.php
+  * [TimeZone](https://www.php.net/manual/en/timezones.php)
 
 ```
 vi env.app
