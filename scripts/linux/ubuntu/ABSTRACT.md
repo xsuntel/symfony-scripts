@@ -15,9 +15,7 @@
 
 ## Project
 
-### App
-
-#### Symfony Framework
+### App - Symfony Framework
 
 * Update default variables in Dev Environment
 
@@ -55,9 +53,7 @@ NGINX_PORT=8000
 ./scripts/linux/ubuntu/deploy.sh
 ```
 
-### Database
-
-#### PostgreSQL
+### Database - PostgreSQL
 
 * Configure the database
 

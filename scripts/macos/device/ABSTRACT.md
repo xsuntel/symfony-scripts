@@ -15,9 +15,7 @@
 
 ## Project
 
-### App
-
-#### Symfony Framework
+### App - Symfony Framework
 
 * Update default variables in Dev Environment
 
@@ -124,9 +122,7 @@ http:
 ./scripts/macos/device/deploy.sh
 ```
 
-### Message
-
-#### RabbitMQ
+### Message - RabbitMQ
 
 * Install a package
 

@@ -15,9 +15,7 @@
 
 ## Project
 
-### App
-
-#### Symfony Framework
+### App - Symfony Framework
 
 * Create APP_SECRET
 
@@ -131,9 +129,7 @@ http:
 ./scripts/windows/device/deploy.sh
 ```
 
-### Message
-
-#### RabbitMQ
+### Message - RabbitMQ
 
 * Check local website
 
