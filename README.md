@@ -27,6 +27,18 @@ mkdir -p ~/Applications/GitHub
 cd ~/Applications/GitHub
 ```
 
+* Update your name and email for Git
+
+```
+git config --global user.name "{Your Name}"
+git config --global user.email "{Your Email}"
+
+git config --global init.defaultBranch main
+git config --global credential.helper store
+
+git config --global --list
+```
+
 ## Project
 
 ### Directories
@@ -69,18 +81,6 @@ cd ~/Applications/GitHub
 
 ### Requirement
 
-* Update your name and email for Git
-
-```
-git config --global user.name "{Your Name}"
-git config --global user.email "{Your Email}"
-
-git config --global init.defaultBranch main
-git config --global credential.helper store
-
-git config --global --list
-```
-
 * Download this project
 
 ```
@@ -89,8 +89,7 @@ git clone https://github.com/xsuntel/symfony-scripts.git symfony
 cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
 ```
 
-* Update default variables and the latest version of Symfony - [Releases](https://symfony.com/releases)
-  * [TimeZone](https://www.php.net/manual/en/timezones.php)
+* Update default variables and the latest version of Symfony [Releases](https://symfony.com/releases) - [TimeZone](https://www.php.net/manual/en/timezones.php)
 
 ```
 vi env.app
@@ -115,18 +114,15 @@ SYMFONY_VERSION=7.2.*
 
 #### Platform
 
-* Linux
-  * Ubuntu                - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/linux/ubuntu/ABSTRACT.md)
+* Ubuntu Desktop - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/linux/ubuntu/ABSTRACT.md)
 ```
 ./scripts/linux/ubuntu/deploy.sh
 ```
-* Macos
-  * Desktop               - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/macos/device/ABSTRACT.md)
+* Macos - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/macos/device/ABSTRACT.md)
 ```
 ./scripts/macos/device/deploy.sh
 ```
-* Windows
-  * Desktop               - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/windows/device/ABSTRACT.md)
+* Windows - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/windows/device/ABSTRACT.md)
 ```
 ./scripts/windows/device/deploy.sh
 ```
