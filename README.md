@@ -126,8 +126,6 @@ PROJECT_DOMAIN="{Your Web domain}"
 SYMFONY_VERSION=7.2.* 
 ```
 
-#### Download Symfony
-
 * Creating Symfony Applications - [Installing & Setting up the Symfony Framework](https://symfony.com/doc/current/setup.html)
 
 ```
