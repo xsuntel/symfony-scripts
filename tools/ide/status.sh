@@ -209,15 +209,17 @@ setRedis() {
     # ------------------------------------------------------------------------------------------------------------------
 
     # >>>> Redis
-    local REDIS_STATUS
-    REDIS_STATUS=$(systemctl is-active redis)
-    if [ "${REDIS_STATUS}" == "inactive" ]; then
-      sudo systemctl start redis
-      sudo systemctl status redis --no-pager
+    if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+      local REDIS_STATUS
+      REDIS_STATUS=$(systemctl is-active redis)
+      if [ "${REDIS_STATUS}" == "inactive" ]; then
+        sudo systemctl start redis
+        sudo systemctl status redis --no-pager
+        echo
+      fi
+      echo "REDIS      : ${REDIS_STATUS}"
       echo
     fi
-    echo "REDIS      : ${REDIS_STATUS}"
-    echo
 
   elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
     # ------------------------------------------------------------------------------------------------------------------
@@ -257,15 +259,17 @@ setPostgreSQL() {
     # ------------------------------------------------------------------------------------------------------------------
 
     # >>>> PostgreSQL
-    local POSTGRESQL_STATUS
-    POSTGRESQL_STATUS=$(systemctl is-active postgresql)
-    if [ "${POSTGRESQL_STATUS}" == "inactive" ]; then
-      sudo systemctl start postgresql
-      sudo systemctl status postgresql --no-pager
+    if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+      local POSTGRESQL_STATUS
+      POSTGRESQL_STATUS=$(systemctl is-active postgresql)
+      if [ "${POSTGRESQL_STATUS}" == "inactive" ]; then
+        sudo systemctl start postgresql
+        sudo systemctl status postgresql --no-pager
+        echo
+      fi
+      echo "PostgreSQL : ${POSTGRESQL_STATUS}"
       echo
     fi
-    echo "PostgreSQL : ${POSTGRESQL_STATUS}"
-    echo
 
   elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
     # ------------------------------------------------------------------------------------------------------------------
@@ -305,15 +309,17 @@ setRabbitMQ() {
     # ------------------------------------------------------------------------------------------------------------------
 
     # >>>> RabbitMQ
-    local RABBITMQ_STATUS
-    RABBITMQ_STATUS=$(systemctl is-active rabbitmq-server)
-    if [ "${RABBITMQ_STATUS}" == "inactive" ]; then
-      sudo systemctl start rabbitmq-server
-      sudo systemctl status rabbitmq-server --no-pager
+    if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+      local RABBITMQ_STATUS
+      RABBITMQ_STATUS=$(systemctl is-active rabbitmq-server)
+      if [ "${RABBITMQ_STATUS}" == "inactive" ]; then
+        sudo systemctl start rabbitmq-server
+        sudo systemctl status rabbitmq-server --no-pager
+        echo
+      fi
+      echo "RabbitMQ   : ${RABBITMQ_STATUS}"
       echo
     fi
-    echo "RabbitMQ   : ${RABBITMQ_STATUS}"
-    echo
 
   elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
     # ------------------------------------------------------------------------------------------------------------------
@@ -353,15 +359,17 @@ setNginx() {
     # ------------------------------------------------------------------------------------------------------------------o
 
     # >>>> Nginx
-    local NGINX_STATUS
-    NGINX_STATUS=$(systemctl is-active nginx)
-    if [ "${NGINX_STATUS}" == "inactive" ]; then
-      sudo systemctl start nginx
-      sudo systemctl status nginx --no-pager
+    if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+      local NGINX_STATUS
+      NGINX_STATUS=$(systemctl is-active nginx)
+      if [ "${NGINX_STATUS}" == "inactive" ]; then
+        sudo systemctl start nginx
+        sudo systemctl status nginx --no-pager
+        echo
+      fi
+      echo "NGINX      : ${NGINX_STATUS}"
       echo
     fi
-    echo "NGINX      : ${NGINX_STATUS}"
-    echo
 
   elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
     # ------------------------------------------------------------------------------------------------------------------

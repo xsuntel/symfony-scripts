@@ -38,6 +38,22 @@ PROJECT_NAME=$(basename "$(realpath ${PROJECT_PATH})")
 # Docker - Containers - System - Volume (Bind)                                        https://docs.docker.com/reference/
 # ----------------------------------------------------------------------------------------------------------------------
 
+# >>>> Docker Desktop - a recipe file for Symfony
+if [ -f ${PROJECT_PATH}/app/docker-compose.yml ]; then
+  echo ">>>> Docker - a recipe file for Symfony"
+  rm -f ${PROJECT_PATH}/app/docker-compose.*
+  echo
+fi
+
+# >>>> Docker Desktop - docker-compose files
+if [ -f ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.env ]; then
+  rm -fv ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.env
+fi
+if [ -f ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.yml ]; then
+  rm -fv ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.yml
+fi
+echo
+
 # >>>> docker-compose files
 echo ">>>> Docker Desktop - Update configurations"
 echo

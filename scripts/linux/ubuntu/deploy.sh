@@ -206,15 +206,6 @@ setCDN() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Scripts - CDN"
   echo "---------------------------------------------------------------------------------------------------------------"
-  echo
-
-  # >>>> PHP - Symfony Framework - Deployment
-  if [ -f ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh ]; then
-    source ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh" && exit
-  fi
-  echo
 }
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -225,23 +216,6 @@ setDocker() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Docker"
   echo "---------------------------------------------------------------------------------------------------------------"
-  echo
-
-  # >>>> Docker Desktop - a recipe file for Symfony
-  if [ -f ${PROJECT_PATH}/app/docker-compose.yml ]; then
-    echo ">>>> Docker - a recipe file for Symfony"
-    rm -f ${PROJECT_PATH}/app/docker-compose.*
-    echo
-  fi
-
-  # >>>> Docker Desktop - docker-compose files
-  if [ -f ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.env ]; then
-    rm -fv ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.env
-  fi
-  if [ -f ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.yml ]; then
-    rm -fv ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.yml
-  fi
-  echo
 }
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -252,6 +226,22 @@ setVM() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Scripts - VM"
   echo "---------------------------------------------------------------------------------------------------------------"
+  echo
+
+  # >>>> PHP - Symfony Framework - Deployment
+  if [ -f ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh ]; then
+    source ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh" && exit
+  fi
+  echo
+
+  # >>>> PHP - Symfony Framework - Server
+  if [ -f ${PROJECT_PATH}/scripts/base/symfony/_server.sh ]; then
+    source ${PROJECT_PATH}/scripts/base/symfony/_server.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_server.sh" && exit
+  fi
   echo
 
   # --------------------------------------------------------------------------------------------------------------------
@@ -328,15 +318,17 @@ setVM() {
   echo
 
   # >>>> Cache
-  local REDIS_STATUS
-  REDIS_STATUS=$(systemctl is-active redis)
-  if [ "${REDIS_STATUS}" == "inactive" ]; then
-    sudo systemctl start redis
-    sudo systemctl status redis --no-pager
+  if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+    local REDIS_STATUS
+    REDIS_STATUS=$(systemctl is-active redis)
+    if [ "${REDIS_STATUS}" == "inactive" ]; then
+      sudo systemctl start redis
+      sudo systemctl status redis --no-pager
+      echo
+    fi
+    echo "REDIS      : ${REDIS_STATUS}"
     echo
   fi
-  echo "REDIS      : ${REDIS_STATUS}"
-  echo
 
   # >>>> Database
   if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
@@ -365,15 +357,17 @@ setVM() {
   fi
 
   # >>>> Server
-  local NGINX_STATUS
-  NGINX_STATUS=$(systemctl is-active nginx)
-  if [ "${NGINX_STATUS}" == "inactive" ]; then
-    sudo systemctl start nginx
-    sudo systemctl status nginx --no-pager
+  if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+    local NGINX_STATUS
+    NGINX_STATUS=$(systemctl is-active nginx)
+    if [ "${NGINX_STATUS}" == "inactive" ]; then
+      sudo systemctl start nginx
+      sudo systemctl status nginx --no-pager
+      echo
+    fi
+    echo "NGINX      : ${NGINX_STATUS}"
     echo
   fi
-  echo "NGINX      : ${NGINX_STATUS}"
-  echo
 }
 
 # ======================================================================================================================
@@ -418,12 +412,12 @@ setNginx
 # ----------------------------------------------------------------------------------------------------------------------
 # Content Delivery
 # ----------------------------------------------------------------------------------------------------------------------
-setCDN
+#setCDN
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Container
 # ----------------------------------------------------------------------------------------------------------------------
-setDocker
+#setDocker
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Instance

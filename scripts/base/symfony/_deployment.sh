@@ -63,13 +63,10 @@ if [ -d app ]; then
           cp -fv ../.env.${ENVIRONMENT_NAME} ./.env.${ENVIRONMENT_NAME}
         fi
 
-        # >>>> Environment
+        # >>>> Dev Environment - Local
         if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
-          # >>>> Platform
-          if [ "${PLATFORM_TYPE}" != "Linux" ]; then
-            if [ -f ../.env.${ENVIRONMENT_NAME}.local ]; then
-              cp -fv ../.env.${ENVIRONMENT_NAME}.local ./.env.${ENVIRONMENT_NAME}.local
-            fi
+          if [ -f ../.env.${ENVIRONMENT_NAME}.local ]; then
+            cp -fv ../.env.${ENVIRONMENT_NAME}.local ./.env.${ENVIRONMENT_NAME}.local
           fi
         fi
       else
@@ -114,29 +111,44 @@ if [ -d app ]; then
       fi
 
       if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+        # >>>> Symfony Framework - Clear cache
         APP_ENV=prod APP_DEBUG=0 php bin/console cache:clear --env=prod --no-warmup --no-optional-warmers
-      else
-        APP_ENV=dev  APP_DEBUG=1 php bin/console cache:clear --env=dev
-      fi
 
-      # >>>> Symfony Framework - Setting up or Fixing File Permissions
-      if [ "${PLATFORM_TYPE}" == "Linux" ]; then
-        # ----------------------------------------------------------------------------------------------------------------
-        # Platform - Linux - Ubuntu
-        # ----------------------------------------------------------------------------------------------------------------
-        HTTPDUSER="$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)"
+        # >>>> Symfony Framework - Setting up or Fixing File Permissions
+        if [ "${PLATFORM_TYPE}" == "Linux" ]; then
+          # ----------------------------------------------------------------------------------------------------------------
+          # Platform - Linux - Ubuntu
+          # ----------------------------------------------------------------------------------------------------------------
+          HTTPDUSER="$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)"
 
-        sudo usermod -a -G "${HTTPDUSER}" "$(whoami)"
-        sudo chown "${HTTPDUSER}":"${HTTPDUSER}" -R ./*
+          sudo usermod -a -G "${HTTPDUSER}" "$(whoami)"
+          sudo chown "${HTTPDUSER}":"${HTTPDUSER}" -R ./*
 
-        if [ -d var ]; then
-          sudo setfacl -dR -m g:"${HTTPDUSER}":rwX -m u:"$(whoami)":rwX ./var
-          sudo setfacl -R -m g:"${HTTPDUSER}":rwX -m u:"$(whoami)":rwX ./var
+          if [ -d var ]; then
+            sudo setfacl -dR -m g:"${HTTPDUSER}":rwX -m u:"$(whoami)":rwX ./var
+            sudo setfacl -R -m g:"${HTTPDUSER}":rwX -m u:"$(whoami)":rwX ./var
 
-          sudo chmod 777 -R ./var
+            sudo chmod 777 -R ./var
+          fi
         fi
+        echo
+      else
+        # >>>> Symfony Framework - Clear cache
+        APP_ENV=dev  APP_DEBUG=1 php bin/console cache:clear --env=dev
+
+        # >>>> Symfony Framework - Setting up or Fixing File Permissions
+        if [ "${PLATFORM_TYPE}" == "Linux" ]; then
+          # ----------------------------------------------------------------------------------------------------------------
+          # Platform - Linux - Ubuntu
+          # ----------------------------------------------------------------------------------------------------------------
+          sudo chown -R "${LOGNAME}":"${LOGNAME}" -R ./*
+
+          if [ -d var ]; then
+            sudo chmod 777 -R ./var
+          fi
+        fi
+        echo
       fi
-      echo
 
       # ----------------------------------------------------------------------------------------------------------------
       # E) Other Things - Running any database migrations

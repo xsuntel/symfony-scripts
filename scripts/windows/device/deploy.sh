@@ -135,15 +135,6 @@ setRedis() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Cache"
   echo "---------------------------------------------------------------------------------------------------------------"
-  echo
-
-  # >>>> Redis - Base - Import an install file
-  if [ -f ${PROJECT_PATH}/scripts/windows/device/cache/redis/_install.sh ]; then
-    source ${PROJECT_PATH}/scripts/windows/device/cache/redis/_install.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/windows/device/cache/redis/_install.sh" && exit
-  fi
-  echo
 }
 
 # >>>> Database
@@ -160,15 +151,6 @@ setRabbitMQ() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Message"
   echo "---------------------------------------------------------------------------------------------------------------"
-  echo
-
-  # >>>> RabbitMQ - Base - Import an install file
-  if [ -f ${PROJECT_PATH}/scripts/windows/device/message/rabbitmq/_install.sh ]; then
-    source ${PROJECT_PATH}/scripts/windows/device/message/rabbitmq/_install.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/windows/device/message/rabbitmq/_install.sh" && exit
-  fi
-  echo
 }
 
 # >>>> Server
@@ -276,13 +258,13 @@ setProject
 setPhp
 
 # >>>> Cache
-setRedis
+#setRedis
 
 # >>>> Database
 #setPostgreSQL
 
 # >>>> Message
-setRabbitMQ
+#setRabbitMQ
 
 # >>>> Server
 #setNginx

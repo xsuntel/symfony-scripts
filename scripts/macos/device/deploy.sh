@@ -275,13 +275,13 @@ setProject
 setPhp
 
 # >>>> Cache
-setRedis
+#setRedis
 
 # >>>> Database
 #setPostgreSQL
 
 # >>>> Message
-setRabbitMQ
+#setRabbitMQ
 
 # >>>> Server
 #setNginx
