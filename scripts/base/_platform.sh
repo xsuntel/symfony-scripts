@@ -39,7 +39,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   echo ">>>> Linux - User : ${USER}"
   echo
 
-  local delUserList="lp sync games uucp news tcpdump mail proxy irc"
+  local delUserList="sync games uucp news tcpdump mail proxy irc speech-dispatcher"
   for userItem in ${delUserList}; do
     local USER_LIST
     USER_LIST=$(cat /etc/passwd | awk -F: '{print $1}' | grep -i "${userItem}")

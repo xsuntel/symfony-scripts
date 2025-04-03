@@ -77,36 +77,9 @@ setVM() {
     fi
     echo
 
-    # >>>> User
-    echo ">>>> Linux - User : ${USER}"
-    echo
-
-    if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
-      if [ ! -f /etc/sudoers.d/$USER ]; then
-        sudo touch /etc/sudoers.d/$USER
-        sudo echo "${USER} ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/$USER > /dev/null
-      fi
-    else
-      if [ -f /etc/sudoers.d/$USER ]; then
-        sudo rm -f /etc/sudoers.d/$USER
-      fi
-    fi
-    echo
-
     # >>>> Packages
     echo ">>>> Linux - Packages"
     echo
-
-    # >>>> Packages Remove related network packages
-    local delPackageList="ModemManager cups cups-browsed putty putty-tools nmap"
-    for pkgItem in ${delPackageList}; do
-      local APT_PKG_INFO
-      APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
-      if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
-        sudo apt purge -y ${pkgItem}
-        echo
-      fi
-    done
 
     # >>>> Packages Remove default applications
     local delPackageList="libreoffice thunderbird remmina gnome-mahjongg gnome-sudoku aisleriot"
@@ -129,7 +102,8 @@ setVM() {
       fi
     done
 
-    local delPackageList="ubuntu-advantage-pro"
+    # >>>> Packages Remove related network packages
+    local delPackageList="ModemManager cups cups-browsed putty putty-tools nmap ubuntu-advantage-pro"
     for pkgItem in ${delPackageList}; do
       local APT_PKG_INFO
       APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
@@ -141,30 +115,7 @@ setVM() {
 
     # >>>> Services
     if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
-      echo ">>>> Linux - Services"
-      echo
-
-      # >>>> Firewall - SSH - Ubuntu Desktop
-      local SSHD_STATUS
-      SSHD_STATUS=$(systemctl is-active sshd)
-      if [ "${SSHD_STATUS}" == "active" ]; then
-        sudo systemctl stop sshd
-        sudo systemctl disable sshd
-      fi
-      echo
-
-      # >>>> Packages Remove related network packages
-      local delPackageList="openssh-server"
-      for pkgItem in ${delPackageList}; do
-        local APT_PKG_INFO
-        APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
-        if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
-          sudo apt purge -y ${pkgItem}
-          echo
-        fi
-      done
-
-      # >>>> Disable gnome-shell extensions          https://manpages.ubuntu.com/manpages/focal/en/man1/gsettings.1.html
+      # >>>> Disable gnome-shell extensions            https://manpages.ubuntu.com/manpages/focal/en/man1/gsettings.1.html
       if [ -d ~/.local/share/gnome-shell/extensions ]; then
         for ext in $(/usr/bin/ls ~/.local/share/gnome-shell/extensions); do
           gnome-shell-extension-tool -d $ext;
