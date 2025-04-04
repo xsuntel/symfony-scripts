@@ -81,8 +81,8 @@ setVM() {
     echo ">>>> Linux - Packages"
     echo
 
-    # >>>> Packages Remove default applications
-    local delPackageList="libreoffice thunderbird remmina gnome-mahjongg gnome-sudoku aisleriot"
+    # >>>> Packages - Remove default applications
+    local delPackageList="cups cups-browsed gnome-mahjongg gnome-sudoku aisleriot"
     for pkgItem in ${delPackageList}; do
       local APT_PKG_INFO
       APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
@@ -92,6 +92,7 @@ setVM() {
       fi
     done
 
+    # >>>> Packages - Disable gnome-shell extensions            https://manpages.ubuntu.com/manpages/focal/en/man1/gsettings.1.html
     local delPackageList="evolution evolution-common evolution-plugins evolution-data-server"
     for pkgItem in ${delPackageList}; do
       local APT_PKG_INFO
@@ -102,31 +103,16 @@ setVM() {
       fi
     done
 
-    # >>>> Packages Remove related network packages
-    local delPackageList="ModemManager cups cups-browsed putty putty-tools nmap ubuntu-advantage-pro"
-    for pkgItem in ${delPackageList}; do
-      local APT_PKG_INFO
-      APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
-      if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
-        sudo apt remove -y --purge ubuntu-advantage-pro
-        echo
-      fi
-    done
-
-    # >>>> Services
-    if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
-      # >>>> Disable gnome-shell extensions            https://manpages.ubuntu.com/manpages/focal/en/man1/gsettings.1.html
-      if [ -d ~/.local/share/gnome-shell/extensions ]; then
-        for ext in $(/usr/bin/ls ~/.local/share/gnome-shell/extensions); do
-          gnome-shell-extension-tool -d $ext;
-        done
-      fi
-      gsettings set org.gnome.shell disable-user-extensions true
-      echo
-
-      service --status-all | grep '\[ + \]'
-      echo
+    if [ -d ~/.local/share/gnome-shell/extensions ]; then
+      for ext in $(/usr/bin/ls ~/.local/share/gnome-shell/extensions); do
+        gnome-shell-extension-tool -d $ext;
+      done
     fi
+    gsettings set org.gnome.shell disable-user-extensions true
+    echo
+
+    service --status-all | grep '\[ + \]'
+    echo
 
     # >>>> Packages Files
     echo ">>>> Linux - Files"
