@@ -104,7 +104,10 @@ if [ -d app ]; then
       if [ -d var/cache ]; then
         # >>>> Platform
         if [ "${PLATFORM_TYPE}" == "Linux" ]; then
-          sudo rm -rf var/cache/*
+          if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+            sudo rm -rf var/cache/*
+          fi
+          rm -rf var/cache/*
         else
           rm -rf var/cache/*
         fi
@@ -141,10 +144,10 @@ if [ -d app ]; then
           # ----------------------------------------------------------------------------------------------------------------
           # Platform - Linux - Ubuntu
           # ----------------------------------------------------------------------------------------------------------------
-          sudo chown -R "${LOGNAME}":"${LOGNAME}" -R ./*
+          chown -R "${LOGNAME}":"${LOGNAME}" -R ./*
 
           if [ -d var ]; then
-            sudo chmod 777 -R ./var
+            chmod 777 -R ./var
           fi
         fi
         echo
@@ -174,8 +177,10 @@ if [ -d app ]; then
 
       # >>>> Restarting your workers
       #if [ "${PLATFORM_TYPE}" == "Linux" ]; then
-      #  sudo supervisorctl restart messenger-consume:*
-      #  echo
+      #  if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+      #    sudo supervisorctl restart messenger-consume:*
+      #    echo
+      #  fi
       #fi
 
       # ----------------------------------------------------------------------------------------------------------------
