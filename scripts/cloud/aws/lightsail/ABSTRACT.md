@@ -2,15 +2,16 @@
 
 ## Abstract
 
-* App : PHP
-* Cache : Redis
-* Database : PostgreSQL
-* Message : RabbitMQ
-* Server : Nginx
+This project includes some scripts to develop a web application using Symfony Framework
 
 ## Platform
 
 * Linux : [Ubuntu Server](https://ubuntu.com/download/server/arm)
+  * App : PHP
+  * Cache : Redis
+  * Database : PostgreSQL
+  * Message : RabbitMQ
+  * Server : Nginx
 
 ## Project
 
@@ -50,9 +51,7 @@ sudo cat /etc/gshadow
 # Group Name : Group Password : Administrator : Group Members
 ```
 
-### App
-
-#### Symfony Framework
+### App - Symfony Framework
 
 * Update default variables in Prod Environment
 
@@ -116,9 +115,7 @@ cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
 ./scripts/cloud/aws/lightsail/deploy.sh
 ```
 
-### Database
-
-#### PostgreSQL
+### Database - PostgreSQL
 
 * Configure databases
 

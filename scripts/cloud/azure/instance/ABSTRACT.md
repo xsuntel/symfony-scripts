@@ -2,15 +2,16 @@
 
 ## Abstract
 
-* App : PHP
-* Cache : Redis
-* Database : PostgreSQL
-* Message : RabbitMQ
-* Server : Nginx
+This project includes some scripts to develop a web application using Symfony Framework
 
 ## Platform
 
 * Linux : [Ubuntu Server](https://ubuntu.com/download/server/arm)
+  * App : PHP
+  * Cache : Redis
+  * Database : PostgreSQL
+  * Message : RabbitMQ
+  * Server : Nginx
 
 ## Project
 
@@ -71,9 +72,7 @@ sudo gpasswd -a ubuntu ncloud
 sudo gpasswd -r ncloud
 ```
 
-### App
-
-#### Symfony Framework
+### App - Symfony Framework
 
 * Create SSH Key for [SourceCommit](https://guide.ncloud-docs.com/docs/ko/sourcecommit-use-client)
 
@@ -165,9 +164,7 @@ cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
 ./scripts/cloud/azure/instance/deploy.sh
 ```
 
-### Database
-
-#### PostgreSQL
+### Database - PostgreSQL
 
 * Configure databases
 

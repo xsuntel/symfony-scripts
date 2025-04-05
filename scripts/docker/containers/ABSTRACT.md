@@ -2,12 +2,7 @@
 
 ## Abstract
 
-* App : PHP
-* Cache : Redis (Docker Container)
-* Database : PostgreSQL (Docker Container)
-* Message : RabbitMQ (Docker Container)
-* Server : Symfony Local Server
-* Tools : Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
+This project includes some scripts to develop a web application using Symfony Framework
 
 ## Platform
 
@@ -15,11 +10,17 @@
 * MacOS - Install Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
 * Windows - Install Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
 
+## Environment
+* App : PHP
+* Cache : Redis (Docker Container)
+* Database : PostgreSQL (Docker Container)
+* Message : RabbitMQ (Docker Container)
+* Server : Symfony Local Server
+* Tools : Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
+
 ## Project
 
-### App
-
-#### Symfony Framework
+### App - Symfony Framework
 
 * Update default variables in Prod Environment
 
@@ -122,9 +123,7 @@ MAILER_NETWORK_SMTP_PORT=1025
 ./scripts/docker/containers/deploy.sh
 ```
 
-### Database
-
-#### PostgreSQL
+### Database - PostgreSQL
 
 * Configure databases
 

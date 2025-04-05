@@ -2,21 +2,20 @@
 
 ## Abstract
 
-* App : PHP
-* Cache : Redis
-* Database : PostgreSQL
-* Message : RabbitMQ
-* Server : Nginx
+This project includes some scripts to develop a web application using Symfony Framework
 
 ## Platform 
 
 * Linux : [Ubuntu Server](https://ubuntu.com/download/server/arm)
+  * App : PHP
+  * Cache : Redis
+  * Database : PostgreSQL
+  * Message : RabbitMQ
+  * Server : Nginx
 
 ## Project
 
-### App
-
-#### Symfony Framework
+### App - Symfony Framework
 
 * Update default variables in Prod Environment
 
@@ -52,9 +51,7 @@ NGINX_PORT=80
 ./scripts/cloud/aws/elasticbeanstalk/deploy.sh
 ```
 
-### Database
-
-#### PostgreSQL
+### Database - PostgreSQL
 
 * Configure databases
 
