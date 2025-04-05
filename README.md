@@ -65,7 +65,6 @@ git config --global --list
         console/
         git/
         ide/
-        localhost/
         tutorial/
     .env.app
     .env.dev
@@ -107,7 +106,7 @@ SYMFONY_VERSION=7.2.*
 * Creating Symfony Applications - [Installing & Setting up the Symfony Framework](https://symfony.com/doc/current/setup.html)
 
 ```
-./tools/tutorial/create.sh
+./tools/tutorial/symfony.sh
 ```
 
 * Update a part of configurations for twig in dev
@@ -164,27 +163,7 @@ when@dev:
 ./tools/ide/status.sh
 ```
 
-#### Localhost
-
-* Update localhost
-
-```
-./tools/ide/hosts.sh
-```
-
-* Update security rules for Firewall
-
-```
-./tools/ide/network.sh
-```
-
-* Update packages
-
-```
-./tools/ide/packages.sh
-```
-
-## Production
+## Prod Environment - Production
 * Public Cloud
   * AWS (Amazon Web Services)
     * Elastic Beanstalk   - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/cloud/aws/elasticbeanstalk/ABSTRACT.md)

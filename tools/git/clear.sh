@@ -72,7 +72,7 @@ setProject() {
   fi
 
   # >>>> Project - Directory : ./app
-  if [ "symfony" == "${PROJECT_NAME}" ] && [ -f ./tools/tutorial/create.sh ]; then
+  if [ "symfony" == "${PROJECT_NAME}" ] && [ -f ./tools/tutorial/symfony.sh ]; then
     if [ -d app ]; then
       rm -rf app
       mkdir -p app
