@@ -88,6 +88,17 @@ postgres=# \q
 
 ```
 
+### Message - RabbitMQ
+
+* Check local website
+
+```
+http://localhost:15672
+
+    - ID : guest
+    - PW : guest
+```
+
 ### Server - Localhost
 
 * Symfony Local Server in Dev Environment
