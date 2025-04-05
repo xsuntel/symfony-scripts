@@ -7,33 +7,6 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     # ------------------------------------------------------------------------------------------------------------------
     # Platform - Linux - Ubuntu
     # ------------------------------------------------------------------------------------------------------------------
-    # >>>> Kernel
-    echo ">>>> Linux - Kernel"
-    echo
-
-    echo "- PLATFORM Kernel : $(uname -r)"
-    echo
-
-    # >>>> Environment
-    if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
-      sudo systemctl daemon-reload
-      echo
-
-      # >>>> Check kernel list
-      local NOW_KERNEL_VERSION=$(uname -r | cut -d '-' -f 1,2)
-      local DEL_KERNEL_VERSION=$(dpkg --list | grep linux-image- |grep -v linux-image-${OLD_KERNEL_VERSION} | grep -v linux-image-generic-hwe |awk  '{print $2}')
-
-      if [ ${DEL_KERNEL_VERSION} ]; then
-        dpkg --list | grep linux-image
-        echo
-
-        echo "sudo apt-get purge -y ${DEL_KERNEL_VERSION} -f"
-        echo
-      fi
-      sudo apt update -y
-      echo
-    fi
-    echo
 
     # >>>> Packages
     echo ">>>> Linux - Packages"
@@ -70,20 +43,5 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     echo
 
     service --status-all | grep '\[ + \]'
-    echo
-
-    # >>>> Packages Files
-    echo ">>>> Linux - Files"
-    echo
-
-    if [ -d /tmp ]; then
-      sudo rm -rf /tmp/*
-    fi
-
-    if [ -d /home/${LOGNAME}/.cache ]; then
-      sudo rm -rf /home/${LOGNAME}/.cache/*
-    fi
-
-    sudo apt autoremove -y
     echo
 fi
