@@ -22,6 +22,18 @@ sudo vi ~/.bashrc
 umask 022
 ```
 
+* Update Kernel
+
+```
+sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns_complain=0
+sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns_force=0
+sudo sysctl -w kernel.unprivileged_userns_apparmor_policy=0
+sudo sysctl -w kernel.unprivileged_userns_clone=0
+
+sudo sysctl -a | grep userns
+```
+
 * User
 
 ```

@@ -33,6 +33,10 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
       fi
 
       sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns_complain=0
+      sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns_force=0
+      sudo sysctl -w kernel.unprivileged_userns_apparmor_policy=0
+      sudo sysctl -w kernel.unprivileged_userns_clone=0
 
       sudo apt update -y
       echo
