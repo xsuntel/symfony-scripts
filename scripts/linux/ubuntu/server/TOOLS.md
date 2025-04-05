@@ -32,6 +32,8 @@ sudo sysctl -w kernel.unprivileged_userns_apparmor_policy=0
 sudo sysctl -w kernel.unprivileged_userns_clone=0
 
 sudo sysctl -a | grep userns
+
+sudo dmesg | tail -n 100
 ```
 
 * User
