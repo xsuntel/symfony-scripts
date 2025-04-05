@@ -1,10 +1,17 @@
-# Tools - Localhost
+# Dev Environment
 
 ## Abstract
 
+* App : PHP
+* Cache : Redis
+* Database : PostgreSQL
+* Message : RabbitMQ
+* Server : Nginx
+* Tools
+
 ## Platform
 
-### Linux - Ubuntu Desktop 24.04 LTS
+* Linux - Ubuntu Desktop
 
 #### Packages
 
