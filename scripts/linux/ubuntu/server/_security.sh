@@ -66,11 +66,23 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
       sudo rm -rf ~/.rhosts
     fi
 
+    if [ -f /etc/xdg/autostart/org.gnome.SettingsDaemon.Sharing.desktop ]; then
+      sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' /etc/xdg/autostart/org.gnome.SettingsDaemon.Sharing.desktop
+    fi
+
+    if [ -f /etc/xdg/autostart/org.gnome.SettingsDaemon.Smartcard.desktop ]; then
+      sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' /etc/xdg/autostart/org.gnome.SettingsDaemon.Smartcard.desktop
+    fi
+
+    if [ -f /etc/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop ]; then
+      sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' /etc/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
+    fi
+
     # >>>> User
     echo ">>>> Linux - Users"
     echo
 
-    local delUserList="sync games uucp news tcpdump mail proxy irc speech-dispatcher"
+    local delUserList="sync games news uucp uuidd irc speech-dispatcher tcpdump"
     for userItem in ${delUserList}; do
       local USER_LIST
       USER_LIST=$(cat /etc/passwd | awk -F: '{print $1}' | grep -i "${userItem}")
@@ -78,6 +90,17 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
         sudo userdel ${userItem}
       fi
     done
+
+    if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+      local delUserList="fwupd-refresh tss"
+      for userItem in ${delUserList}; do
+        local USER_LIST
+        USER_LIST=$(cat /etc/passwd | awk -F: '{print $1}' | grep -i "${userItem}")
+        if [ "${USER_LIST}" == ${userItem} ]; then
+          sudo userdel ${userItem}
+        fi
+      done
+    fi
 
     if [ -f /etc/sudoers.d/$USER ]; then
       sudo rm -f /etc/sudoers.d/$USER

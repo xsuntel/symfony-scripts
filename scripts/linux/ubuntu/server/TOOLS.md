@@ -6,14 +6,6 @@
 
 ### Ubuntu Desktop
 
-* Update snap-store
-
-```
-sudo killall snap-store
-
-sudo snap refresh
-```
-
 * Update umask
 
 ```
@@ -38,7 +30,7 @@ sudo cat /etc/passwd
 # Login ID : x : UID : GID : Description : Home Directory : Login Shell
 
 sudo userdel fwupd-refresh
-sudo userdel tts
+sudo userdel tss
 
 sudo userdel lp
 sudo userdel sync
@@ -57,11 +49,16 @@ sudo userdel nfsnobody
 sudo userdel squid
 
 sudo vi /usr/lib/sysusers.d/basic.conf
+~
+
 u sync       4:65534 - /bin                 /bin/sync
 u games      5:60    - /usr/games           /usr/sbin/nologin
 u lp         7       - /var/spool/lpd       /usr/sbin/nologin
+
 u news       9       - /var/spool/news      /usr/sbin/nologin
 u uucp       10      - /var/spool/uucp      /usr/sbin/nologin
+
+u irc        39      - /run/ircd            /usr/sbin/nologin
 ```
 
 ```
@@ -95,6 +92,14 @@ sudo cat /etc/gshadow
 ```
 
 ### Packages
+
+* Update snap-store
+
+```
+sudo killall snap-store
+
+sudo snap refresh
+```
 
 ```
 sudo mkdir -p ~/.config/autostart
@@ -152,36 +157,6 @@ sudo cp /etc/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop ~/.config/auto
 sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' ~/.config/autostart/org.gnome.SettingsDaemon.Wacom.desktop
 
 sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' /etc/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
-```
-
-* Disable [Tracker3](https://www.linuxuprising.com/2019/07/how-to-completely-disable-tracker.html)
-
-```
-tracker3 daemon stop
-tracker3 daemon --kill
-tracker3 reset --filesystem
-
-sudo apt remove tracker tracker-extract tracker-miner-fs
-systemctl --user mask tracker-extract-3.service tracker-miner-fs-3.service tracker-miner-rss-3.service tracker-writeback-3.service tracker-xdg-portal-3.service tracker-miner-fs-control-3.service
-tracker3 reset -s -r
-```
-
-```
-cd /etc/xdg/autostart
-
-
-sudo vi tracker-miner-fs-3.desktop
-~
-X-GNOME-Autostart-enabled=false
-
-
-sudo cp /etc/xdg/autostart/tracker-miner-fs-3.desktop ~/.config/autostart/
-sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' ~/.config/autostart/tracker-miner-fs-3.desktop
-```
-
-```
-sudo apt update
-sudo apt install nautilus
 ```
 
 ## Reference
