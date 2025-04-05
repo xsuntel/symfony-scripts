@@ -67,6 +67,38 @@ setPlatform() {
   else
     echo "Please check a file : ${PROJECT_PATH}/scripts/base/_platform.sh" && exit
   fi
+
+  # >>>> Server - Hosts - Import an install file
+  if [ -f ${PROJECT_PATH}/scripts/linux/windows/device/_hosts.sh ]; then
+    source ${PROJECT_PATH}/scripts/linux/windows/device/_hosts.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/linux/windows/device/_hosts.sh" && exit
+  fi
+  echo
+
+  # >>>> Server - Network - Import an install file
+  if [ -f ${PROJECT_PATH}/scripts/linux/windows/device/_network.sh ]; then
+    source ${PROJECT_PATH}/scripts/linux/windows/device/_network.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/linux/windows/device/_network.sh" && exit
+  fi
+  echo
+
+  # >>>> Server - Packages - Import an install file
+  if [ -f ${PROJECT_PATH}/scripts/linux/windows/device/_packages.sh ]; then
+    source ${PROJECT_PATH}/scripts/linux/windows/device/_packages.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/linux/windows/device/_packages.sh" && exit
+  fi
+  echo
+
+  # >>>> Server - Security - Import an install file
+  if [ -f ${PROJECT_PATH}/scripts/linux/windows/device/_security.sh ]; then
+    source ${PROJECT_PATH}/scripts/linux/windows/device/_security.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/linux/windows/device/_security.sh" && exit
+  fi
+  echo
 }
 
 # >>>> Project
