@@ -48,6 +48,21 @@ NGINX_HOST=127.0.0.1
 NGINX_PORT=8000
 ```
 
+* Update a part of configurations for twig in dev
+
+```
+vi {project_directory}/app/config/packages/dev/twig.yaml
+
+when@dev:
+  twig:
+    debug: true
+    cache: {project_directory}/app/var/cache/dev
+    auto_reload: true
+    strict_variables: true
+    #autoescape: html
+    #optimizations: -1
+```
+
 ### Database - PostgreSQL
 
 * Configure the database

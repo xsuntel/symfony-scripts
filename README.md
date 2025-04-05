@@ -106,21 +106,6 @@ SYMFONY_VERSION=7.2.*
 ```
 ./tools/tutorial/symfony.sh
 ```
-
-* Update a part of configurations for twig in dev
-
-```
-vi {project_directory}/app/config/packages/dev/twig.yaml
-
-when@dev:
-  twig:
-    debug: true
-    cache: {project_directory}/app/var/cache/dev
-    auto_reload: true
-    strict_variables: true
-    #autoescape: html
-    #optimizations: -1
-```
  
 #### Deployment
 
