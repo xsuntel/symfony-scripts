@@ -54,6 +54,10 @@ NGINX_HOST=127.0.0.1
 NGINX_PORT=8000
 ```
 
+### Database - PostgreSQL : [Docker Desktop - Download](https://www.docker.com/products/docker-desktop/)
+
+* Configure the database
+
 ```
 vi .env.dev.local
 
@@ -103,6 +107,19 @@ MAILER_NETWORK_HTTP_PORT=1180
 MAILER_NETWORK_SMTP_PORT=1125
 ```
 
+### Message - RabbitMQ
+
+* Check local website
+
+```
+http://localhost:15672
+
+    - ID : guest
+    - PW : guest
+```
+
+### Server - Localhost
+
 * Symfony Local Server in Dev Environment
 
 ```
@@ -123,31 +140,34 @@ http:
   use_gzip: true
 ```
 
+## Deployment
+
 * Deploy this project
 
 ```
 ./scripts/windows/device/deploy.sh
 ```
 
-### Message - RabbitMQ
-
-* Check local website
-
-```
-http://localhost:15672
-
-    - ID : guest
-    - PW : guest
-```
-
 ### Tools
 
 #### IDE
 
-* Update packages in Dev Environment
+* Clear cache
 
 ```
-./scripts/windows/device/server/local.sh
+./tools/ide/cache.sh
+```
+
+* Migrate databases
+
+```
+./tools/ide/migrate.sh
+```
+
+* Check status
+
+```
+./tools/ide/status.sh
 ```
 
 ## Reference

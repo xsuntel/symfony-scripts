@@ -7,7 +7,7 @@
 * Database : PostgreSQL (Docker Container)
 * Message : RabbitMQ (Docker Container)
 * Server : Symfony Local Server
-* Tools : Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
+* Tools : Docker Desktop : [Docker Desktop - Download](https://www.docker.com/products/docker-desktop/)
 
 ## Platform
 
@@ -46,6 +46,10 @@ RABBITMQ_PORT=5672
 NGINX_HOST=127.0.0.1
 NGINX_PORT=8000
 ```
+
+### Database - PostgreSQL : [Docker Desktop - Download](https://www.docker.com/products/docker-desktop/)
+
+* Configure the database
 
 ```
 vi .env.dev.local
@@ -96,32 +100,6 @@ MAILER_NETWORK_HTTP_PORT=1180
 MAILER_NETWORK_SMTP_PORT=1125
 ```
 
-* Symfony Local Server in Dev Environment
-
-```
-vi .symfony.local.yaml
-
-# ----------------------------------------------------------------------------------------------------------------------
-# Local Web Server                                                                            PATH : ${PROJECT_PATH}/app
-# ----------------------------------------------------------------------------------------------------------------------
-http:
-  document_root: public/
-  passthru: index.php
-  port: 8000
-  preferred_port: 8001
-  #p12: ./config/authentication/p12_cert
-  allow_http: true
-  no_tls: true
-  daemon: true
-  use_gzip: true
-```
-
-* Deploy this project
-
-```
-./scripts/macos/device/deploy.sh
-```
-
 ### Message - RabbitMQ
 
 * Install a package
@@ -148,14 +126,56 @@ http://localhost:15672
     - PW : guest
 ```
 
+### Server - Localhost
+
+* Symfony Local Server in Dev Environment
+
+```
+vi .symfony.local.yaml
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Local Web Server                                                                            PATH : ${PROJECT_PATH}/app
+# ----------------------------------------------------------------------------------------------------------------------
+http:
+  document_root: public/
+  passthru: index.php
+  port: 8000
+  preferred_port: 8001
+  #p12: ./config/authentication/p12_cert
+  allow_http: true
+  no_tls: true
+  daemon: true
+  use_gzip: true
+```
+
+## Deployment
+
+* Deploy this project
+
+```
+./scripts/macos/device/deploy.sh
+```
+
 ### Tools
 
 #### IDE
 
-* Update packages in Dev Environment
+* Clear cache
 
 ```
-./scripts/macos/device/server/local.sh
+./tools/ide/cache.sh
+```
+
+* Migrate databases
+
+```
+./tools/ide/migrate.sh
+```
+
+* Check status
+
+```
+./tools/ide/status.sh
 ```
 
 ## Reference
