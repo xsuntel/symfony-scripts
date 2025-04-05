@@ -4,7 +4,7 @@
 
 This project includes some shell-scripts for Full-Stack developer to develop a web application using Symfony Framework
 
-* App : PHP
+* App : PHP - [Symfony Framework](https://symfony.com)
 * Cache : Redis
 * Database : PostgreSQL
 * Message : RabbitMQ
@@ -16,34 +16,9 @@ This project includes some shell-scripts for Full-Stack developer to develop a w
 * MacOS
 * Windows
 
-## Dev Environment
-
-* Work Directory
-
-```
-mkdir -p ~/Applications
-mkdir -p ~/Applications/GitHub
-
-cd ~/Applications/GitHub
-```
-
-* Update your name and email for Git
-
-```
-git config --global user.name "{Your Name}"
-git config --global user.email "{Your Email}"
-
-git config --global init.defaultBranch main
-git config --global credential.helper store
-
-git config --global --list
-```
-
 ## Project
 
 ### Directories
-
-*  [Symfony Framework](https://symfony.com)
 
 ```
     app/
@@ -78,7 +53,30 @@ git config --global --list
     README.md
 ```
 
-### Requirement
+* Work Directory
+
+```
+mkdir -p ~/Applications
+mkdir -p ~/Applications/GitHub
+
+cd ~/Applications/GitHub
+```
+
+### Dev Environment
+
+#### Requirement
+
+* Update your name and email for Git
+
+```
+git config --global user.name "{Your Name}"
+git config --global user.email "{Your Email}"
+
+git config --global init.defaultBranch main
+git config --global credential.helper store
+
+git config --global --list
+```
 
 * Download this project
 
@@ -124,46 +122,22 @@ when@dev:
     #optimizations: -1
 ```
  
-### Deployment
+#### Deployment
 
-#### Platform
+* Ubuntu Desktop
+  * [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/linux/ubuntu/ABSTRACT.md)
 
-* Ubuntu Desktop - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/linux/ubuntu/ABSTRACT.md)
-```
-./scripts/linux/ubuntu/deploy.sh
-```
-* Macos - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/macos/device/ABSTRACT.md)
-```
-./scripts/macos/device/deploy.sh
-```
-* Windows - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/windows/device/ABSTRACT.md)
-```
-./scripts/windows/device/deploy.sh
-```
+* Macos 
+  * [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/macos/device/ABSTRACT.md)
 
-### Tools
+* Windows
+  * [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/windows/device/ABSTRACT.md)
 
-#### IDE
 
-* Clear cache
+### Prod Environment
 
-```
-./tools/ide/cache.sh
-```
+#### Production
 
-* Migrate databases
-
-```
-./tools/ide/migration.sh
-```
-
-* Check status
-
-```
-./tools/ide/status.sh
-```
-
-## Prod Environment - Production
 * Public Cloud
   * AWS (Amazon Web Services)
     * Elastic Beanstalk   - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/cloud/aws/elasticbeanstalk/ABSTRACT.md)
