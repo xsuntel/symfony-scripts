@@ -4,8 +4,6 @@
 
 This project includes some diagrams to develop a web application using Symfony Framework
 
-* Draw.io             - [Download](https://drawio.com/)
-
 ## Platform
 
 ### Public Cloud
@@ -36,13 +34,12 @@ This project includes some diagrams to develop a web application using Symfony F
   * Nginx
 
 
-## Tools
+### Tools
 
-* Docker
-* Git
-* IDE
 
 ## Reference
 
-* IDE
-  * PhpStorm - [Integration](https://plugins.jetbrains.com/plugin/15635-diagrams-net-integration)
+* Tools
+  * Draw.io             - [Download](https://drawio.com/)
+  * IDE
+    * PhpStorm - [Integration](https://plugins.jetbrains.com/plugin/15635-diagrams-net-integration)

@@ -2,7 +2,7 @@
 
 ## Abstract
 
-This project includes some diagrams to develop a web application using Symfony Framework
+This project includes some scripts to develop a web application using Symfony Framework
 
 ## Platform
 
