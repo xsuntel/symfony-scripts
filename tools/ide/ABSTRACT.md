@@ -143,9 +143,20 @@ TCP 65520   / Virut
 
 ## Reference
 
+### Public Cloud
+
+* AWS
+  * [Elastic Beanstalk](https://aws.amazon.com/ko/elasticbeanstalk)
+  * [Lightsail](https://aws.amazon.com/ko/lightsail)
+
+* NCloud
+  * Solution - [WebHosting](https://www.ncloud.com/solution/type/webHosting)
+
 ### Tools
 
-* WiKi - [TCP/UDP 포트 목록](https://ko.wikipedia.org/wiki/TCP/UDP%EC%9D%98_%ED%8F%AC%ED%8A%B8_%EB%AA%A9%EB%A1%9D)
+* WiKi - [TCP/UDP Port List](https://ko.wikipedia.org/wiki/TCP/UDP%EC%9D%98_%ED%8F%AC%ED%8A%B8_%EB%AA%A9%EB%A1%9D)
+
+* Draw.io             - [Download](https://drawio.com/)
 
 * IDE
   * [PhpStorm](https://www.jetbrains.com/phpstorm)
@@ -154,3 +165,5 @@ TCP 65520   / Virut
         * Xdebug - [Configuration](https://www.jetbrains.com/help/phpstorm/debugging-with-phpstorm-ultimate-guide.html)
       * Deployment - [Deploying application](https://www.jetbrains.com/help/phpstorm/deploying-applications.html)
       * [Symfony Framework](https://www.jetbrains.com/help/phpstorm/symfony-support.html#use_symfony_cli)
+    * Plugin
+      * draw.io - [Integration](https://plugins.jetbrains.com/plugin/15635-diagrams-net-integration)
