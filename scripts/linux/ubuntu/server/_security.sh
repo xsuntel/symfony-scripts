@@ -36,6 +36,36 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     fi
     echo
 
+    # >>>> Directories
+
+    sudo chown root:root /etc/hosts
+    sudo chmod 600 /etc/hosts
+    ls -l /etc/hosts
+
+    sudo chown root:root /etc/passwd
+    sudo chmod 644 /etc/passwd
+    ls -l /etc/passwd
+
+    sudo chown root:root /etc/shadow
+    sudo chmod 400 /etc/shadow
+    ls -l /etc/shadow
+
+    sudo chown root:root /etc/rsyslog.conf
+    sudo chmod 640 /etc/rsyslog.conf
+    ls -l /etc/rsyslog.conf
+
+    sudo chown root:root /etc/services
+    sudo chmod 644 /etc/services
+    ls -l /etc/services
+
+    if [ -f /etc/hosts.equiv ]; then
+      sudo rm -rf /etc/hosts.equiv
+    fi
+
+    if [ -d ~/.rhosts ]; then
+      sudo rm -rf ~/.rhosts
+    fi
+
     # >>>> User
     echo ">>>> Linux - Users"
     echo

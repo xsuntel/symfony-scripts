@@ -4,35 +4,97 @@
 
 * Linux - Ubuntu Desktop
 
-#### Laptop - LG Gram
+### Ubuntu Desktop
 
-* Remove firmware
-
-```
-sudo apt remove -y fwupd
+* Update snap-store
 
 ```
+sudo killall snap-store
 
-* Remove error message
+sudo snap refresh
+```
+
+* Update umask
 
 ```
-sudo modprobe -r int3403_thermal
-
-sudo vi /etc/modprobe.d/blacklist.conf
+sudo vi /etc/profile
 ~
-blacklist int3403_thermal
+umask 022
+
+export umask
 ```
 
 ```
-sudo vi /etc/default/grub
+sudo vi ~/.bashrc
 ~
-CRUB_CMDLINE_LINUX_DEFAULT="quiet splash pci=nommconf"
-
-sudo update-grub
+umask 022
 ```
 
+* User
 
-#### Packages
+```
+sudo cat /etc/passwd
+
+# Login ID : x : UID : GID : Description : Home Directory : Login Shell
+
+sudo userdel fwupd-refresh
+sudo userdel tts
+
+sudo userdel lp
+sudo userdel sync
+sudo userdel games
+sudo userdel uucp
+sudo userdel uuidd
+sudo userdel news
+sudo userdel tcpdump
+
+sudo userdel adm
+sudo userdel shutdown
+sudo userdel halt
+sudo userdel operator
+sudo userdel gopher
+sudo userdel nfsnobody
+sudo userdel squid
+
+sudo vi /usr/lib/sysusers.d/basic.conf
+u sync       4:65534 - /bin                 /bin/sync
+u games      5:60    - /usr/games           /usr/sbin/nologin
+u lp         7       - /var/spool/lpd       /usr/sbin/nologin
+u news       9       - /var/spool/news      /usr/sbin/nologin
+u uucp       10      - /var/spool/uucp      /usr/sbin/nologin
+```
+
+```
+sudo cat /etc/shadow
+
+# Login ID : User Password : Last changed data : MIN : MAX : WARNING : INACTIVE : EXPIRE : Flag
+```
+
+```
+sudo lastlog -b 90
+```
+
+* Group
+
+```
+sudo cat /etc/group
+
+# Group Name : x : GID : Group Members
+```
+
+```
+sudo cat /etc/gshadow
+
+# Group Name : Group Password : Administrator : Group Members
+```
+
+* Services
+
+```
+/usr/bin/systemd-sysusers --cat-config
+```
+
+### Packages
 
 ```
 sudo mkdir -p ~/.config/autostart
@@ -122,72 +184,36 @@ sudo apt update
 sudo apt install nautilus
 ```
 
-
-### Tools
-
-#### Ubuntu
-
-* User
-
-```
-sudo cat /etc/passwd
-
-# Login ID : x : UID : GID : Description : Home Directory : Login Shell
-
-sudo userdel lp
-sudo userdel sync
-sudo userdel games
-sudo userdel uucp
-sudo userdel news
-sudo userdel tcpdump
-
-sudo userdel adm
-sudo userdel shutdown
-sudo userdel halt
-sudo userdel operator
-sudo userdel gopher
-sudo userdel nfsnobody
-sudo userdel squid
-
-sudo vi /usr/lib/sysusers.d/basic.conf
-u sync       4:65534 - /bin                 /bin/sync
-u games      5:60    - /usr/games           /usr/sbin/nologin
-u lp         7       - /var/spool/lpd       /usr/sbin/nologin
-u news       9       - /var/spool/news      /usr/sbin/nologin
-u uucp       10      - /var/spool/uucp      /usr/sbin/nologin
-
-```
-
-```
-sudo cat /etc/shadow
-
-# Login ID : User Password : Last changed data : MIN : MAX : WARNING : INACTIVE : EXPIRE : Flag
-```
-
-```
-sudo lastlog -b 90
-```
-
-* Group
-
-```
-sudo cat /etc/group
-
-# Group Name : x : GID : Group Members
-```
-
-```
-sudo cat /etc/gshadow
-
-# Group Name : Group Password : Administrator : Group Members
-```
-
-* Services
-```
-/usr/bin/systemd-sysusers --cat-config
-```
-
 ## Reference
+
+### Hardware - Laptop - LG Gram
+
+* Remove firmware
+
+```
+sudo apt remove -y fwupd
+
+sudo userdel fwupd-refresh
+sudo userdel tts
+```
+
+* Remove error message
+
+```
+sudo modprobe -r int3403_thermal
+
+sudo vi /etc/modprobe.d/blacklist.conf
+~
+blacklist int3403_thermal
+```
+
+```
+sudo vi /etc/default/grub
+~
+CRUB_CMDLINE_LINUX_DEFAULT="quiet splash pci=nommconf"
+
+sudo update-grub
+```
 
 ### Tools
 
