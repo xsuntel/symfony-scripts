@@ -31,6 +31,9 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
         echo "sudo apt-get purge -y ${DEL_KERNEL_VERSION} -f"
         echo
       fi
+
+      sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+
       sudo apt update -y
       echo
     fi
