@@ -32,12 +32,12 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
         echo
       fi
 
-      # >>>> Update sysctl list
+      # >>>> Update Kernel - Network ipv6
 
       sudo sysctl -w net.ipv6.conf.all.use_tempaddr=0
       sudo sysctl -w net.ipv6.conf.default.use_tempaddr=0
 
-      # >>>> Update Kernel list
+      # >>>> Update Kernel - Sandbox
 
       sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
       sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns_complain=0
@@ -100,7 +100,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     echo ">>>> Linux - Users"
     echo
 
-    local delUserList="sync games news uucp uuidd irc speech-dispatcher tcpdump"
+    local delUserList="sync games news uucp uuidd irc speech-dispatcher ftp tcpdump"
     for userItem in ${delUserList}; do
       local USER_LIST
       USER_LIST=$(cat /etc/passwd | awk -F: '{print $1}' | grep -i "${userItem}")
