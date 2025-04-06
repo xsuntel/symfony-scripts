@@ -32,6 +32,11 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
         echo
       fi
 
+      # >>>> Update Kernel list
+
+      sudo sysctl -w net.ipv6.conf.all.use_tempaddr=0
+      sudo sysctl -w net.ipv6.conf.default.use_tempaddr=0
+
       sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
       sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns_complain=0
       sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns_force=0
@@ -44,6 +49,14 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     echo
 
     # >>>> Directories
+
+    sudo chown root:root /etc/sysctl.conf
+    sudo chmod 600 /etc/sysctl.conf
+    ls -l /etc/sysctl.conf
+
+    sudo chown root:root /etc/sysctl.d/99-sysctl.conf
+    sudo chmod 600 /etc/sysctl.d/99-sysctl.conf
+    ls -l /etc/sysctl.d/99-sysctl.conf
 
     sudo chown root:root /etc/hosts
     sudo chmod 600 /etc/hosts
