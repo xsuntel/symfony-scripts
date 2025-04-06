@@ -229,7 +229,7 @@ blacklist int3403_thermal
 ```
 sudo vi /etc/default/grub
 ~
-CRUB_CMDLINE_LINUX_DEFAULT="quiet splash pci=nommconf pti=off"
+CRUB_CMDLINE_LINUX_DEFAULT="quiet splash pci=nommconf"
 
 sudo update-grub
 ```
