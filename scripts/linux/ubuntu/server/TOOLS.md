@@ -22,10 +22,10 @@ sudo vi ~/.bashrc
 umask 022
 ```
 
-* Update Kernel
+* Update sysctl.conf
 
 ```
-sudo vi /etc/sysctl.conf 
+sudo cat /etc/sysctl.conf 
 
 sudo vi /etc/sysctl.d/10-ipv6-privacy.conf
 
@@ -33,8 +33,10 @@ net.ipv6.conf.all.use_tempaddr = 0
 net.ipv6.conf.default.use_tempaddr = 0
 ```
 
+* Update Kernel
+
 ```
-sudo vi /etc/sysctl.d/99-sysctl.conf
+cd /proc/sys/kernel
 
 sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
 sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns_complain=0
