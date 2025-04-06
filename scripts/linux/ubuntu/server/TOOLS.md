@@ -4,15 +4,17 @@
 
 * Linux - Ubuntu Desktop
 
-### Ubuntu Desktop
+### System
 
 * Update umask
 
 ```
 sudo vi /etc/profile
 ~
-umask 022
+TMOUT=600
+export TMOUT
 
+umask 022
 export umask
 ```
 
@@ -65,6 +67,8 @@ sudo vi /etc/sysctl.d/10-ipv6-privacy.conf
 net.ipv6.conf.all.use_tempaddr = 0
 net.ipv6.conf.default.use_tempaddr = 0
 ```
+
+#### User
 
 * User
 
@@ -133,6 +137,61 @@ sudo cat /etc/gshadow
 
 ```
 /usr/bin/systemd-sysusers --cat-config
+```
+
+#### Remote
+
+* Update ssh
+
+```
+sudo vi /etc/ssh/sshd_config
+~
+PermitRootLogin no
+```
+
+* Update cron
+
+```
+sudo chown root:root /etc/crontab  
+sudo chmod 640 /etc/crontab 
+
+sudo chown root:root /etc/cron.d/
+sudo chmod 640 /etc/cron.d/ 
+      
+sudo chown root:root /etc/cron.daily/
+sudo chmod 640 /etc/cron.daily/   
+
+sudo chown root:root /etc/cron.hourly/
+sudo chmod 640 /etc/cron.hourly/  
+
+sudo chown root:root /etc/cron.monthly/
+sudo chmod 640 /etc/cron.monthly/     
+
+sudo chown root:root /etc/cron.weekly/
+sudo chmod 640 /etc/cron.weekly/  
+
+sudo chown root:root /etc/cron.yearly/
+sudo chmod 640 /etc/cron.yearly/ 
+
+sudo ls -l /etc/crontab
+
+sudo vi /etc/crontab
+~
+#17 *	* * *	root	cd / && run-parts --report /etc/cron.hourly
+#25 6	* * *	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.daily; }
+#47 6	* * 7	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.weekly; }
+#52 6	1 * *	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.monthly; }
+```
+
+#### Services
+
+* Disable NFS
+
+```
+ps -ef | egrep "nfs|statd|lockd"
+root 3809 3721 0 08:44:40 ? 0:00 /usr/lib/nfs/nfsd
+
+sudo kill -9 3809
 ```
 
 ### Packages

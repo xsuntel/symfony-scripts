@@ -54,27 +54,48 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
 
     sudo chown root:root /etc/sysctl.conf
     sudo chmod 600 /etc/sysctl.conf
-    ls -l /etc/sysctl.conf
+    sudo ls -l /etc/sysctl.conf
 
     sudo chown root:root /etc/hosts
     sudo chmod 600 /etc/hosts
-    ls -l /etc/hosts
+    sudo ls -l /etc/hosts
 
     sudo chown root:root /etc/passwd
     sudo chmod 644 /etc/passwd
-    ls -l /etc/passwd
+    sudo ls -l /etc/passwd
 
     sudo chown root:root /etc/shadow
     sudo chmod 400 /etc/shadow
-    ls -l /etc/shadow
+    sudo ls -l /etc/shadow
 
     sudo chown root:root /etc/rsyslog.conf
     sudo chmod 640 /etc/rsyslog.conf
-    ls -l /etc/rsyslog.conf
+    sudo ls -l /etc/rsyslog.conf
 
     sudo chown root:root /etc/services
     sudo chmod 644 /etc/services
-    ls -l /etc/services
+    sudo ls -l /etc/services
+
+    sudo chown root:root /etc/crontab
+    sudo chmod 640 /etc/crontab
+
+    sudo chown root:root /etc/cron.d/
+    sudo chmod 640 /etc/cron.d/
+
+    sudo chown root:root /etc/cron.daily/
+    sudo chmod 640 /etc/cron.daily/
+
+    sudo chown root:root /etc/cron.hourly/
+    sudo chmod 640 /etc/cron.hourly/
+
+    sudo chown root:root /etc/cron.monthly/
+    sudo chmod 640 /etc/cron.monthly/
+
+    sudo chown root:root /etc/cron.weekly/
+    sudo chmod 640 /etc/cron.weekly/
+
+    sudo chown root:root /etc/cron.yearly/
+    sudo chmod 640 /etc/cron.yearly/
 
     if [ -f /etc/hosts.equiv ]; then
       sudo rm -rf /etc/hosts.equiv
