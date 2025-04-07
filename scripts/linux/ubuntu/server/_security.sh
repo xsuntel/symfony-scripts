@@ -182,70 +182,70 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
         fi
       done
 
-      # >>>> Packages - Remove gnome-remote-desktop
-      local delPackageList="gnome-remote-desktop"
-      for pkgItem in ${delPackageList}; do
-        local APT_PKG_INFO
-        APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
-        if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
-          sudo apt purge -y ${pkgItem}
-          echo
-        fi
-      done
-
-      local delUserList="gnome-remote-desktop"
-      for userItem in ${delUserList}; do
-        local USER_LIST
-        USER_LIST=$(cat /etc/passwd | awk -F: '{print $1}' | grep -i "${userItem}")
-        if [ "${USER_LIST}" == ${userItem} ]; then
-          sudo userdel ${userItem}
-        fi
-      done
-
-      # >>>> Packages - Remove openvpn
-      local delPackageList="openvpn"
-      for pkgItem in ${delPackageList}; do
-        local APT_PKG_INFO
-        APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
-        if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
-          sudo apt purge -y ${pkgItem}
-          echo
-        fi
-      done
-
-      local delUserList="nm-openvpn"
-      for userItem in ${delUserList}; do
-        local USER_LIST
-        USER_LIST=$(cat /etc/passwd | awk -F: '{print $1}' | grep -i "${userItem}")
-        if [ "${USER_LIST}" == ${userItem} ]; then
-          sudo userdel ${userItem}
-        fi
-      done
-
-
-      # >>>> Packages - Remove related network packages
-      local delPackageList="putty putty-tools nmap remmina ModemManager"
-      for pkgItem in ${delPackageList}; do
-        local APT_PKG_INFO
-        APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
-        if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
-          sudo apt remove -y --purge ubuntu-advantage-pro
-          echo
-        fi
-      done
-
-      # >>>> Packages - Remove openvpn
-      local delPackageList="ubuntu-advantage-pro"
-      for pkgItem in ${delPackageList}; do
-        local APT_PKG_INFO
-        APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
-        if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
-          sudo apt purge -y ${pkgItem}
-          echo
-        fi
-      done
-
     fi
+
+    # >>>> Packages - Remove gnome-remote-desktop
+    local delPackageList="gnome-remote-desktop"
+    for pkgItem in ${delPackageList}; do
+      local APT_PKG_INFO
+      APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
+      if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
+        sudo apt purge -y ${pkgItem}
+        echo
+      fi
+    done
+
+    local delUserList="gnome-remote-desktop"
+    for userItem in ${delUserList}; do
+      local USER_LIST
+      USER_LIST=$(cat /etc/passwd | awk -F: '{print $1}' | grep -i "${userItem}")
+      if [ "${USER_LIST}" == ${userItem} ]; then
+        sudo userdel ${userItem}
+      fi
+    done
+
+    # >>>> Packages - Remove openvpn
+    local delPackageList="openvpn"
+    for pkgItem in ${delPackageList}; do
+      local APT_PKG_INFO
+      APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
+      if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
+        sudo apt purge -y ${pkgItem}
+        echo
+      fi
+    done
+
+    local delUserList="nm-openvpn"
+    for userItem in ${delUserList}; do
+      local USER_LIST
+      USER_LIST=$(cat /etc/passwd | awk -F: '{print $1}' | grep -i "${userItem}")
+      if [ "${USER_LIST}" == ${userItem} ]; then
+        sudo userdel ${userItem}
+      fi
+    done
+
+
+    # >>>> Packages - Remove related network packages
+    local delPackageList="putty putty-tools nmap remmina ModemManager"
+    for pkgItem in ${delPackageList}; do
+      local APT_PKG_INFO
+      APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
+      if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
+        sudo apt remove -y --purge ubuntu-advantage-pro
+        echo
+      fi
+    done
+
+    # >>>> Packages - Remove openvpn
+    local delPackageList="ubuntu-advantage-tools ubuntu-advantage-pro"
+    for pkgItem in ${delPackageList}; do
+      local APT_PKG_INFO
+      APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
+      if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
+        sudo apt purge -y ${pkgItem}
+        echo
+      fi
+    done
 
     # >>>> Packages Files
     echo ">>>> Linux - Cache Files"

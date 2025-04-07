@@ -34,6 +34,8 @@ net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
 
+net.ipv4.icmp_echo_ignore_all = 1
+
 # Sandbox
 kernel.apparmor_restrict_unprivileged_userns=0
 kernel.apparmor_restrict_unprivileged_userns_complain=0
@@ -88,6 +90,8 @@ sudo userdel uuidd
 sudo userdel news
 sudo userdel tcpdump
 
+sudo userdel speech-dispatcher
+
 sudo userdel adm
 sudo userdel shutdown
 sudo userdel halt
@@ -107,6 +111,18 @@ u news       9       - /var/spool/news      /usr/sbin/nologin
 u uucp       10      - /var/spool/uucp      /usr/sbin/nologin
 
 u irc        39      - /run/ircd            /usr/sbin/nologin
+```
+
+```
+sudo rm -f /etc/init.d/cups
+
+sudo rm -f /etc/init.d/speech-dispatcher
+
+sudo rm -f /etc/init.d/uuidd
+
+sudo rm -f /etc/init.d/apache-htcacheclean
+
+sudo rm -f /etc/init.d/apache2
 ```
 
 ```
