@@ -29,6 +29,11 @@ umask 022
 ```
 sudo vi /etc/sysctl.conf 
 ~
+# CPU
+kernel.perf_cpu_time_max_percent = 25
+kernel.perf_event_max_sample_rate = 10000
+
+
 # Network - ipv6
 net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
@@ -44,15 +49,6 @@ kernel.unprivileged_userns_apparmor_policy=0
 kernel.unprivileged_userns_clone=0
 
 sudo cat /etc/sysctl.conf 
-```
-
-```
-# Sandbox
-sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
-sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns_complain=0
-sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns_force=0
-sudo sysctl -w kernel.unprivileged_userns_apparmor_policy=0
-sudo sysctl -w kernel.unprivileged_userns_clone=0
 
 sudo sysctl -a | grep userns
 
@@ -61,7 +57,31 @@ sudo ls -ltr /proc/sys/kernel
 sudo dmesg | tail -n 100
 ```
 
-* Update /etc/sysctl.d/10-ipv6-privacy.conf
+### Network
+
+
+* Update Kernel - /etc/default/grub
+
+```
+sudo vi /etc/default/grub
+~
+GRUB_CMDLINE_LINUX="ipv6.disable=1 crashkernel=no net.ifnames=0 biosdevname=0"
+
+sudo update-grub
+```
+
+* Update Kernel - /etc/modprobe.d/blacklist.conf
+
+```
+sudo vi /etc/modprobe.d/blacklist.conf
+~
+# Disable IPv6
+blacklist ipv6
+
+sudo dpkg-reconfigure linux-image-$(uname -r)
+```
+
+* Update Kernel - /etc/sysctl.d/10-ipv6-privacy.conf
 
 ```
 sudo vi /etc/sysctl.d/10-ipv6-privacy.conf

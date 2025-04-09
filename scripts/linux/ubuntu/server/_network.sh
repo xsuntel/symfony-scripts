@@ -96,6 +96,9 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
       # >>>> Update allowed ports for Tools    - Remote Desktop
       #sudo ufw allow 3389/tcp comment 'Remote Desktop'
       #sudo ufw allow from 192.168.0.0/24 to 192.168.0.0/24 port 3389 proto tcp comment 'Remote Desktop'
+
+      # >>>> Update deny network
+      #sudo ufw deny from 192.168.0.0/24
     fi
 
     # ------------------------------------------------------------------------------------------------------------------

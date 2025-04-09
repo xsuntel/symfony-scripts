@@ -141,6 +141,31 @@ TCP 9996    / Sassor
 TCP 65520   / Virut
 
 
+### IDE - PhpStorm
+
+* Edit Custom Properties
+
+```
+idea.max.content.load.filesize=40000
+idea.max.intellisense.filesize=10000
+idea.cycle.buffer.size=2048
+
+idea.max.vcs.loaded.size.kb=40960
+
+idea.no.launcher=false
+idea.dynamic.classpath=false
+
+editor.zero.latency.typing=true
+```
+
+* Edit Custom VM Options
+
+```
+-Xmx4G
+-Xms2G
+-XX:NewRatio=4
+```
+
 ## Reference
 
 ### Public Cloud
