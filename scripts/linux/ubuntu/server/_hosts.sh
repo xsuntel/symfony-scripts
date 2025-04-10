@@ -18,10 +18,9 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
         echo $'\n127.0.0.1 www.symfony.local' | sudo tee -a /etc/hosts
         echo
       fi
+      echo ">>>> Hosts"
+      echo
+      sudo grep -v '#' /etc/hosts
+      echo
     fi
-
-    echo ">>>> Hosts"
-    echo
-    sudo grep -v '#' /etc/hosts
-    echo
 fi

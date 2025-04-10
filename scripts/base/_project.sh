@@ -53,12 +53,17 @@ if [ -d app ]; then
         # >>>> Platform
         if [ "${PLATFORM_TYPE}" == "Linux" ]; then
 
-          sudo rm -rf var/*
+          if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+            rm -rf var/*
+            chmod 777 var
+          else
+            sudo rm -rf var/*
+            sudo chmod 777 var
+          fi
           mkdir -p var/cache
           mkdir -p var/log
           mkdir -p var/sessions
           mkdir -p var/translations
-          sudo chmod 777 var
 
         elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
 

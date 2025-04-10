@@ -25,15 +25,17 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   fi
 
   # >>>> TimeZone
-  echo ">>>> Linux - TimeZone"
-  echo
+  if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+    echo ">>>> Linux - TimeZone"
+    echo
 
-  sudo ls -l /etc/localtime
-  if [ -f /usr/share/zoneinfo/${PLATFORM_TIMEZONE} ]; then
-    sudo ln -snf /usr/share/zoneinfo/${PLATFORM_TIMEZONE} /etc/localtime
+    sudo ls -l /etc/localtime
+    if [ -f /usr/share/zoneinfo/${PLATFORM_TIMEZONE} ]; then
+      sudo ln -snf /usr/share/zoneinfo/${PLATFORM_TIMEZONE} /etc/localtime
+      echo
+    fi
     echo
   fi
-  echo
 
   # >>>> User
   echo ">>>> Linux - User : ${USER}"
