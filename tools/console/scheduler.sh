@@ -21,14 +21,14 @@ echo
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "debug" "default"; do
+        select num in "debug" "consume"; do
           case "$REPLY" in
           1)
             CONSOLE_COMMANDS="debug"
             break
             ;;
           2)
-            CONSOLE_COMMANDS="default"
+            CONSOLE_COMMANDS="consume"
             break
             ;;
           3)
@@ -53,9 +53,9 @@ echo
         # --------------------------------------------------------------------------------------------------------------
         # 2) default
         # --------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "default" ]; then
-          echo ">>>> default"
-          php bin/console messenger:consume -v scheduler_default
+        elif [ "${CONSOLE_COMMANDS}" == "consume" ]; then
+          echo ">>>> consume"
+          php bin/console messenger:consume --all -vv
 
         fi
         echo
