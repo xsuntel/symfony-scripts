@@ -19,7 +19,7 @@ http:
   passthru: index.php
   port: 8000
   preferred_port: 8001
-  #p12: ./config/authentication/p12_cert
+  #p12: ~/.symfony5/certs/default.p12
   allow_http: true # Prevent auto-redirection from HTTP to HTTPS
   no_tls: true # Use HTTP instead of HTTPS
   daemon: true # Run the server in the background
