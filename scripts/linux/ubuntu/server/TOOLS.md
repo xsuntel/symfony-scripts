@@ -253,6 +253,8 @@ sudo vi /etc/xdg/autostart/org.gnome.SettingsDaemon.Sharing.desktop
 X-GNOME-Autostart-Phase=false
 X-GNOME-Autostart-Notify=false
 X-GNOME-AutoRestart=false
+
+systemctl --user status org.gnome.SettingsDaemon.Sharing.service
 ```
 
 * Disable gsd-smartcard
