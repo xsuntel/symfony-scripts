@@ -248,55 +248,39 @@ sudo mkdir -p ~/.config/autostart
 * Disable gsd-sharing
 
 ```
-cd /etc/xdg/autostart
-
-sudo vi org.gnome.SettingsDaemon.Sharing.desktop
+sudo vi /etc/xdg/autostart/org.gnome.SettingsDaemon.Sharing.desktop
 ~
 X-GNOME-Autostart-Phase=false
 X-GNOME-Autostart-Notify=false
 X-GNOME-AutoRestart=false
-
-sudo cp /etc/xdg/autostart/org.gnome.SettingsDaemon.Sharing.desktop ~/.config/autostart/
-sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' ~/.config/autostart/org.gnome.SettingsDaemon.Sharing.desktop
-
-sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' /etc/xdg/autostart/org.gnome.SettingsDaemon.Sharing.desktop
-
 ```
 
 * Disable gsd-smartcard
 
 ```
-cd /etc/xdg/autostart
-
-sudo vi org.gnome.SettingsDaemon.Smartcard.desktop
+sudo vi /etc/xdg/autostart/org.gnome.SettingsDaemon.Smartcard.desktop
 ~
 X-GNOME-Autostart-Phase=false
 X-GNOME-Autostart-Notify=false
 X-GNOME-AutoRestart=false
-
-sudo cp /etc/xdg/autostart/org.gnome.SettingsDaemon.Smartcard.desktop ~/.config/autostart/
-sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' ~/.config/autostart/org.gnome.SettingsDaemon.Smartcard.desktop
-
-sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' /etc/xdg/autostart/org.gnome.SettingsDaemon.Smartcard.desktop
 ```
 
 * Disable gsd-wacom
 
 ```
-cd /etc/xdg/autostart
-
-
-sudo vi org.gnome.SettingsDaemon.Wacom.desktop
+sudo vi /etc/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
 ~
 X-GNOME-Autostart-Phase=false
 X-GNOME-Autostart-Notify=false
 X-GNOME-AutoRestart=false
-
-sudo cp /etc/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop ~/.config/autostart/
-sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' ~/.config/autostart/org.gnome.SettingsDaemon.Wacom.desktop
-
-sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' /etc/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
 ```
+
+* Disable snapd-desktop-integration
+
+```
+sudo snap remove --purge snapd-desktop-integration
+```
+
 
 ## Reference
 

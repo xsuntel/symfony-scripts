@@ -106,15 +106,15 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     fi
 
     if [ -f /etc/xdg/autostart/org.gnome.SettingsDaemon.Sharing.desktop ]; then
-      sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' /etc/xdg/autostart/org.gnome.SettingsDaemon.Sharing.desktop
+      systemctl --user mask org.gnome.SettingsDaemon.Sharing.service
     fi
 
     if [ -f /etc/xdg/autostart/org.gnome.SettingsDaemon.Smartcard.desktop ]; then
-      sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' /etc/xdg/autostart/org.gnome.SettingsDaemon.Smartcard.desktop
+      systemctl --user mask org.gnome.SettingsDaemon.Smartcard.service
     fi
 
     if [ -f /etc/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop ]; then
-      sudo sed -i -e '$aX-GNOME-Autostart-enabled=false' /etc/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
+      systemctl --user mask org.gnome.SettingsDaemon.Wacom.service
     fi
 
     # >>>> User
