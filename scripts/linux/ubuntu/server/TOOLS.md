@@ -42,9 +42,12 @@ net.ipv6.conf.lo.disable_ipv6 = 1
 net.ipv4.icmp_echo_ignore_all = 1
 
 # Sandbox
-kernel.apparmor_restrict_unprivileged_userns=0
-kernel.apparmor_restrict_unprivileged_userns_complain=0
-kernel.apparmor_restrict_unprivileged_userns_force=0
+kernel.apparmor_restrict_unprivileged_unconfined=1
+kernel.apparmor_restrict_unprivileged_userns=1
+
+kernel.apparmor_restrict_unprivileged_userns_complain=1
+kernel.apparmor_restrict_unprivileged_userns_force=1
+
 kernel.unprivileged_userns_apparmor_policy=0
 kernel.unprivileged_userns_clone=0
 
@@ -55,6 +58,16 @@ sudo sysctl -a | grep userns
 sudo ls -ltr /proc/sys/kernel
 
 sudo dmesg | tail -n 100
+
+```
+
+* Update Kernel - /etc/apparmor.d/
+
+```
+cd /etc/apparmor.d/ 
+
+
+journalctl -k | grep apparmor
 ```
 
 ### Network
