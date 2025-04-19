@@ -32,15 +32,6 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
         echo
       fi
 
-      # >>>> Update Kernel - Network - ipv6
-
-      sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
-      sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
-      sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
-
-      sudo sysctl -w net.ipv6.conf.all.use_tempaddr=0
-      sudo sysctl -w net.ipv6.conf.default.use_tempaddr=0
-
       # >>>> Update Kernel - Network - ipv4
 
       sudo sysctl -w net.ipv4.icmp_echo_ignore_all=1
@@ -55,6 +46,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
 
       sudo sysctl -w kernel.unprivileged_userns_apparmor_policy=0
       sudo sysctl -w kernel.unprivileged_userns_clone=0
+      echo
 
       sudo apt update -y
       echo
@@ -274,6 +266,11 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
 
     if [ -d /tmp ]; then
       sudo rm -rf /tmp/*
+      sudo rm -rf /tmp/.*
+    fi
+
+    if [ -d /tmp/.org.chromium.Chromium.exrVvc ]; then
+      sudo rm -rf /tmp/.org.chromium.Chromium.exrVvc
     fi
 
     if [ -d /home/${LOGNAME}/.cache ]; then

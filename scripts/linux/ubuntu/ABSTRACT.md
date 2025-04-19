@@ -161,6 +161,12 @@ http:
 ./tools/ide/migrate.sh
 ```
 
+* Check network
+
+```
+./tools/ide/network.sh
+```
+
 * Check status
 
 ```
