@@ -98,15 +98,12 @@ netstat -lpn
 ```
 
 * Update Kernel - /etc/apparmor.d/
+    * https://documentation.ubuntu.com/server/how-to/security/apparmor/index.html
 
 ```
 sudo aa-status
 
 cd /etc/apparmor.d/ 
-
-sudo apparmor_parser -r /etc/apparmor.d/{your_profile}
-
-sudo apparmor_parser -r /etc/apparmor.d/disabled/github-desktop
 
 journalctl -k | grep apparmor
 ```
