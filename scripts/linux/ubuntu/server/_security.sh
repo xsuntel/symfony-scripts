@@ -32,16 +32,27 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
         echo
       fi
 
-      # >>>> Update Kernel - Network ipv6
+      # >>>> Update Kernel - Network - ipv6
+
+      sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+      sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+      sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
 
       sudo sysctl -w net.ipv6.conf.all.use_tempaddr=0
       sudo sysctl -w net.ipv6.conf.default.use_tempaddr=0
 
+      # >>>> Update Kernel - Network - ipv4
+
+      sudo sysctl -w net.ipv4.icmp_echo_ignore_all=1
+
       # >>>> Update Kernel - Sandbox
 
-      sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
-      sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns_complain=0
-      sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns_force=0
+      sudo sysctl -w kernel.apparmor_restrict_unprivileged_unconfined=1
+      sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=1
+
+      sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns_complain=1
+      sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns_force=1
+
       sudo sysctl -w kernel.unprivileged_userns_apparmor_policy=0
       sudo sysctl -w kernel.unprivileged_userns_clone=0
 

@@ -6,6 +6,151 @@
 
 ### System
 
+#### GRUB (Grand Unified Bootloader)
+
+* Update Kernel - /etc/default/grub
+
+```
+sudo vi /etc/default/grub
+~
+GRUB_CMDLINE_LINUX="ipv6.disable=1 crashkernel=no net.ifnames=0 biosdevname=0"
+CRUB_CMDLINE_LINUX_DEFAULT="quiet splash pci=nommconf"
+
+sudo update-grub
+```
+
+#### Kernel
+
+* Update Kernel - /etc/sysctl.conf
+
+```
+sudo vi /etc/sysctl.conf 
+~
+# CPU
+kernel.perf_cpu_time_max_percent=25
+kernel.perf_event_max_sample_rate=10000
+
+# Network - ipv6
+net.ipv6.conf.all.disable_ipv6=1
+net.ipv6.conf.default.disable_ipv6=1
+net.ipv6.conf.lo.disable_ipv6=1
+
+net.ipv6.conf.all.use_tempaddr=0
+net.ipv6.conf.default.use_tempaddr=0
+
+# Network - ipv4
+net.ipv4.icmp_echo_ignore_all=1
+
+# Sandbox
+kernel.apparmor_restrict_unprivileged_unconfined=1
+kernel.apparmor_restrict_unprivileged_userns=1
+
+kernel.apparmor_restrict_unprivileged_userns_complain=1
+kernel.apparmor_restrict_unprivileged_userns_force=1
+
+kernel.unprivileged_userns_apparmor_policy=0
+kernel.unprivileged_userns_clone=0
+```
+
+```
+sudo sysctl -a | grep userns
+
+sudo ls -ltr /proc/sys/kernel
+
+sudo dmesg | tail -n 100
+```
+
+#### Network
+
+* Update Kernel - /etc/modprobe.d/blacklist.conf
+
+```
+lsmod
+
+sudo vi /etc/modprobe.d/blacklist.conf
+~
+# Customize - Disable ACPI
+blacklist acpi_thermal_rel
+blacklist int3403_thermal
+
+# Customize - Disable IPv6
+blacklist nf_defrag_ipv6
+
+sudo dpkg-reconfigure linux-image-$(uname -r)
+```
+
+* Update Kernel - /etc/sysctl.d/10-ipv6-privacy.conf
+
+```
+sudo vi /etc/sysctl.d/10-ipv6-privacy.conf
+
+net.ipv6.conf.all.use_tempaddr = 0
+net.ipv6.conf.default.use_tempaddr = 0
+```
+
+* Update Kernel - /etc/apparmor.d/
+
+```
+cd /etc/apparmor.d/ 
+
+sudo apparmor_parser -r /etc/apparmor.d/{your_profile}
+
+sudo apparmor_parser -r /etc/apparmor.d/disabled/github-desktop
+
+journalctl -k | grep apparmor
+```
+
+#### Directories
+
+* Update permission
+
+```
+sudo chown root:root /etc/sysctl.conf
+sudo chmod 600 /etc/sysctl.conf
+sudo ls -l /etc/sysctl.conf
+
+sudo chown root:root /etc/hosts
+sudo chmod 600 /etc/hosts
+sudo ls -l /etc/hosts
+
+sudo chown root:root /etc/passwd
+sudo chmod 644 /etc/passwd
+sudo ls -l /etc/passwd
+
+sudo chown root:root /etc/shadow
+sudo chmod 400 /etc/shadow
+sudo ls -l /etc/shadow
+
+sudo chown root:root /etc/rsyslog.conf
+sudo chmod 640 /etc/rsyslog.conf
+sudo ls -l /etc/rsyslog.conf
+
+sudo chown root:root /etc/services
+sudo chmod 644 /etc/services
+sudo ls -l /etc/services
+
+sudo chown root:root /etc/crontab
+sudo chmod 640 /etc/crontab
+
+sudo chown root:root /etc/cron.d/
+sudo chmod 640 /etc/cron.d/
+
+sudo chown root:root /etc/cron.daily/
+sudo chmod 640 /etc/cron.daily/
+
+sudo chown root:root /etc/cron.hourly/
+sudo chmod 640 /etc/cron.hourly/
+
+sudo chown root:root /etc/cron.monthly/
+sudo chmod 640 /etc/cron.monthly/
+
+sudo chown root:root /etc/cron.weekly/
+sudo chmod 640 /etc/cron.weekly/
+
+sudo chown root:root /etc/cron.yearly/
+sudo chmod 640 /etc/cron.yearly/
+```
+
 * Update umask
 
 ```
@@ -24,88 +169,9 @@ sudo vi ~/.bashrc
 umask 022
 ```
 
-* Update Kernel - /etc/sysctl.conf
-
-```
-sudo vi /etc/sysctl.conf 
-~
-# CPU
-kernel.perf_cpu_time_max_percent = 25
-kernel.perf_event_max_sample_rate = 10000
-
-
-# Network - ipv6
-net.ipv6.conf.all.disable_ipv6 = 1
-net.ipv6.conf.default.disable_ipv6 = 1
-net.ipv6.conf.lo.disable_ipv6 = 1
-
-net.ipv4.icmp_echo_ignore_all = 1
-
-# Sandbox
-kernel.apparmor_restrict_unprivileged_unconfined=1
-kernel.apparmor_restrict_unprivileged_userns=1
-
-kernel.apparmor_restrict_unprivileged_userns_complain=1
-kernel.apparmor_restrict_unprivileged_userns_force=1
-
-kernel.unprivileged_userns_apparmor_policy=0
-kernel.unprivileged_userns_clone=0
-
-sudo cat /etc/sysctl.conf 
-
-sudo sysctl -a | grep userns
-
-sudo ls -ltr /proc/sys/kernel
-
-sudo dmesg | tail -n 100
-
-```
-
-* Update Kernel - /etc/apparmor.d/
-
-```
-cd /etc/apparmor.d/ 
-
-
-journalctl -k | grep apparmor
-```
-
-### Network
-
-
-* Update Kernel - /etc/default/grub
-
-```
-sudo vi /etc/default/grub
-~
-GRUB_CMDLINE_LINUX="ipv6.disable=1 crashkernel=no net.ifnames=0 biosdevname=0"
-
-sudo update-grub
-```
-
-* Update Kernel - /etc/modprobe.d/blacklist.conf
-
-```
-sudo vi /etc/modprobe.d/blacklist.conf
-~
-# Disable IPv6
-blacklist ipv6
-
-sudo dpkg-reconfigure linux-image-$(uname -r)
-```
-
-* Update Kernel - /etc/sysctl.d/10-ipv6-privacy.conf
-
-```
-sudo vi /etc/sysctl.d/10-ipv6-privacy.conf
-
-net.ipv6.conf.all.use_tempaddr = 0
-net.ipv6.conf.default.use_tempaddr = 0
-```
-
 #### User
 
-* User
+* Modify passwd
 
 ```
 sudo cat /etc/passwd
@@ -232,7 +298,9 @@ sudo vi /etc/crontab
 #52 6	1 * *	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.monthly; }
 ```
 
-#### Services
+### Services
+
+#### nfs
 
 * Disable NFS
 
@@ -243,7 +311,7 @@ root 3809 3721 0 08:44:40 ? 0:00 /usr/lib/nfs/nfsd
 sudo kill -9 3809
 ```
 
-### Packages
+#### snap
 
 * Update snap-store
 
@@ -253,10 +321,13 @@ sudo killall snap-store
 sudo snap refresh
 ```
 
-```
-sudo mkdir -p ~/.config/autostart
+* Disable snapd-desktop-integration
 
 ```
+sudo snap remove --purge snapd-desktop-integration
+```
+
+#### gsd
 
 * Disable gsd-sharing
 
@@ -268,6 +339,8 @@ X-GNOME-Autostart-Notify=false
 X-GNOME-AutoRestart=false
 
 systemctl --user status org.gnome.SettingsDaemon.Sharing.service
+
+systemctl --user mask org.gnome.SettingsDaemon.Sharing.service
 ```
 
 * Disable gsd-smartcard
@@ -278,6 +351,8 @@ sudo vi /etc/xdg/autostart/org.gnome.SettingsDaemon.Smartcard.desktop
 X-GNOME-Autostart-Phase=false
 X-GNOME-Autostart-Notify=false
 X-GNOME-AutoRestart=false
+
+systemctl --user mask org.gnome.SettingsDaemon.Smartcard.service
 ```
 
 * Disable gsd-wacom
@@ -288,14 +363,9 @@ sudo vi /etc/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
 X-GNOME-Autostart-Phase=false
 X-GNOME-Autostart-Notify=false
 X-GNOME-AutoRestart=false
-```
 
-* Disable snapd-desktop-integration
-
+systemctl --user mask org.gnome.SettingsDaemon.Wacom.service
 ```
-sudo snap remove --purge snapd-desktop-integration
-```
-
 
 ## Reference
 
@@ -318,14 +388,6 @@ sudo modprobe -r int3403_thermal
 sudo vi /etc/modprobe.d/blacklist.conf
 ~
 blacklist int3403_thermal
-```
-
-```
-sudo vi /etc/default/grub
-~
-CRUB_CMDLINE_LINUX_DEFAULT="quiet splash pci=nommconf"
-
-sudo update-grub
 ```
 
 ### Tools
