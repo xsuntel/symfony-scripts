@@ -100,6 +100,8 @@ netstat -lpn
 * Update Kernel - /etc/apparmor.d/
 
 ```
+sudo aa-status
+
 cd /etc/apparmor.d/ 
 
 sudo apparmor_parser -r /etc/apparmor.d/{your_profile}
