@@ -88,8 +88,8 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     fi
 
     # >>>> Update allowed ports for Server   - Nginx
-    sudo ufw allow 80/tcp  comment 'Nginx - HTTP'
-    sudo ufw allow 443/tcp comment 'Nginx - HTTPS'
+    sudo ufw allow http  comment 'Nginx - HTTP'
+    sudo ufw allow https comment 'Nginx - HTTPS'
 
     # >>>> Update allowed ports for Tools    - Remote Desktop
     if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
@@ -108,88 +108,287 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     fi
 
     # ------------------------------------------------------------------------------------------------------------------
-    # UFW - outgoing - well-known port
+    # UFW - deny services                                                                              cat /etc/services
     # ------------------------------------------------------------------------------------------------------------------
 
-    sudo ufw deny from any to any port 1 comment 'TCPMUX'
-    sudo ufw deny from any to any port 7 comment 'ECHO'
-    sudo ufw deny from any to any port 9 comment 'DISCARD'
-    sudo ufw deny from any to any port 13 comment 'DAYTIME'
-    sudo ufw deny from any to any port 17 comment 'QOTD'
-    sudo ufw deny from any to any port 19 comment 'CHARGEN'
+    # Network services, Internet style
 
-    sudo ufw deny from any to any port 20 comment 'FTP'
-    sudo ufw deny from any to any port 21 comment 'FTP'
-    sudo ufw deny from any to any port 22 comment 'SSH'
-    sudo ufw deny from any to any port 23 comment 'Telnet'
-    sudo ufw deny from any to any port 24 comment 'Mail'
-    sudo ufw deny from any to any port 25 comment 'SMTP'
+    sudo ufw deny tcpmux
+    sudo ufw deny echo
+    sudo ufw deny discard
+    sudo ufw deny systat
+    sudo ufw deny daytime
+    sudo ufw deny netstat
+    sudo ufw deny qotd
+    sudo ufw deny chargen
+    sudo ufw deny ftp-data
+    sudo ufw deny ftp
+    sudo ufw deny ssh
+    sudo ufw deny telnet
+    sudo ufw deny smtp
+    sudo ufw deny time
+    sudo ufw deny whois
+    sudo ufw deny tacacs
+    sudo ufw deny bootps
+    sudo ufw deny bootpc
+    sudo ufw deny tftp
+    sudo ufw deny gopher
+    sudo ufw deny finger
+    sudo ufw deny kerberos
+    sudo ufw deny iso-tsap
+    sudo ufw deny acr-nema
+    sudo ufw deny pop3
+    sudo ufw deny sunrpc
+    sudo ufw deny auth
+    sudo ufw deny nntp
+    sudo ufw deny epmap
+    sudo ufw deny netbios-ns
+    sudo ufw deny netbios-dgm
+    sudo ufw deny netbios-ssn
+    sudo ufw deny imap2
+    sudo ufw deny snmp
+    sudo ufw deny snmp-trap
+    sudo ufw deny cmip-man
+    sudo ufw deny cmip-agent
+    sudo ufw deny mailq
+    sudo ufw deny xdmcp
+    sudo ufw deny bgp
+    sudo ufw deny smux
+    sudo ufw deny qmtp
+    sudo ufw deny z3950
+    sudo ufw deny ipx
+    sudo ufw deny ptp-event
+    sudo ufw deny ptp-general
+    sudo ufw deny pawserv
+    sudo ufw deny zserv
+    sudo ufw deny rpc2portmap
+    sudo ufw deny codaauth2
+    sudo ufw deny clearcase
+    sudo ufw deny ldap
+    sudo ufw deny svrloc
+    sudo ufw deny snpp
+    sudo ufw deny microsoft-ds
+    sudo ufw deny kpasswd
+    sudo ufw deny submissions
+    sudo ufw deny saft
+    sudo ufw deny isakmp
+    sudo ufw deny rtsp
+    sudo ufw deny nqs
+    sudo ufw deny asf-rmcp
+    sudo ufw deny qmqp
+    sudo ufw deny ipp
+    sudo ufw deny ldp
 
-    sudo ufw deny from any to any port 37 comment 'TIME'
-    sudo ufw deny from any to any port 49 comment 'TACACS'
+    #
+    # UNIX specific services
+    #
 
-    sudo ufw deny from any to any port 69 comment 'TFTP'
-    sudo ufw deny from any to any port 70 comment 'Gopher'
-    sudo ufw deny from any to any port 79 comment 'Finger'
-    sudo ufw deny from any to any port 88 comment 'Kebelos'
+    sudo ufw deny exec
+    sudo ufw deny biff
+    sudo ufw deny login
+    sudo ufw deny who
+    sudo ufw deny shell
+    sudo ufw deny syslog
+    sudo ufw deny printer
+    sudo ufw deny talk
+    sudo ufw deny ntalk
+    sudo ufw deny route
+    sudo ufw deny gdomap
+    sudo ufw deny uucp
+    sudo ufw deny klogin
+    sudo ufw deny kshell
+    sudo ufw deny dhcpv6-client
+    sudo ufw deny dhcpv6-server
+    sudo ufw deny afpovertcp
+    sudo ufw deny nntps
+    sudo ufw deny submission
+    sudo ufw deny ldaps
+    sudo ufw deny tinc
+    sudo ufw deny silc
+    sudo ufw deny kerberos-adm
 
-    sudo ufw deny from any to any port 109 comment 'POP2'
-    sudo ufw deny from any to any port 110 comment 'POP3'
-    sudo ufw deny from any to any port 111 comment 'RPC'
-    sudo ufw deny from any to any port 113 comment 'ident'
-    sudo ufw deny from any to any port 119 comment 'NNTP'
+    sudo ufw deny domain-s
+    sudo ufw deny rsync
+    sudo ufw deny ftps-data
+    sudo ufw deny ftps
+    sudo ufw deny telnets
+    sudo ufw deny imaps
+    sudo ufw deny pop3s
 
-    sudo ufw deny from any to any port 137 comment 'SMB'
-    sudo ufw deny from any to any port 138 comment 'SMB'
-    sudo ufw deny from any to any port 139 comment 'NetBIOS'
-    sudo ufw deny from any to any port 143 comment 'IMAP4'
-    sudo ufw deny from any to any port 161 comment 'SNMP'
-    sudo ufw deny from any to any port 162 comment 'SNMP'
-    sudo ufw deny from any to any port 220 comment 'IMAP3'
-    sudo ufw deny from any to any port 389 comment 'LDAP'
-    sudo ufw deny from any to any port 445 comment 'Active Directory'
-    sudo ufw deny from any to any port 465 comment 'SMTP'
-    sudo ufw deny from any to any port 514 comment 'Syslog'
-    sudo ufw deny from any to any port 515 comment 'LPD'
-    sudo ufw deny from any to any port 540 comment 'UUCP'
-    sudo ufw deny from any to any port 542 comment 'RFC'
-    sudo ufw deny from any to any port 587 comment 'SMTP'
-    sudo ufw deny from any to any port 592 comment 'File Maker'
-    sudo ufw deny from any to any port 631 comment 'Internet Print'
-    sudo ufw deny from any to any port 636 comment 'LDAP'
-    sudo ufw deny from any to any port 666 comment 'Game'
-    sudo ufw deny from any to any port 873 comment 'Rsync'
-    sudo ufw deny from any to any port 981 comment 'Firewall'
-    sudo ufw deny from any to any port 990 comment 'FTP'
-    sudo ufw deny from any to any port 992 comment 'Telnet'
-    sudo ufw deny from any to any port 993 comment 'IMAP4'
-    sudo ufw deny from any to any port 995 comment 'POP3'
+    #
+    # From ``Assigned Numbers'':
+    #
 
-    # ------------------------------------------------------------------------------------------------------------------
-    # UFW - outgoing - registered port
-    # ------------------------------------------------------------------------------------------------------------------
-    #for i in `seq 1024 1030`; do
-    #  sudo ufw deny from any to any port $i comment 'registered port'
-    #done
+    sudo ufw deny socks
+    sudo ufw deny proofd
+    sudo ufw deny rootd
+    sudo ufw deny openvpn
+    sudo ufw deny rmiregistry
+    sudo ufw deny lotusnote
+    sudo ufw deny ms-sql-s
+    sudo ufw deny ms-sql-m
+    sudo ufw deny ingreslock
+    sudo ufw deny datametrics
+    sudo ufw deny sa-msg-port
+    sudo ufw deny kermit
+    sudo ufw deny groupwise
+    sudo ufw deny l2f
+    sudo ufw deny radius
+    sudo ufw deny radius-acct
+    sudo ufw deny cisco-sccp
+    sudo ufw deny nfs
+    sudo ufw deny gnunet
+    sudo ufw deny rtcm-sc104
+    sudo ufw deny gsigatekeeper
+    sudo ufw deny gris
+    sudo ufw deny cvspserver
+    sudo ufw deny venus
+    sudo ufw deny venus-se
+    sudo ufw deny codasrv
+    sudo ufw deny codasrv-se
+    sudo ufw deny mon
+    sudo ufw deny dict
+    sudo ufw deny f5-globalsite
+    sudo ufw deny gsiftp
+    sudo ufw deny gpsd
+    sudo ufw deny gds-db
+    sudo ufw deny icpv2
+    sudo ufw deny isns
+    sudo ufw deny iscsi-target
+    sudo ufw deny ms-wbt-server
+    sudo ufw deny nut
+    sudo ufw deny distcc
+    sudo ufw deny daap
+    sudo ufw deny svn
+    sudo ufw deny suucp
+    sudo ufw deny sysrqd
+    sudo ufw deny sieve
+    sudo ufw deny epmd
+    sudo ufw deny remctl
+    sudo ufw deny f5-iquery
+    sudo ufw deny ntske
+    sudo ufw deny ipsec-nat-t
+    sudo ufw deny iax
+    sudo ufw deny mtn
+    sudo ufw deny radmin-port
+    sudo ufw deny sip
+    sudo ufw deny sip-tls
+    sudo ufw deny xmpp-client
+    sudo ufw deny xmpp-server
+    sudo ufw deny cfengine
+    sudo ufw deny mdns
+    sudo ufw deny freeciv
+    sudo ufw deny x11
+    sudo ufw deny x11-1
+    sudo ufw deny x11-2
+    sudo ufw deny x11-3
+    sudo ufw deny x11-4
+    sudo ufw deny x11-5
+    sudo ufw deny x11-6
+    sudo ufw deny x11-7
+    sudo ufw deny gnutella-svc
+    sudo ufw deny gnutella-rtr
+    sudo ufw deny sge-qmaster
+    sudo ufw deny sge-execd
+    sudo ufw deny mysql-proxy
+    sudo ufw deny babel
+    sudo ufw deny ircs-u
+    sudo ufw deny bbs
+    sudo ufw deny afs3-fileserver
+    sudo ufw deny afs3-callback
+    sudo ufw deny afs3-prserver
+    sudo ufw deny afs3-vlserver
+    sudo ufw deny afs3-kaserver
+    sudo ufw deny afs3-volser
+    sudo ufw deny afs3-bos
+    sudo ufw deny afs3-update
+    sudo ufw deny afs3-rmtsys
+    sudo ufw deny font-service
+    sudo ufw deny http-alt
+    sudo ufw deny puppet
+    sudo ufw deny bacula-dir
+    sudo ufw deny bacula-fd
+    sudo ufw deny bacula-sd
+    sudo ufw deny xmms2
+    sudo ufw deny nbd
+    sudo ufw deny zabbix-agent
+    sudo ufw deny zabbix-trapper
+    sudo ufw deny amanda
+    sudo ufw deny dicom
+    sudo ufw deny hkp
+    sudo ufw deny db-lsp
+    sudo ufw deny dcap
+    sudo ufw deny gsidcap
+    sudo ufw deny wnn6
 
-    sudo ufw deny from any to any port 1080 comment 'SOCKS'
-    sudo ufw deny from any to any port 1900 comment 'SSDP'
+    # Kerberos (Project Athena/MIT) services
 
-    sudo ufw deny from any to any port 3283 comment 'Remote Desktop - RDP'
-    sudo ufw deny from any to any port 3389 comment 'Remote Desktop - RDP'
+    sudo ufw deny kerberos4
+    sudo ufw deny kerberos-master
+    sudo ufw deny passwd-server
+    sudo ufw deny krb-prop
+    sudo ufw deny zephyr-srv
+    sudo ufw deny zephyr-clt
+    sudo ufw deny zephyr-hm
+    sudo ufw deny iprop
+    sudo ufw deny supfilesrv
+    sudo ufw deny supfiledbg
 
-    sudo ufw deny from any to any port 3479 comment 'Playstation'
-    sudo ufw deny from any to any port 3480 comment 'Playstation'
-    sudo ufw deny from any to any port 3690 comment 'Subversion'
+    #
+    # Services added for the Debian GNU/Linux distribution
+    #
 
-    sudo ufw deny from any to any port 3390 comment 'Remote Desktop - RDP'
-
-    sudo ufw deny from any to any port 5228 comment 'HP Virtual Room Service'
-    sudo ufw deny from any to any port 5353 comment 'Multicast DNS'
-
-    sudo ufw deny from any to any port 5590 comment 'Remote Desktop - MacOS'
-
-    sudo ufw deny from any to any port 17500 comment 'Dropbox LanSync'
+    sudo ufw deny poppassd
+    sudo ufw deny moira-db
+    sudo ufw deny moira-update
+    sudo ufw deny moira-ureg
+    sudo ufw deny spamd
+    sudo ufw deny skkserv
+    sudo ufw deny predict
+    sudo ufw deny rmtcfg
+    sudo ufw deny xtel
+    sudo ufw deny xtelw
+    sudo ufw deny zebrasrv
+    sudo ufw deny zebra
+    sudo ufw deny ripd
+    sudo ufw deny ripngd
+    sudo ufw deny ospfd
+    sudo ufw deny bgpd
+    sudo ufw deny ospf6d
+    sudo ufw deny ospfapi
+    sudo ufw deny isisd
+    sudo ufw deny fax
+    sudo ufw deny hylafax
+    sudo ufw deny munin
+    sudo ufw deny rplay
+    sudo ufw deny nrpe
+    sudo ufw deny nsca
+    sudo ufw deny canna
+    sudo ufw deny syslog-tls
+    sudo ufw deny sane-port
+    sudo ufw deny ircd
+    sudo ufw deny zope-ftp
+    sudo ufw deny tproxy
+    sudo ufw deny omniorb
+    sudo ufw deny clc-build-daemon
+    sudo ufw deny xinetd
+    sudo ufw deny git
+    sudo ufw deny zope
+    sudo ufw deny webmin
+    sudo ufw deny kamanda
+    sudo ufw deny amandaidx
+    sudo ufw deny amidxtape
+    sudo ufw deny sgi-cmsd
+    sudo ufw deny sgi-crsd
+    sudo ufw deny sgi-gcd
+    sudo ufw deny sgi-cad
+    sudo ufw deny binkp
+    sudo ufw deny asp
+    sudo ufw deny asp
+    sudo ufw deny csync2
+    sudo ufw deny dircproxy
+    sudo ufw deny tfido
+    sudo ufw deny fido
 
     # ------------------------------------------------------------------------------------------------------------------
     # UFW - Enable
