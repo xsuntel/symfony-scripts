@@ -258,7 +258,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     done
 
     # >>>> Packages - Remove openvpn
-    local delPackageList="ubuntu-advantage-tools ubuntu-advantage-pro"
+    local delPackageList="ubuntu-advantage-tools ubuntu-advantage-pro unattended-upgrades"
     for pkgItem in ${delPackageList}; do
       local APT_PKG_INFO
       APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")

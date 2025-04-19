@@ -312,16 +312,52 @@ sudo vi /etc/crontab
 
 ### Services
 
-#### nfs
-
-* Disable NFS
+* Check services list
 
 ```
-ps -ef | egrep "nfs|statd|lockd"
-root 3809 3721 0 08:44:40 ? 0:00 /usr/lib/nfs/nfsd
+cat /etc/services
 
-sudo kill -9 3809
+service --status-all
 ```
+
+#### anacron
+
+* Disable anacron
+
+```
+sudo /etc/anacrontab
+
+# These replace cron's entries
+#1      5       cron.daily      run-parts --report /etc/cron.daily
+#7      10      cron.weekly     run-parts --report /etc/cron.weekly
+#@monthly       15      cron.monthly    run-parts --report /etc/cron.monthly
+
+sudo systemctl disable anacron
+```
+
+#### apport
+
+* Disable apport
+
+```
+sudo vi /etc/default/apport
+~
+enabled=0
+
+sudo systemctl disable apport
+```
+
+#### unattended-upgrades
+
+* Disable unattended-upgrades
+
+```
+sudo systemctl disable unattended-upgrades
+
+sudo apt remove --purge unattended-upgrades
+```
+
+### Packages
 
 #### snap
 

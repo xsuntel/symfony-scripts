@@ -50,10 +50,19 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     # ------------------------------------------------------------------------------------------------------------------
 
     # >>>> Update allowed services
+    sudo ufw allow domain comment "DNS"
     sudo ufw allow ntp comment 'NTP'
 
+    # >>>> Update allowed ports for App      - PHP
     if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
-      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 53 proto tcp comment 'DNS'
+      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 9001 proto tcp comment 'PHP - Xdebug - DBGp Proxy'
+      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 9003 proto tcp comment 'PHP - Xdebug'
+
+      # >>>> Symfony Local Server
+      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8000 proto tcp comment 'Local server - 00'
+      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8010 proto tcp comment 'Local server - 10'
+      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8020 proto tcp comment 'Local server - 20'
+      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8030 proto tcp comment 'Local server - 30'
     fi
 
     # >>>> Update allowed ports for Cache    - Redis
@@ -82,23 +91,20 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     sudo ufw allow 80/tcp  comment 'Nginx - HTTP'
     sudo ufw allow 443/tcp comment 'Nginx - HTTPS'
 
+    # >>>> Update allowed ports for Tools    - Remote Desktop
     if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
-      # >>>> Update allowed ports for App      - PHP
-      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 9001 proto tcp comment 'PHP - Xdebug - DBGp Proxy'
-      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 9003 proto tcp comment 'PHP - Xdebug'
-
-      # >>>> Update allowed ports for Server   - Local
-      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8000 proto tcp comment 'Local server - 00'
-      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8010 proto tcp comment 'Local server - 10'
-      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8020 proto tcp comment 'Local server - 20'
-      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8030 proto tcp comment 'Local server - 30'
-
-      # >>>> Update allowed ports for Tools    - Remote Desktop
       #sudo ufw allow 3389/tcp comment 'Remote Desktop'
       #sudo ufw allow from 192.168.0.0/24 to 192.168.0.0/24 port 3389 proto tcp comment 'Remote Desktop'
+      echo
+    fi
 
-      # >>>> Update deny network
+    # >>>> Update deny network
+    if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+      #sudo ufw deny from 10.0.0.0/8
+      #sudo ufw deny from 172.16.0.0/12
+      #sudo ufw deny from 192.168.0.0/16
       #sudo ufw deny from 192.168.0.0/24
+      echo
     fi
 
     # ------------------------------------------------------------------------------------------------------------------
