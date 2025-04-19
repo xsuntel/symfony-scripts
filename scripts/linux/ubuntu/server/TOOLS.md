@@ -67,14 +67,20 @@ sudo dmesg | tail -n 100
 ```
 lsmod
 
+modprobe -c
+```
+
+```
 sudo vi /etc/modprobe.d/blacklist.conf
 ~
 # Customize - Disable ACPI
-blacklist acpi_thermal_rel
+#blacklist acpi_thermal_rel
 blacklist int3403_thermal
 
 # Customize - Disable IPv6
+blacklist nf_conntrack_ipv6 
 blacklist nf_defrag_ipv6
+blacklist ipv6
 
 sudo dpkg-reconfigure linux-image-$(uname -r)
 ```
@@ -86,6 +92,9 @@ sudo vi /etc/sysctl.d/10-ipv6-privacy.conf
 
 net.ipv6.conf.all.use_tempaddr = 0
 net.ipv6.conf.default.use_tempaddr = 0
+
+
+netstat -lpn
 ```
 
 * Update Kernel - /etc/apparmor.d/
@@ -181,6 +190,7 @@ sudo cat /etc/passwd
 sudo userdel fwupd-refresh
 sudo userdel tss
 
+sudo userdel list
 sudo userdel lp
 sudo userdel sync
 sudo userdel games
@@ -210,6 +220,8 @@ u news       9       - /var/spool/news      /usr/sbin/nologin
 u uucp       10      - /var/spool/uucp      /usr/sbin/nologin
 
 u irc        39      - /run/ircd            /usr/sbin/nologin
+
+u list       38      - /var/list            /usr/sbin/nologin
 ```
 
 ```

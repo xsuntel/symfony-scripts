@@ -132,7 +132,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     echo ">>>> Linux - Users"
     echo
 
-    local delUserList="sync games news uucp uuidd irc speech-dispatcher ftp tcpdump"
+    local delUserList="list sync games news uucp uuidd irc speech-dispatcher ftp tcpdump snmp snmpd"
     for userItem in ${delUserList}; do
       local USER_LIST
       USER_LIST=$(cat /etc/passwd | awk -F: '{print $1}' | grep -i "${userItem}")
@@ -235,9 +235,19 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
       fi
     done
 
+    # >>>> Packages - Remove related applications
+    local delPackageList="speech-dispatcher"
+    for pkgItem in ${delPackageList}; do
+      local APT_PKG_INFO
+      APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
+      if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
+        sudo apt remove -y --purge ubuntu-advantage-pro
+        echo
+      fi
+    done
 
     # >>>> Packages - Remove related network packages
-    local delPackageList="putty putty-tools nmap remmina ModemManager"
+    local delPackageList="putty putty-tools nmap remmina ModemManager amagent"
     for pkgItem in ${delPackageList}; do
       local APT_PKG_INFO
       APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
