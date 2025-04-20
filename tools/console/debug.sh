@@ -21,7 +21,7 @@ echo
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "config" "dotenv" "firewall" "router" "autowiring" "container" ; do
+        select num in "config" "dotenv" "firewall" "router" "autowiring" "container" "exit"; do
           case "$REPLY" in
           1)
             CONSOLE_COMMANDS="config"

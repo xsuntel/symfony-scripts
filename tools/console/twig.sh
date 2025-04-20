@@ -21,7 +21,7 @@ echo
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "twig" "twig-component"; do
+        select num in "twig" "twig-component" "exit"; do
           case "$REPLY" in
           1)
             CONSOLE_COMMANDS="twig"

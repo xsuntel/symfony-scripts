@@ -21,7 +21,7 @@ echo
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "debug" "consume"; do
+        select num in "debug" "consume" "exit"; do
           case "$REPLY" in
           1)
             CONSOLE_COMMANDS="debug"
