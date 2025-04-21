@@ -21,6 +21,20 @@ sudo update-grub
 
 #### Kernel
 
+* Remove kerneloops
+
+```
+sudo systemctl stop kerneloops
+
+sudo systemctl disable kerneloops
+```
+
+```
+sudo systemctl stop plymouth-log
+
+sudo systemctl disable plymouth-log
+```
+
 * Update Kernel - /etc/sysctl.conf
 
 ```
