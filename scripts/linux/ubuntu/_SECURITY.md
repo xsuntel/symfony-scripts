@@ -35,6 +35,12 @@ sudo systemctl stop plymouth-log
 sudo systemctl disable plymouth-log
 ```
 
+```
+sudo systemctl stop sysstat
+
+sudo systemctl disable sysstat
+```
+
 * Update Kernel - /etc/sysctl.conf
 
 ```

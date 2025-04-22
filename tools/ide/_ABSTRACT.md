@@ -143,6 +143,19 @@ TCP 65520   / Virut
 
 ### IDE - PhpStorm
 
+#### Settings
+
+* Disable some configurations
+
+```
+Settings / Appearance & Behavior / System Settings / Autosave / Sync external changes: 
+
+
+Settings / Appearance & Behavior / System Settings / HTTP Proxy
+```
+
+#### Menu / Help
+
 * Edit Custom Properties
 
 ```
