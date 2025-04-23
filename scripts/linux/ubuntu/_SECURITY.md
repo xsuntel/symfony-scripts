@@ -82,6 +82,12 @@ sudo dmesg | tail -n 100
 
 #### Network
 
+* Disable Bluetooth
+
+```
+sudo systemctl disable bluetooth
+```
+
 * Update Kernel - /etc/modprobe.d/blacklist.conf
 
 ```
@@ -344,7 +350,7 @@ service --status-all
 * Disable anacron
 
 ```
-sudo /etc/anacrontab
+sudo vi /etc/anacrontab
 
 # These replace cron's entries
 #1      5       cron.daily      run-parts --report /etc/cron.daily
