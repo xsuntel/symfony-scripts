@@ -522,6 +522,11 @@ setVM() {
     netstat -rn
     echo
 
+    echo ">>>> Process"
+    echo
+
+    ps -ef | grep -i messenger:consume | grep -v grep
+
   elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
     # ------------------------------------------------------------------------------------------------------------------
     # Platform - MacOS

@@ -71,23 +71,25 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   if [ "${SUPERVISOR_STATUS}" != "supervisor" ]; then
     sudo apt-get install -y supervisor
     echo
+  fi
 
+  if [ -f ${PROJECT_PATH}/scripts/linux/ubuntu/app/supervisor/conf.d/messenger-worker_${ENVIRONMENT_NAME}.conf ]; then
     sudo cp -fv ${PROJECT_PATH}/scripts/linux/ubuntu/app/supervisor/conf.d/messenger-worker_${ENVIRONMENT_NAME}.conf /etc/supervisor/conf.d/messenger-worker.conf
     echo
-
-    # >>>> Supervisor - Start process
-    sudo supervisorctl reread
-    echo
-
-    sudo supervisorctl update
-    echo
-
-    sudo supervisorctl start messenger-consume:*
-    echo
-
-    sudo supervisorctl status
-    echo
   fi
+
+  # >>>> Supervisor - Start process
+  sudo supervisorctl reread
+  echo
+
+  sudo supervisorctl update
+  echo
+
+  sudo supervisorctl start messenger-consume:*
+  echo
+
+  sudo supervisorctl status
+  echo
 
 elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
   # --------------------------------------------------------------------------------------------------------------------
