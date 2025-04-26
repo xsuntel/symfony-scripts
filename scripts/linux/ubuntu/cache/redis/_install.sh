@@ -44,7 +44,9 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   fi
 
   # >>>> Redis - Memory for Redis
-  sudo sysctl vm.overcommit_memory=1
+  if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+    sudo sysctl vm.overcommit_memory=1
+  fi
 
   # --------------------------------------------------------------------------------------------------------------------
   # Redis - Check status

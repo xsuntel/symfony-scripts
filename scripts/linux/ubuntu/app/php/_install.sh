@@ -176,13 +176,16 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   echo
 
   php -v
+  echo
 
   # --------------------------------------------------------------------------------------------------------------------
   # PHP - Log
   # --------------------------------------------------------------------------------------------------------------------
-  # Setting up or Fixing File Permissions - https://symfony.com/doc/current/setup/file_permissions.html
-  HTTPDUSER="$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)"
-  sudo mkdir -p /var/log/php
-  sudo chown -R ${HTTPDUSER}:${HTTPDUSER} /var/log/php
-  sudo chmod -R 777 /var/log/php
+  if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+    # Setting up or Fixing File Permissions - https://symfony.com/doc/current/setup/file_permissions.html
+    HTTPDUSER="$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)"
+    sudo mkdir -p /var/log/php
+    sudo chown -R ${HTTPDUSER}:${HTTPDUSER} /var/log/php
+    sudo chmod -R 777 /var/log/php
+  fi
 fi
