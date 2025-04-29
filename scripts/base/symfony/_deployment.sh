@@ -107,7 +107,7 @@ if [ -d app ]; then
           if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
             sudo rm -rf var/cache/*
           fi
-          rm -rf var/cache/*
+          # rm -rf var/cache/*
         else
           rm -rf var/cache/*
         fi
@@ -151,6 +151,31 @@ if [ -d app ]; then
           fi
         fi
         echo
+      fi
+
+      # >>>> Symfony Framework - Remove log files
+      if [ -d var/log ]; then
+        if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+          # >>>> var/log/dev.log
+          if [ -f var/log/dev.log ]; then
+            cat /dev/null > var/log/prod.log
+          else
+            touch var/log/prod.log
+          fi
+        else
+          # >>>> var/log/dev.log
+          if [ -f var/log/dev.log ]; then
+            cat /dev/null > var/log/dev.log
+          else
+            touch var/log/dev.log
+          fi
+          # >>>> var/log/messenger.log
+          if [ -f var/log/messenger.log ]; then
+            cat /dev/null > var/log/messenger.log
+          else
+            touch var/log/messenger.log
+          fi
+        fi
       fi
 
       # ----------------------------------------------------------------------------------------------------------------

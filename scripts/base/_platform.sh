@@ -85,8 +85,14 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   sudo supervisorctl update
   echo
 
-  sudo supervisorctl start messenger-consume:*
-  echo
+  # >>>> Environment
+  if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+    sudo supervisorctl start messenger-consume:*
+    echo
+  else
+    sudo supervisorctl stop messenger-consume:*
+    echo
+  fi
 
   sudo supervisorctl status
   echo
