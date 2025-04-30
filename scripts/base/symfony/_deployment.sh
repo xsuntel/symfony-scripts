@@ -200,6 +200,8 @@ if [ -d app ]; then
       echo ">>>> PHP - Symfony - Deployment - G) Other Things - Restarting your workers for Messenger: Sync & Queued Message Handling"
       echo
 
+      #php bin/console messenger:setup-transports
+
       # >>>> Restarting your workers
       #if [ "${PLATFORM_TYPE}" == "Linux" ]; then
       #  if [ "${ENVIRONMENT_NAME}" == "prod" ]; then

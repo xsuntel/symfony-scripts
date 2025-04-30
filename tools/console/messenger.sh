@@ -21,7 +21,7 @@ echo
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "debug" "consume" "stats" "failed" "remove" "setup" "stop" "exit"; do
+        select num in "debug" "consume" "stats" "failed" "remove" "stop" "exit"; do
           case "$REPLY" in
           1)
             CONSOLE_COMMANDS="debug"
@@ -44,14 +44,10 @@ echo
             break
             ;;
           6)
-            CONSOLE_COMMANDS="setup"
-            break
-            ;;
-          7)
             CONSOLE_COMMANDS="stop"
             break
             ;;
-          8)
+          7)
             echo "exit()"
             exit
             ;;
@@ -99,19 +95,11 @@ echo
           php bin/console messenger:failed:remove --all
 
         # --------------------------------------------------------------------------------------------------------------
-        # 6) setup
-        # --------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "setup" ]; then
-          echo ">>>> setup"
-          php bin/console messenger:setup-transports
-
-        # --------------------------------------------------------------------------------------------------------------
-        # 7) stop
+        # 6) stop
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "stop" ]; then
           echo ">>>> stop"
           php bin/console messenger:stop-workers
-
         fi
         echo
 
