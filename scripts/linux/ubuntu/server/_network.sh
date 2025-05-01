@@ -81,10 +81,13 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
 
     # >>>> Update allowed ports for Message  - RabbitMQ
     if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
-      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 5672 proto tcp comment 'RabbitMQ'
-      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 15672 proto tcp comment 'RabbitMQ - UI'
+      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 5672  proto tcp comment 'RabbitMQ'
+      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 5552  proto tcp comment 'RabbitMQ - stream'
+      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 15672 proto tcp comment 'RabbitMQ - http'
+      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 25672 proto tcp comment 'RabbitMQ - clustering'
     else
       sudo ufw allow 5672/tcp comment 'RabbitMQ'
+      sudo ufw allow 5552/tcp comment 'RabbitMQ - stream'
     fi
 
     # >>>> Update allowed ports for Server   - Nginx
