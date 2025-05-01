@@ -40,4 +40,6 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     echo
   fi
 
+  psql --version
+
 fi

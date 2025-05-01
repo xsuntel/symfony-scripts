@@ -44,6 +44,11 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
 
     sudo systemctl enable rabbitmq-server
     echo
+
+    # >>>> RabbitMQ - Install Plugins
+    sudo rabbitmq-plugins enable rabbitmq_management rabbitmq_stream_management
+
+    sudo rabbitmq-plugins list
   fi
 
   # --------------------------------------------------------------------------------------------------------------------
@@ -72,5 +77,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     sudo systemctl start rabbitmq-server
     echo
   fi
+
+  dpkg -s rabbitmq-server | grep Version
 
 fi
