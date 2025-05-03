@@ -20,7 +20,7 @@ if [ "${PLATFORM_TYPE}" == "Darwin" ]; then
       fi
     fi
 
-    echo ">>>> Hosts"
+    echo ">>>> MacOS - Hosts"
     echo
     grep -v '#' /etc/hosts
     echo

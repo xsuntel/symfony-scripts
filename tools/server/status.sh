@@ -353,40 +353,6 @@ setNginx() {
     # Platform - Linux - Ubuntu
     # ------------------------------------------------------------------------------------------------------------------o
 
-    # >>>> Rsyslog
-    local RSYSLOG_STATUS
-    RSYSLOG_STATUS=$(systemctl is-active rsyslog)
-    if [ "${RSYSLOG_STATUS}" == "inactive" ]; then
-      sudo systemctl start rsyslog
-      sudo systemctl status rsyslog --no-pager
-      echo
-    fi
-    echo
-    echo "Rsyslog    : ${RSYSLOG_STATUS}"
-    echo
-
-    # >>>> Cron
-    local CRON_STATUS
-    CRON_STATUS=$(systemctl is-active cron)
-    if [ "${CRON_STATUS}" == "inactive" ]; then
-      sudo systemctl start cron
-      sudo systemctl status cron --no-pager
-      echo
-    fi
-    echo "Cron       : ${CRON_STATUS}"
-    echo
-
-    # >>>> Supervisor
-    local SUPERVISOR_STATUS
-    SUPERVISOR_STATUS=$(systemctl is-active supervisor)
-    if [ "${SUPERVISOR_STATUS}" == "inactive" ]; then
-      sudo systemctl start supervisor
-      sudo systemctl status supervisor --no-pager
-      echo
-    fi
-    echo "Supervisor : ${SUPERVISOR_STATUS}"
-    echo
-
     # >>>> Nginx
     if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
       local NGINX_STATUS
@@ -489,6 +455,12 @@ setVM() {
     # ------------------------------------------------------------------------------------------------------------------
     # Platform - Linux - Ubuntu
     # ------------------------------------------------------------------------------------------------------------------
+  local HOSTIP
+  # >>>> Platform
+  if [ "${PLATFORM_TYPE}" == "Linux" ]; then
+    # ------------------------------------------------------------------------------------------------------------------
+    # Platform - Linux - Ubuntu
+    # ------------------------------------------------------------------------------------------------------------------
     # >>>> Hosts
     echo ">>>> Hosts"
     echo
@@ -542,7 +514,44 @@ setVM() {
     echo ">>>> Process"
     echo
 
-    ps -ef | grep -i messenger:consume | grep -v grep
+    # >>>> Rsyslog
+    local RSYSLOG_STATUS
+    RSYSLOG_STATUS=$(systemctl is-active rsyslog)
+    if [ "${RSYSLOG_STATUS}" == "inactive" ]; then
+      sudo systemctl start rsyslog
+      sudo systemctl status rsyslog --no-pager
+      echo
+    fi
+    echo
+    echo "Rsyslog    : ${RSYSLOG_STATUS}"
+    echo
+
+    # >>>> Cron
+    local CRON_STATUS
+    CRON_STATUS=$(systemctl is-active cron)
+    if [ "${CRON_STATUS}" == "inactive" ]; then
+      sudo systemctl start cron
+      sudo systemctl status cron --no-pager
+      echo
+    fi
+    echo "Cron       : ${CRON_STATUS}"
+    echo
+
+    # >>>> Supervisor
+    local SUPERVISOR_STATUS
+    SUPERVISOR_STATUS=$(systemctl is-active supervisor)
+    if [ "${SUPERVISOR_STATUS}" == "inactive" ]; then
+      sudo systemctl start supervisor
+      sudo systemctl status supervisor --no-pager
+      echo
+    fi
+    echo "Supervisor : ${SUPERVISOR_STATUS}"
+    echo
+
+    # ps -ef | grep -i messenger:consume | grep -v grep
+
+    sudo supervisorctl status
+    echo
 
   elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
     # ------------------------------------------------------------------------------------------------------------------

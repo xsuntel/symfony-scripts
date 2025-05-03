@@ -20,7 +20,7 @@ if [ "${PLATFORM_TYPE}" == "windows" ]; then
       fi
     fi
 
-    echo ">>>> Hosts"
+    echo ">>>> Windows - Hosts"
     echo
     grep -v '#' /windows/system32/drivers/etc/hosts
     echo

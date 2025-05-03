@@ -65,6 +65,10 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     fi
   done
 
+  # >>>> Processer
+  echo ">>>> Linux - Processer"
+  echo
+
   # >>>> Install required packages : Supervisor
   local SUPERVISOR_STATUS
   SUPERVISOR_STATUS=$(dpkg -l | grep -i "supervisor" | awk '{print $2}' | cut -d ':' -f1 | awk "/^supervisor$/")
@@ -128,8 +132,8 @@ elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
   fi
   echo
 
-  # >>>> Homebrew                                                                                        https://brew.sh
-  echo ">>>> MacOS - Homebrew"
+  # >>>> Packages                                                                                        https://brew.sh
+  echo ">>>> MacOS - Packages"
   if [ -f /opt/homebrew/bin/brew ]; then
     ls -ltr /opt/homebrew/bin/brew
     echo
@@ -140,8 +144,8 @@ elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
     echo
   fi
 
-  # >>>> Supervisor
-  echo ">>>> MacOS - Supervisor"
+  # >>>> Processer
+  echo ">>>> MacOS - Processer"
   echo
 
   local SUPERVISOR_STATUS
@@ -182,6 +186,14 @@ elif [ "${PLATFORM_TYPE}" == "Windows" ]; then
   # >>>> Release
   echo ">>>> Windows - Release"
   ver
+  echo
+
+  # >>>> Package
+  echo ">>>> Windows - Packages"
+  echo
+
+  # >>>> Processer
+  echo ">>>> Windows - Processer"
   echo
 
 else
