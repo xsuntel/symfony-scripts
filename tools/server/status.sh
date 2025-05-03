@@ -489,6 +489,11 @@ setVM() {
     # ------------------------------------------------------------------------------------------------------------------
     # Platform - Linux - Ubuntu
     # ------------------------------------------------------------------------------------------------------------------
+    # >>>> Hosts
+    echo ">>>> Hosts"
+    echo
+    sudo grep -v '#' /etc/hosts
+    echo
 
     # >>>> Hardware
     echo ">>>> CPU"
@@ -520,6 +525,18 @@ setVM() {
     echo
 
     netstat -rn
+    echo
+
+    netstat -napotl | grep -i LISTEN | grep -v tcp6
+    echo
+
+    netstat -napo | grep -i time_wait
+    echo
+
+    echo ">>>> Firewall"
+    echo
+
+    sudo ufw status verbose
     echo
 
     echo ">>>> Process"

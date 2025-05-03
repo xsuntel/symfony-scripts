@@ -155,22 +155,18 @@ http:
 ./tools/ide/cache.sh
 ```
 
+#### Server
+
 * Migrate databases
 
 ```
-./tools/ide/migrate.sh
-```
-
-* Check network
-
-```
-./tools/ide/network.sh
+./tools/server/migrate.sh
 ```
 
 * Check status
 
 ```
-./tools/ide/status.sh
+./tools/server/status.sh
 ```
 
 ## Reference

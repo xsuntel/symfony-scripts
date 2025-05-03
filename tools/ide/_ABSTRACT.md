@@ -12,135 +12,6 @@ This project includes some scripts to develop a web application using Symfony Fr
 
 ## Project
 
-### Website
-
-* App
-  * {your_domain}
-
-* Blog
-  * blog.{your_domain}
-
-* YouTube
-  * youtube.{your_domain}
-
-* GitHub
-  * github.{your_domain}
-
-* Store
-  * store.{your_domain}
-
-### Email
-
-* Product
-  * product@{your_domain}
-
-* Support
-  * support@{your_domain}
-  * help@{your_domain}
-  * info@{your_domain}
-  * cs@{your_domain}
-
-* privacy
-  * privacy@{your_domain}
-
-* recruit
-  * recruit@{your_domain}
-
-* Ads
-  * service@{your_domain}
-
-## Tools
-
-### Network Ports
-
-* Linux
-
-TCP 20 ~ 24       / FTP
-TCP 22            / SSH
-TCP 25            / SMTP
-
-UDP 137,138       / SMB
-TCP 139,445       / SMB
-
-UDP 161, 162      / SNMP
-
-UDP 500           / VPN
-UDP 4500          / VPN
-
-TCP 1028          / Trojan
-TCP 1032          / Trojan Microsoft Outlook. Akosch4, Dosh, ICQ , KWM
-
-TCP 1433          / SQL
-
-TCP 3389          / MySQL
-TCP 5432          / PostgreSQL
-
-TCP 6379          / Redis
-
-* Windows - Remote Desktop
-
-TCP 3389~3390     / Remote
-
-* MacOS   - Remote Desktop
-
-TCP 5900          / Control and observe
-UDP 5900          / Send screen, share screen
-
-TCP 3283          / Reporting
-UDP 3283          / Additional data
-
-* Services
-
-TCP 49664~49667   / Spooler Skype
-
-tcp 6969,6970,7000,1027,7789,9989,10520
-
-* Virus
-
-TCP 111     / SunRPC
-
-TCP 135     / Blaster
-UDP 135     / Blaster
-
-TCP 139     / Welchia
-
-TCP 445     / Agobot
-
-TCP 1025    / Dasher
-UDP 1025    / Dasher
-
-TCP 1080    / MyDoom
-UDP 1080    / MyDoom
-
-TCP 1433    / Spida
-UDP 1433    / Spida
-
-TCP 1434    / SQL Slammer
-
-TCP 2745    / Bagle
-
-TCP 3127    / MyDoom
-
-TCP 3410    / Optixpro
-
-TCP 4899    / RAdmin
-
-TCP 5000    / Bodax
-UDP 5000    / Bodax
-
-TCP 6000    / X-Windows
-
-TCP 6129    / Mockbot
-
-TCP 6667    / IRCBot
-
-TCP 9898    / Dabber
-
-TCP 9996    / Sassor
-
-TCP 65520   / Virut
-
-
 ### IDE - PhpStorm
 
 #### Settings
@@ -174,27 +45,107 @@ editor.zero.latency.typing=true
 * Edit Custom VM Options
 
 ```
--Xmx4G
--Xms2G
--XX:NewRatio=4
+#####################
+# Default VM Options
+#####################
+# default value is 128m
+-Xms1024m
+# default value is 750m
+-Xmx4096m
+# default value is 512m
+-XX:ReservedCodeCacheSize=1024M
+-XX:+UseG1GC
+# default value is 50
+-XX:SoftRefLRUPolicyMSPerMB=250
+# default value is 2
+-XX:CICompilerCount=4
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:-OmitStackTraceInFastThrow
+-XX:+IgnoreUnrecognizedVMOptions
+-XX:CompileCommand=exclude,com/intellij/openapi/vfs/impl/FilePartNodeRoot,trieDescend
+-ea
+-Dsun.io.useCanonCaches=false
+-Dsun.java2d.metal=true
+-Djbr.catch.SIGABRT=true
+-Djdk.http.auth.tunneling.disabledSchemes=""
+-Djdk.attach.allowAttachSelf=true
+-Djdk.module.illegalAccess.silent=true
+-Dkotlinx.coroutines.debug=off
+
+
+##################################
+# Improved Performance VM OPTIONS
+##################################
+-server
+-Xss64m
+-XX:+UseCompressedOops
+-XX:NewRatio=2
+-Dfile.encoding=UTF-8
+-XX:+UseConcMarkSweepGC
+-XX:NewSize=512m
+-XX:MaxNewSize=512m
+-XX:PermSize=512m
+-XX:MaxPermSize=1024m
+-XX:+UseParNewGC
+-XX:ParallelGCThreads=4
+-XX:MaxTenuringThreshold=1
+-XX:SurvivorRatio=8
+-XX:+UseCodeCacheFlushing
+-XX:+AggressiveOpts
+-XX:+CMSClassUnloadingEnabled
+-XX:+CMSIncrementalMode
+-XX:+CMSIncrementalPacing
+-XX:+CMSParallelRemarkEnabled
+-XX:CMSInitiatingOccupancyFraction=65
+-XX:+CMSScavengeBeforeRemark
+-XX:+UseCMSInitiatingOccupancyOnly
+-XX:-TraceClassUnloading
+-XX:+AlwaysPreTouch
+-XX:+TieredCompilation
+-XX:+DoEscapeAnalysis
+-XX:+UnlockExperimentalVMOptions
+-XX:LargePageSizeInBytes=256m
+-XX:+DisableExplicitGC
+-XX:+ExplicitGCInvokesConcurrent
+-XX:+PrintGCDetails
+-XX:+PrintFlagsFinal
+-XX:+CMSPermGenSweepingEnabled
+-XX:+UseAdaptiveGCBoundary
+-XX:+UseSplitVerifier
+-XX:CompileThreshold=10000
+-XX:+UseCompressedStrings
+-XX:+OptimizeStringConcat
+-XX:+UseStringCache
+-XX:+UseFastAccessorMethods
+-XX:+UnlockDiagnosticVMOptions
+-Xverify:none
+-Djava.net.preferIPv4Stack=true
+
+-XX:ErrorFile=$USER_HOME/java_error_in_idea_%p.log
+-XX:HeapDumpPath=$USER_HOME/java_error_in_idea.hprof
+
+##################################
+# Enable The Following Option If
+# You Want To Disable Updates OR
+# Updates Are Managed By ToolBox
+##################################
+#-Dide.no.platform.update=true
+```
+
+## Tools
+
+### Whale Browser
+
+* Update apt-key
+
+```
+$ sudo apt-key export EF6C07F6 | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/whale-key.gpg
+$ sudo apt update
 ```
 
 ## Reference
 
-### Public Cloud
-
-* AWS
-  * [Elastic Beanstalk](https://aws.amazon.com/ko/elasticbeanstalk)
-  * [Lightsail](https://aws.amazon.com/ko/lightsail)
-
-* NCloud
-  * Solution - [WebHosting](https://www.ncloud.com/solution/type/webHosting)
-
 ### Tools
-
-* WiKi - [TCP/UDP Port List](https://ko.wikipedia.org/wiki/TCP/UDP%EC%9D%98_%ED%8F%AC%ED%8A%B8_%EB%AA%A9%EB%A1%9D)
-
-* Draw.io             - [Download](https://drawio.com/)
 
 * IDE
   * [PhpStorm](https://www.jetbrains.com/phpstorm)

@@ -40,6 +40,7 @@ This project includes some shell-scripts for Full-Stack developer to develop a w
         console/
         git/
         ide/
+        server/
         tutorial/
     .env.app
     .env.dev
