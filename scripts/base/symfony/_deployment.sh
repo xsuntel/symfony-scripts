@@ -229,11 +229,12 @@ if [ -d app ]; then
       #  echo '----> Building'
       #  echo
 
-      #  echo
-      #  php bin/console tailwind:build -v
+      # >>>> NPM : Update browserslist-db
+      #  npx -y update-browserslist-db@latest
       #  echo
 
-      #  npx -y update-browserslist-db@latest
+      #  echo
+      #  php bin/console tailwind:build -v
       #  echo
 
       #fi

@@ -46,7 +46,11 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     echo
 
     # >>>> RabbitMQ - Install Plugins
-    sudo rabbitmq-plugins enable rabbitmq_management rabbitmq_stream_management
+    if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+      sudo rabbitmq-plugins enable rabbitmq_management rabbitmq_stream_management
+    else
+      sudo rabbitmq-plugins enable rabbitmq_stream_management
+    fi
 
     sudo rabbitmq-plugins list
   fi

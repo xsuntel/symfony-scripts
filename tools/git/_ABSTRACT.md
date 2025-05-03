@@ -30,13 +30,7 @@ git config --global --list
 
 #### Local
 
-* Download this project
-
-```
-git clone https://github.com/xsuntel/symfony-scripts.git symfony
-
-cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
-```
+* Update Configuration
 
 ```
 git config --local core.editor vi

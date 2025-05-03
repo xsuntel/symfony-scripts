@@ -21,7 +21,7 @@ echo
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "config" "dotenv" "firewall" "router" "autowiring" "container" "exit"; do
+        select num in "config" "dotenv" "firewall" "autowiring" "container" "exit"; do
           case "$REPLY" in
           1)
             CONSOLE_COMMANDS="config"
@@ -36,18 +36,14 @@ echo
             break
             ;;
           4)
-            CONSOLE_COMMANDS="router"
-            break
-            ;;
-          5)
             CONSOLE_COMMANDS="autowiring"
             break
             ;;
-          6)
+          5)
             CONSOLE_COMMANDS="container"
             break
             ;;
-          7)
+          6)
             echo "exit()"
             exit
             ;;
@@ -81,21 +77,14 @@ echo
           php bin/console debug:firewall main
 
         # --------------------------------------------------------------------------------------------------------------
-        # 4) router
-        # --------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "router" ]; then
-          echo ">>>> router"
-          php bin/console debug:router
-
-        # --------------------------------------------------------------------------------------------------------------
-        # 5) autowiring
+        # 4) autowiring
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "autowiring" ]; then
           echo ">>>> autowiring"
           php bin/console debug:autowiring --all
 
         # --------------------------------------------------------------------------------------------------------------
-        # 6) container
+        # 5) container
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "container" ]; then
           echo ">>>> container"
