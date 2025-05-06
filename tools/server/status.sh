@@ -448,7 +448,7 @@ setNginx() {
 
 setCDN() {
   echo "---------------------------------------------------------------------------------------------------------------"
-  echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Scripts - CDN"
+  echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - CDN - Content Delivery Networks"
   echo "---------------------------------------------------------------------------------------------------------------"
 }
 
@@ -461,7 +461,7 @@ setDocker() {
   if [ "${PLATFORM_TYPE}" != "Linux" ]; then
 
   echo "---------------------------------------------------------------------------------------------------------------"
-  echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Scripts - Docker"
+  echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Docker"
   echo "---------------------------------------------------------------------------------------------------------------"
 
     # >>>> Docker Desktop                                                               https://docs.docker.com/reference/
@@ -498,7 +498,7 @@ setDocker() {
 
 setVM() {
   echo "---------------------------------------------------------------------------------------------------------------"
-  echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Scripts - VM"
+  echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - VM - Instance"
   echo "---------------------------------------------------------------------------------------------------------------"
   echo
 

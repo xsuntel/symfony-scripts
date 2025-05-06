@@ -25,6 +25,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   fi
 
   # >>>> TimeZone
+  echo ">>>> TimeZone"
   if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
     echo ">>>> Linux - TimeZone"
     echo
@@ -36,6 +37,8 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     fi
     echo
   fi
+  timedatectl
+  echo
 
   # >>>> User
   echo ">>>> Linux - User : ${USER}"

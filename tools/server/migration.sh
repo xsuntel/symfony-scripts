@@ -264,7 +264,7 @@ setNginx() {
 
 setCDN() {
   echo "---------------------------------------------------------------------------------------------------------------"
-  echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Scripts - CDN"
+  echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - CDN - Content Delivery Networks"
   echo "---------------------------------------------------------------------------------------------------------------"
 }
 
@@ -274,7 +274,7 @@ setCDN() {
 
 setDocker() {
   echo "---------------------------------------------------------------------------------------------------------------"
-  echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Scripts - Docker"
+  echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Docker"
   echo "---------------------------------------------------------------------------------------------------------------"
 }
 
@@ -284,7 +284,7 @@ setDocker() {
 
 setVM() {
   echo "---------------------------------------------------------------------------------------------------------------"
-  echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Scripts - VM"
+  echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - VM - Instance"
   echo "---------------------------------------------------------------------------------------------------------------"
 }
 
