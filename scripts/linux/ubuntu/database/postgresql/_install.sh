@@ -41,5 +41,4 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   fi
 
   psql --version
-
 fi

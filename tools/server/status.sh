@@ -55,6 +55,17 @@ setPlatform() {
 
       cat /etc/lsb-release
       echo
+
+      echo ">>>> Services"
+      echo
+
+      service --status-all | grep '\[ + \]'
+      echo
+
+      # >>>> TimeZone
+      echo ">>>> TimeZone"
+      timedatectl
+      echo
     fi
 
   elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
@@ -94,6 +105,18 @@ setProject() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "- PROJECT NAME : ${PROJECT_NAME}"
   echo
+
+  echo ">>>> Git - Global"
+  echo
+
+  git config --global --list
+  echo
+
+  echo ">>>> Git - Local"
+  echo
+
+  git config --local --list
+  echo
 }
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -114,7 +137,20 @@ setPhp() {
     # Platform - Linux - Ubuntu
     # ------------------------------------------------------------------------------------------------------------------o
 
+    # >>>> PHP
+    echo ">>>> PHP"
+    echo
+
+    php -v
+    echo
+
+    composer --version
+    echo
+
     # >>>> PHP-FPM
+    echo ">>>> PHP-FPM"
+    echo
+
     local PHP_STATUS
     PHP_STATUS=$(systemctl is-active php${PHP_VERSION}-fpm)
     if [ "${PHP_STATUS}" == "inactive" ]; then
@@ -154,32 +190,32 @@ setPhp() {
 
       if [ -f bin/console ]; then
 
-      # ----------------------------------------------------------------------------------------------------------------
-      # Symfony Framework - Requirements:
-      # ----------------------------------------------------------------------------------------------------------------
-      if [ -f composer.lock ]; then
-        symfony check:require
-      fi
-      echo
+        # >>>> Symfony Framework
+        echo ">>>> Symfony Framework"
+        echo
 
-      # ----------------------------------------------------------------------------------------------------------------
-      # Symfony Framework - Security Vulnerabilities
-      # ----------------------------------------------------------------------------------------------------------------
-      if [ -f composer.lock ]; then
-        symfony check:security
-      fi
-      echo
+        # --------------------------------------------------------------------------------------------------------------
+        # Symfony Framework - Requirements:
+        # --------------------------------------------------------------------------------------------------------------
+        if [ -f composer.lock ]; then
+          symfony check:require
+        fi
+        echo
 
-      # ----------------------------------------------------------------------------------------------------------------
-      # Symfony Framework - Variable Export
-      # ----------------------------------------------------------------------------------------------------------------
-      echo "Symfony - Variable Export"
-      echo "============================="
-      echo
+        # --------------------------------------------------------------------------------------------------------------
+        # Symfony Framework - Security Vulnerabilities
+        # --------------------------------------------------------------------------------------------------------------
+        if [ -f composer.lock ]; then
+          symfony check:security
+        fi
+        echo
 
-      # >>>> Variable Export
-      symfony var:export --multiline
-      echo
+        # --------------------------------------------------------------------------------------------------------------
+        # Symfony Framework - Variable Export
+        # --------------------------------------------------------------------------------------------------------------
+        # >>>> Variable Export
+        symfony var:export --multiline
+        echo
 
       fi
     )
@@ -214,6 +250,8 @@ setRedis() {
       fi
       echo "REDIS      : ${REDIS_STATUS}"
       echo
+
+      redis-server -v
     fi
 
   elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
@@ -264,6 +302,8 @@ setPostgreSQL() {
       fi
       echo "PostgreSQL : ${POSTGRESQL_STATUS}"
       echo
+
+      psql --version
     fi
 
   elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
@@ -314,6 +354,8 @@ setRabbitMQ() {
       fi
       echo "RabbitMQ   : ${RABBITMQ_STATUS}"
       echo
+
+      dpkg -s rabbitmq-server | grep Version
     fi
 
   elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
@@ -364,6 +406,17 @@ setNginx() {
       fi
       echo "NGINX      : ${NGINX_STATUS}"
       echo
+
+      sudo nginx -v
+
+    else
+
+      symfony server:status
+      echo
+
+      symfony server:ls
+      echo
+
     fi
 
   elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then

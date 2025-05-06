@@ -83,5 +83,4 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   fi
 
   dpkg -s rabbitmq-server | grep Version
-
 fi
