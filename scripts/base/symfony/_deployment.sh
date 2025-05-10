@@ -220,17 +220,21 @@ if [ -d app ]; then
 
       # >>>> TailwindBundle                                https://symfony.com/bundles/TailwindBundle/current/index.html
       #if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
-      #  echo '----> TailwindBundle : Building'
+      #  echo '--> TailwindBundle : Building'
       #  echo
       #  php bin/console tailwind:build --minify
       #  echo
 
       #else
-      #  echo '----> TailwindBundle : Building'
+
+      #  echo '--> NPM : Update browserslist-db'
       #  echo
 
       # >>>> NPM : Update browserslist-db
       #  npx -y update-browserslist-db@latest
+      #  echo
+
+      #  echo '--> TailwindBundle : Building'
       #  echo
 
       #  echo
@@ -238,7 +242,7 @@ if [ -d app ]; then
       #  echo
 
       #fi
-      #  echo '----> AssetMapper : Compiling'
+      #  echo '--> AssetMapper : Compiling'
       #  echo
 
       #  php bin/console asset-map:compile
