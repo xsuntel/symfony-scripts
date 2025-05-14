@@ -1,4 +1,4 @@
-# Tools - IDE
+# Tools - IDE - PhpStorm
 
 ## Abstract
 
@@ -152,7 +152,7 @@ $ sudo apt update
     * Settings
       * PHP
         * Xdebug - [Configuration](https://www.jetbrains.com/help/phpstorm/debugging-with-phpstorm-ultimate-guide.html)
-      * Deployment - [Deploying application](https://www.jetbrains.com/help/phpstorm/deploying-applications.html)
+      * Deployment - [Deploying application](https://www.jetbrains.com/help/phpstorm/deploying-applications.html) 
       * [Symfony Framework](https://www.jetbrains.com/help/phpstorm/symfony-support.html#use_symfony_cli)
     * Plugin
       * draw.io - [Integration](https://plugins.jetbrains.com/plugin/15635-diagrams-net-integration)
