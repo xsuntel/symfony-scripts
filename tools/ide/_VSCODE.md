@@ -20,31 +20,29 @@ This project includes some scripts to develop a web application using Symfony Fr
 * PHP Extension Pack
 * Composer
 
-```text
-  Code-runner: Run In Terminal - true
-```
+* Symfony for VSCode
+* Symfony UX Twig Component
 
 * Redis for VS Code
 
 * PostgreSQL (Microsoft)
 
-* Symfony for VSCode
-* Symfony UX Twig Component
-
+* Draw.io Integration
 * Markdownlint
+* Code Runner
+
+#### Settings
+
+* PHP
+
+```text
+Manage / Settings / PHP Suggest Basic - false
+```
+
 * Code Runner
 
 ```text
   Code-runner: Run In Terminal - true
-```
-
-#### Settings
-
-* Update some configurations
-
-```text
-Manage / Settings / PHP Suggest Basic - false
-
 ```
 
 ## Tools

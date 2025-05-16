@@ -20,7 +20,7 @@ This project includes some scripts to develop a web application using Symfony Fr
 
 * Update default variables in Dev Environment
 
-```
+```bash
 vi .env.dev
 
 # ======================================================================================================================
@@ -50,7 +50,7 @@ NGINX_PORT=8000
 
 * Update a part of configurations for twig in dev
 
-```
+```bash
 vi {project_directory}/app/config/packages/dev/twig.yaml
 
 when@dev:
@@ -67,7 +67,7 @@ when@dev:
 
 * Configure the database
 
-```
+```bash
 [root@localhost] sudo -i -u postgres
 [sudo] password for user: {password}
 
@@ -90,7 +90,7 @@ postgres=# \q
 
 * Change the user's password
 
-```
+```bash
 sudo -i -u postgres
 [sudo] password for user: {password}
 
@@ -108,7 +108,7 @@ postgres=# \q
 
 * Check local website
 
-```
+```text
 http://localhost:15672
 
     - ID : guest
@@ -119,7 +119,7 @@ http://localhost:15672
 
 * Symfony Local Server in Dev Environment
 
-```
+```bash
 vi .symfony.local.yaml
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -141,7 +141,7 @@ http:
 
 * Deploy this project
 
-```
+```bash
 ./scripts/linux/ubuntu/deploy.sh
 ```
 
@@ -151,7 +151,7 @@ http:
 
 * Clear cache
 
-```
+```bash
 ./tools/ide/cache.sh
 ```
 
@@ -159,13 +159,13 @@ http:
 
 * Migrate databases
 
-```
+```bash
 ./tools/server/migrate.sh
 ```
 
 * Check status
 
-```
+```bash
 ./tools/server/status.sh
 ```
 

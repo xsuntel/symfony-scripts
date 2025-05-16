@@ -20,7 +20,7 @@ This project includes some scripts to develop a web application using Symfony Fr
 
 * Update default variables in Dev Environment
 
-```
+```bash
 vi .env.dev
 
 # ======================================================================================================================
@@ -50,7 +50,7 @@ NGINX_PORT=8000
 
 * Update a part of configurations for twig in dev
 
-```
+```bash
 vi {project_directory}/app/config/packages/dev/twig.yaml
 
 when@dev:
@@ -67,7 +67,7 @@ when@dev:
 
 * Configure the database
 
-```
+```bash
 vi .env.dev.local
 
 # ======================================================================================================================
@@ -80,7 +80,7 @@ POSTGRES_PORT=15432
 
 * Update docker-compose's variables in Dev Environment
 
-```
+```bash
 vi docker/containers/docker-compose.env.dev
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -120,7 +120,7 @@ MAILER_NETWORK_SMTP_PORT=1125
 
 * Install a package
 
-```
+```bash
 brew search rabbitmq-c
 brew install rabbitmq-c
 
@@ -129,13 +129,13 @@ ls -ltr /opt/homebrew/Cellar/rabbitmq-c/{version}
 
 * Update a configuration
 
-```
+```bash
 Set the path to librabbitmq install prefix [autodetect] : /opt/homebrew/Cellar/rabbitmq-c/{version}
 ```
 
 * Check local website
 
-```
+```text
 http://localhost:15672
 
     - ID : guest
@@ -146,7 +146,7 @@ http://localhost:15672
 
 * Symfony Local Server in Dev Environment
 
-```
+```bash
 vi .symfony.local.yaml
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -168,7 +168,7 @@ http:
 
 * Deploy this project
 
-```
+```bash
 ./scripts/macos/device/deploy.sh
 ```
 
@@ -178,7 +178,7 @@ http:
 
 * Clear cache
 
-```
+```bash
 ./tools/ide/cache.sh
 ```
 
@@ -186,13 +186,13 @@ http:
 
 * Migrate databases
 
-```
+```bash
 ./tools/server/migrate.sh
 ```
 
 * Check status
 
-```
+```bash
 ./tools/server/status.sh
 ```
 

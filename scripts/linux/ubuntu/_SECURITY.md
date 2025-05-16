@@ -10,7 +10,7 @@
 
 * Update Kernel - /etc/default/grub
 
-```
+```bash
 sudo vi /etc/default/grub
 ~
 GRUB_CMDLINE_LINUX="ipv6.disable=1 crashkernel=no net.ifnames=0 biosdevname=0"
@@ -23,19 +23,19 @@ sudo update-grub
 
 * Remove kerneloops
 
-```
+```bash
 sudo systemctl stop kerneloops
 
 sudo systemctl disable kerneloops
 ```
 
-```
+```bash
 sudo systemctl stop plymouth-log
 
 sudo systemctl disable plymouth-log
 ```
 
-```
+```bash
 sudo systemctl stop sysstat
 
 sudo systemctl disable sysstat
@@ -43,7 +43,7 @@ sudo systemctl disable sysstat
 
 * Update Kernel - /etc/sysctl.conf
 
-```
+```bash
 sudo vi /etc/sysctl.conf 
 ~
 # CPU
@@ -72,7 +72,7 @@ kernel.unprivileged_userns_apparmor_policy=0
 kernel.unprivileged_userns_clone=0
 ```
 
-```
+```bash
 sudo sysctl -a | grep userns
 
 sudo ls -ltr /proc/sys/kernel
@@ -84,19 +84,19 @@ sudo dmesg | tail -n 100
 
 * Disable Bluetooth
 
-```
+```bash
 sudo systemctl disable bluetooth
 ```
 
 * Update Kernel - /etc/modprobe.d/blacklist.conf
 
-```
+```bash
 lsmod
 
 modprobe -c
 ```
 
-```
+```bash
 sudo vi /etc/modprobe.d/blacklist.conf
 ~
 # Customize - Disable ACPI
@@ -113,7 +113,7 @@ sudo dpkg-reconfigure linux-image-$(uname -r)
 
 * Update Kernel - /etc/sysctl.d/10-ipv6-privacy.conf
 
-```
+```bash
 sudo vi /etc/sysctl.d/10-ipv6-privacy.conf
 
 net.ipv6.conf.all.use_tempaddr = 0
@@ -124,9 +124,9 @@ netstat -lpn
 ```
 
 * Update Kernel - /etc/apparmor.d/
-    * https://documentation.ubuntu.com/server/how-to/security/apparmor/index.html
+  * <https://documentation.ubuntu.com/server/how-to/security/apparmor/index.html>
 
-```
+```bash
 sudo aa-status
 
 cd /etc/apparmor.d/ 
@@ -138,7 +138,7 @@ journalctl -k | grep apparmor
 
 * Update permission
 
-```
+```bash
 sudo chown root:root /etc/sysctl.conf
 sudo chmod 600 /etc/sysctl.conf
 sudo ls -l /etc/sysctl.conf
@@ -187,7 +187,7 @@ sudo chmod 640 /etc/cron.yearly/
 
 * Update umask
 
-```
+```bash
 sudo vi /etc/profile
 ~
 TMOUT=600
@@ -197,7 +197,7 @@ umask 022
 export umask
 ```
 
-```
+```bash
 sudo vi ~/.bashrc
 ~
 umask 022
@@ -207,7 +207,7 @@ umask 022
 
 * Modify passwd
 
-```
+```bash
 sudo cat /etc/passwd
 
 # Login ID : x : UID : GID : Description : Home Directory : Login Shell
@@ -249,7 +249,7 @@ u irc        39      - /run/ircd            /usr/sbin/nologin
 u list       38      - /var/list            /usr/sbin/nologin
 ```
 
-```
+```bash
 sudo rm -f /etc/init.d/cups
 
 sudo rm -f /etc/init.d/speech-dispatcher
@@ -261,25 +261,25 @@ sudo rm -f /etc/init.d/apache-htcacheclean
 sudo rm -f /etc/init.d/apache2
 ```
 
-```
+```bash
 sudo cat /etc/shadow
 
 # Login ID : User Password : Last changed data : MIN : MAX : WARNING : INACTIVE : EXPIRE : Flag
 ```
 
-```
+```bash
 sudo lastlog -b 90
 ```
 
 * Group
 
-```
+```bash
 sudo cat /etc/group
 
 # Group Name : x : GID : Group Members
 ```
 
-```
+```bash
 sudo cat /etc/gshadow
 
 # Group Name : Group Password : Administrator : Group Members
@@ -287,7 +287,7 @@ sudo cat /etc/gshadow
 
 * Services
 
-```
+```bash
 /usr/bin/systemd-sysusers --cat-config
 ```
 
@@ -295,7 +295,7 @@ sudo cat /etc/gshadow
 
 * Update ssh
 
-```
+```bash
 sudo vi /etc/ssh/sshd_config
 ~
 PermitRootLogin no
@@ -303,7 +303,7 @@ PermitRootLogin no
 
 * Update cron
 
-```
+```bash
 sudo chown root:root /etc/crontab  
 sudo chmod 640 /etc/crontab 
 
@@ -329,17 +329,17 @@ sudo ls -l /etc/crontab
 
 sudo vi /etc/crontab
 ~
-#17 *	* * *	root	cd / && run-parts --report /etc/cron.hourly
-#25 6	* * *	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.daily; }
-#47 6	* * 7	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.weekly; }
-#52 6	1 * *	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.monthly; }
+#17 * * * * root cd / && run-parts --report /etc/cron.hourly
+#25 6 * * * root test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.daily; }
+#47 6 * * 7 root test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.weekly; }
+#52 6 1 * * root test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.monthly; }
 ```
 
 ### Services
 
 * Check services list
 
-```
+```bash
 cat /etc/services
 
 service --status-all
@@ -349,7 +349,7 @@ service --status-all
 
 * Disable anacron
 
-```
+```bash
 sudo vi /etc/anacrontab
 
 # These replace cron's entries
@@ -364,7 +364,7 @@ sudo systemctl disable anacron
 
 * Disable apport
 
-```
+```bash
 sudo vi /etc/default/apport
 ~
 enabled=0
@@ -376,7 +376,7 @@ sudo systemctl disable apport
 
 * Disable unattended-upgrades
 
-```
+```bash
 sudo systemctl disable unattended-upgrades
 
 sudo apt remove --purge unattended-upgrades
@@ -388,7 +388,7 @@ sudo apt remove --purge unattended-upgrades
 
 * Update snap-store
 
-```
+```bash
 sudo killall snap-store
 
 sudo snap refresh
@@ -396,7 +396,7 @@ sudo snap refresh
 
 * Disable snapd-desktop-integration
 
-```
+```bash
 sudo snap remove --purge snapd-desktop-integration
 ```
 
@@ -404,7 +404,7 @@ sudo snap remove --purge snapd-desktop-integration
 
 * Disable gsd-sharing
 
-```
+```bash
 sudo vi /etc/xdg/autostart/org.gnome.SettingsDaemon.Sharing.desktop
 ~
 X-GNOME-Autostart-Phase=false
@@ -418,7 +418,7 @@ systemctl --user mask org.gnome.SettingsDaemon.Sharing.service
 
 * Disable gsd-smartcard
 
-```
+```bash
 sudo vi /etc/xdg/autostart/org.gnome.SettingsDaemon.Smartcard.desktop
 ~
 X-GNOME-Autostart-Phase=false
@@ -430,7 +430,7 @@ systemctl --user mask org.gnome.SettingsDaemon.Smartcard.service
 
 * Disable gsd-wacom
 
-```
+```bash
 sudo vi /etc/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
 ~
 X-GNOME-Autostart-Phase=false
@@ -446,7 +446,7 @@ systemctl --user mask org.gnome.SettingsDaemon.Wacom.service
 
 * Remove firmware
 
-```
+```bash
 sudo apt remove -y fwupd
 
 sudo userdel fwupd-refresh
@@ -455,7 +455,7 @@ sudo userdel tts
 
 * Remove error message
 
-```
+```bash
 sudo modprobe -r int3403_thermal
 
 sudo vi /etc/modprobe.d/blacklist.conf

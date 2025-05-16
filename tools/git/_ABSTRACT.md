@@ -18,7 +18,7 @@ This project includes some scripts to develop a web application using Symfony Fr
 
 * Update default branch
 
-```
+```bash
 git config --global user.name "Your Name"
 git config --global user.email "you@examle.com"
 
@@ -32,7 +32,7 @@ git config --global --list
 
 * Update Configuration
 
-```
+```bash
 git config --local core.editor vi
 git config --local core.autocrlf false
 git config --local color.ui true
@@ -45,12 +45,14 @@ git config --local --list
 ```
 
 * Reset password
-```
+
+```bash
 git config --local --unset credential.helper
 ```
 
 * Check global configurations
-```
+
+```bash
 git config --local credential.helper store
 ```
 
@@ -58,7 +60,7 @@ git config --local credential.helper store
 
 #### Update the project
 
-```
+```bash
 git config pull.rebase true
 
 git reset --hard
@@ -72,7 +74,7 @@ git pull origin main -f
 
 * Clear main branch
 
-```
+```bash
 ./tools/git/clear.sh
 ```
 
@@ -81,7 +83,5 @@ git pull origin main -f
 ### Cloud
 
 * AWS Codecommit - [Troubleshooting the credential helper](https://docs.aws.amazon.com/codecommit/latest/userguide/troubleshooting-ch.html)
-
-### Tools
 
 * Git            - [Documents](https://git-scm.com/)

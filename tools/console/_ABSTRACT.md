@@ -18,7 +18,7 @@ This project includes some scripts to develop a web application using Symfony Fr
 
 * [Running Commands](https://symfony.com/doc/current/console.html)
 
-```
+```bash
 php bin/console list
 ```
 
@@ -26,7 +26,7 @@ php bin/console list
 
 * [Running Commands](https://symfony.com/doc/current/frontend/asset_mapper.html)
 
-```
+```bash
 php bin/console importmap:audit
 
 
@@ -35,7 +35,6 @@ php bin/console importmap:outdated
 
 php bin/console importmap:update
 ```
-
 
 ## Reference
 

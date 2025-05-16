@@ -11,6 +11,7 @@ This project includes some scripts to develop a web application using Symfony Fr
 * Windows - Install Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
 
 ## Environment
+
 * App : PHP
 * Cache : Redis (Docker Container)
 * Database : PostgreSQL (Docker Container)
@@ -24,7 +25,7 @@ This project includes some scripts to develop a web application using Symfony Fr
 
 * Update default variables in Prod Environment
 
-```
+```bash
 vi .env.prod
 
 # ======================================================================================================================
@@ -49,7 +50,7 @@ NGINX_PORT=8000
 
 * Update files related docker-compose in Prod Environment
 
-```
+```bash
 vi ./docker-composer.prod.env
 
 # ======================================================================================================================
@@ -119,7 +120,7 @@ MAILER_NETWORK_SMTP_PORT=1025
 
 * Deploy this project
 
-```
+```bash
 ./scripts/docker/containers/deploy.sh
 ```
 
@@ -127,7 +128,7 @@ MAILER_NETWORK_SMTP_PORT=1025
 
 * Configure databases
 
-```
+```bash
 ./tools/ide/migrate.sh
 ```
 

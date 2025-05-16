@@ -10,6 +10,6 @@
 
 * Check configuration
 
-```
+```bash
 
 ```

@@ -4,7 +4,7 @@
 
 This project includes some scripts to develop a web application using Symfony Framework
 
-## Platform 
+## Platform
 
 * Linux : [Ubuntu Server](https://ubuntu.com/download/server/arm)
   * App : PHP
@@ -19,7 +19,7 @@ This project includes some scripts to develop a web application using Symfony Fr
 
 * Update default variables in Prod Environment
 
-```
+```bash
 vi .env.prod
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ NGINX_PORT=80
 
 * Deploy this project
 
-```
+```bash
 ./scripts/cloud/aws/elasticbeanstalk/deploy.sh
 ```
 
@@ -55,7 +55,7 @@ NGINX_PORT=80
 
 * Configure databases
 
-```
+```bash
 ./tools/ide/migrate.sh
 ```
 
@@ -64,5 +64,5 @@ NGINX_PORT=80
 ### Server
 
 * Cloud
-    * AWS (Amazon Web Services)
-        * [Elastic Beanstalk](https://aws.amazon.com/ko/elasticbeanstalk)
+  * AWS (Amazon Web Services)
+    * [Elastic Beanstalk](https://aws.amazon.com/ko/elasticbeanstalk)

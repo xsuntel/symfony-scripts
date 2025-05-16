@@ -10,6 +10,6 @@
 
 * Remove WiFi
 
-```
+```bash
 sudo apt remove --purge wpasupplicant
 ```

@@ -16,7 +16,7 @@ This project includes some scripts to develop a web application using Symfony Fr
 
 * Update some configurations for performance
 
-```
+```bash
 
 ```
 
@@ -24,7 +24,7 @@ This project includes some scripts to develop a web application using Symfony Fr
 
 * Update some configurations for performance
 
-```
+```bash
 
 ```
 
@@ -32,15 +32,14 @@ This project includes some scripts to develop a web application using Symfony Fr
 
 * Update some configurations for performance
 
-```
-
+```bash
 ```
 
 ### Server
 
 * Update some configurations for performance
 
-```
+```bash
 
 ```
 
@@ -49,11 +48,11 @@ This project includes some scripts to develop a web application using Symfony Fr
 ### Public Cloud
 
 * AWS
-    * [Elastic Beanstalk](https://aws.amazon.com/ko/elasticbeanstalk)
-    * [Lightsail](https://aws.amazon.com/ko/lightsail)
+  * [Elastic Beanstalk](https://aws.amazon.com/ko/elasticbeanstalk)
+  * [Lightsail](https://aws.amazon.com/ko/lightsail)
 
 * NCloud
-    * Solution - [WebHosting](https://www.ncloud.com/solution/type/webHosting)
+  * Solution - [WebHosting](https://www.ncloud.com/solution/type/webHosting)
 
 ### Tools
 
