@@ -61,6 +61,7 @@ if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
 
     symfony server:ls
     echo
+    symfony server:status
 
   else
     echo "[ ERROR ] There is not a file : .symfony.local.yaml"

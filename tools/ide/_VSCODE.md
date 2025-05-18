@@ -22,6 +22,8 @@ This project includes some scripts to develop a web application using Symfony Fr
 
 * Symfony for VSCode
 * Symfony UX Twig Component
+* Tailwind CSS IntelliSense
+* Modern Twig
 
 * Redis for VS Code
 
@@ -30,6 +32,8 @@ This project includes some scripts to develop a web application using Symfony Fr
 * Draw.io Integration
 * Markdownlint
 * Code Runner
+
+* Material Icon Theme
 
 #### Settings
 

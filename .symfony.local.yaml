@@ -30,6 +30,15 @@ http:
 # Workers
 # ----------------------------------------------------------------------------------------------------------------------
 workers:
+  # >>>> TailwindBundle
+  tailwind:
+    cmd: [ 'symfony', 'console', 'tailwind:build', '--watch' ]
+
+  # >>>> Messenger
+  messenger_consume_async:
+    cmd: [ 'symfony', 'console', 'messenger:consume', '--all' ]
+    watch: ['config', 'src', 'templates']
+
   # built-in command that builds and watches front-end assets
   # npm_encore_watch:
   #     cmd: ['npx', 'encore', 'dev', '--watch']
@@ -46,7 +55,3 @@ workers:
 
   # auto start Docker compose when starting server (available since Symfony CLI 5.7.0)
   #docker_compose: ~
-
-  # >>>> TailwindBundle
-  #tailwind:
-  #  cmd: ['symfony', 'console', 'tailwind:build', '--watch']
