@@ -255,10 +255,6 @@ sudo rm -f /etc/init.d/cups
 sudo rm -f /etc/init.d/speech-dispatcher
 
 sudo rm -f /etc/init.d/uuidd
-
-sudo rm -f /etc/init.d/apache-htcacheclean
-
-sudo rm -f /etc/init.d/apache2
 ```
 
 ```bash

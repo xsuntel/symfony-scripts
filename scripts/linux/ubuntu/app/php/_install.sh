@@ -72,16 +72,19 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     )
   fi
 
-  # >>>> Remove some packages
-  local delUserList="apache2-bin libapache2-mod-php${PHP_VERSION}"
-  for pkgItem in ${delUserList}; do
-    local APT_PKG_INFO
-    APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
-    if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
-      sudo apt remove -y ${pkgItem}
-      echo
-    fi
-  done
+  # >>>> Environment
+  if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+    # >>>> Remove some packages
+    local delUserList="apache2-bin libapache2-mod-php${PHP_VERSION}"
+    for pkgItem in ${delUserList}; do
+      local APT_PKG_INFO
+      APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
+      if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
+        sudo apt remove -y ${pkgItem}
+        echo
+      fi
+    done
+  fi
 
   # --------------------------------------------------------------------------------------------------------------------
   # PHP - Update the configuration
