@@ -70,13 +70,7 @@ sudo ls -ltr /proc/sys/kernel
 sudo dmesg | tail -n 100
 ```
 
-#### Network
-
-* Disable Bluetooth
-
-```bash
-sudo systemctl disable bluetooth
-```
+#### Module
 
 * Update Kernel - /etc/modprobe.d/blacklist.conf
 
@@ -89,13 +83,10 @@ modprobe -c
 ```bash
 sudo vi /etc/modprobe.d/blacklist.conf
 ~
-# Customize - Disable ACPI
-#blacklist acpi_thermal_rel
-blacklist int3403_thermal
-
-# Customize - Disable IPv6
-blacklist nf_conntrack_ipv6 
+# Customize - Network - IPv6
+blacklist nf_conntrack_ipv6
 blacklist nf_defrag_ipv6
+blacklist IPv6
 blacklist ipv6
 
 sudo dpkg-reconfigure linux-image-$(uname -r)
@@ -111,17 +102,6 @@ net.ipv6.conf.default.use_tempaddr = 0
 
 
 netstat -lpn
-```
-
-* Update Kernel - /etc/apparmor.d/
-  * <https://documentation.ubuntu.com/server/how-to/security/apparmor/index.html>
-
-```bash
-sudo aa-status
-
-cd /etc/apparmor.d/ 
-
-journalctl -k | grep apparmor
 ```
 
 #### Directories
@@ -224,6 +204,8 @@ sudo userdel gopher
 sudo userdel nfsnobody
 sudo userdel squid
 
+sudo userdel tts
+
 sudo vi /usr/lib/sysusers.d/basic.conf
 ~
 
@@ -247,36 +229,6 @@ sudo rm -f /etc/init.d/speech-dispatcher
 sudo rm -f /etc/init.d/uuidd
 ```
 
-```bash
-sudo cat /etc/shadow
-
-# Login ID : User Password : Last changed data : MIN : MAX : WARNING : INACTIVE : EXPIRE : Flag
-```
-
-```bash
-sudo lastlog -b 90
-```
-
-* Group
-
-```bash
-sudo cat /etc/group
-
-# Group Name : x : GID : Group Members
-```
-
-```bash
-sudo cat /etc/gshadow
-
-# Group Name : Group Password : Administrator : Group Members
-```
-
-* Services
-
-```bash
-/usr/bin/systemd-sysusers --cat-config
-```
-
 #### Remote
 
 * Update ssh
@@ -286,6 +238,8 @@ sudo vi /etc/ssh/sshd_config
 ~
 PermitRootLogin no
 ```
+
+#### Crontab
 
 * Update cron
 
@@ -370,22 +324,6 @@ sudo apt remove --purge unattended-upgrades
 
 ### Packages
 
-#### snap
-
-* Update snap-store
-
-```bash
-sudo killall snap-store
-
-sudo snap refresh
-```
-
-* Disable snapd-desktop-integration
-
-```bash
-sudo snap remove --purge snapd-desktop-integration
-```
-
 #### gsd
 
 * Disable gsd-sharing
@@ -425,30 +363,3 @@ X-GNOME-AutoRestart=false
 
 systemctl --user mask org.gnome.SettingsDaemon.Wacom.service
 ```
-
-## Reference
-
-### Hardware - Laptop - LG Gram
-
-* Remove firmware
-
-```bash
-sudo apt remove -y fwupd
-
-sudo userdel fwupd-refresh
-sudo userdel tts
-```
-
-* Remove error message
-
-```bash
-sudo modprobe -r int3403_thermal
-
-sudo vi /etc/modprobe.d/blacklist.conf
-~
-blacklist int3403_thermal
-```
-
-### Tools
-
-* Symfony             - [Console Commands](https://symfony.com/doc/current/console.html)
