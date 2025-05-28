@@ -9,10 +9,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     # ------------------------------------------------------------------------------------------------------------------
 
     # >>>> Kernel
-    echo ">>>> Linux - Kernel"
-    echo
-
-    echo "- PLATFORM Kernel : $(uname -r)"
+    echo ">>>> Linux - Kernel : $(uname -r)"
     echo
 
     # >>>> Environment
