@@ -1,18 +1,17 @@
 # Dev Environment
 
-## Abstract
-
-This project includes some scripts to develop a web application using Symfony Framework
-
 ## Platform
 
 * Windows
-  * App : PHP
-  * Cache : Redis (Docker Container)
-  * Database : PostgreSQL (Docker Container)
-  * Message : RabbitMQ (Docker Container)
-  * Server : Symfony Local Server
-  * Tools : Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
+
+## Environment
+
+* App : PHP
+* Cache : Redis (Docker Container)
+* Database : PostgreSQL (Docker Container)
+* Message : RabbitMQ (Docker Container)
+* Server : Symfony Local Server
+* Tools : Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
 
 ## Project
 

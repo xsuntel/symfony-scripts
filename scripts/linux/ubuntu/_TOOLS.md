@@ -114,7 +114,7 @@ netstat -lpn
 ```
 
 * Update Kernel - /etc/apparmor.d/
-  * <https://documentation.ubuntu.com/server/how-to/security/apparmor/index.html>
+    * <https://documentation.ubuntu.com/server/how-to/security/apparmor/index.html>
 
 ```bash
 sudo aa-status
@@ -451,4 +451,4 @@ blacklist int3403_thermal
 
 ### Tools
 
-* Symfony             - [Console Commands](https://symfony.com/doc/current/console.html)
+* Symfony - [Console Commands](https://symfony.com/doc/current/console.html)

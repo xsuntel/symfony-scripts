@@ -18,7 +18,7 @@ This project includes some scripts to develop a web application using Symfony Fr
 
 * PHP Intelephense
 * PHP Extension Pack
-* Composer
+* PHP Debug
 
 * Symfony for VSCode
 * Symfony UX Twig Component
@@ -33,7 +33,7 @@ This project includes some scripts to develop a web application using Symfony Fr
 * Markdownlint
 * Code Runner
 
-* Material Icon Theme
+7* Material Icon Theme
 
 #### Settings
 

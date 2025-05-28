@@ -35,6 +35,7 @@ app/vendor
 # >>>> app/.env.*
 app/.env.*
 app/.env.*.*
+.env.*.local
 
 # >>>> app/composer
 app/composer.phar

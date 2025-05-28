@@ -1,12 +1,10 @@
 # NCloud
 
-## Abstract
-
-This project includes some scripts to develop a web application using Symfony Framework
+## Environment - Prod
 
 ## Platform
 
-* Linux : [Ubuntu Server](https://ubuntu.com/download/server/arm)
+* Linux : [Ubuntu Server](https://ubuntu.com/download/server/)
   * App : PHP
   * Cache : Redis
   * Database : PostgreSQL

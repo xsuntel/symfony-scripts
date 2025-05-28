@@ -1,18 +1,17 @@
 # Dev Environment
 
-## Abstract
-
-This project includes some scripts to develop a web application using Symfony Framework
-
 ## Platform
 
 * Linux - Ubuntu Desktop
-  * App : PHP
-  * Cache : Redis
-  * Database : PostgreSQL
-  * Message : RabbitMQ
-  * Server : Nginx
-  * Tools
+
+## Environment
+
+* App : PHP
+* Cache : Redis
+* Database : PostgreSQL
+* Message : RabbitMQ
+* Server : Nginx
+* Tools
 
 ## Project
 

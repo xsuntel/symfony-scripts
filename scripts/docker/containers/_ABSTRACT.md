@@ -1,23 +1,16 @@
 # Docker
 
-## Abstract
-
-This project includes some scripts to develop a web application using Symfony Framework
+## Environment - Dev/Prod
 
 ## Platform
 
-* Linux - Install Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
-* MacOS - Install Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
-* Windows - Install Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
-
-## Environment
-
-* App : PHP
-* Cache : Redis (Docker Container)
-* Database : PostgreSQL (Docker Container)
-* Message : RabbitMQ (Docker Container)
-* Server : Symfony Local Server
-* Tools : Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
+* OS - Linux / MacOS / Windows
+    * App : PHP
+    * Cache : Redis (Docker Container)
+    * Database : PostgreSQL (Docker Container)
+    * Message : RabbitMQ (Docker Container)
+    * Server : Symfony Local Server
+    * Tools : Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
 
 ## Project
 
