@@ -30,12 +30,6 @@ sudo systemctl disable kerneloops
 ```
 
 ```bash
-sudo systemctl stop plymouth-log
-
-sudo systemctl disable plymouth-log
-```
-
-```bash
 sudo systemctl stop sysstat
 
 sudo systemctl disable sysstat

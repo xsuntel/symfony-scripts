@@ -33,27 +33,13 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
       fi
 
       # >>>> Update Kernel - Network - ipv4
-
       sudo sysctl -w net.ipv4.icmp_echo_ignore_all=1
-
-      # >>>> Update Kernel - Sandbox
-
-      sudo sysctl -w kernel.apparmor_restrict_unprivileged_unconfined=1
-      sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=1
-
-      sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns_complain=1
-      sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns_force=1
-
-      sudo sysctl -w kernel.unprivileged_userns_apparmor_policy=0
-      sudo sysctl -w kernel.unprivileged_userns_clone=0
-      echo
-
-      sudo apt update -y
       echo
     fi
-    echo
 
     # >>>> Directories
+    echo ">>>> Linux - Directories"
+    echo
 
     sudo chown root:root /etc/sysctl.conf
     sudo chmod 600 /etc/sysctl.conf
