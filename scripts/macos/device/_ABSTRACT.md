@@ -1,17 +1,16 @@
-# Dev Environment
+# Scripts - MacOS
+
+## Environment - Dev
 
 ## Platform
 
 * MacOS
-
-## Environment
-
-* App : PHP
-* Cache : Redis (Docker Container)
-* Database : PostgreSQL (Docker Container)
-* Message : RabbitMQ (Docker Container)
-* Server : Symfony Local Server
-* Tools : Docker Desktop : [Docker Desktop - Download](https://www.docker.com/products/docker-desktop/)
+  * App : PHP
+  * Cache : Redis (Docker Container)
+  * Database : PostgreSQL (Docker Container)
+  * Message : RabbitMQ (Docker Container)
+  * Server : Symfony Local Server
+  * Tools : Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
 
 ## Project
 

@@ -1,4 +1,4 @@
-# Azure
+# Scripts - Public Cloud - Azure
 
 ## Environment - Prod
 

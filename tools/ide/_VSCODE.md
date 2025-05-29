@@ -1,8 +1,6 @@
 # Tools - IDE - Visual Studio Code
 
-## Abstract
-
-This project includes some scripts to develop a web application using Symfony Framework
+## Environment - Dev/Prod
 
 ## Platform
 

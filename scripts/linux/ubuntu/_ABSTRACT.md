@@ -1,17 +1,16 @@
-# Dev Environment
+# Scripts - Linux
+
+## Environment - Dev
 
 ## Platform
 
 * Linux - Ubuntu Desktop
-
-## Environment
-
-* App : PHP
-* Cache : Redis
-* Database : PostgreSQL
-* Message : RabbitMQ
-* Server : Nginx
-* Tools
+  * App : PHP
+  * Cache : Redis
+  * Database : PostgreSQL
+  * Message : RabbitMQ
+  * Server : Nginx
+  * Tools
 
 ## Project
 

@@ -1,8 +1,16 @@
-# Dev Environment
+# Scripts - Linux
+
+## Environment - Dev
 
 ## Platform
 
 * Linux - Ubuntu Desktop
+  * App : PHP
+  * Cache : Redis
+  * Database : PostgreSQL
+  * Message : RabbitMQ
+  * Server : Nginx
+  * Tools
 
 ### System
 
@@ -96,6 +104,58 @@ sudo cat /etc/gshadow
 
 ```bash
 /usr/bin/systemd-sysusers --cat-config
+```
+
+### Packages
+
+#### snap
+
+* Update snap-store
+
+```bash
+sudo killall snap-store
+
+sudo snap refresh
+```
+
+#### gsd
+
+* Disable gsd-sharing
+
+```bash
+sudo vi /etc/xdg/autostart/org.gnome.SettingsDaemon.Sharing.desktop
+~
+X-GNOME-Autostart-Phase=false
+X-GNOME-Autostart-Notify=false
+X-GNOME-AutoRestart=false
+
+systemctl --user status org.gnome.SettingsDaemon.Sharing.service
+
+systemctl --user mask org.gnome.SettingsDaemon.Sharing.service
+```
+
+* Disable gsd-smartcard
+
+```bash
+sudo vi /etc/xdg/autostart/org.gnome.SettingsDaemon.Smartcard.desktop
+~
+X-GNOME-Autostart-Phase=false
+X-GNOME-Autostart-Notify=false
+X-GNOME-AutoRestart=false
+
+systemctl --user mask org.gnome.SettingsDaemon.Smartcard.service
+```
+
+* Disable gsd-wacom
+
+```bash
+sudo vi /etc/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
+~
+X-GNOME-Autostart-Phase=false
+X-GNOME-Autostart-Notify=false
+X-GNOME-AutoRestart=false
+
+systemctl --user mask org.gnome.SettingsDaemon.Wacom.service
 ```
 
 ## Reference
