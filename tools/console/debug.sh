@@ -60,35 +60,35 @@ echo
         # --------------------------------------------------------------------------------------------------------------
         if [ "${CONSOLE_COMMANDS}" == "config" ]; then
           echo ">>>> config"
-          php bin/console debug:config
+          symfony console debug:config
 
         # --------------------------------------------------------------------------------------------------------------
         # 2) dotenv
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "dotenv" ]; then
           echo ">>>> dotenv"
-          php bin/console debug:dotenv
+          symfony console debug:dotenv
 
         # --------------------------------------------------------------------------------------------------------------
         # 3) firewall
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "firewall" ]; then
           echo ">>>> firewall"
-          php bin/console debug:firewall main
+          symfony console debug:firewall main
 
         # --------------------------------------------------------------------------------------------------------------
         # 4) autowiring
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "autowiring" ]; then
           echo ">>>> autowiring"
-          php bin/console debug:autowiring --all
+          symfony console debug:autowiring --all
 
         # --------------------------------------------------------------------------------------------------------------
         # 5) container
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "container" ]; then
           echo ">>>> container"
-          php bin/console debug:container
+          symfony console debug:container
 
         fi
         echo

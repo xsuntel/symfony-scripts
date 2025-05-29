@@ -48,14 +48,14 @@ echo
         # --------------------------------------------------------------------------------------------------------------
         if [ "${CONSOLE_COMMANDS}" == "debug" ]; then
           echo ">>>> twig"
-          php bin/console debug:twig
+          symfony console debug:twig
 
         # --------------------------------------------------------------------------------------------------------------
         # 2) twig-component
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "twig-component" ]; then
           echo ">>>> twig-component"
-          php bin/console debug:twig-component
+          symfony console debug:twig-component
 
         fi
         echo

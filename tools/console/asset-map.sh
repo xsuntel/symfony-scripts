@@ -56,28 +56,28 @@ echo
         # --------------------------------------------------------------------------------------------------------------
         if [ "${CONSOLE_COMMANDS}" == "debug" ]; then
           echo ">>>> asset-map"
-          php bin/console debug:asset-map
+          symfony console debug:asset-map
 
         # --------------------------------------------------------------------------------------------------------------
         # 2) dotenv
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "audit" ]; then
           echo ">>>> importmap:audit"
-          php bin/console importmap:audit
+          symfony console importmap:audit
 
         # --------------------------------------------------------------------------------------------------------------
         # 3) dotenv
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "outdated" ]; then
           echo ">>>> importmap:updated"
-          php bin/console importmap:outdated
+          symfony console importmap:outdated
 
         # --------------------------------------------------------------------------------------------------------------
         # 4) dotenv
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "update" ]; then
           echo ">>>> importmap:update"
-          php bin/console importmap:update
+          symfony console importmap:update
 
         fi
         echo

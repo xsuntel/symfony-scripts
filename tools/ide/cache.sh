@@ -80,7 +80,7 @@ setPhp() {
           if [ -f ./vendor/bin/php-cs-fixer ]; then
             ./vendor/bin/php-cs-fixer fix ./src
           else
-            composer require php-cs-fixer/shim
+            composer require php-cs-fixer/shim --dev
           fi
           echo
 

@@ -64,42 +64,42 @@ echo
         # --------------------------------------------------------------------------------------------------------------
         if [ "${CONSOLE_COMMANDS}" == "debug" ]; then
           echo ">>>> debug"
-          php bin/console debug:messenger
+          symfony console debug:messenger
 
         # --------------------------------------------------------------------------------------------------------------
         # 2) consume
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "consume" ]; then
           echo ">>>> consume"
-          php bin/console messenger:consume --all -vv
+          symfony console messenger:consume --all -vv
 
         # --------------------------------------------------------------------------------------------------------------
         # 3) stats
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "stats" ]; then
           echo ">>>> stats"
-          php bin/console messenger:stats
+          symfony console messenger:stats
 
         # --------------------------------------------------------------------------------------------------------------
         # 4) failed
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "failed" ]; then
           echo ">>>> failed"
-          php bin/console messenger:failed:show --stats
+          symfony console messenger:failed:show --stats
 
         # --------------------------------------------------------------------------------------------------------------
         # 5) remove
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "remove" ]; then
           echo ">>>> remove"
-          php bin/console messenger:failed:remove --all
+          symfony console messenger:failed:remove --all
 
         # --------------------------------------------------------------------------------------------------------------
         # 6) stop
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "stop" ]; then
           echo ">>>> stop"
-          php bin/console messenger:stop-workers
+          symfony console messenger:stop-workers
         fi
         echo
 

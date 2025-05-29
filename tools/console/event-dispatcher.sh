@@ -44,7 +44,7 @@ echo
         # --------------------------------------------------------------------------------------------------------------
         if [ "${CONSOLE_COMMANDS}" == "debug" ]; then
           echo ">>>> debug"
-          php bin/console debug:event-dispatcher
+          symfony console debug:event-dispatcher
 
         fi
         echo

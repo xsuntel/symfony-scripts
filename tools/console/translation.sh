@@ -44,7 +44,7 @@ echo
         # --------------------------------------------------------------------------------------------------------------
         if [ "${CONSOLE_COMMANDS}" == "debug" ]; then
           echo ">>>> debug"
-          php bin/console debug:translation en
+          symfony console debug:translation en
 
         fi
         echo

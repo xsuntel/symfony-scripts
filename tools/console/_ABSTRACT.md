@@ -17,7 +17,7 @@
 * [Running Commands](https://symfony.com/doc/current/console.html)
 
 ```bash
-php bin/console list
+symfony console list
 ```
 
 #### AssetMapper
@@ -25,13 +25,13 @@ php bin/console list
 * [Running Commands](https://symfony.com/doc/current/frontend/asset_mapper.html)
 
 ```bash
-php bin/console importmap:audit
+symfony console importmap:audit
 
 
-php bin/console importmap:outdated
+symfony console importmap:outdated
 
 
-php bin/console importmap:update
+symfony console importmap:update
 ```
 
 ## Reference

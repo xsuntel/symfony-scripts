@@ -48,14 +48,14 @@ echo
         # --------------------------------------------------------------------------------------------------------------
         if [ "${CONSOLE_COMMANDS}" == "debug" ]; then
           echo ">>>> debug"
-          php bin/console debug:scheduler
+          symfony console debug:scheduler
 
         # --------------------------------------------------------------------------------------------------------------
         # 2) default
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "consume" ]; then
           echo ">>>> consume"
-          php bin/console messenger:consume --all -vv
+          symfony console messenger:consume --all -vv
 
         fi
         echo

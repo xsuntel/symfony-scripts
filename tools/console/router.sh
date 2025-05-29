@@ -44,7 +44,7 @@ echo
         # --------------------------------------------------------------------------------------------------------------
         if [ "${CONSOLE_COMMANDS}" == "debug" ]; then
           echo ">>>> router"
-          php bin/console debug:router
+          symfony console debug:router
 
         fi
         echo

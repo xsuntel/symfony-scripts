@@ -21,21 +21,17 @@ echo
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "init" "build" "watch" "exit"; do
+        select num in "build" "watch" "exit"; do
           case "$REPLY" in
           1)
-            CONSOLE_COMMANDS="init"
-            break
-            ;;
-          2)
             CONSOLE_COMMANDS="build"
             break
             ;;
-          3)
+          2)
             CONSOLE_COMMANDS="watch"
             break
             ;;
-          4)
+          3)
             echo "exit()"
             exit
             ;;
@@ -48,21 +44,14 @@ echo
         echo
 
         # --------------------------------------------------------------------------------------------------------------
-        # 1) debug
+        # 1) build
         # --------------------------------------------------------------------------------------------------------------
-        if [ "${CONSOLE_COMMANDS}" == "init" ]; then
-          echo ">>>> init"
-          symfony console tailwind:init
-
-        # --------------------------------------------------------------------------------------------------------------
-        # 2) build
-        # --------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "build" ]; then
+        if [ "${CONSOLE_COMMANDS}" == "build" ]; then
           echo ">>>> build"
           symfony console tailwind:build
 
         # --------------------------------------------------------------------------------------------------------------
-        # 3) watch
+        # 2) watch
         # --------------------------------------------------------------------------------------------------------------
         elif [ "${CONSOLE_COMMANDS}" == "watch" ]; then
           echo ">>>> watch"
