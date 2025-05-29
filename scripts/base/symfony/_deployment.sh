@@ -200,7 +200,7 @@ if [ -d app ]; then
       echo ">>>> PHP - Symfony - Deployment - G) Other Things - Restarting your workers for Messenger: Sync & Queued Message Handling"
       echo
 
-      #php bin/console messenger:setup-transports
+      #symfony console messenger:setup-transports
 
       # >>>> Restarting your workers
       #if [ "${PLATFORM_TYPE}" == "Linux" ]; then
@@ -222,7 +222,7 @@ if [ -d app ]; then
       #if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
       #  echo '--> TailwindBundle : Building'
       #  echo
-      #  php bin/console tailwind:build --minify
+      #  symfony console tailwind:build --minify
       #  echo
 
       #else
@@ -238,14 +238,14 @@ if [ -d app ]; then
       #  echo
 
       #  echo
-      #  php bin/console tailwind:build -v
+      #  symfony console tailwind:build -v
       #  echo
 
       #fi
       #  echo '--> AssetMapper : Compiling'
       #  echo
 
-      #  php bin/console asset-map:compile
+      #  symfony console asset-map:compile
       #  echo
 
       # ----------------------------------------------------------------------------------------------------------------
