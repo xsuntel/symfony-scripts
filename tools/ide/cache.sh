@@ -86,10 +86,10 @@ setPhp() {
 
           echo ">>>> PHP - Symfony - Bundles - Asset Mapper"
           echo
-          php bin/console importmap:outdated
+          symfony console importmap:outdated
           echo
 
-          #php bin/console importmap:update
+          #symfony console importmap:update
           #echo
         fi
       fi

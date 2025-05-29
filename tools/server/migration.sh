@@ -128,13 +128,13 @@ setPhp() {
           echo ">>>> Clear: Update the current schema into a new single migration"
           echo
 
-          php bin/console doctrine:migrations:dump-schema
+          symfony console doctrine:migrations:dump-schema
           echo
 
           echo ">>>> Clear: Clean Up the Database Tables/Schema"
           echo
 
-          php bin/console doctrine:migrations:rollup
+          symfony console doctrine:migrations:rollup
           echo
 
         # ----------------------------------------------------------------------------------------------------------------
@@ -144,7 +144,7 @@ setPhp() {
           echo ">>>> Create: Updating the Database Tables/Schema - Default"
           echo
 
-          php bin/console doctrine:database:create -c default
+          symfony console doctrine:database:create -c default
 
           sleep 5
 
@@ -155,7 +155,7 @@ setPhp() {
           echo ">>>> Update: Updating the Database Tables/Schema - Default"
           echo
 
-          php bin/console doctrine:schema:update --em default --force
+          symfony console doctrine:schema:update --em default --force
 
           sleep 5
 
@@ -166,8 +166,8 @@ setPhp() {
           echo ">>>> Migrate: Updating the Database Tables/Schema"
           echo
 
-          php bin/console doctrine:migration:current
-          #php bin/console doctrine:migration:diff --allow-empty-diff --from-empty-schema
+          symfony console doctrine:migration:current
+          #symfony console doctrine:migration:diff --allow-empty-diff --from-empty-schema
           echo
 
           sleep 5
@@ -175,7 +175,7 @@ setPhp() {
           echo ">>>> Migrate: Updating the Database Tables/Schema"
           echo
 
-          php bin/console make:migration
+          symfony console make:migration
           echo
 
           sleep 5
@@ -183,7 +183,7 @@ setPhp() {
           echo ">>>> Migrate: Updating the Database Tables/Schema"
           echo
 
-          php bin/console doctrine:migration:migrate
+          symfony console doctrine:migration:migrate
           echo
           
           sleep 5
@@ -205,14 +205,14 @@ setPhp() {
           echo ">>>> Status: Checking the Database Tables/Schema"
           echo
 
-          php bin/console doctrine:migrations:status
+          symfony console doctrine:migrations:status
         fi
         echo
 
         echo ">>>> Migrations: Check a list"
         echo
 
-        php bin/console doctrine:migration:list
+        symfony console doctrine:migration:list
 
       else
         echo "[ ERROR ] There is not a command : app/bin/console"
