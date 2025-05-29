@@ -21,13 +21,25 @@ echo
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "debug" "exit"; do
+        select num in "debug" "audit" "outdated" "update" "exit"; do
           case "$REPLY" in
           1)
             CONSOLE_COMMANDS="debug"
             break
             ;;
           2)
+            CONSOLE_COMMANDS="audit"
+            break
+            ;;
+          3)
+            CONSOLE_COMMANDS="outdated"
+            break
+            ;;
+          4)
+            CONSOLE_COMMANDS="update"
+            break
+            ;;
+          5)
             echo "exit()"
             exit
             ;;
@@ -43,8 +55,29 @@ echo
         # 1) asset-map
         # --------------------------------------------------------------------------------------------------------------
         if [ "${CONSOLE_COMMANDS}" == "debug" ]; then
-          echo ">>>> router"
+          echo ">>>> asset-map"
           php bin/console debug:asset-map
+
+        # --------------------------------------------------------------------------------------------------------------
+        # 2) dotenv
+        # --------------------------------------------------------------------------------------------------------------
+        elif [ "${CONSOLE_COMMANDS}" == "audit" ]; then
+          echo ">>>> importmap:audit"
+          php bin/console importmap:audit
+
+        # --------------------------------------------------------------------------------------------------------------
+        # 3) dotenv
+        # --------------------------------------------------------------------------------------------------------------
+        elif [ "${CONSOLE_COMMANDS}" == "outdated" ]; then
+          echo ">>>> importmap:updated"
+          php bin/console importmap:outdated
+
+        # --------------------------------------------------------------------------------------------------------------
+        # 4) dotenv
+        # --------------------------------------------------------------------------------------------------------------
+        elif [ "${CONSOLE_COMMANDS}" == "update" ]; then
+          echo ">>>> importmap:update"
+          php bin/console importmap:update
 
         fi
         echo
