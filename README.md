@@ -101,7 +101,7 @@ PLATFORM_TIMEZONE="{Your TimeZone}"
 PROJECT_DOMAIN="{Your Web domain}"
 
 # >>>> PHP
-SYMFONY_VERSION=7.2.* 
+SYMFONY_VERSION=7.3.* 
 ```
 
 #### New Project
