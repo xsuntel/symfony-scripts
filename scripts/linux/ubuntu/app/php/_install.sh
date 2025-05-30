@@ -143,12 +143,15 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
 
   # >>>> PHP-FPM - Remove log files
   if [ -f /var/log/php/php${PHP_VERSION}-fpm.log ]; then
+    sudo chmod -R 777 /var/log/php/php${PHP_VERSION}-fpm.log
     sudo cat /dev/null > /var/log/php/php${PHP_VERSION}-fpm.log
   fi
   if [ -f /var/log/php/php-fpm.log ]; then
+    sudo chmod -R 777 /var/log/php/php-fpm.log
     sudo cat /dev/null > /var/log/php/php-fpm.log
   else
     touch /var/log/php/php-fpm.log
+    sudo chmod -R 777 /var/log/php/php-fpm.log
   fi
   echo
 

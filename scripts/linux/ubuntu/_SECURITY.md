@@ -162,8 +162,8 @@ sudo chmod 640 /etc/cron.yearly/
 ```bash
 sudo vi /etc/profile
 ~
-TMOUT=600
-export TMOUT
+#TMOUT=600
+#export TMOUT
 
 umask 022
 export umask

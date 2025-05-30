@@ -69,40 +69,40 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   done
 
   # >>>> Processer
-  echo ">>>> Linux - Processer"
-  echo
+  #echo ">>>> Linux - Processer"
+  #echo
 
   # >>>> Install required packages : Supervisor
-  local SUPERVISOR_STATUS
-  SUPERVISOR_STATUS=$(dpkg -l | grep -i "supervisor" | awk '{print $2}' | cut -d ':' -f1 | awk "/^supervisor$/")
-  if [ "${SUPERVISOR_STATUS}" != "supervisor" ]; then
-    sudo apt-get install -y supervisor
-    echo
-  fi
+  #local SUPERVISOR_STATUS
+  #SUPERVISOR_STATUS=$(dpkg -l | grep -i "supervisor" | awk '{print $2}' | cut -d ':' -f1 | awk "/^supervisor$/")
+  #if [ "${SUPERVISOR_STATUS}" != "supervisor" ]; then
+  #  sudo apt-get install -y supervisor
+  #  echo
+  #fi
 
-  if [ -f ${PROJECT_PATH}/scripts/linux/ubuntu/app/supervisor/conf.d/messenger-worker_${ENVIRONMENT_NAME}.conf ]; then
-    sudo cp -fv ${PROJECT_PATH}/scripts/linux/ubuntu/app/supervisor/conf.d/messenger-worker_${ENVIRONMENT_NAME}.conf /etc/supervisor/conf.d/messenger-worker.conf
-    echo
-  fi
+  #if [ -f ${PROJECT_PATH}/scripts/linux/ubuntu/app/supervisor/conf.d/messenger-worker_${ENVIRONMENT_NAME}.conf ]; then
+  #  sudo cp -fv ${PROJECT_PATH}/scripts/linux/ubuntu/app/supervisor/conf.d/messenger-worker_${ENVIRONMENT_NAME}.conf /etc/supervisor/conf.d/messenger-worker.conf
+  #  echo
+  #fi
 
   # >>>> Supervisor - Start process
-  sudo supervisorctl reread
-  echo
+  #sudo supervisorctl reread
+  #echo
 
-  sudo supervisorctl update
-  echo
+  #sudo supervisorctl update
+  #echo
 
   # >>>> Environment
-  if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
-    sudo supervisorctl start messenger-consume:*
-    echo
-  else
-    sudo supervisorctl stop messenger-consume:*
-    echo
-  fi
+  #if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+  #  sudo supervisorctl start messenger-consume:*
+  #  echo
+  #else
+  #  sudo supervisorctl stop messenger-consume:*
+  #  echo
+  #fi
 
-  sudo supervisorctl status
-  echo
+  #sudo supervisorctl status
+  #echo
 
 elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
   # --------------------------------------------------------------------------------------------------------------------
