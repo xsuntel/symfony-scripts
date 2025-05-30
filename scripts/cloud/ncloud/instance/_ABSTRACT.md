@@ -11,7 +11,7 @@
   * Message : RabbitMQ
   * Server : Nginx
 
-## Project
+### Client - Laptop
 
 * Connect Instance - [Document](https://guide.ncloud-docs.com/docs/ko/server-overview)
 
@@ -20,6 +20,42 @@ sudo chmod 400 "${KEY_PATH}/{your name}.pem"
 
 ssh -i "${KEY_PATH}/{your name}.pem/${KEY_NAME}" root@"{HOST}"
 ```
+
+* Create SSH Key for [SourceCommit](https://guide.ncloud-docs.com/docs/ko/sourcecommit-use-client)
+
+```bash
+rlim@gram:~$ ssh-keygen -f ~/.ssh/id_sourcecommit -t rsa -b 2048
+Generating public/private rsa key pair.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in id_sourcecommit
+Your public key has been saved in id_sourcecommit.pub
+The key fingerprint is:
+SHA256:zSc6aoecGQlmDx7k+OwS/3u9LgTFpvhi1VRH9U2Q0lk rlim@gram
+The key's randomart image is:
++---[RSA 2048]----+
+|       . ...ooo=E|
+|    .   =  .. +o.|
+|   + . *     .  o|
+|  . O + .o       |
+|   * B oS + .    |
+|  . * = .. o     |
+|   = o *o.       |
+|  . o *.+..      |
+|   . o++ oo.     |
++----[SHA256]-----+
+rlim@gram:~$ 
+rlim@gram:~$ cat ~/.ssh/id_sourcecommit.pub
+
+rlim@gram:~$ vi ~/.ssh/config
+Host devtools.ncloud.com
+User [콘솔에 등록된 SSH 키 값]
+IdentityFile ~/.ssh/id_sourcecommit
+HostkeyAlgorithms +ssh-rsa
+PubkeyAcceptedAlgorithms +ssh-rsa
+```
+
+### Server
 
 * User - adduser : ubuntu
 
@@ -39,19 +75,6 @@ sudo grep ubuntu /etc/passwd
 sudo chage -l ubuntu
 ```
 
-```bash
-sudo vi /etc/sudoers.d/ubuntu
-
-# User privilege specification
-ubuntu  ALL=(ALL:ALL) NOPASSWD:ALL
-```
-
-* User - userdel : ubuntu
-
-```bash
-sudo userdel -r ubuntu
-```
-
 * Group - addgroup : ncloud
 
 ```bash
@@ -64,41 +87,9 @@ sudo grep ncloud /etc/group
 sudo gpasswd -a ubuntu ncloud
 ```
 
-* Group - groupdel : ncloud
-
-```bash
-sudo gpasswd -r ncloud
-```
+## Project
 
 ### App - Symfony Framework
-
-* Create SSH Key for [SourceCommit](https://guide.ncloud-docs.com/docs/ko/sourcecommit-use-client)
-
-```bash
-ryan.lim@gram:~$ ssh-keygen -f id_sourcecommit -t rsa -b 2048
-Generating public/private rsa key pair.
-Enter passphrase (empty for no passphrase): 
-Enter same passphrase again: 
-Your identification has been saved in id_sourcecommit
-Your public key has been saved in id_sourcecommit.pub
-The key fingerprint is:
-SHA256:zSc6aoecGQlmDx7k+OwS/3u9LgTFpvhi1VRH9U2Q0lk ryan.lim@gram
-The key's randomart image is:
-+---[RSA 2048]----+
-|       . ...ooo=E|
-|    .   =  .. +o.|
-|   + . *     .  o|
-|  . O + .o       |
-|   * B oS + .    |
-|  . * = .. o     |
-|   = o *o.       |
-|  . o *.+..      |
-|   . o++ oo.     |
-+----[SHA256]-----+
-ryan.lim@gram:~$ 
-ryan.lim@gram:~$ cat /home/ryan.lim/.ssh/id_sourcecommit.pub
-
-```
 
 * Update default variables in Prod Environment
 

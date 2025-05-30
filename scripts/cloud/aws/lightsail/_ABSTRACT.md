@@ -18,36 +18,64 @@
 ```bash
 sudo chmod 400 "${KEY_PATH}/{your name}.pem"
 
-ssh -i "${KEY_PATH}/{your name}.pem/${KEY_NAME}" "${USER}@${HOST}"
+ssh -i "${KEY_PATH}/{your name}.pem/${KEY_NAME}" root@"{HOST}"
 ```
 
-* User
+* Create SSH Key
 
 ```bash
-sudo cat /etc/passwd
+rlim@gram:~$ ssh-keygen -f ~/.ssh/id_sourcecommit -t rsa -b 2048
+Generating public/private rsa key pair.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in id_sourcecommit
+Your public key has been saved in id_sourcecommit.pub
+The key fingerprint is:
+SHA256:zSc6aoecGQlmDx7k+OwS/3u9LgTFpvhi1VRH9U2Q0lk rlim@gram
+The key's randomart image is:
++---[RSA 2048]----+
+|       . ...ooo=E|
+|    .   =  .. +o.|
+|   + . *     .  o|
+|  . O + .o       |
+|   * B oS + .    |
+|  . * = .. o     |
+|   = o *o.       |
+|  . o *.+..      |
+|   . o++ oo.     |
++----[SHA256]-----+
+rlim@gram:~$ 
+rlim@gram:~$ cat ~/.ssh/id_sourcecommit.pub
 
-# Login ID : x : UID : GID : Description : Home Directory : Login Shell
+rlim@gram:~$ vi ~/.ssh/config
+Host devtools.ncloud.com
+User [콘솔에 등록된 SSH 키 값]
+IdentityFile ~/.ssh/id_sourcecommit
+HostkeyAlgorithms +ssh-rsa
+PubkeyAcceptedAlgorithms +ssh-rsa
+```
+
+### Server
+
+* User - adduser : ubuntu
+
+```bash
+sudo adduser --home /home/ubuntu --uid 2000 --shell /bin/bash ubuntu
+
+sudo usermod -aG sudo ubuntu
+sudo usermod -aG www-data ubuntu
 ```
 
 ```bash
-sudo cat /etc/shadow
+sudo chage -m 3 -M 100 -W 60 -I 30 -E 2099-12-30 ubuntu
 
-# Login ID : User Password : Last changed data : MIN : MAX : WARNING : INACTIVE : EXPIRE : Flag
+sudo grep ubuntu /etc/shadow
+sudo grep ubuntu /etc/passwd
+
+sudo chage -l ubuntu
 ```
 
-* Group
-
-```bash
-sudo cat /etc/group
-
-# Group Name : x : GID : Group Members
-```
-
-```bash
-sudo cat /etc/gshadow
-
-# Group Name : Group Password : Administrator : Group Members
-```
+## Project
 
 ### App - Symfony Framework
 

@@ -357,7 +357,7 @@ setRedis
 #setPostgreSQL
 
 # >>>> Message
-setRabbitMQ
+#setRabbitMQ
 
 # >>>> Server
 setNginx
