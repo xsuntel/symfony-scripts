@@ -21,13 +21,21 @@ echo
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "debug" "exit"; do
+        select num in "debug" "kernel" "security" "exit"; do
           case "$REPLY" in
           1)
             CONSOLE_COMMANDS="debug"
             break
             ;;
           2)
+            CONSOLE_COMMANDS="kernel"
+            break
+            ;;
+          3)
+            CONSOLE_COMMANDS="security"
+            break
+            ;;
+          4)
             echo "exit()"
             exit
             ;;
@@ -45,6 +53,20 @@ echo
         if [ "${CONSOLE_COMMANDS}" == "debug" ]; then
           echo ">>>> debug"
           symfony console debug:event-dispatcher
+
+        # --------------------------------------------------------------------------------------------------------------
+        # 2) kernel
+        # --------------------------------------------------------------------------------------------------------------
+        elif [ "${CONSOLE_COMMANDS}" == "kernel" ]; then
+          echo ">>>> debug:event-dispatcher"
+          symfony console debug:event-dispatcher kernel.exception
+
+        # --------------------------------------------------------------------------------------------------------------
+        # 3) security
+        # --------------------------------------------------------------------------------------------------------------
+        elif [ "${CONSOLE_COMMANDS}" == "security" ]; then
+          echo ">>>> debug:event-dispatcher"
+          symfony console debug:event-dispatcher Security
 
         fi
         echo

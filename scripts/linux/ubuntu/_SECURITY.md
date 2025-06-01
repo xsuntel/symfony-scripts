@@ -157,13 +157,13 @@ sudo chown root:root /etc/cron.yearly/
 sudo chmod 640 /etc/cron.yearly/
 ```
 
-* Update umask
+* Update umask in Prod Environment
 
 ```bash
 sudo vi /etc/profile
 ~
-#TMOUT=600
-#export TMOUT
+TMOUT=600
+export TMOUT
 
 umask 022
 export umask
