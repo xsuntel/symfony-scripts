@@ -15,7 +15,7 @@
 # Local Web Server                                                                            PATH : ${PROJECT_PATH}/app
 # ----------------------------------------------------------------------------------------------------------------------
 http:
-  document_root: app/public/
+  document_root: public/
   passthru: index.php
   port: 8000
   preferred_port: 8001
