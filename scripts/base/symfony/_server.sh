@@ -30,7 +30,7 @@ if [ -d app ]; then
           fi
 
           # >>>> Symfony - Local Web Server - Enabling TLS
-          if [! -f ~/.symfony5/certs/default.p12 ]; then
+          if [ ! -f ~/.symfony5/certs/default.p12 ]; then
             symfony server:ca:install
           fi
 
@@ -70,6 +70,7 @@ if [ -d app ]; then
         # >>>> Symfony - Local Web Server
         if [ -f ${PROJECT_PATH}/.symfony.local.yaml ]; then
           cp -fv ${PROJECT_PATH}/.symfony.local.yaml ${PROJECT_PATH}/app/.symfony.local.yaml
+          echo
         fi
 
         if [ -f ${PROJECT_PATH}/app/.symfony.local.yaml ]; then
