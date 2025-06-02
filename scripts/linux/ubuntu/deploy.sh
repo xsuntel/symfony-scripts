@@ -260,6 +260,14 @@ setVM() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo
 
+  # >>>> PHP - Symfony Framework - Supervisor
+  if [ -f ${PROJECT_PATH}/scripts/base/symfony/_supervisor.sh ]; then
+    source ${PROJECT_PATH}/scripts/base/symfony/_supervisor.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_supervisor.sh" && exit
+  fi
+  echo
+
   # >>>> PHP - Symfony Framework - Deployment
   if [ -f ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh ]; then
     source ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh

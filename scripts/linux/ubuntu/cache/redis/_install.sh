@@ -38,14 +38,9 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   fi
 
   # >>>> Redis - Delete logs files
-  if [ -f /var/log/redis/redis-server.log.1.gz ]; then
-    sudo rm -fv /var/log/redis/redis-server.log.*.gz
+  if [ -f /var/log/redis/redis-server.log.1 ]; then
+    sudo rm -fv /var/log/redis/redis-server.log.*
     echo
-  fi
-
-  # >>>> Redis - Memory for Redis
-  if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
-    sudo sysctl vm.overcommit_memory=1
   fi
 
   # --------------------------------------------------------------------------------------------------------------------
