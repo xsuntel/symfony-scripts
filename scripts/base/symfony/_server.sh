@@ -68,16 +68,18 @@ if [ -d app ]; then
         fi
 
         # >>>> Symfony - Local Web Server
-        if [ -f ${PROJECT_PATH}/.symfony.local.yaml ]; then
-          cp -fv ${PROJECT_PATH}/.symfony.local.yaml ${PROJECT_PATH}/app/.symfony.local.yaml
+        if [ -f ${PROJECT_PATH}/tools/ide/.symfony.local.yaml ]; then
+          cp -fv ${PROJECT_PATH}/tools/ide/.symfony.local.yaml ${PROJECT_PATH}/app/.symfony.local.yaml
           echo
         fi
 
         if [ -f ${PROJECT_PATH}/app/.symfony.local.yaml ]; then
-          symfony local:server:start
-
           symfony server:ls
           echo
+
+          symfony local:server:start
+          echo
+
           symfony server:status
 
         else

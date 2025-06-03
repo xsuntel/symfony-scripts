@@ -136,7 +136,7 @@ http://localhost:15672
 * Symfony Local Server in Dev Environment
 
 ```bash
-vi .symfony.local.yaml
+vi ./tools/ide/.symfony.local.yaml
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Local Web Server                                                                            PATH : ${PROJECT_PATH}/app
@@ -151,6 +151,7 @@ http:
   no_tls: true
   daemon: true
   use_gzip: true
+  no_workers: true 
 ```
 
 ## Deployment
