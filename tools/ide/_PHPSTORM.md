@@ -12,6 +12,45 @@
 
 ### IDE - PhpStorm
 
+#### Plugin
+
+* Downloaded
+  * PHP Annotations
+  * Symfony Plugin
+* Database
+  * Database Tools and SQL
+* HTML and XML
+  * HTML Tools
+* Javascript Frameworks and Tools
+  * Javascript and TypeScript
+  * Javascript Debugger
+  * Javascript intention Power Pack
+  * Nodejs
+  * Prettier
+* Languages
+  * Ini
+  * JSON
+  * markdown
+  * PHP
+  * PHP Architecture
+  * PHPT Support
+  * Shell Script
+  * YAML
+* SpellChecker
+  * Hunspell
+* Style Sheet
+  * CSS
+* Template Languages
+  * Twig
+* Test Tools
+  * PHPSpec BDD Framework
+* Version Control
+  * Git
+* Other Tools
+  * PHPStan Support
+  * Psalm Support
+  * Terminal
+
 #### Settings
 
 * Disable some configurations

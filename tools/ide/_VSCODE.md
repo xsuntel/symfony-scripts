@@ -31,7 +31,7 @@
 * Markdownlint
 * Code Runner
 
-7* Material Icon Theme
+* Material Icon Theme
 
 #### Settings
 
