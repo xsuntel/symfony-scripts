@@ -62,6 +62,26 @@ Settings / Appearance & Behavior / System Settings / Autosave / Sync external ch
 Settings / Appearance & Behavior / System Settings / HTTP Proxy
 ```
 
+* Configure some configurations related Symfony Framework
+
+```text
+Settings / PHP / Symfony / Container: 
+
+HTTP Profiler - https://127.0.0.1:8080
+```
+
+```text
+Settings / PHP / Symfony / Routing: 
+
+app/var/cache/dev/url_generating_routes.php
+```
+
+```text
+Settings / PHP / Symfony / Profiler: 
+
+HTTP Profiler - https://127.0.0.1:8080
+```
+
 #### Menu / Help
 
 * Edit Custom Properties
