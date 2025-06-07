@@ -65,24 +65,23 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     if [ ! -f /var/log/nginx/www_access.log ]; then
       sudo cat /dev/null > /var/log/nginx/www_access.log
     else
+      if [ -f /var/log/nginx/www_access.log.1 ]; then
+        sudo rm -fv /var/log/nginx/www_access.log.*
+        echo
+      fi
+
       sudo chmod 777 /var/log/nginx/www_access.log
     fi
 
     if [ ! -f /var/log/nginx/www_error.log ]; then
       sudo cat /dev/null > /var/log/nginx/www_error.log
     else
+      if [ -f /var/log/nginx/www_error.log.1 ]; then
+        sudo rm -fv /var/log/nginx/www_error.log.*
+        echo
+      fi
+
       sudo chmod 777 /var/log/nginx/www_error.log
-    fi
-
-    # >>>> Nginx - Delete logs files
-    if [ -f /var/log/nginx/www_access.log.1 ]; then
-      sudo rm -fv /var/log/nginx/www_access.log.*
-      echo
-    fi
-
-    if [ -f /var/log/nginx/www_error.log.1 ]; then
-      sudo rm -fv /var/log/nginx/www_error.log.*
-      echo
     fi
     echo
 

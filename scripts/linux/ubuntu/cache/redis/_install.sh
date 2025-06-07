@@ -35,12 +35,10 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   # >>>> Redis - Remove log files
   if [ -f /var/log/redis/redis-server.log ]; then
     sudo cat /dev/null > /var/log/redis/redis-server.log
-  fi
-
-  # >>>> Redis - Delete logs files
-  if [ -f /var/log/redis/redis-server.log.1 ]; then
-    sudo rm -fv /var/log/redis/redis-server.log.*
-    echo
+    if [ -f /var/log/redis/redis-server.log.1 ]; then
+      sudo rm -fv /var/log/redis/redis-server.log.*
+      echo
+    fi
   fi
 
   # --------------------------------------------------------------------------------------------------------------------
