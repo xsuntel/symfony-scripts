@@ -31,13 +31,13 @@ http:
 # ----------------------------------------------------------------------------------------------------------------------
 workers:
   # >>>> TailwindBundle
-  tailwind:
-    cmd: [ 'symfony', 'console', 'tailwind:build', '--watch' ]
+#tailwind:
+#  cmd: [ 'symfony', 'console', 'tailwind:build', '--watch' ]
 
   # >>>> Messenger
-  messenger_consume_async:
-    cmd: [ 'symfony', 'console', 'messenger:consume', '--all' ]
-    watch: ['config', 'src', 'templates']
+#messenger_consume_async:
+#  cmd: [ 'symfony', 'console', 'messenger:consume', '--all' ]
+#  watch: ['config', 'src', 'templates']
 
   # built-in command that builds and watches front-end assets
   # npm_encore_watch:
