@@ -26,6 +26,9 @@ if [ "${PLATFORM_TYPE}" == "Darwin" ]; then
   # --------------------------------------------------------------------------------------------------------------------
   # Redis - Update the configuration
   # --------------------------------------------------------------------------------------------------------------------
+  echo ">>>> Redis - Configuration"
+  echo
+
   local REDIS_PKG
   REDIS_PKG=$(brew list | grep 'redis$')
   if [ "${REDIS_PKG}" ]; then

@@ -25,6 +25,8 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   # --------------------------------------------------------------------------------------------------------------------
   # Redis - Update the configuration                                            https://redis.io/docs/management/config/
   # --------------------------------------------------------------------------------------------------------------------
+  echo ">>>> Redis - Configuration"
+  echo
 
   # >>>> Redis - Configuration
   if [ -f /etc/redis/redis.conf ]; then
@@ -44,6 +46,8 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   # --------------------------------------------------------------------------------------------------------------------
   # Redis - Check status
   # --------------------------------------------------------------------------------------------------------------------
+  echo ">>>> Redis - Status"
+  echo
 
   local REDIS_STATUS
   REDIS_STATUS=$(systemctl is-active redis-server)

@@ -47,6 +47,9 @@ if [ "${PLATFORM_TYPE}" == "Darwin" ]; then
   # --------------------------------------------------------------------------------------------------------------------
   # RabbitMQ - Update the configuration
   # --------------------------------------------------------------------------------------------------------------------
+  echo ">>>> RabbitMQ - Configuration"
+  echo
+
   local RABBITMQ_PKG
   RABBITMQ_PKG=$(brew list | grep 'rabbitmq$')
   if [ "${RABBITMQ_PKG}" ]; then

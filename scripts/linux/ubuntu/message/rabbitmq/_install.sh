@@ -58,6 +58,8 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   # --------------------------------------------------------------------------------------------------------------------
   # RabbitMQ - Update the configuration
   # --------------------------------------------------------------------------------------------------------------------
+  echo ">>>> RabbitMQ - Configuration"
+  echo
 
   # >>>> RabbitMQ - Remove files
   if [ -f /etc/apt/sources.list.d/rabbitmq.list ]; then
@@ -71,6 +73,8 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
   # --------------------------------------------------------------------------------------------------------------------
   # RabbitMQ - Check status
   # --------------------------------------------------------------------------------------------------------------------
+  echo ">>>> RabbitMQ - Status"
+  echo
 
   local RABBITMQ_STATUS
   RABBITMQ_STATUS=$(systemctl is-active rabbitmq-server)
