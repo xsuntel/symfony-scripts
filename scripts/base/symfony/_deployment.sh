@@ -107,10 +107,8 @@ if [ -d app ]; then
           if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
             sudo rm -rf var/cache/*
           fi
-          # rm -rf var/cache/*
-        else
-          rm -rf var/cache/*
         fi
+        rm -rf var/cache/*
       fi
 
       if [ "${ENVIRONMENT_NAME}" == "prod" ]; then

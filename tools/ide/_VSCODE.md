@@ -14,6 +14,7 @@
 
 #### Extention
 
+* PHP Namespace Resolver
 * PHP Intelephense
 * PHP Extension Pack
 * PHP Debug
@@ -31,6 +32,7 @@
 * Markdownlint
 * Code Runner
 
+* Auto Close Tags
 * Material Icon Theme
 
 #### Settings
