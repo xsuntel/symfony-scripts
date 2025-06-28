@@ -34,7 +34,6 @@ using [Symfony Framework](https://symfony.com)
     tools/
         console/
         ide/
-        tutorial/
     .env.app
     .env.dev
     .env.dev.local
@@ -107,7 +106,7 @@ SYMFONY_VERSION=7.3.*
 * Create a new project - [Installing & Setting up the Symfony Framework](https://symfony.com/doc/current/setup.html)
 
 ```
-./tools/tutorial/symfony.sh
+./tools/tutorial.sh
 ```
  
 #### Deployment
