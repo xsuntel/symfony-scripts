@@ -70,10 +70,41 @@ git pull origin main -f
 
 ### Git
 
-* Clear main branch
+* Clear history
 
 ```bash
-./tools/git/clear.sh
+  # >>>> Git - Clear history
+  if [ -d .git ]; then
+    echo ">>>> Git - Clear history"
+    echo
+
+    DEFAULT_BRANCH=$(git config --get init.defaultBranch)
+
+    rm -rf .git
+    echo
+
+    git init
+    echo
+
+    # >>>> Git - Config - Local
+    git add .
+    echo
+
+    git commit -m "initial commit"
+    echo
+
+    # >>>> Git - Config - Remotes
+    git remote add origin ${GIT_REMOTE_ORIGIN_URL}
+    echo
+
+    git pull origin "${DEFAULT_BRANCH}" -f --allow-unrelated-histories
+    echo
+
+    git status
+  else
+    echo "There is not .git file"
+  fi
+  echo
 ```
 
 ## Reference

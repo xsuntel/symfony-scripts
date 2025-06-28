@@ -171,28 +171,30 @@ http:
 ./scripts/macos/device/deploy.sh
 ```
 
-### Tools
+### Scripts
 
-#### IDE
+#### App
 
 * Clear cache
 
 ```bash
-./tools/ide/cache.sh
+./tools/cache.sh
 ```
 
-#### Server
+#### Database
 
 * Migrate databases
 
 ```bash
-./tools/server/migrate.sh
+./tools/migrate.sh
 ```
+
+#### Server
 
 * Check status
 
 ```bash
-./tools/server/status.sh
+./tools/status.sh
 ```
 
 ## Reference

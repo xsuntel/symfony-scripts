@@ -1,9 +1,9 @@
 #!/bin/bash
 # ======================================================================================================================
-# Tools - Git - Clear
+# Tools - IDE - Update sources in Dev Environment
 # ======================================================================================================================
 
-PROJECT_PATH=$(dirname "$(dirname "$(dirname "$0")")")
+PROJECT_PATH=$(dirname "$(dirname "$0")")
 cd "${PROJECT_PATH}" || exit
 
 # >>>> Abstract
@@ -24,25 +24,13 @@ setEnvironment() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ ENV ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Environment"
   echo "---------------------------------------------------------------------------------------------------------------"
-  PS3="Menu: "
-  select num in "dev" "exit"; do
-    case "$REPLY" in
-    1)
-      # >>>> Dev Environment
-      ENVIRONMENT_NAME="dev"
-      break
-      ;;
-    2)
-      echo "exit()"
-      setEnd
-      ;;
-    *)
-      echo "[ ERROR ] Unknown Command"
-      setEnd
-      ;;
-    esac
-  done
-  echo
+
+  # >>>> Import a platform file
+  if [ -f ${PROJECT_PATH}/scripts/base/_environment.sh ]; then
+    source ${PROJECT_PATH}/scripts/base/_environment.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/base/_environment.sh" && exit
+  fi
 }
 
 # >>>> Platform
@@ -63,25 +51,6 @@ setProject() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "- PROJECT NAME : ${PROJECT_NAME}"
   echo
-
-  # >>>> Project - Base - Import a project file
-  if [ -f ${PROJECT_PATH}/scripts/base/_project.sh ]; then
-    source ${PROJECT_PATH}/scripts/base/_project.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/base/_project.sh" && exit
-  fi
-
-  # >>>> Project - Directory : ./app
-  if [ "symfony" == "${PROJECT_NAME}" ] && [ -f ./tools/tutorial/symfony.sh ]; then
-    if [ -d app ]; then
-      rm -rf app
-      mkdir -p app
-      touch app/.gitkeep
-    else
-      mkdir -p app
-      touch app/.gitkeep
-    fi
-  fi
 }
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -94,6 +63,54 @@ setPhp() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - App"
   echo "---------------------------------------------------------------------------------------------------------------"
+  echo
+
+  # >>>> Symfony Framework
+  if [ -d app ]; then
+    (
+      cd app || return
+
+      if [ -f bin/console ]; then
+
+        # >>>> Environment
+        if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+
+          echo ">>>> PHP - Symfony - Bundles - PHP-CS-Fixer"
+          echo
+          if [ -f ./vendor/bin/php-cs-fixer ]; then
+            ./vendor/bin/php-cs-fixer fix ./src
+          else
+            composer require php-cs-fixer/shim --dev
+          fi
+          echo
+
+          echo ">>>> PHP - Symfony - Bundles - Asset Mapper"
+          echo
+          symfony console importmap:outdated
+          echo
+
+          #symfony console importmap:update
+          #echo
+        fi
+      fi
+    )
+  else
+    echo "[ ERROR ] There is not a folder : app"
+    setExit
+  fi
+
+  # >>>> PHP - php-cs-fixer
+  if [ -f .php-cs-fixer.cache ]; then
+    rm -f .php-cs-fixer.cache
+  fi
+
+  # >>>> PHP - Symfony Framework - Deployment
+  if [ -f ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh ]; then
+    source ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh" && exit
+  fi
+  echo
 }
 
 # >>>> Cache
@@ -102,6 +119,7 @@ setRedis() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Cache"
   echo "---------------------------------------------------------------------------------------------------------------"
+  echo
 }
 
 # >>>> Database
@@ -146,23 +164,6 @@ setDocker() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Docker"
   echo "---------------------------------------------------------------------------------------------------------------"
-  echo
-
-  # >>>> Docker Desktop - a recipe file for Symfony
-  if [ -f ${PROJECT_PATH}/app/docker-compose.yml ]; then
-    echo ">>>> Docker - a recipe file for Symfony"
-    rm -f ${PROJECT_PATH}/app/docker-compose.*
-    echo
-  fi
-
-  # >>>> Docker Desktop - docker-compose files
-  if [ -f ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.env ]; then
-    rm -fv ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.env
-  fi
-  if [ -f ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.yml ]; then
-    rm -fv ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.yml
-  fi
-  echo
 }
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -173,53 +174,13 @@ setVM() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - VM - Instance"
   echo "---------------------------------------------------------------------------------------------------------------"
-  echo
 
-  # >>>> Git - Clear history
-  #if [ -d .git ]; then
-  #  echo ">>>> Git - Clear history"
-  #  echo
-
-  #  DEFAULT_BRANCH=$(git config --get init.defaultBranch)
-
-  #  rm -rf .git
-  #  echo
-
-  #  git init
-  #  echo
-
-    # >>>> Git - Config - Local
-  #  git add .
-  #  echo
-
-  #  git commit -m "initial commit"
-  #  echo
-
-    # >>>> Git - Config - Remotes
-  #  git remote add origin ${GIT_REMOTE_ORIGIN_URL}
-  #  echo
-
-  #  git pull origin "${DEFAULT_BRANCH}" -f
-  #  echo
-
-  #  git status
-  #else
-  #  echo "There is not .git file"
-  #fi
-  #echo
-
-  # >>>> Git - Config - Global
-  echo ">>>> Git - Config - Global"
-  echo
-
-  git config --global -l
-  echo
-
-  # >>>> Git - Config - Local
-  echo ">>>> Git - Config - Local"
-  echo
-
-  git config --local -l
+  # >>>> PHP - Symfony Framework - Server
+  if [ -f ${PROJECT_PATH}/scripts/base/symfony/_server.sh ]; then
+    source ${PROJECT_PATH}/scripts/base/symfony/_server.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_server.sh" && exit
+  fi
   echo
 }
 
@@ -248,7 +209,7 @@ setProject
 # ----------------------------------------------------------------------------------------------------------------------
 
 # >>>> App
-#setPhp
+setPhp
 
 # >>>> Cache
 #setRedis
@@ -270,7 +231,7 @@ setProject
 # ----------------------------------------------------------------------------------------------------------------------
 # Container
 # ----------------------------------------------------------------------------------------------------------------------
-setDocker
+#setDocker
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Instance

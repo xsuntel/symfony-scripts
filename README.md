@@ -33,9 +33,7 @@ using [Symfony Framework](https://symfony.com)
         windows/
     tools/
         console/
-        git/
         ide/
-        server/
         tutorial/
     .env.app
     .env.dev

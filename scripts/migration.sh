@@ -1,9 +1,9 @@
 #!/bin/bash
 # ======================================================================================================================
-# Tools - IDE - Update sources in Dev Environment
+# Tools - IDE - Migrate databases
 # ======================================================================================================================
 
-PROJECT_PATH=$(dirname "$(dirname "$(dirname "$0")")")
+PROJECT_PATH=$(dirname "$(dirname "$0")")
 cd "${PROJECT_PATH}" || exit
 
 # >>>> Abstract
@@ -24,8 +24,9 @@ setEnvironment() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ ENV ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Environment"
   echo "---------------------------------------------------------------------------------------------------------------"
+  echo
 
-  # >>>> Import a platform file
+  # >>>> Import a project file
   if [ -f ${PROJECT_PATH}/scripts/base/_environment.sh ]; then
     source ${PROJECT_PATH}/scripts/base/_environment.sh
   else
@@ -65,45 +66,162 @@ setPhp() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo
 
-  # >>>> Symfony Framework
+  # >>>> Migrate
   if [ -d app ]; then
     (
       cd app || return
 
       if [ -f bin/console ]; then
 
-        # >>>> Environment
-        if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+        # >>>> Select one of some environments
+        PS3="Menu: "
+        select num in "clear" "create" "update" "migrate" "validate" "status" "exit"; do
+          case "$REPLY" in
+          1)
+            DOCTRINE_COMMAND="clear"
+            break
+            ;;
+          2)
+            DOCTRINE_COMMAND="create"
+            break
+            ;;
+          3)
+            DOCTRINE_COMMAND="update"
+            break
+            ;;
+          4)
+            DOCTRINE_COMMAND="migrate"
+            break
+            ;;
+          5)
+            DOCTRINE_COMMAND="validate"
+            break
+            ;;
+          6)
+            DOCTRINE_COMMAND="status"
+            break
+            ;;
+          7)
+            echo "exit()"
+            exit
+            ;;
+          *)
+            echo "[ ERROR ] Unknown Command"
+            exit
+            ;;
+          esac
+        done
+        echo
 
-          echo ">>>> PHP - Symfony - Bundles - PHP-CS-Fixer"
+        # ----------------------------------------------------------------------------------------------------------------
+        # 1) Clear
+        # ----------------------------------------------------------------------------------------------------------------
+        if [ "${DOCTRINE_COMMAND}" == "clear" ]; then
+          echo ">>>> Clear: Remove migrations files"
           echo
-          if [ -f ./vendor/bin/php-cs-fixer ]; then
-            ./vendor/bin/php-cs-fixer fix ./src
-          else
-            composer require php-cs-fixer/shim --dev
+
+          if [ -d migrations ]; then
+            rm -rfv migrations/*
           fi
           echo
 
-          echo ">>>> PHP - Symfony - Bundles - Asset Mapper"
-          echo
-          symfony console importmap:outdated
+          echo ">>>> Clear: Update the current schema into a new single migration"
           echo
 
-          #symfony console importmap:update
-          #echo
+          symfony console doctrine:migrations:dump-schema
+          echo
+
+          echo ">>>> Clear: Clean Up the Database Tables/Schema"
+          echo
+
+          symfony console doctrine:migrations:rollup
+          echo
+
+        # ----------------------------------------------------------------------------------------------------------------
+        # 2) Create
+        # ----------------------------------------------------------------------------------------------------------------
+        elif [ "${DOCTRINE_COMMAND}" == "create" ]; then
+          echo ">>>> Create: Updating the Database Tables/Schema - Default"
+          echo
+
+          symfony console doctrine:database:create -c default
+
+          sleep 5
+
+        # ----------------------------------------------------------------------------------------------------------------
+        # 3) Schema
+        # ----------------------------------------------------------------------------------------------------------------
+        elif [ "${DOCTRINE_COMMAND}" == "update" ]; then
+          echo ">>>> Update: Updating the Database Tables/Schema - Default"
+          echo
+
+          symfony console doctrine:schema:update --em default --force
+
+          sleep 5
+
+        # ----------------------------------------------------------------------------------------------------------------
+        # 4) Migrate
+        # ----------------------------------------------------------------------------------------------------------------
+        elif [ "${DOCTRINE_COMMAND}" == "migrate" ]; then
+          echo ">>>> Migrate: Updating the Database Tables/Schema"
+          echo
+
+          symfony console doctrine:migration:current
+          #symfony console doctrine:migration:diff --allow-empty-diff --from-empty-schema
+          echo
+
+          sleep 5
+
+          echo ">>>> Migrate: Updating the Database Tables/Schema"
+          echo
+
+          symfony console make:migration
+          echo
+
+          sleep 5
+
+          echo ">>>> Migrate: Updating the Database Tables/Schema"
+          echo
+
+          symfony console doctrine:migration:migrate
+          echo
+          
+          sleep 5
+
+        # ----------------------------------------------------------------------------------------------------------------
+        # 5) Validate
+        # ----------------------------------------------------------------------------------------------------------------
+        elif [ "${DOCTRINE_COMMAND}" == "validate" ]; then
+          echo ">>>> Check: Updating the Database Tables/Schema - Default"
+          echo
+
+          symfony console doctrine:schema:validate
+          echo
+
+        # ----------------------------------------------------------------------------------------------------------------
+        # 6) Status
+        # ----------------------------------------------------------------------------------------------------------------
+        elif [ "${DOCTRINE_COMMAND}" == "status" ]; then
+          echo ">>>> Status: Checking the Database Tables/Schema"
+          echo
+
+          symfony console doctrine:migrations:status
         fi
+        echo
+
+        echo ">>>> Migrations: Check a list"
+        echo
+
+        symfony console doctrine:migration:list
+
+      else
+        echo "[ ERROR ] There is not a command : app/bin/console"
+        exit
       fi
     )
   else
     echo "[ ERROR ] There is not a folder : app"
     setExit
-  fi
-
-  # >>>> PHP - Symfony Framework - Deployment
-  if [ -f ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh ]; then
-    source ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh" && exit
   fi
   echo
 }
@@ -114,7 +232,6 @@ setRedis() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Cache"
   echo "---------------------------------------------------------------------------------------------------------------"
-  echo
 }
 
 # >>>> Database
@@ -169,14 +286,6 @@ setVM() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - VM - Instance"
   echo "---------------------------------------------------------------------------------------------------------------"
-
-  # >>>> PHP - Symfony Framework - Server
-  if [ -f ${PROJECT_PATH}/scripts/base/symfony/_server.sh ]; then
-    source ${PROJECT_PATH}/scripts/base/symfony/_server.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_server.sh" && exit
-  fi
-  echo
 }
 
 # ======================================================================================================================
@@ -231,7 +340,7 @@ setPhp
 # ----------------------------------------------------------------------------------------------------------------------
 # Instance
 # ----------------------------------------------------------------------------------------------------------------------
-setVM
+#setVM
 
 # ======================================================================================================================
 # END
