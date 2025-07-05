@@ -16,6 +16,7 @@
 
 * PHP Namespace Resolver
 * PHP Intelephense
+* PHP IntelliSense
 * PHP Extension Pack
 * PHP Debug
 

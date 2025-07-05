@@ -21,8 +21,8 @@
 ```bash
 sudo vi /etc/default/grub
 ~
-CRUB_CMDLINE_LINUX_DEFAULT="quiet splash pci=nommconf"
 GRUB_CMDLINE_LINUX="ipv6.disable=1 crashkernel=no net.ifnames=0 biosdevname=0"
+CRUB_CMDLINE_LINUX_DEFAULT="quiet splash pci=nommconf"
 
 sudo update-grub
 ```
