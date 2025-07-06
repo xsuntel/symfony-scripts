@@ -99,11 +99,6 @@ setPhp() {
     setExit
   fi
 
-  # >>>> PHP - php-cs-fixer
-  if [ -f .php-cs-fixer.cache ]; then
-    rm -f .php-cs-fixer.cache
-  fi
-
   # >>>> PHP - Symfony Framework - Deployment
   if [ -f ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh ]; then
     source ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh
@@ -111,6 +106,11 @@ setPhp() {
     echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh" && exit
   fi
   echo
+
+  # >>>> PHP - Symfony Framework - php-cs-fixer
+  if [ -f .php-cs-fixer.cache ]; then
+    rm -f .php-cs-fixer.cache
+  fi
 }
 
 # >>>> Cache
