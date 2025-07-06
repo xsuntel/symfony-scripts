@@ -1,13 +1,13 @@
 #!/bin/bash
 # ======================================================================================================================
-# Scripts - Symfony - Console Commands - Router
+# Scripts - Symfony - Console Commands - Translation
 # ======================================================================================================================
 
-PROJECT_PATH=$(dirname "$(dirname "$(dirname "$0")")")
+PROJECT_PATH=$(dirname "$(dirname "$0")")
 cd "${PROJECT_PATH}" || exit
 
 echo "---------------------------------------------------------------------------------------------------------------"
-echo "[ Symfony ] Console Commands - Router"
+echo "[ Symfony ] Console Commands - Translation"
 echo "---------------------------------------------------------------------------------------------------------------"
 echo
 
@@ -40,11 +40,11 @@ echo
         echo
 
         # --------------------------------------------------------------------------------------------------------------
-        # 1) router
+        # 1) debug
         # --------------------------------------------------------------------------------------------------------------
         if [ "${CONSOLE_COMMANDS}" == "debug" ]; then
-          echo ">>>> router"
-          symfony console debug:router
+          echo ">>>> debug"
+          symfony console debug:translation en
 
         fi
         echo

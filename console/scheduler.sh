@@ -1,13 +1,13 @@
 #!/bin/bash
 # ======================================================================================================================
-# Scripts - Symfony - Console Commands - Translation
+# Scripts - Symfony - Console Commands - Scheduler
 # ======================================================================================================================
 
-PROJECT_PATH=$(dirname "$(dirname "$(dirname "$0")")")
+PROJECT_PATH=$(dirname "$(dirname "$0")")
 cd "${PROJECT_PATH}" || exit
 
 echo "---------------------------------------------------------------------------------------------------------------"
-echo "[ Symfony ] Console Commands - Translation"
+echo "[ Symfony ] Console Commands - Scheduler"
 echo "---------------------------------------------------------------------------------------------------------------"
 echo
 
@@ -21,13 +21,17 @@ echo
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "debug" "exit"; do
+        select num in "debug" "consume" "exit"; do
           case "$REPLY" in
           1)
             CONSOLE_COMMANDS="debug"
             break
             ;;
           2)
+            CONSOLE_COMMANDS="consume"
+            break
+            ;;
+          3)
             echo "exit()"
             exit
             ;;
@@ -40,11 +44,18 @@ echo
         echo
 
         # --------------------------------------------------------------------------------------------------------------
-        # 1) debug
+        # 1) config
         # --------------------------------------------------------------------------------------------------------------
         if [ "${CONSOLE_COMMANDS}" == "debug" ]; then
           echo ">>>> debug"
-          symfony console debug:translation en
+          symfony console debug:scheduler
+
+        # --------------------------------------------------------------------------------------------------------------
+        # 2) default
+        # --------------------------------------------------------------------------------------------------------------
+        elif [ "${CONSOLE_COMMANDS}" == "consume" ]; then
+          echo ">>>> consume"
+          symfony console messenger:consume --all -vv
 
         fi
         echo

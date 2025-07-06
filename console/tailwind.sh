@@ -1,13 +1,13 @@
 #!/bin/bash
 # ======================================================================================================================
-# Scripts - Symfony - Console Commands - Scheduler
+# Scripts - Symfony - Console Commands - Tailwindcss
 # ======================================================================================================================
 
-PROJECT_PATH=$(dirname "$(dirname "$(dirname "$0")")")
+PROJECT_PATH=$(dirname "$(dirname "$0")")
 cd "${PROJECT_PATH}" || exit
 
 echo "---------------------------------------------------------------------------------------------------------------"
-echo "[ Symfony ] Console Commands - Scheduler"
+echo "[ Symfony ] Console Commands - Tailwindcss"
 echo "---------------------------------------------------------------------------------------------------------------"
 echo
 
@@ -21,14 +21,14 @@ echo
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "debug" "consume" "exit"; do
+        select num in "build" "watch" "exit"; do
           case "$REPLY" in
           1)
-            CONSOLE_COMMANDS="debug"
+            CONSOLE_COMMANDS="build"
             break
             ;;
           2)
-            CONSOLE_COMMANDS="consume"
+            CONSOLE_COMMANDS="watch"
             break
             ;;
           3)
@@ -44,18 +44,18 @@ echo
         echo
 
         # --------------------------------------------------------------------------------------------------------------
-        # 1) config
+        # 1) build
         # --------------------------------------------------------------------------------------------------------------
-        if [ "${CONSOLE_COMMANDS}" == "debug" ]; then
-          echo ">>>> debug"
-          symfony console debug:scheduler
+        if [ "${CONSOLE_COMMANDS}" == "build" ]; then
+          echo ">>>> build"
+          symfony console tailwind:build
 
         # --------------------------------------------------------------------------------------------------------------
-        # 2) default
+        # 2) watch
         # --------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "consume" ]; then
-          echo ">>>> consume"
-          symfony console messenger:consume --all -vv
+        elif [ "${CONSOLE_COMMANDS}" == "watch" ]; then
+          echo ">>>> watch"
+          symfony console tailwind:build --watch -v
 
         fi
         echo

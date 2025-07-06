@@ -1,13 +1,13 @@
 #!/bin/bash
 # ======================================================================================================================
-# Scripts - Symfony - Console Commands - Twig
+# Scripts - Symfony - Console Commands - Router
 # ======================================================================================================================
 
-PROJECT_PATH=$(dirname "$(dirname "$(dirname "$0")")")
+PROJECT_PATH=$(dirname "$(dirname "$0")")
 cd "${PROJECT_PATH}" || exit
 
 echo "---------------------------------------------------------------------------------------------------------------"
-echo "[ Symfony ] Console Commands - Twig"
+echo "[ Symfony ] Console Commands - Router"
 echo "---------------------------------------------------------------------------------------------------------------"
 echo
 
@@ -21,17 +21,13 @@ echo
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "debug" "twig-component" "exit"; do
+        select num in "debug" "exit"; do
           case "$REPLY" in
           1)
             CONSOLE_COMMANDS="debug"
             break
             ;;
           2)
-            CONSOLE_COMMANDS="twig-component"
-            break
-            ;;
-          3)
             echo "exit()"
             exit
             ;;
@@ -44,18 +40,11 @@ echo
         echo
 
         # --------------------------------------------------------------------------------------------------------------
-        # 1) twig
+        # 1) router
         # --------------------------------------------------------------------------------------------------------------
         if [ "${CONSOLE_COMMANDS}" == "debug" ]; then
-          echo ">>>> twig"
-          symfony console debug:twig
-
-        # --------------------------------------------------------------------------------------------------------------
-        # 2) twig-component
-        # --------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "twig-component" ]; then
-          echo ">>>> twig-component"
-          symfony console debug:twig-component
+          echo ">>>> router"
+          symfony console debug:router
 
         fi
         echo

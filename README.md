@@ -20,6 +20,7 @@ using [Symfony Framework](https://symfony.com)
     
         | -- Symfony Framework -- |
 
+    console/
     diagrams/
         cloud/
         servers/
@@ -32,7 +33,6 @@ using [Symfony Framework](https://symfony.com)
         macos/
         windows/
     tools/
-        console/
         ide/
     .env.app
     .env.dev

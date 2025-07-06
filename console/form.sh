@@ -1,13 +1,13 @@
 #!/bin/bash
 # ======================================================================================================================
-# Scripts - Symfony - Console Commands - Event Dispatcher
+# Scripts - Symfony - Console Commands - Form
 # ======================================================================================================================
 
-PROJECT_PATH=$(dirname "$(dirname "$(dirname "$0")")")
+PROJECT_PATH=$(dirname "$(dirname "$0")")
 cd "${PROJECT_PATH}" || exit
 
 echo "---------------------------------------------------------------------------------------------------------------"
-echo "[ Symfony ] Console Commands - Event Dispatcher"
+echo "[ Symfony ] Console Commands - Form"
 echo "---------------------------------------------------------------------------------------------------------------"
 echo
 
@@ -21,21 +21,13 @@ echo
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "debug" "kernel" "security" "exit"; do
+        select num in "debug" "exit"; do
           case "$REPLY" in
           1)
             CONSOLE_COMMANDS="debug"
             break
             ;;
           2)
-            CONSOLE_COMMANDS="kernel"
-            break
-            ;;
-          3)
-            CONSOLE_COMMANDS="security"
-            break
-            ;;
-          4)
             echo "exit()"
             exit
             ;;
@@ -52,21 +44,7 @@ echo
         # --------------------------------------------------------------------------------------------------------------
         if [ "${CONSOLE_COMMANDS}" == "debug" ]; then
           echo ">>>> debug"
-          symfony console debug:event-dispatcher
-
-        # --------------------------------------------------------------------------------------------------------------
-        # 2) kernel
-        # --------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "kernel" ]; then
-          echo ">>>> debug:event-dispatcher"
-          symfony console debug:event-dispatcher kernel.exception
-
-        # --------------------------------------------------------------------------------------------------------------
-        # 3) security
-        # --------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "security" ]; then
-          echo ">>>> debug:event-dispatcher"
-          symfony console debug:event-dispatcher Security
+          symfony console debug:form
 
         fi
         echo

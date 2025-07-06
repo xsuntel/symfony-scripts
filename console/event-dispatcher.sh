@@ -1,13 +1,13 @@
 #!/bin/bash
 # ======================================================================================================================
-# Scripts - Symfony - Console Commands - Messenger
+# Scripts - Symfony - Console Commands - Event Dispatcher
 # ======================================================================================================================
 
-PROJECT_PATH=$(dirname "$(dirname "$(dirname "$0")")")
+PROJECT_PATH=$(dirname "$(dirname "$0")")
 cd "${PROJECT_PATH}" || exit
 
 echo "---------------------------------------------------------------------------------------------------------------"
-echo "[ Symfony ] Console Commands - Messenger"
+echo "[ Symfony ] Console Commands - Event Dispatcher"
 echo "---------------------------------------------------------------------------------------------------------------"
 echo
 
@@ -21,33 +21,21 @@ echo
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "debug" "consume" "stats" "failed" "remove" "stop" "exit"; do
+        select num in "debug" "kernel" "security" "exit"; do
           case "$REPLY" in
           1)
             CONSOLE_COMMANDS="debug"
             break
             ;;
           2)
-            CONSOLE_COMMANDS="consume"
+            CONSOLE_COMMANDS="kernel"
             break
             ;;
           3)
-            CONSOLE_COMMANDS="stats"
+            CONSOLE_COMMANDS="security"
             break
             ;;
           4)
-            CONSOLE_COMMANDS="failed"
-            break
-            ;;
-          5)
-            CONSOLE_COMMANDS="remove"
-            break
-            ;;
-          6)
-            CONSOLE_COMMANDS="stop"
-            break
-            ;;
-          7)
             echo "exit()"
             exit
             ;;
@@ -64,42 +52,22 @@ echo
         # --------------------------------------------------------------------------------------------------------------
         if [ "${CONSOLE_COMMANDS}" == "debug" ]; then
           echo ">>>> debug"
-          symfony console debug:messenger
+          symfony console debug:event-dispatcher
 
         # --------------------------------------------------------------------------------------------------------------
-        # 2) consume
+        # 2) kernel
         # --------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "consume" ]; then
-          echo ">>>> consume"
-          symfony console messenger:consume --all -vv
+        elif [ "${CONSOLE_COMMANDS}" == "kernel" ]; then
+          echo ">>>> debug:event-dispatcher"
+          symfony console debug:event-dispatcher kernel.exception
 
         # --------------------------------------------------------------------------------------------------------------
-        # 3) stats
+        # 3) security
         # --------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "stats" ]; then
-          echo ">>>> stats"
-          symfony console messenger:stats
+        elif [ "${CONSOLE_COMMANDS}" == "security" ]; then
+          echo ">>>> debug:event-dispatcher"
+          symfony console debug:event-dispatcher Security
 
-        # --------------------------------------------------------------------------------------------------------------
-        # 4) failed
-        # --------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "failed" ]; then
-          echo ">>>> failed"
-          symfony console messenger:failed:show --stats
-
-        # --------------------------------------------------------------------------------------------------------------
-        # 5) remove
-        # --------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "remove" ]; then
-          echo ">>>> remove"
-          symfony console messenger:failed:remove --all
-
-        # --------------------------------------------------------------------------------------------------------------
-        # 6) stop
-        # --------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "stop" ]; then
-          echo ">>>> stop"
-          symfony console messenger:stop-workers
         fi
         echo
 
