@@ -17,7 +17,7 @@ if [ -d app ]; then
 
       # >>>> assets
       if [ -f assets/controllers/hello_controller.js ]; then
-        rm -fv assets/controllers/hello_controller.js
+        rm -f assets/controllers/hello_controller.js
         echo
       fi
 
@@ -38,7 +38,7 @@ if [ -d app ]; then
 
       # >>>> templates
       if [ -f templates/base.html.twig ]; then
-        rm -fv templates/base.html.twig
+        rm -f templates/base.html.twig
         echo
       fi
 
