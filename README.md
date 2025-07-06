@@ -23,8 +23,8 @@ using [Symfony Framework](https://symfony.com)
     console/
     diagrams/
         cloud/
-        servers/
-        source/
+        project/
+        stack/
     scripts/
         base/
         cloud/
@@ -34,6 +34,7 @@ using [Symfony Framework](https://symfony.com)
         windows/
     tools/
         ide/
+        tutorial.sh
     .env.app
     .env.dev
     .env.dev.local
