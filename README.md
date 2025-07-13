@@ -22,9 +22,6 @@ using [Symfony Framework](https://symfony.com)
 
     console/
     diagrams/
-        cloud/
-        project/
-        stack/
     scripts/
         base/
         cloud/
@@ -33,7 +30,7 @@ using [Symfony Framework](https://symfony.com)
         macos/
         windows/
     tools/
-        ide/
+        .symfony.local.yaml
         tutorial.sh
     .env.app
     .env.dev
@@ -41,7 +38,6 @@ using [Symfony Framework](https://symfony.com)
     .env.prod
     .env.prod.local
     .gitignore
-    .symfony.local.yaml
     docker-compose.yml
     LICENSE
     README.md

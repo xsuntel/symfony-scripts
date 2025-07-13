@@ -1,9 +1,9 @@
 #!/bin/bash
 # ======================================================================================================================
-# Tutorial - Create a new project
+# Tools - Delete cache files for Git
 # ======================================================================================================================
 
-PROJECT_PATH=$(dirname "$(dirname "$(dirname "$0")")")
+PROJECT_PATH=$(dirname "$(dirname "$0")")
 cd "${PROJECT_PATH}" || exit
 
 # >>>> Abstract
