@@ -1,6 +1,6 @@
-<mxfile host="drawio-plugin" modified="2024-06-18T15:39:58.806Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="jtrlQIRUoGwzQ3IdakiC" version="22.1.22" type="embed" pages="2">
+<mxfile host="drawio-plugin" modified="2025-07-26T05:46:27.130Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="cZhWE1Yf32zZUe8OmET0" version="22.1.22" type="embed" pages="2">
   <diagram name="Configurations" id="nSLMvqq1_s9JcMIWVHJ0">
-    <mxGraphModel dx="1550" dy="1128" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="1129" dy="1161" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="tFxSJcbVjkW49yoVQv_u-0" />
         <mxCell id="tFxSJcbVjkW49yoVQv_u-1" parent="tFxSJcbVjkW49yoVQv_u-0" />
@@ -96,7 +96,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="HTTP Client" id="U8sfL9FsSNlfCUIc2m1S">
-    <mxGraphModel dx="1550" dy="1128" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="1129" dy="1161" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="pFq5Vl4KMVpp_2yytRFn-0" />
         <mxCell id="pFq5Vl4KMVpp_2yytRFn-1" parent="pFq5Vl4KMVpp_2yytRFn-0" />
