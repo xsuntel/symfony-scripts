@@ -101,20 +101,58 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
       echo
     fi
 
-    # >>>> Update deny network
-    #if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
-    #  # >>>> Private Network
-    #  sudo ufw deny from 10.0.0.0/8
-    #  sudo ufw deny from 172.16.0.0/12
-    #  sudo ufw deny from 192.168.0.0/16
-    #  sudo ufw deny from 192.168.0.0/24
-    #  sudo ufw deny from 192.168.55.0/24
+    # >>>> Private Network - Inbound Traffic
+    if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
 
-    #  # >>>> Private Network
-    #  sudo ufw deny from 10.30.150.0/24
-    #  sudo ufw deny from 168.126.63.1
-    #  sudo ufw deny from 224.0.0.1
-    #fi
+      sudo ufw deny from 10.0.0.0/8
+      sudo ufw deny from 172.16.0.0/12
+      #sudo ufw deny from 192.168.0.0/16
+      #sudo ufw deny from 192.168.0.0/24
+      sudo ufw deny from 192.168.55.0/24
+
+    fi
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # UFW - Outgoing traffic
+    # ------------------------------------------------------------------------------------------------------------------
+
+    # >>>> Private Network - Outbound Traffic
+    if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+
+      sudo ufw deny from any to any port 1
+      sudo ufw deny from any to any port 7
+      sudo ufw deny from any to any port 9
+      sudo ufw deny from any to any port 13
+      sudo ufw deny from any to any port 17
+      sudo ufw deny from any to any port 19
+      sudo ufw deny from any to any port 20
+      sudo ufw deny from any to any port 21
+      sudo ufw deny from any to any port 23
+      sudo ufw deny from any to any port 24
+      sudo ufw deny from any to any port 69
+      sudo ufw deny from any to any port 70
+      sudo ufw deny from any to any port 161
+      sudo ufw deny from any to any port 162
+      sudo ufw deny from any to any port 445
+      sudo ufw deny from any to any port 514
+      sudo ufw deny from any to any port 515
+      sudo ufw deny from any to any port 540
+      sudo ufw deny from any to any port 542
+      sudo ufw deny from any to any port 591
+      sudo ufw deny from any to any port 636
+      sudo ufw deny from any to any port 873
+      sudo ufw deny from any to any port 981
+      sudo ufw deny from any to any port 990
+      sudo ufw deny from any to any port 992
+      sudo ufw deny from any to any port 1080
+      sudo ufw deny from any to any port 1900
+      sudo ufw deny from any to any port 3690
+      sudo ufw deny from any to any port 4369
+      sudo ufw deny from any to any port 5228
+      sudo ufw deny from any to any port 5551
+      sudo ufw deny from any to any port 5552
+      sudo ufw deny from any to any port 17500
+    fi
 
     # ------------------------------------------------------------------------------------------------------------------
     # UFW - Enable
