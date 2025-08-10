@@ -4,7 +4,7 @@
 
 # >>>> asset-mapper
 app/assets/styles/app.tailwind.css
-app/assets/vendor
+app/assets/vendor/
 app/bin/tailwindcss-linux-x64
 
 # >>>> app/config
@@ -12,25 +12,28 @@ app/config/secrets/prod/prod.decrypt.private.php
 app/config/jwt/*.pem
 
 # >>>> app/migrations
-app/migrations
+app/migrations/
 
 # >>>> app/node_modules
-app/node_modules
+app/node_modules/
 
 # >>>> app/public
 app/public/assets
 app/public/build
 app/public/bundles
 app/public/download
+app/public/[0-9]
+app/public/*.meta
+app/public/*.meta.json
 
 # >>>> app/tests
-app/tests
+app/tests/
 
 # >>>> app/var
-app/var
+app/var/
 
 # >>>> app/vendor
-app/vendor
+app/vendor/
 
 # >>>> app/.env.*
 app/.env.*
@@ -120,7 +123,7 @@ app/.symfony.local.yaml
 /phpunit.xml
 
 # >>>> PHP - vendor
-./vendor
+./vendor/
 
 # >>>> Draw.io
 .*.drawio.dtmp
@@ -128,11 +131,11 @@ app/.symfony.local.yaml
 # >>>> Docker - Desktop                                                  https://www.docker.com/products/docker-desktop/
 ./docker-compose.*.env
 ./docker-compose.*.yml
-./var
+./var/
 
 # >>>> Python
-./.venv
-./venv
+./.venv/
+./venv/
 
 # ======================================================================================================================
 # tools
