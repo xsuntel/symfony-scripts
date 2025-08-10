@@ -4,7 +4,7 @@
 
 # >>>> asset-mapper
 app/assets/styles/app.tailwind.css
-app/assets/vendor/
+app/assets/vendor
 app/bin/tailwindcss-linux-x64
 
 # >>>> app/config
@@ -30,10 +30,10 @@ app/public/*.meta.json
 app/tests/
 
 # >>>> app/var
-app/var/
+app/var
 
 # >>>> app/vendor
-app/vendor/
+app/vendor
 
 # >>>> app/.env.*
 app/.env.*
@@ -131,7 +131,7 @@ app/.symfony.local.yaml
 # >>>> Docker - Desktop                                                  https://www.docker.com/products/docker-desktop/
 ./docker-compose.*.env
 ./docker-compose.*.yml
-./var/
+./var
 
 # >>>> Python
 ./.venv/
