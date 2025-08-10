@@ -190,11 +190,6 @@ setPhp() {
     echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh" && exit
   fi
   echo
-
-  # >>>> PHP - Symfony Framework - php-cs-fixer
-  if [ -f .php-cs-fixer.cache ]; then
-    rm -f .php-cs-fixer.cache
-  fi
 }
 
 # >>>> Cache
@@ -325,6 +320,11 @@ setVM
 # ======================================================================================================================
 # END
 # ======================================================================================================================
+
+  # >>>> PHP - Symfony Framework - php-cs-fixer
+  if [ -f .php-cs-fixer.cache ]; then
+    rm -f .php-cs-fixer.cache
+  fi
 
 # >>>> End
 setEnd
