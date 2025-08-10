@@ -51,6 +51,90 @@ setProject() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "- PROJECT NAME : ${PROJECT_NAME}"
   echo
+
+  # >>>> App
+  if [ -d app ]; then
+    (
+      cd app || return
+
+      # >>>> Symfony Command                                             https://symfony.com/doc/current/deployment.html
+      if [ -f bin/console ]; then
+
+        # ----------------------------------------------------------------------------------------------------------------
+        # Directories
+        # ----------------------------------------------------------------------------------------------------------------
+
+        # >>>> public
+        if [ -d public ]; then
+          # >>>> public/assets
+          if [ -d public/assets ]; then
+            rm -rf public/assets/*
+          fi
+          # >>>> public/bundles
+          if [ -d public/bundles ]; then
+            rm -rf public/bundles/*
+          fi
+
+          # >>>> Remove related performance files
+          if [ -f public/[0-9].meta.json ]; then
+            rm -f public/[0-9]
+            rm -f public/[0-9].meta
+            rm -f public/[0-9].meta.json
+          fi
+        fi
+
+        # >>>> Remove cache files
+        if [ -d var ]; then
+
+          # >>>> Platform
+          if [ "${PLATFORM_TYPE}" == "Linux" ]; then
+
+            if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+              rm -rf var/*
+              chmod 777 var
+            else
+              sudo rm -rf var/*
+              sudo chmod 777 var
+            fi
+            mkdir -p var/cache
+            mkdir -p var/log
+            mkdir -p var/sessions
+            mkdir -p var/translations
+
+          elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
+
+            rm -rf var/*
+            mkdir -p var/cache
+            mkdir -p var/log
+            mkdir -p var/sessions
+            mkdir -p var/translations
+
+          elif [ "${PLATFORM_TYPE}" == "Windows" ]; then
+
+            rm -rf var/*
+            mkdir -p var/cache
+            mkdir -p var/log
+            mkdir -p var/sessions
+            mkdir -p var/translations
+
+          else
+            rm -rf var/*
+          fi
+
+        fi
+
+        # >>>> php-cs-fixer
+        if [ -f .php-cs-fixer.cache ]; then
+          rm -f .php-cs-fixer.cache
+        fi
+      fi
+    )
+  else
+    echo
+    echo "[ ERROR ] There is not a folder : app"
+    echo
+    setExit
+  fi
 }
 
 # ----------------------------------------------------------------------------------------------------------------------

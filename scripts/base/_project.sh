@@ -31,6 +31,18 @@ if [ -d app ]; then
         rm -rf node_modules
       fi
 
+      # >>>> public
+      if [ -d public ]; then
+        # >>>> public/assets
+        if [ -d public/assets ]; then
+          rm -rf public/assets/*
+        fi
+        # >>>> public/bundles
+        if [ -d public/bundles ]; then
+          rm -rf public/bundles/*
+        fi
+      fi
+
       # >>>> src
       if [ -f ./src/Controller/.gitignore ]; then
         rm -f ./src/Controller/.gitignore
