@@ -91,51 +91,51 @@ app/.symfony.local.yaml
 # ======================================================================================================================
 
 # >>>> PHP - Local ENV files
-./.env.local
-./.env.local.php
-./.env.*.local
+.env.local
+.env.local.php
+.env.*.local
 
 # >>>> PHP - Composer
-./composer.phar
-./composer.lock
+composer.phar
+composer.lock
 
 # >>>> PHP - Package
-./package.tar
-./package.json
-./package-lock.json
+package.tar
+package.json
+package-lock.json
 
 # >>>> PHP - node_modules
-./npm-debug.log
-./yarn-error.log
+npm-debug.log
+yarn-error.log
 
 # >>>> PHP - phing-latest.phar
-./phing-latest.phar
-./tools/ide/phing-latest.phar
+phing-latest.phar
+tools/ide/phing-latest.phar
 
 # >>>> PHP - PHP-CS-Fixer
-./.php-cs-fixer.php
-./.php-cs-fixer.cache
-./.php-cs-fixer.dist.php
+.php-cs-fixer.php
+.php-cs-fixer.cache
+.php-cs-fixer.dist.php
 
 # >>>> PHP - PHPUnit
-./tests/.phpunit.result.cache
-./.phpunit.result.cache
+tests/.phpunit.result.cache
+.phpunit.result.cache
 /phpunit.xml
 
 # >>>> PHP - vendor
-./vendor/
+vendor/
 
 # >>>> Draw.io
 .*.drawio.dtmp
 
 # >>>> Docker - Desktop                                                  https://www.docker.com/products/docker-desktop/
-./docker-compose.*.env
-./docker-compose.*.yml
-./var
+docker-compose.*.env
+docker-compose.*.yml
+var
 
 # >>>> Python
-./.venv/
-./venv/
+.venv/
+venv/
 
 # ======================================================================================================================
 # tools
