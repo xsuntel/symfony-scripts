@@ -48,9 +48,6 @@ sudo systemctl disable sysstat
 ```bash
 sudo vi /etc/sysctl.conf 
 ~
-# CPU
-kernel.perf_cpu_time_max_percent=25
-kernel.perf_event_max_sample_rate=10000
 
 # Network - ipv6
 net.ipv6.conf.all.disable_ipv6=1
