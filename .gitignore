@@ -141,7 +141,12 @@ venv/
 # tools
 # ======================================================================================================================
 
-# >>>> PhpStorm                                                                      https://www.jetbrains.com/phpstorm/
+# >>>> Docker
+docker-compose.yml
+docker-compose.*.env
+docker-compose.*.yml
+
+# >>>> IDE - PhpStorm                                                                https://www.jetbrains.com/phpstorm/
 
 # User-specific stuff
 .idea/**/workspace.xml
@@ -212,7 +217,7 @@ venv/
 # https://plugins.jetbrains.com/plugin/12206-codestream
 .idea/codestream.xml
 
-# >>>> Visual Studio Code                                                                  https://code.visualstudio.com
+# >>>> IDE - Visual Studio Code                                                            https://code.visualstudio.com
 
 .vscode/*
 !.vscode/settings.json

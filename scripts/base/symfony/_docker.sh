@@ -35,34 +35,56 @@ fi
 PROJECT_NAME=$(basename "$(realpath ${PROJECT_PATH})")
 
 # ----------------------------------------------------------------------------------------------------------------------
-# Docker - Containers - System - Volume (Bind)                                        https://docs.docker.com/reference/
+# Docker - Containers
 # ----------------------------------------------------------------------------------------------------------------------
 
-# >>>> Docker Desktop - a recipe file for Symfony
+# >>>> Docker - Containers - Delete a recipe file for Symfony
 if [ -f ${PROJECT_PATH}/app/docker-compose.yml ]; then
-  echo ">>>> Docker - a recipe file for Symfony"
-  rm -f ${PROJECT_PATH}/app/docker-compose.*
+  echo ">>>> Docker - Containers - Delete a recipe file for Symfony"
+  rm -fv ${PROJECT_PATH}/app/docker-compose.*
   echo
 fi
 
-# >>>> Docker Desktop - docker-compose files
-if [ -f ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.env ]; then
-  rm -fv ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.env
+# >>>> Docker - Containers - Delete docker-compose.yml
+if [ -f ${PROJECT_PATH}/docker-compose.yml ]; then
+  echo ">>>> Docker - Containers - Delete docker-compose.yml"
+  rm -fv ${PROJECT_PATH}/docker-compose.yml
+  echo
 fi
-if [ -f ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.yml ]; then
-  rm -fv ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.yml
-fi
-echo
 
-# >>>> docker-compose files
+# >>>> Docker - Containers - Delete docker-compose.${ENVIRONMENT_NAME}.env
+if [ -f ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.env ]; then
+  echo ">>>> Docker - Containers - Delete docker-compose.${ENVIRONMENT_NAME}.env"
+  rm -fv ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.env
+  echo
+fi
+
+# >>>> Docker - Containers - Delete docker-compose.${ENVIRONMENT_NAME}.yml
+if [ -f ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.yml ]; then
+  echo ">>>> Docker - Containers - Delete docker-compose.${ENVIRONMENT_NAME}.yml"
+  rm -fv ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.yml
+  echo
+fi
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Docker - Containers - Configuration
+# ----------------------------------------------------------------------------------------------------------------------
+
+# >>>> Docker Desktop - docker-compose files
 echo ">>>> Docker Desktop - Update configurations"
 echo
+
+if [ -f ${PROJECT_PATH}/scripts/docker/containers/docker-compose.yml ]; then
+  cp -fv ${PROJECT_PATH}/scripts/docker/containers/docker-compose.yml ${PROJECT_PATH}
+  echo
+fi
+
 if [ -f ${PROJECT_PATH}/scripts/docker/containers/docker-compose.${ENVIRONMENT_NAME}.env ] && [ -f ${PROJECT_PATH}/scripts/docker/containers/docker-compose.${ENVIRONMENT_NAME}.yml ]; then
   cp -fv ${PROJECT_PATH}/scripts/docker/containers/docker-compose.${ENVIRONMENT_NAME}.* ${PROJECT_PATH}
   echo
 fi
 
-# >>>> docker containers
+# >>>> Docker Desktop - docker containers
 if [ -f ${PROJECT_PATH}/docker-compose.yml ] && [ -f ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.env ] && [ -f ${PROJECT_PATH}/docker-compose.${ENVIRONMENT_NAME}.yml ]; then
   echo ">>>> Docker Desktop - Build docker images"
   echo
