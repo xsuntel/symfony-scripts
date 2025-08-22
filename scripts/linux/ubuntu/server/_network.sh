@@ -59,10 +59,10 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
       sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 9003 proto tcp comment 'PHP - Xdebug'
 
       # >>>> Symfony Local Server
-      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8000 proto tcp comment 'Local server - 00'
-      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8010 proto tcp comment 'Local server - 10'
-      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8020 proto tcp comment 'Local server - 20'
-      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8030 proto tcp comment 'Local server - 30'
+      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8000 proto tcp comment 'Local server - Symfony'
+      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8081 proto tcp comment 'Local server - App 1'
+      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8082 proto tcp comment 'Local server - App 2'
+      sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 8083 proto tcp comment 'Local server - App 3'
     fi
 
     # >>>> Update allowed ports for Cache    - Redis
