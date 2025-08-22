@@ -35,7 +35,7 @@ RUN echo "[ Apache ] Make a directory"
 # STEP - 06 : Copy source files
 # ----------------------------------------------------------------------------------------------------------------------
 RUN echo "[ Apache ] Update WSGI configuration"
-#COPY server/nginx/etc/nginx/conf.d/www.conf /etc/nginx/conf.d
+#COPY server/nginx/etc/nginx/conf.d/symfony.conf /etc/nginx/conf.d
 
 # ----------------------------------------------------------------------------------------------------------------------
 # STEP - 07 : Start the service

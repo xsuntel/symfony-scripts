@@ -51,10 +51,10 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
 
     # >>>> Nginx - Project
     PROJECT_NAME=$(basename "$(realpath ${PROJECT_PATH})")
-    if [ -f /etc/nginx/conf.d/www.conf ]; then
-      sudo rm -f /etc/nginx/conf.d/www.conf
+    if [ -f /etc/nginx/conf.d/symfony.conf ]; then
+      sudo rm -f /etc/nginx/conf.d/symfony.conf
     fi
-    sudo cp -fv ${PROJECT_PATH}/scripts/linux/ubuntu/server/nginx/conf.d/www_${ENVIRONMENT_NAME}.conf /etc/nginx/conf.d/www.conf
+    sudo cp -fv ${PROJECT_PATH}/scripts/linux/ubuntu/server/nginx/conf.d/symfony_${ENVIRONMENT_NAME}.conf /etc/nginx/conf.d/symfony.conf
 
     if [ -d /etc/nginx/sites-available ]; then
       sudo rm -fv /etc/nginx/sites-available/*

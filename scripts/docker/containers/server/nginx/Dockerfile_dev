@@ -33,7 +33,7 @@ RUN echo "[ Nginx ] Update configuration"
 RUN rm -f /etc/nginx/nginx.conf
 RUN rm -f /etc/nginx/conf.d/default.conf
 COPY --link scripts/docker/containers/server/nginx/etc/nginx/nginx_dev.conf /etc/nginx/nginx.conf
-COPY --link scripts/docker/containers/server/nginx/etc/nginx/conf.d/www_dev.conf /etc/nginx/conf.d/www.conf
+COPY --link scripts/docker/containers/server/nginx/etc/nginx/conf.d/symfony_dev.conf /etc/nginx/conf.d/symfony.conf
 
 # ----------------------------------------------------------------------------------------------------------------------
 # STEP - 06 : Copy source files
