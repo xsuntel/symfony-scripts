@@ -168,6 +168,7 @@
       <path value="$PROJECT_DIR$/app/vendor/staabm/side-effects-detector" />
       <path value="$PROJECT_DIR$/app/vendor/sebastian/exporter" />
       <path value="$PROJECT_DIR$/app/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/app/vendor/php-cs-fixer/shim" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
