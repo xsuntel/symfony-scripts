@@ -16,8 +16,8 @@
 
 * PHP Namespace Resolver
 * PHP Intelephense
-* PHP Extension Pack (Xdebug)
-* PHP Debug
+* PHP IntelliSenseCode-runner: Enable App Insights - false
+* PHP Debug          (Xdebug)
 
 * Symfony for VSCode (fixed)
 * Symfony UX Twig Component
@@ -47,6 +47,7 @@ Manage / Settings / PHP Suggest Basic - false
 * Code Runner
 
 ```text
+  Code-runner: Enable App Insights - false
   Code-runner: Run In Terminal - true
 ```
 
