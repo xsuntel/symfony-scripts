@@ -16,25 +16,27 @@
 
 * PHP Namespace Resolver
 * PHP Intelephense
-* PHP IntelliSense
-* PHP Extension Pack
+* PHP Extension Pack (Xdebug)
 * PHP Debug
 
-* Symfony for VSCode
+* Symfony for VSCode (fixed)
 * Symfony UX Twig Component
-* Tailwind CSS IntelliSense
 * Modern Twig
 
-* Redis for VS Code
+* Tailwind CSS IntelliSense
+
+* Redis for VS Code  (Redis)
 
 * PostgreSQL (Microsoft)
 
 * Draw.io Integration
 * Markdownlint
-* Code Runner
 
+* Code Runner
 * Auto Close Tags
 * Material Icon Theme
+
+* Gemni Code Assist (Google)
 
 #### Settings
 
