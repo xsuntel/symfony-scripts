@@ -35,8 +35,23 @@
 * Code Runner
 
 * Gemni Code Assist (Google)
+* Gemini CLI Companion
 
 #### Settings
+
+* Application / Proxy
+
+```text
+Use Local Proxy Configuration - UnChecked
+```
+
+* Extensions / .ipynb Support
+
+```text
+Experimental: Serialization - UnChecked
+```
+
+#### Settings - Language
 
 * PHP
 
@@ -44,11 +59,27 @@
 Manage / Settings / PHP Suggest Basic - false
 ```
 
+#### Settings - Tools
+
+* GitHub
+
+```text
+Chat: Disable AI Features - Disable (Checked)
+Pgsql › Copilot: Enable   - UnChecked
+```
+
 * Code Runner
 
 ```text
-  Code-runner: Enable App Insights - false
-  Code-runner: Run In Terminal - true
+Code-runner: Enable App Insights - false
+Code-runner: Run In Terminal - true
+```
+
+* Copilot
+
+```text
+Chat: Disable AI Features - Disable (Checked)
+Pgsql › Copilot: Enable   - UnChecked
 ```
 
 ## Tools
