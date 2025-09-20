@@ -219,7 +219,6 @@ docker-compose.*.yml
 
 # >>>> IDE - Visual Studio Code                                                            https://code.visualstudio.com
 
-.vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
