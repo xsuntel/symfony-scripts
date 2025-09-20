@@ -32,7 +32,6 @@
 * Draw.io Integration
 * Markdownlint
 * Material Icon Theme
-
 * Code Runner
 
 * Gemni Code Assist (Google)
