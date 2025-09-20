@@ -30,6 +30,9 @@ using [Symfony Framework](https://symfony.com)
         macos/
         windows/
     tools/
+        ai/
+        git/
+        ide/
         .symfony.local.yaml
         tutorial.sh
     .env.app
@@ -38,7 +41,6 @@ using [Symfony Framework](https://symfony.com)
     .env.prod
     .env.prod.local
     .gitignore
-    docker-compose.yml
     LICENSE
     README.md
 ```
