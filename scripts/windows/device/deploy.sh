@@ -68,14 +68,6 @@ setPlatform() {
     echo "Please check a file : ${PROJECT_PATH}/scripts/base/_platform.sh" && exit
   fi
 
-  # >>>> Server - Hosts - Import an install file
-  if [ -f ${PROJECT_PATH}/scripts/linux/windows/device/_hosts.sh ]; then
-    source ${PROJECT_PATH}/scripts/linux/windows/device/_hosts.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/linux/windows/device/_hosts.sh" && exit
-  fi
-  echo
-
   # >>>> Server - Network - Import an install file
   if [ -f ${PROJECT_PATH}/scripts/linux/windows/device/_network.sh ]; then
     source ${PROJECT_PATH}/scripts/linux/windows/device/_network.sh

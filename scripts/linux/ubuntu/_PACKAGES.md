@@ -19,12 +19,8 @@
 * Update Kernel - /etc/modprobe.d/blacklist.conf
 
 ```bash
-lsmod
+lsmod 
 
-modprobe -c
-```
-
-```bash
 sudo vi /etc/modprobe.d/blacklist.conf
 ~
 # Customize - Mainboard ACPI
@@ -32,12 +28,6 @@ blacklist acpi_thermal_rel
 blacklist int3403_thermal
 blacklist i801_smbus
 blacklist lp
-
-# Customize - Network - WiFi
-blacklist iwlwifi
-
-# Customize - Bluetooth
-blacklist Bluetooth
 
 sudo dpkg-reconfigure linux-image-$(uname -r)
 ```
@@ -51,25 +41,6 @@ sudo aa-status
 cd /etc/apparmor.d/ 
 
 journalctl -k | grep apparmor
-```
-
-* Update Kernel - /etc/apparmor.d/
-  * <https://documentation.ubuntu.com/server/how-to/security/apparmor/index.html>
-
-```bash
-sudo aa-status
-
-cd /etc/apparmor.d/ 
-
-journalctl -k | grep apparmor
-```
-
-#### Network
-
-* Disable Bluetooth
-
-```bash
-sudo systemctl disable bluetooth
 ```
 
 #### User
@@ -161,14 +132,6 @@ systemctl --user mask org.gnome.SettingsDaemon.Wacom.service
 ## Reference
 
 ### Hardware - Laptop - LG Gram
-
-* Remove firmware
-
-```bash
-sudo apt remove -y fwupd
-
-sudo userdel fwupd-refresh
-```
 
 * Remove error message
 

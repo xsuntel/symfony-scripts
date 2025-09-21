@@ -76,17 +76,13 @@ sudo dmesg | tail -n 100
 ```bash
 lsmod
 
-modprobe -c
-```
-
-```bash
 sudo vi /etc/modprobe.d/blacklist.conf
 ~
-# Customize - Network - IPv6
-blacklist nf_conntrack_ipv6
-blacklist nf_defrag_ipv6
-blacklist IPv6
-blacklist ipv6
+# Customize - Mainboard ACPI
+blacklist acpi_thermal_rel
+blacklist int3403_thermal
+blacklist i801_smbus
+blacklist lp
 
 sudo dpkg-reconfigure linux-image-$(uname -r)
 ```
@@ -319,4 +315,16 @@ sudo systemctl disable apport
 sudo systemctl disable unattended-upgrades
 
 sudo apt remove --purge unattended-upgrades
+```
+
+## Reference
+
+### Hardware - Laptop - LG Gram
+
+* Remove firmware
+
+```bash
+sudo apt remove -y fwupd
+
+sudo userdel fwupd-refresh
 ```
