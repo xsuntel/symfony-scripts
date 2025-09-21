@@ -52,7 +52,7 @@ ip addr show
 
 #### WiFi
 
-##### Device : Disable
+##### Disable
 
 * Update Kernel - /etc/modprobe.d/blacklist.conf
 
@@ -76,7 +76,39 @@ sudo apt remove --purge wpasupplicant
 
 #### Bluetooth
 
-##### Device : Disable
+##### Command
+
+* Check Mac Address
+
+```bash
+bluetoothctl
+
+devices
+```
+
+* Block Mac Address
+
+```bash
+bluetoothctl
+
+block XX:XX:XX:XX:XX:XX
+```
+
+* UnBlock Mac Address
+
+```bash
+bluetoothctl
+
+unblock XX:XX:XX:XX:XX:XX
+```
+
+* Disable Bluetooth
+
+```bash
+sudo systemctl disable bluetooth
+```
+
+##### Disable
 
 * Update Kernel - /etc/modprobe.d/blacklist.conf
 
