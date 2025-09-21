@@ -99,6 +99,34 @@ net.ipv6.conf.default.use_tempaddr = 0
 netstat -lpn
 ```
 
+#### Network
+
+* Install etables
+
+```bash
+sudo apt-get install ebtables
+```
+
+```bash
+sudo arp -a
+```
+
+```bash
+sudo ebtables -F
+```
+
+```bash
+sudo ebtables -A INPUT -s xx:xx:xx:xx:xx:xx -j DROP
+```
+
+```bash
+sudo ebtables -D INPUT -s xx:xx:xx:xx:xx:xx -j DROP
+```
+
+```bash
+sudo ebtables -L
+```
+
 #### Directories
 
 * Update permission

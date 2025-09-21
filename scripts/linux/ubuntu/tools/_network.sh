@@ -27,10 +27,10 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     # ------------------------------------------------------------------------------------------------------------------
     # Platform - Linux - Ubuntu
     # ------------------------------------------------------------------------------------------------------------------
-    echo ">>>> Linux - Network"
+    echo ">>>> Linux - Network - Firewall"
     echo
 
-    local addPackageList="ufw"
+    local addPackageList="ufw ebtables"
     for pkgItem in ${addPackageList}; do
       local APT_PKG_INFO
       APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
@@ -186,5 +186,22 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     echo
 
     sudo ufw status verbose
+    echo
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # ebtables - Mac Address
+    # ------------------------------------------------------------------------------------------------------------------
+    echo ">>>> Linux - Network - ebtables - mac address"
+    echo
+
+    sudo arp -a
+    echo
+
+    #sudo ebtables -F
+    
+    #sudo ebtables -A INPUT -s xx:xx:xx:xx:xx:xx -j DROP
+    #sudo ebtables -A INPUT -s xx:xx:xx:xx:xx:xx -j DROP
+
+    sudo ebtables -L
     echo
 fi
