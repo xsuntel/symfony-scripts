@@ -18,12 +18,14 @@
 * PHP Intelephense
 * PHP IntelliSenseCode-runner: Enable App Insights - false
 * PHP Debug          (Xdebug)
+* PHPDoc Comment
 
 * Symfony for VSCode (fixed)
 * Symfony UX Twig Component
 * Modern Twig
 
 * Tailwind CSS IntelliSense
+* JavaScript (ES6) code snippets
 
 * Redis for VS Code  (Redis)
 
