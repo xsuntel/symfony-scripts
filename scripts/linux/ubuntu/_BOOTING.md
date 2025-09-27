@@ -24,7 +24,25 @@ sudo vi /etc/rc.local
 
 #!/bin/bash
 
-#sudo ebtables -F
+sudo ebtables -F
+
+# >>>> Network - Firewall - IPv6
+
+sudo ebtables -A FORWARD -p IPv6 -j DROP
+sudo ebtables -A FORWARD -p ARP -j DROP
+sudo ebtables -A FORWARD -p LENGTH -j DROP
+
+sudo ebtables -A INPUT -p IPv6 -j DROP
+sudo ebtables -A INPUT -p ARP -j DROP
+sudo ebtables -A INPUT -p LENGTH -j DROP
+ 
+sudo ebtables -A OUTPUT -p IPv6 -j DROP
+sudo ebtables -A OUTPUT -p ARP -j DROP
+sudo ebtables -A OUTPUT -p LENGTH -j DROP
+
+# >>>> Network - Firewall - IPv4
+
+sudo ebtables -D INPUT -p icmp --icmp-type echo-request -j DROP
 
 # ------------------------------------------------------------------------------------------------------------------
 # Mobile - Personal
