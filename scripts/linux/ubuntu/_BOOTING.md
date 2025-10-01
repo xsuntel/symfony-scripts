@@ -42,20 +42,17 @@ sudo ebtables -A OUTPUT -p LENGTH -j DROP
 
 # >>>> Network - Firewall - IPv4
 
-sudo ebtables -D INPUT -p icmp --icmp-type echo-request -j DROP
+sudo ebtables -A INPUT -p icmp --icmp-type echo-request -j DROP
 
 # ------------------------------------------------------------------------------------------------------------------
-# Mobile - Personal
-# ------------------------------------------------------------------------------------------------------------------
-
-#sudo ebtables -A INPUT -s xx:xx:xx:xx:xx:xx -j DROP
-
-
-# ------------------------------------------------------------------------------------------------------------------
-# Laptop - Company
+# Devices
 # ------------------------------------------------------------------------------------------------------------------
 
 #sudo ebtables -A INPUT -s xx:xx:xx:xx:xx:xx -j DROP
+
+#sudo ebtables -A FORWARD -s xx:xx:xx:xx:xx:xx -j DROP
+
+#sudo ebtables -A OUTPUT -d xx:xx:xx:xx:xx:xx -j DROP
 
 exit 0
 
