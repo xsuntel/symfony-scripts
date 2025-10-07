@@ -131,6 +131,7 @@ using [Symfony Framework](https://symfony.com)
 
 ## Tutorial
 
+* [Symfony Framework](https://symfony.com)
 * [SymfonyCasts](https://symfonycasts.com)
 
 ## Reference
