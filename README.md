@@ -135,8 +135,8 @@ using [Symfony Framework](https://symfony.com)
 
 ## Reference
 
-* Tools
-  * GitHub - [Wiki](https://github.com/xsuntel/symfony-scripts/wiki)
+* Dev Environment
+  * [Devices](https://github.com/xsuntel/symfony-scripts/wiki)
 
 ## License
 This is available under the MIT License.
