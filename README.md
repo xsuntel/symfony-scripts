@@ -129,8 +129,7 @@ using [Symfony Framework](https://symfony.com)
 
 ## Reference
 
-* Dev Environment - [Devices](https://github.com/xsuntel/symfony-scripts/wiki)
-* Prod Environment - [XSUN.AI](https://xsun.ai)
+* Website [(xsun.ai)](https://xsun.ai) - [Dev Environment](https://github.com/xsuntel/symfony-scripts/wiki)
 
 ## License
 This is available under the MIT License.
