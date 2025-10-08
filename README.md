@@ -13,8 +13,6 @@ using [Symfony Framework](https://symfony.com)
 
 ## Project
 
-### Directories
-
 ```
     app/
     
@@ -131,8 +129,8 @@ using [Symfony Framework](https://symfony.com)
 
 ## Reference
 
-* Dev Environment
-  * [Devices](https://github.com/xsuntel/symfony-scripts/wiki)
+* Dev Environment - [Devices](https://github.com/xsuntel/symfony-scripts/wiki)
+* Prod Environment - [XSUN.AI](https://xsun.ai)
 
 ## License
 This is available under the MIT License.
