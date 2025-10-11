@@ -1,4 +1,4 @@
-# Tools - Console Commands
+# Console Commands
 
 ## Environment - Dev/Prod
 
@@ -11,8 +11,6 @@
 ## Project
 
 ### App - Symfony Framework
-
-#### Console Commands
 
 * [Running Commands](https://symfony.com/doc/current/console.html)
 

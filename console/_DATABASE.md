@@ -1,4 +1,4 @@
-# Tools - Console Commands
+# Console Commands
 
 ## Environment - Dev/Prod
 
