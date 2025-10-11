@@ -171,7 +171,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     fi
 
     # >>>> Packages - Remove gnome-remote-desktop
-    local delPackageList="gnome-remote-desktop"
+    local delPackageList="gnome-remote-desktop openvpn"
     for pkgItem in ${delPackageList}; do
       local APT_PKG_INFO
       APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
@@ -181,53 +181,22 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
       fi
     done
 
-    local delUserList="gnome-remote-desktop"
+    local delUserList="gnome-remote-desktop nm-openvpn"
     for userItem in ${delUserList}; do
       local USER_LIST
       USER_LIST=$(cat /etc/passwd | awk -F: '{print $1}' | grep -i "${userItem}")
       if [ "${USER_LIST}" == ${userItem} ]; then
         sudo userdel ${userItem}
-      fi
-    done
-
-    # >>>> Packages - Remove openvpn
-    local delPackageList="openvpn"
-    for pkgItem in ${delPackageList}; do
-      local APT_PKG_INFO
-      APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
-      if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
-        sudo apt purge -y ${pkgItem}
-        echo
-      fi
-    done
-
-    local delUserList="nm-openvpn"
-    for userItem in ${delUserList}; do
-      local USER_LIST
-      USER_LIST=$(cat /etc/passwd | awk -F: '{print $1}' | grep -i "${userItem}")
-      if [ "${USER_LIST}" == ${userItem} ]; then
-        sudo userdel ${userItem}
-      fi
-    done
-
-    # >>>> Packages - Remove related applications
-    local delPackageList="speech-dispatcher"
-    for pkgItem in ${delPackageList}; do
-      local APT_PKG_INFO
-      APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
-      if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
-        sudo apt remove -y --purge ubuntu-advantage-pro
-        echo
       fi
     done
 
     # >>>> Packages - Remove related network packages
-    local delPackageList="putty putty-tools nmap remmina ModemManager amagent"
+    local delPackageList="putty putty-tools nmap remmina ModemManager amagent speech-dispatcher"
     for pkgItem in ${delPackageList}; do
       local APT_PKG_INFO
       APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
       if [ "${APT_PKG_INFO}" == ${pkgItem} ]; then
-        sudo apt remove -y --purge ubuntu-advantage-pro
+        sudo apt purge -y ${pkgItem}
         echo
       fi
     done
