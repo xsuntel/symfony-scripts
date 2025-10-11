@@ -1,6 +1,6 @@
 # Tools - Git - GitHub
 
-## Platform in Dev/Prod Environment
+## Platform
 
 * Linux
 * MacOS

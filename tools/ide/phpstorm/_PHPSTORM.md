@@ -1,6 +1,6 @@
 # Tools - IDE - PhpStorm
 
-## Platform in Dev/Prod Environment
+## Platform
 
 * Linux
 * MacOS

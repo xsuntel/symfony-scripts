@@ -1,14 +1,14 @@
 # Console Commands
 
-## Platform in Dev/Prod Environment
+## Platform
 
 * Linux
 * MacOS
 * Windows
 
-## Project
+## PostgreSQL
 
-### Database - PostgreSQL
+### Connect
 
 * CLI
 

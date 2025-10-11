@@ -1,6 +1,6 @@
 # Scripts - Docker
 
-## Platform in Dev/Prod Environment
+## Platform
 
 * OS - Linux / MacOS / Windows
     * App : PHP

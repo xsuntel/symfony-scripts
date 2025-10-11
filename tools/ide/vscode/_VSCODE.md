@@ -1,6 +1,6 @@
 # Tools - IDE - Visual Studio Code
 
-## Platform in Dev/Prod Environment
+## Platform
 
 * Linux
 * MacOS

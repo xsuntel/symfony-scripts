@@ -1,14 +1,14 @@
 # Console Commands
 
-## Platform in Dev/Prod Environment
+## Platform
 
 * Linux
 * MacOS
 * Windows
 
-## Project
+## Symfony Framework
 
-### App - Symfony Framework
+### Connect
 
 * [Running Commands](https://symfony.com/doc/current/console.html)
 

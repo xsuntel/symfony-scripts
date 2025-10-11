@@ -1,16 +1,16 @@
 # Console Commands
 
-## Platform in Dev/Prod Environment
+## Platform
 
 * Linux
 * MacOS
 * Windows
 
-## Project
+## Redis
 
-### Cache - Redis
+### Connect
 
-* Connect
+* Remote Host
 
 ```bash
 redis-cli -h 127.0.0.1 -p 6379
