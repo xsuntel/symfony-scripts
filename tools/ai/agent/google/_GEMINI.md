@@ -1,8 +1,6 @@
 # Tools - AI - Google - Gemini CLI
 
-## Environment - Dev/Prod
-
-## Platform
+## Platform in Dev/Prod Environment
 
 * Linux
 * MacOS
