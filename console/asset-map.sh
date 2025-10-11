@@ -21,25 +21,33 @@ echo
 
         # >>>> Select one of some environments
         PS3="Menu: "
-        select num in "debug" "audit" "outdated" "update" "exit"; do
+        select num in "debug" "importmap:audit" "importmap:outdated" "importmap:update" "tailwind:build" "tailwind:watch" "exit"; do
           case "$REPLY" in
           1)
             CONSOLE_COMMANDS="debug"
             break
             ;;
           2)
-            CONSOLE_COMMANDS="audit"
+            CONSOLE_COMMANDS="importmap:audit"
             break
             ;;
           3)
-            CONSOLE_COMMANDS="outdated"
+            CONSOLE_COMMANDS="importmap:outdated"
             break
             ;;
           4)
-            CONSOLE_COMMANDS="update"
+            CONSOLE_COMMANDS="importmap:update"
             break
             ;;
           5)
+            CONSOLE_COMMANDS="tailwind:build"
+            break
+            ;;
+          6)
+            CONSOLE_COMMANDS="tailwind:watch"
+            break
+            ;;
+          7)
             echo "exit()"
             exit
             ;;
@@ -59,25 +67,39 @@ echo
           symfony console debug:asset-map
 
         # --------------------------------------------------------------------------------------------------------------
-        # 2) dotenv
+        # 2) importmap:audit
         # --------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "audit" ]; then
+        elif [ "${CONSOLE_COMMANDS}" == "importmap:audit" ]; then
           echo ">>>> importmap:audit"
           symfony console importmap:audit
 
         # --------------------------------------------------------------------------------------------------------------
-        # 3) dotenv
+        # 3) importmap:outdated
         # --------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "outdated" ]; then
+        elif [ "${CONSOLE_COMMANDS}" == "importmap:outdated" ]; then
           echo ">>>> importmap:updated"
           symfony console importmap:outdated
 
         # --------------------------------------------------------------------------------------------------------------
-        # 4) dotenv
+        # 4) importmap:update
         # --------------------------------------------------------------------------------------------------------------
-        elif [ "${CONSOLE_COMMANDS}" == "update" ]; then
+        elif [ "${CONSOLE_COMMANDS}" == "importmap:update" ]; then
           echo ">>>> importmap:update"
           symfony console importmap:update
+
+        # --------------------------------------------------------------------------------------------------------------
+        # 5) tailwind:build
+        # --------------------------------------------------------------------------------------------------------------
+        elif [ "${CONSOLE_COMMANDS}" == "tailwind:build" ]; then
+          echo ">>>> tailwind:build"
+          symfony console tailwind:build
+
+        # --------------------------------------------------------------------------------------------------------------
+        # 6) tailwind:build --watch
+        # --------------------------------------------------------------------------------------------------------------
+        elif [ "${CONSOLE_COMMANDS}" == "tailwind:watch" ]; then
+          echo ">>>> tailwind:build --watch -v"
+          symfony console tailwind:build --watch -v
 
         fi
         echo
