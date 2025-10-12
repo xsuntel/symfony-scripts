@@ -245,8 +245,6 @@ u list       38      - /var/list            /usr/sbin/nologin
 ```
 
 ```bash
-sudo rm -f /etc/init.d/cups
-
 sudo rm -f /etc/init.d/speech-dispatcher
 
 sudo rm -f /etc/init.d/uuidd

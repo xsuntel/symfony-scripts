@@ -13,7 +13,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     echo
 
     # >>>> Packages - Remove default applications
-    local delPackageList="cups cups-browsed gnome-mahjongg gnome-sudoku aisleriot"
+    local delPackageList="gnome-mahjongg gnome-sudoku aisleriot"
     for pkgItem in ${delPackageList}; do
       local APT_PKG_INFO
       APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
