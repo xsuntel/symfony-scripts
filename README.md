@@ -45,7 +45,7 @@ using [Symfony Framework](https://symfony.com)
 
 ### Dev Environment
 
-* App : PHP
+* App : PHP - Symfony Framework
 * Cache : Redis
 * Database : PostgreSQL
 * Message : RabbitMQ
@@ -129,7 +129,7 @@ using [Symfony Framework](https://symfony.com)
 
 ## Reference
 
-* Website [(xsun.ai)](https://xsun.ai) - [Dev Environment](https://github.com/xsuntel/symfony-scripts/wiki)
+* Website [(xsun.ai)](https://xsun.ai) - [in Dev Environment](https://github.com/xsuntel/symfony-scripts/wiki)
 
 ## License
 This is available under the MIT License.

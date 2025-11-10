@@ -2,7 +2,11 @@
 
 ## Platform
 
-* Linux
+* Linux - Ubuntu
+    ```bash
+    sudo snap install redisinsight
+    ```
+
 * MacOS
 * Windows
 
@@ -63,3 +67,5 @@ flushall
 ```
 
 ## Tools
+
+* [Redis Insight](https://redis.io/insight/)
