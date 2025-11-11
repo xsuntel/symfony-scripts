@@ -100,7 +100,7 @@ using [Symfony Framework](https://symfony.com)
 
 #### New Project
 
-* Create a new project - [Installing & Setting up the Symfony Framework](https://symfony.com/doc/current/setup.html)
+* Create a new project : [Installing & Setting up the Symfony Framework](https://symfony.com/doc/current/setup.html)
 
   ```
   ./tools/tutorial.sh
@@ -108,10 +108,12 @@ using [Symfony Framework](https://symfony.com)
  
 #### Deployment
 
-* Linux - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/linux/ubuntu/ABSTRACT.md) on Ubuntu
-  Desktop
-* Macos - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/macos/device/ABSTRACT.md)
-* Windows - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/windows/device/ABSTRACT.md)
+* Environment
+  * Laptop - [Devices](https://github.com/xsuntel/symfony-scripts/wiki)
+* Platform
+  * Linux - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/linux/ubuntu/ABSTRACT.md)
+  * Macos - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/macos/device/ABSTRACT.md)
+  * Windows - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/windows/device/ABSTRACT.md)
 
 ### Prod Environment
 
@@ -119,17 +121,20 @@ using [Symfony Framework](https://symfony.com)
 
 * Public Cloud
   * AWS (Amazon Web Services)
-    * Elastic Beanstalk   - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/cloud/aws/elasticbeanstalk/ABSTRACT.md)
-    * Lightsail           - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/cloud/aws/lightsail/ABSTRACT.md)
+  * GCP (Google Cloud Platform)
+  * NCloud (Naver Cloud Platform)
+
+  ```
+  ls ./scripts/cloud
+  ```
 
 ## Tutorial
 
-* [Symfony Framework](https://symfony.com)
 * [SymfonyCasts](https://symfonycasts.com)
 
 ## Reference
 
-* Website [(xsun.ai)](https://xsun.ai) - [in Dev Environment](https://github.com/xsuntel/symfony-scripts/wiki)
+* Website - [XSUN.AI](https://xsun.ai)
 
 ## License
 This is available under the MIT License.
