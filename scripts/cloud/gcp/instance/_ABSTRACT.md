@@ -1,4 +1,4 @@
-# Scripts - Public Cloud - Google Cloud Platform
+# Scripts - Public Cloud - GCP (Google Cloud Platform)
 
 ## Environment - Prod
 
@@ -151,7 +151,6 @@ cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
 
 ## Reference
 
-### Server
+### Public Cloud
 
-* Cloud
-  * Google Cloud Platform
+* GCP (Google Cloud Platform)

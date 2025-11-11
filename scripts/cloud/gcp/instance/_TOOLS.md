@@ -1,4 +1,4 @@
-# Scripts - Public Cloud - Google Cloud Platform
+# Scripts - Public Cloud - GCP (Google Cloud Platform)
 
 ## Environment - Prod
 
