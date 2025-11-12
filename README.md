@@ -20,6 +20,9 @@ using [Symfony Framework](https://symfony.com)
 
     console/
     diagrams/
+        cloud/
+        compute/
+        tools/
     scripts/
         base/
         cloud/

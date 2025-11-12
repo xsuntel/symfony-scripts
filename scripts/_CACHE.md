@@ -1,16 +1,11 @@
 # Console Commands
 
-## Platform
+## Redis
 
 * Linux - Ubuntu
     ```bash
     sudo snap install redisinsight
     ```
-
-* MacOS
-* Windows
-
-## Redis
 
 ### Connect
 

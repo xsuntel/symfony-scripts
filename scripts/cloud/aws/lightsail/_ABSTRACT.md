@@ -156,3 +156,6 @@ cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
 * Cloud
   * AWS (Amazon Web Services)
     * [Lightsail](https://aws.amazon.com/ko/lightsail)
+
+  * AWS Codecommit
+    * [Troubleshooting the credential helper](https://docs.aws.amazon.com/codecommit/latest/userguide/troubleshooting-ch.html)

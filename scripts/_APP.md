@@ -1,11 +1,5 @@
 # Console Commands
 
-## Platform
-
-* Linux
-* MacOS
-* Windows
-
 ## Symfony Framework
 
 ### Connect

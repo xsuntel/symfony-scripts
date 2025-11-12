@@ -109,6 +109,4 @@ git pull origin main -f
 
 ### Cloud
 
-* AWS Codecommit - [Troubleshooting the credential helper](https://docs.aws.amazon.com/codecommit/latest/userguide/troubleshooting-ch.html)
-
 * Git            - [Documents](https://git-scm.com/)
