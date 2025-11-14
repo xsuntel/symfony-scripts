@@ -13,7 +13,7 @@ using [Symfony Framework](https://symfony.com)
 
 ## Project
 
-```
+```text
     app/
     
         | -- Symfony Framework -- |
@@ -58,7 +58,7 @@ using [Symfony Framework](https://symfony.com)
 
 * Update your name and email for Git
 
-  ```
+  ```bash
   git config --global user.name "{Your Name}"
   git config --global user.email "{Your Email}"
 
@@ -70,7 +70,7 @@ using [Symfony Framework](https://symfony.com)
 
 * Work Directory
 
-  ```
+  ```bash
   mkdir -p ~/Applications
   mkdir -p ~/Applications/GitHub
 
@@ -79,7 +79,7 @@ using [Symfony Framework](https://symfony.com)
 
 * Download this project
 
-  ```
+  ```bash
   git clone https://github.com/xsuntel/symfony-scripts.git symfony
 
   cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
@@ -88,7 +88,7 @@ using [Symfony Framework](https://symfony.com)
 * Update default
   variables - [Symfony Releases](https://symfony.com/releases) - [TimeZone](https://www.php.net/manual/en/timezones.php)
 
-  ```
+  ```bash
   vi env.app
 
   # >>>> Platform                                                              
@@ -105,10 +105,10 @@ using [Symfony Framework](https://symfony.com)
 
 * Create a new project : [Installing & Setting up the Symfony Framework](https://symfony.com/doc/current/setup.html)
 
-  ```
+  ```bash
   ./tools/tutorial.sh
   ```
- 
+
 #### Deployment
 
 * Environment
@@ -127,7 +127,7 @@ using [Symfony Framework](https://symfony.com)
   * GCP (Google Cloud Platform)
   * NCloud (Naver Cloud Platform)
 
-  ```
+  ```bash
   ls ./scripts/cloud
   ```
 
@@ -140,4 +140,5 @@ using [Symfony Framework](https://symfony.com)
 * Website - [XSUN.AI](https://xsun.ai)
 
 ## License
+
 This is available under the MIT License.
