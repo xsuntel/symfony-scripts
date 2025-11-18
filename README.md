@@ -31,7 +31,7 @@ using [Symfony Framework](https://symfony.com)
         macos/
         windows/
     tools/
-        ai/
+        api/
         git/
         ide/
         .symfony.local.yaml

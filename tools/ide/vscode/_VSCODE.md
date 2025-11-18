@@ -10,32 +10,39 @@
 
 ### IDE - Visual Studio Code
 
-#### Extention
+#### Extension
 
-* PHP Namespace Resolver
-* PHP Intelephense
-* PHP IntelliSenseCode-runner: Enable App Insights - false
-* PHP Debug          (Xdebug)
-* PHPDoc Comment
+* App
+  * CSS
+    * Tailwind CSS IntelliSense
+  * Javascript
+    * JavaScript (ES6) code snippets
+  * PHP
+    * PHP Namespace Resolver
+    * PHP Intelephense
+    * PHP IntelliSenseCode-runner: Enable App Insights - false
+    * PHP Debug          (Xdebug)
+    * PHPDoc Comment
+  * Symfony Framework
+    * Symfony for VSCode (fixed)
+    * Symfony UX Twig Component
+    * Modern Twig
 
-* Symfony for VSCode (fixed)
-* Symfony UX Twig Component
-* Modern Twig
+* Cache
+  * Redis for VS Code  (Redis)
 
-* Tailwind CSS IntelliSense
-* JavaScript (ES6) code snippets
+* Database
+  * PostgreSQL (Microsoft)
 
-* Redis for VS Code  (Redis)
-
-* PostgreSQL (Microsoft)
-
-* Draw.io Integration
-* Markdownlint
-* Material Icon Theme
-* Code Runner
-
-* Gemni Code Assist (Google)
-* Gemini CLI Companion
+* Tools
+  * IDE
+    * Draw.io Integration
+    * Markdownlint
+    * Material Icon Theme
+    * Code Runner
+  * AI
+    * Gemni Code Assist (Google)
+    * Gemini CLI Companion
 
 #### Settings
 
