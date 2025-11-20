@@ -1,14 +1,8 @@
-# Tools - IDE - PhpStorm
+# Tools
 
-## Platform
+## IDE - PhpStorm
 
-* Linux
-* MacOS
-* Windows
-
-## Project
-
-### IDE - PhpStorm
+### Config
 
 #### Plugin
 

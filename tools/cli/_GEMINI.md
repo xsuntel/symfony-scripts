@@ -1,16 +1,8 @@
-# Tools - AI - Google - Gemini CLI
+# Tools
 
-## Platform
+## Google - Gemini CLI
 
-* Linux
-* MacOS
-* Windows
-
-## Project
-
-### AI - Google - Gemini CLI
-
-#### Tools
+### Config
 
 * /chat   : 대화 기록 저장, 재개 및 목록 확인
 * /memory : AI 학습 관리 - GEMINI.md

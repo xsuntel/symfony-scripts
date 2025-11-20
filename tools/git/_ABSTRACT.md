@@ -1,14 +1,8 @@
-# Tools - Git - GitHub
+# Tools
 
-## Platform
+## Git
 
-* Linux
-* MacOS
-* Windows
-
-## Project
-
-### Git - Config
+### Config
 
 #### Global
 

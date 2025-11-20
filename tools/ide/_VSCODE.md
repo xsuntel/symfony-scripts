@@ -1,14 +1,8 @@
-# Tools - IDE - Visual Studio Code
+# Tools
 
-## Platform
+## IDE - Visual Studio Code
 
-* Linux
-* MacOS
-* Windows
-
-## Project
-
-### IDE - Visual Studio Code
+### Config
 
 #### Extension
 
