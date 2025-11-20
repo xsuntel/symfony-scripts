@@ -8,7 +8,7 @@
 
 ## Project
 
-### IDE - Visual Studio Code
+### IDE - Antigravity
 
 #### Extension
 
@@ -18,31 +18,26 @@
   * Javascript
     * JavaScript (ES6) code snippets
   * PHP
+    * PHP                (devsense)
     * PHP Namespace Resolver
     * PHP Intelephense
-    * PHP IntelliSenseCode-runner: Enable App Insights - false
     * PHP Debug          (Xdebug)
-    * PHPDoc Comment
   * Symfony Framework
-    * Symfony for VSCode (fixed)
-    * Symfony UX Twig Component
-    * Modern Twig
+    * Symfony for VSCode
+    * Twigs Intellisense
 
 * Cache
   * Redis for VS Code  (Redis)
 
 * Database
-  * PostgreSQL (Microsoft)
+  * MySQL
 
 * Tools
   * IDE
     * Draw.io Integration
     * Markdownlint
-    * Material Icon Theme
     * Code Runner
-  * AI
-    * Gemni Code Assist (Google)
-    * Gemini CLI Companion
+    * GitLens
 
 ## Reference
 
