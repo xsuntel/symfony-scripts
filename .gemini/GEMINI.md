@@ -34,17 +34,6 @@ You must strictly adhere to the following technical environment when providing s
 
 - **Server:** Nginx. Consider configuration for clean URLs and static asset serving.
 
-## Coding Standards & Best Practices
-
-- Follow PSR-12 standards strictly.
-- Use PHP 8.2+ features (readonly classes, types).
-- Enforce Strict Types (`declare(strict_types=1);`).
-
-## Security & Performance Guidelines
-
-- Always validate inputs using Symfony Form or Validator constraints.
-- Use Redis for caching heavy Doctrine results.
-
 ## Directory Structure & Path Context
 
 The project infrastructure acts as a wrapper, and the actual Symfony application resides in the `./app` directory.
@@ -69,36 +58,39 @@ The project infrastructure acts as a wrapper, and the actual Symfony application
 └── README.md
 ```
 
-**Project Root:** All Symfony application code is located inside the `./app` directory.
+**Project Root:**
 
-- **PHP Logic (`./app/src`):**
-  - Namespace: `App\` maps to `./app/src`
-  - Entities: `./app/src/Entity` (PostgreSQL tables mapping)
-  - Controllers: `./app/src/Controller`
-- **Frontend (`./app/assets`):**
-  - Stimulus Controllers: `./app/assets/controllers` (Format: `hello_controller.js`)
-  - Tailwind CSS: `./app/assets/styles`
-- **Views:**
-  - Twig Templates: `./app/templates`
+- All Symfony application code is located inside the `./app` directory.
+- When suggesting file creation or modification, ALWAYS include the full path starting with app/ (e.g., app/src/Controller/HomeController.php).
 
-**Note:** When suggesting file creation or modification, always include the full path starting with `app/` (e.g., `app/src/Controller/HomeController.php`).
+## Coding Standards & Best Practices
+
+- PSR Standards: Follow PSR-12 and PSR-4 strictly.
+- Modern PHP: Use PHP 8.2+ features (Constructor Property Promotion, Readonly classes, Match expressions).
+- Strict Types: Always enforce declare(strict_types=1); at the top of PHP files.
+- Dependency Injection: Use Constructor Injection. Avoid using the Service Locator pattern or $container->get().
+
+## Security & Performance Guidelines
+
+- Validation: Always validate inputs using Symfony Form or Validator constraints.
+- Database Efficiency: Be mindful of Doctrine performance. Use explicit joins to prevent N+1 queries.
+- Caching: Use Redis for caching heavy computation results.
 
 ## Instructions (Behavioral Guidelines)
 
 1. **Language:** **Always answer in Korean.** (한국어로 답변하세요.)
 2. **Code First Approach:** If the user asks a technical question, **present the solution code block immediately** at the beginning of your response. Do not start with a long introduction.
 3. **Symfony Best Practices:**
-    - Use Dependency Injection and Service Containers.
-    - Prefer Composition over Inheritance.
-    - Follow PSR standards (PSR-12, PSR-4).
+   - Use Dependency Injection and Service Containers.
+   - Prefer Composition over Inheritance.
+   - Follow PSR standards (PSR-12, PSR-4).
 4. **Explanation Structure:**
-    - **Code:** The solution.
-    - **How it works:** A concise explanation of the logic.
-    - **Why this way:** Justify the solution based on performance (Redis/PostgreSQL optimization) or maintainability (Symfony patterns).
+   - **Code:** The solution.
+   - **How it works:** A concise explanation of the logic.
+   - **Why this way:** Justify the solution based on performance (Redis/PostgreSQL optimization) or maintainability (Symfony patterns).
 5. **Tone:** Professional, encouraging, and technically precise.
 6. **Error Handling:** If a request is outside your scope or technically infeasible, politely explain the limitation and suggest an alternative.
 
 ## Response Format
 
-- Filepath: Start each code block with the file path (e.g., `// src/Service/MyService.php`).
 - Formatting: Use Markdown for all code.
