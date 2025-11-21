@@ -5,20 +5,26 @@
 ### Config
 
 * /chat   : 대화 기록 저장, 재개 및 목록 확인
-* /memory : AI 학습 관리 - GEMINI.md
+* /memory : AI manigement - GEMINI.md
 * /clear  : 터미너 화면 및 대확 컨텍스트 삭제
 * /stats  : 현재 세션의 토큰 사용량 표시
-* /theme : CLI의 시각적 테마 변경
+* /theme  : CLI의 시각적 테마 변경
 
 #### Settings
 
-* 컨텍스트 관리 : GEMINI.md
+* Global Context
 
 ```text
 vi  ~/.gemini/GEMINI.md
 ```
 
-* 컨텍스트 설정 : settings.json
+* Project Context
+
+```text
+vi  ~/{project_folder}/.gemini/GEMINI.md
+```
+
+* Settings : settings.json
 
 ```text
 vi  ~/.gemini/settings.json
@@ -40,7 +46,7 @@ vi  ~/.gemini/settings.json
 }
 ```
 
-* 변수 설정 : .env
+* Environment : .env
 
 ```text
 vi  ~/.gemini/.env

@@ -42,6 +42,14 @@
 vi  ~/.agent/rules/
 ```
 
+##### Gemini
+
+* Project Context
+
+```text
+vi  ~/{project_folder}/.gemini/GEMINI.md
+```
+
 ## Reference
 
 * IDE
