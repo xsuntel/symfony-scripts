@@ -20,8 +20,8 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     echo
   fi
 
-  if [ -f ${PROJECT_PATH}/scripts/linux/ubuntu/app/supervisor/conf.d/messenger-worker_${ENVIRONMENT_NAME}.conf ]; then
-    sudo cp -fv ${PROJECT_PATH}/scripts/linux/ubuntu/app/supervisor/conf.d/messenger-worker_${ENVIRONMENT_NAME}.conf /etc/supervisor/conf.d/messenger-worker.conf
+  if [ -f ${PROJECT_PATH}/scripts/develop/linux/ubuntu/app/supervisor/conf.d/messenger-worker_${ENVIRONMENT_NAME}.conf ]; then
+    sudo cp -fv ${PROJECT_PATH}/scripts/develop/linux/ubuntu/app/supervisor/conf.d/messenger-worker_${ENVIRONMENT_NAME}.conf /etc/supervisor/conf.d/messenger-worker.conf
     echo
   fi
 
@@ -64,8 +64,8 @@ elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
     fi
   fi
 
-  if [ -f ${PROJECT_PATH}/scripts/macos/device/app/supervisor/conf.d/messenger-worker_${ENVIRONMENT_NAME}.ini ]; then
-    cp -fv ${PROJECT_PATH}/scripts/macos/device/app/supervisor/conf.d/messenger-worker_${ENVIRONMENT_NAME}.ini /opt/homebrew/etc/supervisor.d/messenger-worker.ini
+  if [ -f ${PROJECT_PATH}/scripts/develop/macos/device/app/supervisor/conf.d/messenger-worker_${ENVIRONMENT_NAME}.ini ]; then
+    cp -fv ${PROJECT_PATH}/scripts/develop/macos/device/app/supervisor/conf.d/messenger-worker_${ENVIRONMENT_NAME}.ini /opt/homebrew/etc/supervisor.d/messenger-worker.ini
     echo
   fi
 

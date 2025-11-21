@@ -1,6 +1,6 @@
 ---
 trigger: always_on
-glob: "console/*, scripts/**/*.sh, app/bin/console, Makefile, composer.json"
+glob: "console/*, scripts/**/*.sh, app/bin/console, Makefile, composer.json, tools/**"
 description: "Shell scripts, Symfony Console commands, and Composer tasks"
 ---
 

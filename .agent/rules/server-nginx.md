@@ -1,6 +1,6 @@
 ---
 trigger: always_on
-glob: "app/public/index.php, **/*.conf, docker/nginx/**"
+glob: "app/public/index.php, **/*.conf, scripts/develop/docker/containers/server/nginx/**"
 description: "Nginx server configuration for Symfony public root"
 ---
 

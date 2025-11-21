@@ -126,10 +126,10 @@ setPhp() {
   # Linux - Ubuntu Desktop
   # --------------------------------------------------------------------------------------------------------------------
   # >>>> Import an install file
-  if [ -f ${PROJECT_PATH}/scripts/linux/ubuntu/app/php/_install.sh ]; then
-    source ${PROJECT_PATH}/scripts/linux/ubuntu/app/php/_install.sh
+  if [ -f ${PROJECT_PATH}/scripts/develop/linux/ubuntu/app/php/_install.sh ]; then
+    source ${PROJECT_PATH}/scripts/develop/linux/ubuntu/app/php/_install.sh
   else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/linux/ubuntu/app/php/_install.sh" && exit
+    echo "Please check a file : ${PROJECT_PATH}/scripts/develop/linux/ubuntu/app/php/_install.sh" && exit
   fi
 
   # >>>> Platform

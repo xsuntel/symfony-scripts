@@ -3,8 +3,6 @@
 # Scripts - Base - Symfony - Front-End                                     https://symfony.com/doc/current/frontend.html
 # ======================================================================================================================
 
-PROJECT_PATH=$(dirname "$(dirname "$(dirname "$(dirname "$0")")")")
-
 # >>>> Variable : Nodejs                                                                             https://nodejs.org/
 if [ ${PROJECT_PATH}/.env.app ]; then
   NODE_VERSION=$(grep -i NODE_VERSION ${PROJECT_PATH}/.env.app | cut -d '=' -f2)

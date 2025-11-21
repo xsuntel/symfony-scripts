@@ -54,7 +54,10 @@ The project infrastructure acts as a wrapper, and the actual Symfony application
 │   ├── templates/               # Twig Templates
 │   ├── .env                     # Environment variables
 │   └── composer.json
-├── docker/                      # Docker configuration (if applicable)
+├── diagram/                     # draw.io
+├── scripts/                     # shell-script
+│   └── docker/                  # Docker configuration (if applicable)
+├── tools/                       # shell-script
 └── README.md
 ```
 

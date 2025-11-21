@@ -18,18 +18,16 @@ using [Symfony Framework](https://symfony.com)
     
         | -- Symfony Framework -- |
 
-    console/
-    diagrams/
+    diagram/
         cloud/
         compute/
+        source/
         tools/
     scripts/
         base/
-        cloud/
-        docker/
-        linux/
-        macos/
-        windows/
+        console/
+        deploy/
+        develop/
     tools/
         api/
         git/
@@ -114,9 +112,10 @@ using [Symfony Framework](https://symfony.com)
 * Environment
   * Laptop - [Devices](https://github.com/xsuntel/symfony-scripts/wiki)
 * Platform
-  * Linux - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/linux/ubuntu/ABSTRACT.md)
-  * Macos - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/macos/device/ABSTRACT.md)
-  * Windows - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/windows/device/ABSTRACT.md)
+  * Linux - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/develop/linux/ubuntu/ABSTRACT.md)
+  * Macos - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/develop/macos/device/ABSTRACT.md)
+  *
+  Windows - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/develop/windows/device/ABSTRACT.md)
 
 ### Prod Environment
 
