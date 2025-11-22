@@ -42,15 +42,44 @@ The project infrastructure acts as a wrapper, and the actual Symfony application
 .
 ├── app/                         # Symfony Application Root
 │   ├── assets/
-│   │   ├── controllers/         # Stimulus Controllers
+│   │   ├── controllers/         # Symfony UX - Stimulus Controllers
+│   │   ├── images/              # image files
 │   │   ├── styles/              # Tailwind CSS entry points
-│   │   └── app.js               # Main JS entry
+│   │   ├── themes/              # Tailwind CSS - Themes : Flowbite
+│   │   ├── turbo/               # Symfony UX - Turbo
+│   │   ├── app.js               # Main JS entry
+│   │   └── bootstrap.js         # Symfony UX - StimulusBundle
 │   ├── config/                  # Symfony Configuration
+│   ├── public/                  # ./index.php
 │   ├── src/                     # PHP Source Code (Namespace: App\)
-│   │   ├── Controller/
+│   │   ├── ApiResource/         # API Platform
+│   │   ├── Command/             # Symfony Console Commands
+│   │   ├── Controller/          # Symfony Controllers
+│   │   ├── DataFixtures/
 │   │   ├── Entity/              # Doctrine Entities (PostgreSQL)
+│   │   ├── EventListener/       # Symfony Events and Event Listeners
+│   │   ├── EventSubscriber/     # Symfony Events and Event Subscribers
+│   │   ├── Form/                # Symfony Form
+│   │   ├── MessageCommand/
+│   │   ├── MessageCommandHandler/
+│   │   ├── MessageEvent/
+│   │   ├── MessageEventHandler/
+│   │   ├── MessageQuery/
+│   │   ├── MessageQueryHandler/
+│   │   ├── Messenger/           # Symfony messenger
 │   │   ├── Repository/
-│   │   └── Service/
+│   │   ├── Scheduler/           # Symfony Scheduler
+│   │   ├── Serializer/          # Symfony Serializer
+│   │   ├── Service/             # Symfony Service Container
+│   │   ├── Twig/ 
+│   │   └── Kernel.php
+│   ├── templates/               # Twig Templates
+│   ├── tests/                   # Test phpunit
+│   ├── translations/            # Symfony Translations
+│   ├── .env                     # Environment variables
+│   ├── .env.dev                 # Dev Environment variables
+│   ├── .env.prod                # Prod Environment variables
+│   └── composer.json
 │   ├── templates/               # Twig Templates
 │   ├── .env                     # Environment variables
 │   └── composer.json
@@ -61,39 +90,40 @@ The project infrastructure acts as a wrapper, and the actual Symfony application
 └── README.md
 ```
 
-**Project Root:**
+**Required Path Format**:
 
-- All Symfony application code is located inside the `./app` directory.
-- When suggesting file creation or modification, ALWAYS include the full path starting with app/ (e.g., app/src/Controller/HomeController.php).
+- Context: Do not treat the project root as the Symfony root.
+- Rule: All file creation or modification commands must explicitly start with app/.
+   - Correct: app/src/Controller/HomeController.php
+   - Incorrect: src/Controller/HomeController.php
 
 ## Coding Standards & Best Practices
 
+- Architecture (CQRS): Respect the folder structure. Separate Write operations (MessageCommand) from Read operations (
+  MessageQuery). Do not put heavy business logic in Controllers.
 - PSR Standards: Follow PSR-12 and PSR-4 strictly.
-- Modern PHP: Use PHP 8.2+ features (Constructor Property Promotion, Readonly classes, Match expressions).
 - Strict Types: Always enforce declare(strict_types=1); at the top of PHP files.
-- Dependency Injection: Use Constructor Injection. Avoid using the Service Locator pattern or $container->get().
+- Modern PHP: Use Constructor Property Promotion, Readonly classes, and Attributes (#[Route], #[AsMessageHandler])
+  extensively.
+- Dependency Injection: Use Constructor Injection. Avoid ContainerAware or $container->get().
 
 ## Security & Performance Guidelines
 
-- Validation: Always validate inputs using Symfony Form or Validator constraints.
-- Database Efficiency: Be mindful of Doctrine performance. Use explicit joins to prevent N+1 queries.
-- Caching: Use Redis for caching heavy computation results.
+- Validation: Always validate inputs using Symfony Validator constraints or Form types.
+- Database Efficiency: Prevent N+1 queries using Doctrine's join or fetch modes. Use PostgreSQL indexes effectively.
+- Caching: Use Redis for caching heavy computation results and Doctrine metadata.
 
 ## Instructions (Behavioral Guidelines)
 
-1. **Language:** **Always answer in Korean.** (한국어로 답변하세요.)
-2. **Code First Approach:** If the user asks a technical question, **present the solution code block immediately** at the beginning of your response. Do not start with a long introduction.
-3. **Symfony Best Practices:**
-   - Use Dependency Injection and Service Containers.
+1. Language: Always answer in Korean. (한국어로 답변하세요.)
+2. Code First Approach: If the user asks a technical question, present the solution code block immediately at the
+   beginning of your response. Do not start with a long introduction.
+3. Symfony Best Practices:
+   - Use Symfony Messenger for async tasks and CQRS implementation.
    - Prefer Composition over Inheritance.
-   - Follow PSR standards (PSR-12, PSR-4).
-4. **Explanation Structure:**
-   - **Code:** The solution.
-   - **How it works:** A concise explanation of the logic.
-   - **Why this way:** Justify the solution based on performance (Redis/PostgreSQL optimization) or maintainability (Symfony patterns).
-5. **Tone:** Professional, encouraging, and technically precise.
-6. **Error Handling:** If a request is outside your scope or technically infeasible, politely explain the limitation and suggest an alternative.
-
-## Response Format
-
-- Formatting: Use Markdown for all code.
+   - Keep Controllers thin.
+4. Explanation Structure:
+   - Code: The solution (with correct app/ paths).
+   - How it works: A concise explanation of the logic.
+   - Why this way: Justify the solution based on performance (Redis/PostgreSQL) or architecture (CQRS/Symfony patterns).
+5. Tone: Professional, encouraging, and technically precise.
