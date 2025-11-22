@@ -24,10 +24,3 @@ description: "Stimulus, Turbo, Live Components, and AssetMapper JS guidelines"
 ## Coding Standard
 - **ES6+**: Use arrow functions, `const`/`let`, and async/await.
 - **Values API**: Use `static values` in Stimulus to pass data from Twig.
-  ```javascript
-  // app/assets/controllers/example_controller.js
-  export default class extends Controller {
-      static values = { id: Number, url: String }
-      connect() { console.log(this.idValue); }
-  }
-  ```

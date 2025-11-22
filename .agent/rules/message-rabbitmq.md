@@ -32,19 +32,6 @@ description: "RabbitMQ (AMQP) configuration, exchange/queue routing, and reliabi
 - **Dead Letter Queue (DLQ)**: ALWAYS configure a `failed` transport backed by a separate queue/storage to catch
   messages that fail after retries.
 - **Retries**: Configure `retry_strategy` (e.g., exponential backoff) in `messenger.yaml`.
-  ```yaml
-  transports:
-      amqp:
-          dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
-          options:
-              auto_setup: true
-              exchange:
-                  name: messages
-                  type: direct
-          retry_strategy:
-              max_retries: 3
-              delay: 1000
-  ```
 
 ## Worker Management
 

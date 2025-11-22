@@ -40,53 +40,50 @@ The project infrastructure acts as a wrapper, and the actual Symfony application
 
 ```text
 .
-├── app/                         # Symfony Application Root
-│   ├── assets/
-│   │   ├── controllers/         # Symfony UX - Stimulus Controllers
-│   │   ├── images/              # image files
-│   │   ├── styles/              # Tailwind CSS entry points
-│   │   ├── themes/              # Tailwind CSS - Themes : Flowbite
-│   │   ├── turbo/               # Symfony UX - Turbo
-│   │   ├── app.js               # Main JS entry
-│   │   └── bootstrap.js         # Symfony UX - StimulusBundle
-│   ├── config/                  # Symfony Configuration
-│   ├── public/                  # ./index.php
-│   ├── src/                     # PHP Source Code (Namespace: App\)
-│   │   ├── ApiResource/         # API Platform
-│   │   ├── Command/             # Symfony Console Commands
-│   │   ├── Controller/          # Symfony Controllers
-│   │   ├── DataFixtures/
-│   │   ├── Entity/              # Doctrine Entities (PostgreSQL)
-│   │   ├── EventListener/       # Symfony Events and Event Listeners
-│   │   ├── EventSubscriber/     # Symfony Events and Event Subscribers
-│   │   ├── Form/                # Symfony Form
-│   │   ├── MessageCommand/
-│   │   ├── MessageCommandHandler/
-│   │   ├── MessageEvent/
-│   │   ├── MessageEventHandler/
-│   │   ├── MessageQuery/
-│   │   ├── MessageQueryHandler/
-│   │   ├── Messenger/           # Symfony messenger
-│   │   ├── Repository/
-│   │   ├── Scheduler/           # Symfony Scheduler
-│   │   ├── Serializer/          # Symfony Serializer
-│   │   ├── Service/             # Symfony Service Container
-│   │   ├── Twig/ 
+├── app/                            # Symfony Application Root
+│   ├── assets/                     # Symfony AssetMapper
+│   │   ├── controllers/            # Symfony UX - Stimulus Controllers
+│   │   ├── images/                 # image files
+│   │   ├── styles/                 # Tailwind CSS entry points
+│   │   ├── themes/                 # Tailwind CSS - Themes : Flowbite
+│   │   ├── turbo/                  # Symfony UX - Turbo
+│   │   ├── app.js                  # Main JS entry
+│   │   └── bootstrap.js            # Symfony UX - StimulusBundle
+│   ├── config/                     # Symfony Configuration
+│   ├── public/                     # ./index.php
+│   ├── src/                        # PHP Source Code (Namespace: App\)
+│   │   ├── ApiResource/            # API Platform
+│   │   ├── Command/                # Symfony Console Commands
+│   │   ├── Controller/             # Symfony Controllers
+│   │   ├── DataFixtures/           # Symfony DoctrineFixturesBundle
+│   │   ├── Entity/                 # Doctrine Entities (PostgreSQL)
+│   │   ├── EventListener/          # Symfony Events and Event Listeners
+│   │   ├── EventSubscriber/        # Symfony Events and Event Subscribers
+│   │   ├── Form/                   # Symfony Form
+│   │   ├── MessageCommand/         # Symfony Messenger: Sync & Queued Message Handling
+│   │   ├── MessageCommandHandler/  # Symfony Messenger: Sync & Queued Message Handling
+│   │   ├── MessageEvent/           # Symfony Messenger: Sync & Queued Message Handling
+│   │   ├── MessageEventHandler/    # Symfony Messenger: Sync & Queued Message Handling
+│   │   ├── MessageQuery/           # Symfony Messenger: Sync & Queued Message Handling
+│   │   ├── MessageQueryHandler/    # Symfony Messenger: Sync & Queued Message Handling
+│   │   ├── Messenger/              # Symfony Messenger: Sync & Queued Message Handling
+│   │   ├── Repository/             # Symfony Databases and the Doctrine ORM
+│   │   ├── Scheduler/              # Symfony Scheduler
+│   │   ├── Serializer/             # Symfony Serializer
+│   │   ├── Service/                # Symfony Service Container
+│   │   ├── Twig/                   # Symfony Templates / Twig 
 │   │   └── Kernel.php
-│   ├── templates/               # Twig Templates
-│   ├── tests/                   # Test phpunit
-│   ├── translations/            # Symfony Translations
-│   ├── .env                     # Environment variables
-│   ├── .env.dev                 # Dev Environment variables
-│   ├── .env.prod                # Prod Environment variables
+│   ├── templates/                  # Twig Templates
+│   ├── tests/                      # Test phpunit
+│   ├── translations/               # Symfony Translations
+│   ├── .env                        # Environment variables
+│   ├── .env.dev                    # Dev Environment variables
+│   ├── .env.prod                   # Prod Environment variables
 │   └── composer.json
-│   ├── templates/               # Twig Templates
-│   ├── .env                     # Environment variables
-│   └── composer.json
-├── diagram/                     # draw.io
-├── scripts/                     # shell-script
-│   └── docker/                  # Docker configuration (if applicable)
-├── tools/                       # shell-script
+├── diagram/                        # draw.io
+├── scripts/                        # shell-script
+│   └── docker/                     # Docker configuration (if applicable)
+├── tools/                          # shell-script
 └── README.md
 ```
 
