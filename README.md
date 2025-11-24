@@ -27,7 +27,6 @@ using [Symfony Framework](https://symfony.com)
         base/
         console/
         deploy/
-        develop/
     tools/
         api/
         git/
@@ -112,10 +111,10 @@ using [Symfony Framework](https://symfony.com)
 * Environment
   * Laptop - [Devices](https://github.com/xsuntel/symfony-scripts/wiki)
 * Platform
-  * Linux - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/develop/linux/ubuntu/ABSTRACT.md)
-  * Macos - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/develop/macos/device/ABSTRACT.md)
+  * Linux - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/linux/ubuntu/ABSTRACT.md)
+  * Macos - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/macos/device/ABSTRACT.md)
   *
-  Windows - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/develop/windows/device/ABSTRACT.md)
+  Windows - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/windows/device/ABSTRACT.md)
 
 ### Prod Environment
 

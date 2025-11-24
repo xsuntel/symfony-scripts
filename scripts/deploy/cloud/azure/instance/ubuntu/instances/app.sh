@@ -1,9 +1,9 @@
 #!/bin/bash
 # ======================================================================================================================
-# Tutorial - Create a new project
+# Scripts - Linux - Ubuntu - Deploy
 # ======================================================================================================================
 
-PROJECT_PATH=$(dirname "$(dirname "$0")")
+PROJECT_PATH=$(dirname "$(dirname "$(dirname "$(dirname "$0")")")")
 cd "${PROJECT_PATH}" || exit
 
 # >>>> Abstract
@@ -24,24 +24,8 @@ setEnvironment() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ ENV ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Environment"
   echo "---------------------------------------------------------------------------------------------------------------"
-  PS3="Menu: "
-  select num in "dev" "exit"; do
-    case "$REPLY" in
-    1)
-      # >>>> Dev Environment
-      ENVIRONMENT_NAME="dev"
-      break
-      ;;
-    2)
-      echo "exit()"
-      setEnd
-      ;;
-    *)
-      echo "[ ERROR ] Unknown Command"
-      setEnd
-      ;;
-    esac
-  done
+  # >>>> Dev Environment
+  ENVIRONMENT_NAME="prod"
 
   echo
   echo "- PROJECT ENV : ${ENVIRONMENT_NAME}"
@@ -56,9 +40,7 @@ setPlatform() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "- PLATFORM OS : ${PLATFORM_TYPE}"
   echo
-  # --------------------------------------------------------------------------------------------------------------------
-  # Scripts - Platform - Base
-  # --------------------------------------------------------------------------------------------------------------------
+
   # >>>> Import a platform file
   if [ -f ${PROJECT_PATH}/scripts/base/_platform.sh ]; then
     source ${PROJECT_PATH}/scripts/base/_platform.sh
@@ -82,34 +64,6 @@ setProject() {
   else
     echo "Please check a file : ${PROJECT_PATH}/scripts/base/_project.sh" && exit
   fi
-
-  # >>>> Delete a directory : ./app
-  if [ -f app/bin/console ]; then
-    echo
-    echo "[ Warning ] Do you want to delete a current project  ? "
-    echo
-    PS3="Select: "
-    select num in "No" "Yes"; do
-      case "$REPLY" in
-      1)
-        echo "Please check your project whether symfony has been installed or not again"
-        setEnd
-        ;;
-      2)
-        rm -rf app
-        echo
-        break
-        ;;
-      *)
-        echo "[ ERROR ] Unknown Command"
-        setEnd
-        ;;
-      esac
-    done
-  else
-    rm -rf app
-  fi
-  echo
 }
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -122,109 +76,29 @@ setPhp() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - App"
   echo "---------------------------------------------------------------------------------------------------------------"
-  # --------------------------------------------------------------------------------------------------------------------
-  # Linux - Ubuntu Desktop
-  # --------------------------------------------------------------------------------------------------------------------
-  # >>>> Import an install file
+  echo
+
+  # >>>> PHP - Base - Import an install file
   if [ -f ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/app/php/_install.sh ]; then
     source ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/app/php/_install.sh
   else
     echo "Please check a file : ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/app/php/_install.sh" && exit
   fi
-
-  # >>>> Platform
-  if [ "${PLATFORM_TYPE}" == "Darwin" ]; then
-    # ------------------------------------------------------------------------------------------------------------------
-    # Install the packages
-    # ------------------------------------------------------------------------------------------------------------------
-    # >>>> PHP
-    local PHP_PKG
-    PHP_PKG=$(brew list | grep php)
-    if [ "${PHP_PKG}" ]; then
-      local CURRENT_PHP_VERSION
-      CURRENT_PHP_VERSION=$(php --version | head -n 1 | cut -d " " -f 2 | cut -c 1-3)
-    else
-      brew install php@${PHP_VERSION}
-      echo
-    fi
-    php --version
-    echo
-    php --ini
-    echo
-
-    # >>>> PHP Extension
-    local CURRENT_PHP_VERSION
-    CURRENT_PHP_VERSION=$(php --version | head -n 1 | cut -d " " -f 2 | cut -c 1-3)
-
-    local PHP_EXT_REDIS
-    PHP_EXT_REDIS=$(find /opt/homebrew/lib/php/pecl/ -name redis.so)
-    if [ "${PHP_EXT_REDIS}" ]; then
-      pecl list redis
-    else
-      export LC_CTYPE=en_US.UTF-8
-      export LC_ALL=en_US.UTF-8
-
-      pecl install redis
-    fi
-    echo
-    echo "extension-dir : $(php-config --extension-dir)"
-    echo
-
-    # >>>> PHP - Composer
-    local PHP_COMPOSER
-    PHP_COMPOSER=$(brew list | grep composer)
-    if [ "${PHP_COMPOSER}" ]; then
-      echo "Composer has been installed"
-    else
-      brew install composer
-    fi
-
-    # ------------------------------------------------------------------------------------------------------------------
-    # Update the configuration
-    # ------------------------------------------------------------------------------------------------------------------
-
-    # ------------------------------------------------------------------------------------------------------------------
-    # Check the status
-    # ------------------------------------------------------------------------------------------------------------------
-
-  elif [ "${PLATFORM_TYPE}" == "Windows" ]; then
-    # ------------------------------------------------------------------------------------------------------------------
-    # Install the packages
-    # ------------------------------------------------------------------------------------------------------------------
-    # >>>> PHP
-    echo -n
-
-    # ------------------------------------------------------------------------------------------------------------------
-    # Update the configuration
-    # ------------------------------------------------------------------------------------------------------------------
-
-    # ------------------------------------------------------------------------------------------------------------------
-    # Check the status
-    # ------------------------------------------------------------------------------------------------------------------
-
-  fi
-
-  # --------------------------------------------------------------------------------------------------------------------
-  # App - PHP Framework - Symfony                      https://symfony.com/doc/current/setup.html#technical-requirements
-  # --------------------------------------------------------------------------------------------------------------------
-
-  # >>>> Creating Symfony Applications                                        https://symfony.com/doc/current/setup.html
-  composer create-project symfony/skeleton:"${SYMFONY_VERSION}.*" app
   echo
 
-  (
-    cd app || return
-
-    # >>>> Symfony Framework                                                  https://symfony.com/doc/current/setup.html
-    composer require webapp
-    echo
-  )
-
-  # >>>> Import a symfony_deployment file
-  if [ -f ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh ]; then
-    source ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh
+  # >>>> PHP - Symfony Framework - Command Line Interface
+  if [ -f ${PROJECT_PATH}/scripts/base/symfony/_command.sh ]; then
+    source ${PROJECT_PATH}/scripts/base/symfony/_command.sh
   else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh" && exit
+    echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_command.sh" && exit
+  fi
+  echo
+
+  # >>>> PHP - Symfony Framework - Front-End
+  if [ -f ${PROJECT_PATH}/scripts/base/_symfony_frontend.sh ]; then
+    source ${PROJECT_PATH}/scripts/base/_symfony_frontend.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/base/_symfony_frontend.sh" && exit
   fi
   echo
 }
@@ -235,6 +109,15 @@ setRedis() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Cache"
   echo "---------------------------------------------------------------------------------------------------------------"
+  echo
+
+  # >>>> Redis - Base - Import an install file
+  if [ -f ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/cache/redis/_install.sh ]; then
+    source ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/cache/redis/_install.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/cache/redis/_install.sh" && exit
+  fi
+  echo
 }
 
 # >>>> Database
@@ -251,6 +134,15 @@ setRabbitMQ() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Message"
   echo "---------------------------------------------------------------------------------------------------------------"
+  echo
+
+  # >>>> RabbitMQ - Base - Import an install file
+  if [ -f ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/message/rabbitmq/_install.sh ]; then
+    source ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/message/rabbitmq/_install.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/message/rabbitmq/_install.sh" && exit
+  fi
+  echo
 }
 
 # >>>> Server
@@ -259,10 +151,19 @@ setNginx() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Server"
   echo "---------------------------------------------------------------------------------------------------------------"
+  echo
+
+  # >>>> Nginx - Base - Import an install file
+  if [ -f ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/server/nginx/_install.sh ]; then
+    source ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/server/nginx/_install.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/server/nginx/_install.sh" && exit
+  fi
+  echo
 }
 
 # ----------------------------------------------------------------------------------------------------------------------
-# Content Delivery
+# CDN - Content Delivery Networks
 # ----------------------------------------------------------------------------------------------------------------------
 
 setCDN() {
@@ -272,17 +173,17 @@ setCDN() {
 }
 
 # ----------------------------------------------------------------------------------------------------------------------
-# Container
+# Docker - Containers
 # ----------------------------------------------------------------------------------------------------------------------
 
 setDocker() {
   echo "---------------------------------------------------------------------------------------------------------------"
-  echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Docker"
+  echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Docker - Containers"
   echo "---------------------------------------------------------------------------------------------------------------"
 }
 
 # ----------------------------------------------------------------------------------------------------------------------
-# Instance
+# VM - Instance
 # ----------------------------------------------------------------------------------------------------------------------
 
 setVM() {
@@ -290,7 +191,6 @@ setVM() {
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - VM - Instance"
   echo "---------------------------------------------------------------------------------------------------------------"
 }
-
 
 # ======================================================================================================================
 # START
@@ -320,7 +220,7 @@ setProject
 setPhp
 
 # >>>> Cache
-#setRedis
+setRedis
 
 # >>>> Database
 #setPostgreSQL
@@ -329,20 +229,20 @@ setPhp
 #setRabbitMQ
 
 # >>>> Server
-#setNginx
+setNginx
 
 # ----------------------------------------------------------------------------------------------------------------------
-# Content Delivery
+# CDN - Content Delivery Networks
 # ----------------------------------------------------------------------------------------------------------------------
 #setCDN
 
 # ----------------------------------------------------------------------------------------------------------------------
-# Container
+# Docker - Containers
 # ----------------------------------------------------------------------------------------------------------------------
 #setDocker
 
 # ----------------------------------------------------------------------------------------------------------------------
-# Instance
+# VM - Instance
 # ----------------------------------------------------------------------------------------------------------------------
 #setVM
 

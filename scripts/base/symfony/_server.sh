@@ -80,7 +80,7 @@ if [ -d app ]; then
           symfony local:server:start
           echo
 
-          symfony server:status
+          symfony local:server:status
 
         else
           echo "[ ERROR ] There is not a file : .symfony.local.yaml"

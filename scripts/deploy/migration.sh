@@ -1,9 +1,9 @@
 #!/bin/bash
 # ======================================================================================================================
-# Tutorial - Create a new project
+# Tools - IDE - Migrate databases
 # ======================================================================================================================
 
-PROJECT_PATH=$(dirname "$(dirname "$0")")
+PROJECT_PATH=$(dirname "$(dirname "$(dirname "$0")")")
 cd "${PROJECT_PATH}" || exit
 
 # >>>> Abstract
@@ -24,28 +24,14 @@ setEnvironment() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ ENV ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Environment"
   echo "---------------------------------------------------------------------------------------------------------------"
-  PS3="Menu: "
-  select num in "dev" "exit"; do
-    case "$REPLY" in
-    1)
-      # >>>> Dev Environment
-      ENVIRONMENT_NAME="dev"
-      break
-      ;;
-    2)
-      echo "exit()"
-      setEnd
-      ;;
-    *)
-      echo "[ ERROR ] Unknown Command"
-      setEnd
-      ;;
-    esac
-  done
+  echo
 
-  echo
-  echo "- PROJECT ENV : ${ENVIRONMENT_NAME}"
-  echo
+  # >>>> Import a project file
+  if [ -f ${PROJECT_PATH}/scripts/base/_environment.sh ]; then
+    source ${PROJECT_PATH}/scripts/base/_environment.sh
+  else
+    echo "Please check a file : ${PROJECT_PATH}/scripts/base/_environment.sh" && exit
+  fi
 }
 
 # >>>> Platform
@@ -56,15 +42,6 @@ setPlatform() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "- PLATFORM OS : ${PLATFORM_TYPE}"
   echo
-  # --------------------------------------------------------------------------------------------------------------------
-  # Scripts - Platform - Base
-  # --------------------------------------------------------------------------------------------------------------------
-  # >>>> Import a platform file
-  if [ -f ${PROJECT_PATH}/scripts/base/_platform.sh ]; then
-    source ${PROJECT_PATH}/scripts/base/_platform.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/base/_platform.sh" && exit
-  fi
 }
 
 # >>>> Project
@@ -74,41 +51,6 @@ setProject() {
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - Project"
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "- PROJECT NAME : ${PROJECT_NAME}"
-  echo
-
-  # >>>> Project - Base - Import a project file
-  if [ -f ${PROJECT_PATH}/scripts/base/_project.sh ]; then
-    source ${PROJECT_PATH}/scripts/base/_project.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/base/_project.sh" && exit
-  fi
-
-  # >>>> Delete a directory : ./app
-  if [ -f app/bin/console ]; then
-    echo
-    echo "[ Warning ] Do you want to delete a current project  ? "
-    echo
-    PS3="Select: "
-    select num in "No" "Yes"; do
-      case "$REPLY" in
-      1)
-        echo "Please check your project whether symfony has been installed or not again"
-        setEnd
-        ;;
-      2)
-        rm -rf app
-        echo
-        break
-        ;;
-      *)
-        echo "[ ERROR ] Unknown Command"
-        setEnd
-        ;;
-      esac
-    done
-  else
-    rm -rf app
-  fi
   echo
 }
 
@@ -122,109 +64,164 @@ setPhp() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - App"
   echo "---------------------------------------------------------------------------------------------------------------"
-  # --------------------------------------------------------------------------------------------------------------------
-  # Linux - Ubuntu Desktop
-  # --------------------------------------------------------------------------------------------------------------------
-  # >>>> Import an install file
-  if [ -f ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/app/php/_install.sh ]; then
-    source ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/app/php/_install.sh
-  else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/app/php/_install.sh" && exit
-  fi
-
-  # >>>> Platform
-  if [ "${PLATFORM_TYPE}" == "Darwin" ]; then
-    # ------------------------------------------------------------------------------------------------------------------
-    # Install the packages
-    # ------------------------------------------------------------------------------------------------------------------
-    # >>>> PHP
-    local PHP_PKG
-    PHP_PKG=$(brew list | grep php)
-    if [ "${PHP_PKG}" ]; then
-      local CURRENT_PHP_VERSION
-      CURRENT_PHP_VERSION=$(php --version | head -n 1 | cut -d " " -f 2 | cut -c 1-3)
-    else
-      brew install php@${PHP_VERSION}
-      echo
-    fi
-    php --version
-    echo
-    php --ini
-    echo
-
-    # >>>> PHP Extension
-    local CURRENT_PHP_VERSION
-    CURRENT_PHP_VERSION=$(php --version | head -n 1 | cut -d " " -f 2 | cut -c 1-3)
-
-    local PHP_EXT_REDIS
-    PHP_EXT_REDIS=$(find /opt/homebrew/lib/php/pecl/ -name redis.so)
-    if [ "${PHP_EXT_REDIS}" ]; then
-      pecl list redis
-    else
-      export LC_CTYPE=en_US.UTF-8
-      export LC_ALL=en_US.UTF-8
-
-      pecl install redis
-    fi
-    echo
-    echo "extension-dir : $(php-config --extension-dir)"
-    echo
-
-    # >>>> PHP - Composer
-    local PHP_COMPOSER
-    PHP_COMPOSER=$(brew list | grep composer)
-    if [ "${PHP_COMPOSER}" ]; then
-      echo "Composer has been installed"
-    else
-      brew install composer
-    fi
-
-    # ------------------------------------------------------------------------------------------------------------------
-    # Update the configuration
-    # ------------------------------------------------------------------------------------------------------------------
-
-    # ------------------------------------------------------------------------------------------------------------------
-    # Check the status
-    # ------------------------------------------------------------------------------------------------------------------
-
-  elif [ "${PLATFORM_TYPE}" == "Windows" ]; then
-    # ------------------------------------------------------------------------------------------------------------------
-    # Install the packages
-    # ------------------------------------------------------------------------------------------------------------------
-    # >>>> PHP
-    echo -n
-
-    # ------------------------------------------------------------------------------------------------------------------
-    # Update the configuration
-    # ------------------------------------------------------------------------------------------------------------------
-
-    # ------------------------------------------------------------------------------------------------------------------
-    # Check the status
-    # ------------------------------------------------------------------------------------------------------------------
-
-  fi
-
-  # --------------------------------------------------------------------------------------------------------------------
-  # App - PHP Framework - Symfony                      https://symfony.com/doc/current/setup.html#technical-requirements
-  # --------------------------------------------------------------------------------------------------------------------
-
-  # >>>> Creating Symfony Applications                                        https://symfony.com/doc/current/setup.html
-  composer create-project symfony/skeleton:"${SYMFONY_VERSION}.*" app
   echo
 
-  (
-    cd app || return
+  # >>>> Migrate
+  if [ -d app ]; then
+    (
+      cd app || return
 
-    # >>>> Symfony Framework                                                  https://symfony.com/doc/current/setup.html
-    composer require webapp
-    echo
-  )
+      if [ -f bin/console ]; then
 
-  # >>>> Import a symfony_deployment file
-  if [ -f ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh ]; then
-    source ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh
+        # >>>> Select one of some environments
+        PS3="Menu: "
+        select num in "clear" "create" "update" "migrate" "validate" "status" "exit"; do
+          case "$REPLY" in
+          1)
+            DOCTRINE_COMMAND="clear"
+            break
+            ;;
+          2)
+            DOCTRINE_COMMAND="create"
+            break
+            ;;
+          3)
+            DOCTRINE_COMMAND="update"
+            break
+            ;;
+          4)
+            DOCTRINE_COMMAND="migrate"
+            break
+            ;;
+          5)
+            DOCTRINE_COMMAND="validate"
+            break
+            ;;
+          6)
+            DOCTRINE_COMMAND="status"
+            break
+            ;;
+          7)
+            echo "exit()"
+            exit
+            ;;
+          *)
+            echo "[ ERROR ] Unknown Command"
+            exit
+            ;;
+          esac
+        done
+        echo
+
+        # ----------------------------------------------------------------------------------------------------------------
+        # 1) Clear
+        # ----------------------------------------------------------------------------------------------------------------
+        if [ "${DOCTRINE_COMMAND}" == "clear" ]; then
+          echo ">>>> Clear: Remove migrations files"
+          echo
+
+          if [ -d migrations ]; then
+            rm -rfv migrations/*
+          fi
+          echo
+
+          echo ">>>> Clear: Update the current schema into a new single migration"
+          echo
+
+          symfony console doctrine:migrations:dump-schema
+          echo
+
+          echo ">>>> Clear: Clean Up the Database Tables/Schema"
+          echo
+
+          symfony console doctrine:migrations:rollup
+          echo
+
+        # ----------------------------------------------------------------------------------------------------------------
+        # 2) Create
+        # ----------------------------------------------------------------------------------------------------------------
+        elif [ "${DOCTRINE_COMMAND}" == "create" ]; then
+          echo ">>>> Create: Updating the Database Tables/Schema - Default"
+          echo
+
+          symfony console doctrine:database:create -c default
+
+          sleep 5
+
+        # ----------------------------------------------------------------------------------------------------------------
+        # 3) Schema
+        # ----------------------------------------------------------------------------------------------------------------
+        elif [ "${DOCTRINE_COMMAND}" == "update" ]; then
+          echo ">>>> Update: Updating the Database Tables/Schema - Default"
+          echo
+
+          symfony console doctrine:schema:update --em default --force
+
+          sleep 5
+
+        # ----------------------------------------------------------------------------------------------------------------
+        # 4) Migrate
+        # ----------------------------------------------------------------------------------------------------------------
+        elif [ "${DOCTRINE_COMMAND}" == "migrate" ]; then
+          echo ">>>> Migrate: Updating the Database Tables/Schema"
+          echo
+
+          symfony console doctrine:migration:current
+          #symfony console doctrine:migration:diff --allow-empty-diff --from-empty-schema
+          echo
+
+          sleep 5
+
+          echo ">>>> Migrate: Updating the Database Tables/Schema"
+          echo
+
+          symfony console make:migration
+          echo
+
+          sleep 5
+
+          echo ">>>> Migrate: Updating the Database Tables/Schema"
+          echo
+
+          symfony console doctrine:migration:migrate
+          echo
+          
+          sleep 5
+
+        # ----------------------------------------------------------------------------------------------------------------
+        # 5) Validate
+        # ----------------------------------------------------------------------------------------------------------------
+        elif [ "${DOCTRINE_COMMAND}" == "validate" ]; then
+          echo ">>>> Check: Updating the Database Tables/Schema - Default"
+          echo
+
+          symfony console doctrine:schema:validate
+          echo
+
+        # ----------------------------------------------------------------------------------------------------------------
+        # 6) Status
+        # ----------------------------------------------------------------------------------------------------------------
+        elif [ "${DOCTRINE_COMMAND}" == "status" ]; then
+          echo ">>>> Status: Checking the Database Tables/Schema"
+          echo
+
+          symfony console doctrine:migrations:status
+        fi
+        echo
+
+        echo ">>>> Migrations: Check a list"
+        echo
+
+        symfony console doctrine:migration:list
+
+      else
+        echo "[ ERROR ] There is not a command : app/bin/console"
+        exit
+      fi
+    )
   else
-    echo "Please check a file : ${PROJECT_PATH}/scripts/base/symfony/_deployment.sh" && exit
+    echo "[ ERROR ] There is not a folder : app"
+    setExit
   fi
   echo
 }
@@ -290,7 +287,6 @@ setVM() {
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - VM - Instance"
   echo "---------------------------------------------------------------------------------------------------------------"
 }
-
 
 # ======================================================================================================================
 # START

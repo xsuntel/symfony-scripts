@@ -74,13 +74,13 @@ fi
 echo ">>>> Docker Desktop - Update configurations"
 echo
 
-if [ -f ${PROJECT_PATH}/scripts/develop/docker/containers/docker-compose.yml ]; then
-  cp -fv ${PROJECT_PATH}/scripts/develop/docker/containers/docker-compose.yml ${PROJECT_PATH}
+if [ -f ${PROJECT_PATH}/scripts/deploy/docker/containers/docker-compose.yml ]; then
+  cp -fv ${PROJECT_PATH}/scripts/deploy/docker/containers/docker-compose.yml ${PROJECT_PATH}
   echo
 fi
 
-if [ -f ${PROJECT_PATH}/scripts/develop/docker/containers/docker-compose.${ENVIRONMENT_NAME}.env ] && [ -f ${PROJECT_PATH}/scripts/develop/docker/containers/docker-compose.${ENVIRONMENT_NAME}.yml ]; then
-  cp -fv ${PROJECT_PATH}/scripts/develop/docker/containers/docker-compose.${ENVIRONMENT_NAME}.* ${PROJECT_PATH}
+if [ -f ${PROJECT_PATH}/scripts/deploy/docker/containers/docker-compose.${ENVIRONMENT_NAME}.env ] && [ -f ${PROJECT_PATH}/scripts/deploy/docker/containers/docker-compose.${ENVIRONMENT_NAME}.yml ]; then
+  cp -fv ${PROJECT_PATH}/scripts/deploy/docker/containers/docker-compose.${ENVIRONMENT_NAME}.* ${PROJECT_PATH}
   echo
 fi
 

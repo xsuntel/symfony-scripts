@@ -56,6 +56,79 @@ setPlatform() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "- PLATFORM OS : ${PLATFORM_TYPE}"
   echo
+
+  # >>>> App
+  if [ -d app ]; then
+    (
+      cd app || return
+
+      # >>>> Symfony Command                                             https://symfony.com/doc/current/deployment.html
+      if [ -f bin/console ]; then
+
+        # >>>> Environment
+        if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+
+          # >>>> Platform
+          if [ "${PLATFORM_TYPE}" == "Linux" ]; then
+            # ----------------------------------------------------------------------------------------------------------
+            # Platform - Linux - Ubuntu
+            # ----------------------------------------------------------------------------------------------------------
+
+            echo ">>>> Symfony - Messenger"
+            echo
+            symfony console messenger:stop-workers
+            echo
+
+            echo ">>>> Symfony - Local Server"
+            echo
+            symfony local:server:stop
+            echo
+
+          elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
+            # ----------------------------------------------------------------------------------------------------------
+            # Platform - MacOS
+            # ----------------------------------------------------------------------------------------------------------
+
+            echo ">>>> Symfony - Messenger"
+            echo
+            symfony console messenger:stop-workers
+            echo
+
+            echo ">>>> Symfony - Local Server"
+            echo
+            symfony local:server:stop
+            echo
+
+          elif [ "${PLATFORM_TYPE}" == "Windows" ]; then
+            # ----------------------------------------------------------------------------------------------------------
+            # Platform - Windows
+            # ----------------------------------------------------------------------------------------------------------
+
+            echo ">>>> Symfony - Messenger"
+            echo
+            symfony console messenger:stop-workers
+            echo
+
+            echo ">>>> Symfony - Local Server"
+            echo
+            symfony local:server:stop
+            echo
+
+          else
+            echo "Please check Operating System"
+            setExit
+          fi
+
+        fi
+
+      fi
+    )
+  else
+    echo
+    echo "[ ERROR ] There is not a folder : app"
+    echo
+    setExit
+  fi
 }
 
 # >>>> Project
@@ -73,14 +146,6 @@ setProject() {
   else
     echo "Please check a file : ${PROJECT_PATH}/scripts/base/_project.sh" && exit
   fi
-
-  # >>>> Project - Base - Delete a directory : ./app
-  if [ -f app/bin/console ]; then
-    rm -rf app
-    mkdir app
-    touch app/.gitkeep
-  fi
-  echo
 }
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -93,6 +158,15 @@ setPhp() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - App"
   echo "---------------------------------------------------------------------------------------------------------------"
+  echo
+
+  # >>>> Project - Base - Delete a directory : ./app
+  if [ -f app/bin/console ]; then
+    rm -rf app
+    mkdir app
+    touch app/.gitkeep
+  fi
+  echo
 }
 
 # >>>> Cache
@@ -155,6 +229,57 @@ setVM() {
   echo "---------------------------------------------------------------------------------------------------------------"
   echo "[ $(echo ${ENVIRONMENT_NAME} | tr '[a-z]' '[A-Z]') ] ${PROCESSOR_TYPE} - ${PLATFORM_TYPE} - VM - Instance"
   echo "---------------------------------------------------------------------------------------------------------------"
+  echo
+
+  # >>>> Environment
+  if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+
+    # >>>> Platform
+    if [ "${PLATFORM_TYPE}" == "Linux" ]; then
+      # ------------------------------------------------------------------------------------------------------------------
+      # Platform - Linux - Ubuntu
+      # ------------------------------------------------------------------------------------------------------------------
+      # >>>> Processer
+      echo ">>>> Linux - Processer - Supervisor"
+      echo
+      sudo supervisorctl stop messenger-consume:*
+      echo
+
+      sudo supervisorctl status
+      echo
+
+    elif [ "${PLATFORM_TYPE}" == "Darwin" ]; then
+      # ------------------------------------------------------------------------------------------------------------------
+      # Platform - MacOS
+      # ------------------------------------------------------------------------------------------------------------------
+      # >>>> Processer
+      echo ">>>> MacOS - Processer - Supervisor"
+      echo
+      supervisorctl stop messenger-consume:*
+      echo
+
+      sudo supervisorctl status
+      echo
+
+    elif [ "${PLATFORM_TYPE}" == "Windows" ]; then
+      # ------------------------------------------------------------------------------------------------------------------
+      # Platform - Windows
+      # ------------------------------------------------------------------------------------------------------------------
+      # >>>> Processer
+      echo ">>>> Windows - Processer - Supervisor"
+      echo
+      supervisorctl stop messenger-consume:*
+      echo
+
+      sudo supervisorctl status
+      echo
+
+    else
+      echo "Please check Operating System"
+      setExit
+    fi
+
+  fi
 }
 
 
@@ -183,7 +308,7 @@ setProject
 # ----------------------------------------------------------------------------------------------------------------------
 
 # >>>> App
-#setPhp
+setPhp
 
 # >>>> Cache
 #setRedis
@@ -210,7 +335,7 @@ setProject
 # ----------------------------------------------------------------------------------------------------------------------
 # Instance
 # ----------------------------------------------------------------------------------------------------------------------
-#setVM
+setVM
 
 # ======================================================================================================================
 # END
