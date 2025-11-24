@@ -19,10 +19,8 @@ using [Symfony Framework](https://symfony.com)
         | -- Symfony Framework -- |
 
     diagram/
-        cloud/
-        compute/
-        source/
-        tools/
+        CSP (Cloud Service Provider)/
+        VM (Virtual Machine)/
     scripts/
         base/
         console/
