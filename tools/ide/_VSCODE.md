@@ -4,6 +4,28 @@
 
 ### Config
 
+#### .vscode
+
+* Tasks
+
+```json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Deploy Shell-Script for Linux",
+            "type": "shell",
+            "command": "./scripts/deploy/linux/ubuntu/deploy.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }
+    ]
+}
+```
+
 #### Extension
 
 * App
@@ -83,7 +105,7 @@ Chat: Disable AI Features - Disable (Checked)
 Pgsql › Copilot: Enable   - UnChecked
 ```
 
-## Tools
+## Reference
 
 ### Whale Browser
 
@@ -94,7 +116,6 @@ sudo apt-key export EF6C07F6 | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/wha
 sudo apt update
 ```
 
-## Reference
+### IDE
 
-* IDE
-  * [VSCode](https://code.visualstudio.com/docs/languages/php)
+* [VSCode](https://code.visualstudio.com/docs/languages/php)
