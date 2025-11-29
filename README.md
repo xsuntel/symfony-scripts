@@ -106,9 +106,9 @@ using [Symfony Framework](https://symfony.com)
 
 #### IDE
 
-* Antigravity - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/ANTIGRAVITY.md)
-* PhpStorm    - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/PHPSTORM.md)
-* VSCode      - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/VSCODE.md)
+* Antigravity - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_ANTIGRAVITY.md)
+* PhpStorm    - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_PHPSTORM.md)
+* VSCode      - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_VSCODE.md)
 
 #### Deployment
 
