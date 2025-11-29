@@ -12,11 +12,11 @@ PROJECT_DOMAIN="example.app"
 # Software Bundles
 # ----------------------------------------------------------------------------------------------------------------------
 
-# >>>> App - PHP
+# >>>> App - PHP                                                                            https://symfony.com/releases
 PHP_VERSION=8.3
-SYMFONY_VERSION=7.3.*
+SYMFONY_VERSION=8.0.*
 
-NODE_VERSION=20
+NODE_VERSION=22
 
 # >>>> Cache - Redis
 REDIS_VERSION=6.0
