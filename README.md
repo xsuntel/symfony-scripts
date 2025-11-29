@@ -15,7 +15,7 @@ using [Symfony Framework](https://symfony.com)
 
 ```text
     app/
-    
+
         | -- Symfony Framework -- |
 
     diagram/
@@ -86,14 +86,14 @@ using [Symfony Framework](https://symfony.com)
   ```bash
   vi env.app
 
-  # >>>> Platform                                                              
+  # >>>> Platform
   PLATFORM_TIMEZONE="{Your TimeZone}"
 
   # >>>> Project
   PROJECT_DOMAIN="{Your Web domain}"
 
   # >>>> PHP
-  SYMFONY_VERSION=7.3.* 
+  SYMFONY_VERSION=8.0.*
   ```
 
 #### New Project
@@ -104,15 +104,20 @@ using [Symfony Framework](https://symfony.com)
   ./tools/tutorial.sh
   ```
 
+#### IDE
+
+* Antigravity - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/ANTIGRAVITY.md)
+* PhpStorm    - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/PHPSTORM.md)
+* VSCode      - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/VSCODE.md)
+
 #### Deployment
 
 * Environment
   * Laptop - [Devices](https://github.com/xsuntel/symfony-scripts/wiki)
 * Platform
-  * Linux - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/linux/ubuntu/ABSTRACT.md)
-  * Macos - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/macos/device/ABSTRACT.md)
-  *
-  Windows - [Deployment](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/windows/device/ABSTRACT.md)
+  * Linux - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/linux/ubuntu/ABSTRACT.md)
+  * Macos - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/macos/device/ABSTRACT.md)
+  * Windows - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/windows/device/ABSTRACT.md)
 
 ### Prod Environment
 
@@ -123,12 +128,9 @@ using [Symfony Framework](https://symfony.com)
   * GCP (Google Cloud Platform)
   * NCloud (Naver Cloud Platform)
 
-  ```bash
-  ls ./scripts/cloud
-  ```
-
 ## Tutorial
 
+* [Symfony Framework](https://symfony.com)
 * [SymfonyCasts](https://symfonycasts.com)
 
 ## Reference
