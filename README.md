@@ -115,9 +115,9 @@ using [Symfony Framework](https://symfony.com)
 * Environment
   * Laptop - [Devices](https://github.com/xsuntel/symfony-scripts/wiki)
 * Platform
-  * Linux - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/linux/ubuntu/ABSTRACT.md)
-  * Macos - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/macos/device/ABSTRACT.md)
-  * Windows - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/windows/device/ABSTRACT.md)
+  * Linux - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/linux/ubuntu/_ABSTRACT.md)
+  * Macos - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/macos/device/_ABSTRACT.md)
+  * Windows - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/windows/device/_ABSTRACT.md)
 
 ### Prod Environment
 
