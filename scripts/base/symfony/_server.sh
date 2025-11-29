@@ -68,29 +68,29 @@ if [ -d app ]; then
         fi
 
         # >>>> Symfony - Local Web Server
-        if [ -f ${PROJECT_PATH}/tools/.symfony.local.yaml ]; then
-          cp -fv ${PROJECT_PATH}/tools/.symfony.local.yaml ${PROJECT_PATH}/app/.symfony.local.yaml
+        if [ -f ../tools/.symfony.local.yaml ]; then
+          cp -fv ../tools/.symfony.local.yaml .symfony.local.yaml
           echo
         fi
 
-        if [ -f ${PROJECT_PATH}/app/.symfony.local.yaml ]; then
+        if [ -f .symfony.local.yaml ]; then
           symfony server:ls
           echo
 
           symfony local:server:start
           echo
 
-          symfony local:server:status
+          symfony server:status
 
         else
           echo "[ ERROR ] There is not a file : .symfony.local.yaml"
-          settExit
+          setExit
         fi
 
       else
 
-        if [ -f ${PROJECT_PATH}/app/.symfony.local.yaml ]; then
-          rm -f ${PROJECT_PATH}/app/.symfony.local.yaml
+        if [ -f .symfony.local.yaml ]; then
+          rm -f .symfony.local.yaml
         fi
 
       fi

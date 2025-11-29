@@ -14,10 +14,26 @@ postgres@localhost:~$ psql
 psql (xx.y)
 Type "help" for help.
 
-postgres=# 
+postgres=#
 
 postgres=# \q
 
 ```
 
-## Tools
+### Database
+
+* Delete
+
+```bash
+postgres=# \l
+
+postgres=# drop database {name}
+```
+
+* Rename
+
+```bash
+postgres=# \l
+
+postgres=# ALTER DATABASE {old_name} RENAME TO {new_name};
+```
