@@ -16,13 +16,7 @@
     * PHP Intelephense                         (Intelephense)
     * PHP Debug                                (Xdebug)
   * Symfony Framework
-    * Symfony for VSCode (fixed)               (SplasHmiCH)
-    * Symfony UX Twig Component                (Sander Verschoor)
-    * Modern Twig                              (Stanislav Romanov)
-* Cache
-  * Redis for VS Code                          (Redis)
-* Database
-  * PostgreSQL                                 (Microsoft)
+    * Twig Language 2                          (mblode)
 * Tools
   * IDE
     * YAML                                     (RedHat)
@@ -31,8 +25,6 @@
     * Markdownlint                             (David Anson)
     * Material Icon Theme                      (Philipp Kief)
     * Run in Terminal                          (kortina)
-    * Draw.io Integration                      (Henning Dieterichs)
-    * GitLens -- Git superchaged               (GitKraken)
 
 ### Agent
 
