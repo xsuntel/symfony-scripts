@@ -79,8 +79,9 @@ This project includes some shell-scripts for Full-Stack developer to develop a w
   cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
   ```
 
-* Update default
-  variables - [Symfony Releases](https://symfony.com/releases) - [TimeZone](https://www.php.net/manual/en/timezones.php)
+* Update default variables
+  * [TimeZone](https://www.php.net/manual/en/timezones.php)
+  * [Symfony Releases](https://symfony.com/releases)
 
   ```bash
   vi env.app
@@ -107,18 +108,22 @@ This project includes some shell-scripts for Full-Stack developer to develop a w
 
 #### IDE
 
-* Antigravity - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_ANTIGRAVITY.md)
 * PhpStorm    - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_PHPSTORM.md)
-* VSCode      - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_VSCODE.md) (Recommend)
+* VSCode      - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_VSCODE.md)
+
+#### Tools
+
+* Antigravity - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_ANTIGRAVITY.md)
 
 #### Deployment
 
-* Environment
-  * Laptop - [Devices](https://github.com/xsuntel/symfony-scripts/wiki)
 * Platform
   * Linux - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/linux/ubuntu/_ABSTRACT.md)
   * Macos - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/macos/device/_ABSTRACT.md)
   * Windows - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/windows/device/_ABSTRACT.md)
+
+
+* Reference - [Devices](https://github.com/xsuntel/symfony-scripts/wiki)
 
 ### Prod Environment
 
