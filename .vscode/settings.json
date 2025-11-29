@@ -7,10 +7,24 @@
   "editor.detectIndentation": false,
   "editor.formatOnSave": true, // 저장 시 자동 포맷팅 (필수)
   "editor.renderWhitespace": "selection", // 선택된 영역만 공백 표시
-  "files.trimTrailingWhitespace": true, // 줄 끝 공백 제거
-  "files.insertFinalNewline": true, // 파일 끝에 빈 줄 추가 (POSIX 표준)
   "editor.wordWrap": "on", // 긴 줄 자동 줄바꿈
   "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace", // 사용자 선호 폰트 유지
+
+  // [수직 가이드 라인 표시 설정]
+  "editor.guides.indentation": true, // 기본적인 들여쓰기 수직선 표시
+  "editor.guides.highlightActiveIndentation": true, // 현재 커서가 위치한 블록의 수직선을 밝게 강조 (PhpStorm 스타일)
+
+  // [브라켓 페어 가이드 - 괄호 연결선]
+  // 괄호의 시작과 끝을 수직/수평선으로 연결해줍니다. (매우 추천)
+  "editor.guides.bracketPairs": true,
+  "editor.guides.bracketPairsHorizontal": "active", // 현재 활성 블록은 수평선까지 표시
+
+  // [브라켓 색상화]
+  // 괄호 쌍( {, } )마다 다른 색상을 입혀 깊이를 구분하기 쉽게 만듭니다. (VSCode 내장 기능)
+  "editor.bracketPairColorization.enabled": true,
+
+  "files.trimTrailingWhitespace": true, // 줄 끝 공백 제거
+  "files.insertFinalNewline": true, // 파일 끝에 빈 줄 추가 (POSIX 표준)
 
   // [중요] 포맷터 충돌 방지 설정
   // 기본적으로 Prettier를 사용하되, PHP와 Twig는 전용 포맷터 사용
@@ -19,7 +33,10 @@
     "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
   },
   "[twig]": {
-    "editor.defaultFormatter": "mblode.twig-language-2" 
+    "editor.defaultFormatter": "mblode.twig-language-2"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
@@ -28,23 +45,8 @@
   // ----------------------------------------------------------------------
   // 2. PHP & Symfony Configuration
   // ----------------------------------------------------------------------
-  "php.validate.executablePath": "php", // 또는 docker 사용 시 경로 지정 필요
+  "php.validate.executablePath": "/usr/bin/php8.3", // 또는 docker 사용 시 경로 지정 필요
   "php.suggest.basic": false, // 내장 제안 끄기 (Intelephense와 중복 방지)
-  
-  // Intelephense 설정 (라이센스 키가 있다면 입력)
-  "intelephense.environment.phpVersion": "8.3", // 사용 중인 PHP 버전으로 수정
-  "intelephense.files.maxSize": 5000000, // 대형 프로젝트를 위해 제한 상향
-  "intelephense.stubs": [
-    "apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core", "ctype", "curl", "date",
-    "dba", "dom", "enchant", "exif", "FFI", "fileinfo", "filter", "fpm", "ftp", "gd",
-    "gettext", "gmp", "hash", "iconv", "imap", "intl", "json", "ldap", "libxml",
-    "mbstring", "meta", "mysqli", "oci8", "odbc", "openssl", "pcntl", "pcre", "PDO",
-    "pgsql", "Phar", "posix", "pspell", "random", "readline", "Reflection", "session",
-    "shmop", "SimpleXML", "snmp", "soap", "sockets", "sodium", "SPL", "sqlite3",
-    "standard", "superglobals", "sysvmsg", "sysvsem", "sysvshm", "tidy", "tokenizer",
-    "uri", "xml", "xmlreader", "xmlrpc", "xmlwriter", "xsl", "Zend OPcache", "zip", "zlib",
-    "wordpress", "phpunit" // Symfony/PHP 개발용 스텁 추가
-  ],
 
   // Symfony 관련 파일 연결
   "files.associations": {
@@ -62,7 +64,10 @@
     "php": "html"
   },
   "tailwindCSS.classAttributes": [
-    "class", "className", "ngClass", "class:list", 
+    "class",
+    "className",
+    "ngClass",
+    "class:list",
     "attributes" // Symfony Twig Component의 attributes 지원
   ],
   "editor.quickSuggestions": {
@@ -103,5 +108,12 @@
   // ----------------------------------------------------------------------
   // 5. Database (PostgreSQL)
   // ----------------------------------------------------------------------
-  "sqltools.useNodeRuntime": true // SQLTools 사용 시 필요
+  "sqltools.useNodeRuntime": true,
+  "workbench.colorCustomizations": {
+    // 수직 가이드 라인 색상 (기본)
+    "editorIndentGuide.background": "#404040",
+    // 현재 활성화된(커서가 있는) 블록의 가이드 라인 색상 (강조)
+    "editorIndentGuide.activeBackground": "#ffffff"
+  },
+  "symfony-vscode.phpExecutablePath": "/usr/bin/php8.3" // SQLTools 사용 시 필요
 }
