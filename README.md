@@ -25,7 +25,7 @@ This project includes some shell-scripts for Full-Stack developer to develop a w
         console/
         deploy/
     tools/
-        api/
+        ai/
         git/
         ide/
         .symfony.local.yaml
@@ -106,14 +106,13 @@ This project includes some shell-scripts for Full-Stack developer to develop a w
 
   * Reference : [Installing & Setting up the Symfony Framework](https://symfony.com/doc/current/setup.html)
 
-#### IDE
-
-* PhpStorm    - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_PHPSTORM.md)
-* VSCode      - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_VSCODE.md)
-
 #### Tools
 
-* Antigravity - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_ANTIGRAVITY.md)
+* AI
+  * Antigravity - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_ANTIGRAVITY.md)
+* IDE
+  * PhpStorm    - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_PHPSTORM.md)
+  * VSCode      - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_VSCODE.md)
 
 #### Deployment
 
@@ -121,8 +120,6 @@ This project includes some shell-scripts for Full-Stack developer to develop a w
   * Linux - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/linux/ubuntu/_ABSTRACT.md)
   * Macos - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/macos/device/_ABSTRACT.md)
   * Windows - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/windows/device/_ABSTRACT.md)
-
-
 * Reference - [Devices](https://github.com/xsuntel/symfony-scripts/wiki)
 
 ### Prod Environment
