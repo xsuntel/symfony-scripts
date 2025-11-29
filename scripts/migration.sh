@@ -3,7 +3,7 @@
 # Tools - IDE - Migrate databases
 # ======================================================================================================================
 
-PROJECT_PATH=$(dirname "$(dirname "$(dirname "$0")")")
+PROJECT_PATH=$(dirname "$(dirname "$0")")
 cd "${PROJECT_PATH}" || exit
 
 # >>>> Abstract
@@ -185,7 +185,7 @@ setPhp() {
 
           symfony console doctrine:migration:migrate
           echo
-          
+
           sleep 5
 
         # ----------------------------------------------------------------------------------------------------------------

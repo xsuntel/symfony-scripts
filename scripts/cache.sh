@@ -3,7 +3,7 @@
 # Tools - IDE - Update sources in Dev Environment
 # ======================================================================================================================
 
-PROJECT_PATH=$(dirname "$(dirname "$(dirname "$0")")")
+PROJECT_PATH=$(dirname "$(dirname "$0")")
 cd "${PROJECT_PATH}" || exit
 
 # >>>> Abstract
