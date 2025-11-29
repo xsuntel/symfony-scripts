@@ -2,8 +2,7 @@
 
 ## Abstract
 
-This project includes some shell-scripts for Full-Stack developer to develop a web application
-using [Symfony Framework](https://symfony.com)
+This project includes some shell-scripts for Full-Stack developer to develop a web application using Symfony Framework
 
 ## Platform
 
@@ -93,22 +92,24 @@ using [Symfony Framework](https://symfony.com)
   PROJECT_DOMAIN="{Your Web domain}"
 
   # >>>> PHP
-  SYMFONY_VERSION=8.0.*
+  SYMFONY_VERSION="{Stable Release}"
   ```
 
 #### New Project
 
-* Create a new project : [Installing & Setting up the Symfony Framework](https://symfony.com/doc/current/setup.html)
+* Create a new project
 
   ```bash
   ./tools/tutorial.sh
   ```
 
+  * Reference : [Installing & Setting up the Symfony Framework](https://symfony.com/doc/current/setup.html)
+
 #### IDE
 
 * Antigravity - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_ANTIGRAVITY.md)
 * PhpStorm    - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_PHPSTORM.md)
-* VSCode      - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_VSCODE.md)
+* VSCode      - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/tools/ide/_VSCODE.md) (Recommend)
 
 #### Deployment
 
