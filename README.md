@@ -13,6 +13,7 @@ This project includes some shell-scripts for Full-Stack developer to develop a w
 ## Project
 
 ```text
+    api/
     app/
 
         | -- Symfony Framework -- |
