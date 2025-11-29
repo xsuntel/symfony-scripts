@@ -1,0 +1,107 @@
+{
+  // ----------------------------------------------------------------------
+  // 1. Core Editor & Formatting (기본 에디터 설정)
+  // ----------------------------------------------------------------------
+  "editor.tabSize": 4, // PHP PSR 표준 준수
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true, // 저장 시 자동 포맷팅 (필수)
+  "editor.renderWhitespace": "selection", // 선택된 영역만 공백 표시
+  "files.trimTrailingWhitespace": true, // 줄 끝 공백 제거
+  "files.insertFinalNewline": true, // 파일 끝에 빈 줄 추가 (POSIX 표준)
+  "editor.wordWrap": "on", // 긴 줄 자동 줄바꿈
+  "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace", // 사용자 선호 폰트 유지
+
+  // [중요] 포맷터 충돌 방지 설정
+  // 기본적으로 Prettier를 사용하되, PHP와 Twig는 전용 포맷터 사용
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "[twig]": {
+    "editor.defaultFormatter": "mblode.twig-language-2" 
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+
+  // ----------------------------------------------------------------------
+  // 2. PHP & Symfony Configuration
+  // ----------------------------------------------------------------------
+  "php.validate.executablePath": "php", // 또는 docker 사용 시 경로 지정 필요
+  "php.suggest.basic": false, // 내장 제안 끄기 (Intelephense와 중복 방지)
+  
+  // Intelephense 설정 (라이센스 키가 있다면 입력)
+  "intelephense.environment.phpVersion": "8.3", // 사용 중인 PHP 버전으로 수정
+  "intelephense.files.maxSize": 5000000, // 대형 프로젝트를 위해 제한 상향
+  "intelephense.stubs": [
+    "apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core", "ctype", "curl", "date",
+    "dba", "dom", "enchant", "exif", "FFI", "fileinfo", "filter", "fpm", "ftp", "gd",
+    "gettext", "gmp", "hash", "iconv", "imap", "intl", "json", "ldap", "libxml",
+    "mbstring", "meta", "mysqli", "oci8", "odbc", "openssl", "pcntl", "pcre", "PDO",
+    "pgsql", "Phar", "posix", "pspell", "random", "readline", "Reflection", "session",
+    "shmop", "SimpleXML", "snmp", "soap", "sockets", "sodium", "SPL", "sqlite3",
+    "standard", "superglobals", "sysvmsg", "sysvsem", "sysvshm", "tidy", "tokenizer",
+    "uri", "xml", "xmlreader", "xmlrpc", "xmlwriter", "xsl", "Zend OPcache", "zip", "zlib",
+    "wordpress", "phpunit" // Symfony/PHP 개발용 스텁 추가
+  ],
+
+  // Symfony 관련 파일 연결
+  "files.associations": {
+    "*.html.twig": "twig",
+    "*.env": "properties",
+    "*.env.local": "properties"
+  },
+
+  // ----------------------------------------------------------------------
+  // 3. Frontend (Tailwind, Stimulus, Emmet)
+  // ----------------------------------------------------------------------
+  // Tailwind CSS 설정
+  "tailwindCSS.includeLanguages": {
+    "twig": "html", // Twig 파일에서도 Tailwind 자동완성 활성화
+    "php": "html"
+  },
+  "tailwindCSS.classAttributes": [
+    "class", "className", "ngClass", "class:list", 
+    "attributes" // Symfony Twig Component의 attributes 지원
+  ],
+  "editor.quickSuggestions": {
+    "strings": true // 문자열(class="...") 내부에서도 자동완성 표시
+  },
+
+  // Emmet (HTML 단축키) 설정
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "twig": "html",
+    "postgresql": "sql"
+  },
+
+  // ----------------------------------------------------------------------
+  // 4. Tools & UI (GitLens, Icons, Explorer)
+  // ----------------------------------------------------------------------
+  // 아이콘 테마
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.activeIconPack": "nest", // 또는 "none"
+
+  // 파일 탐색기 깔끔하게 정리 (File Nesting)
+  // 예: .env 파일 아래에 .env.local 등을 숨겨서 보여줌
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "composer.json": "composer.lock, symfony.lock",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml",
+    ".env": ".env.*",
+    "*.ts": "${capture}.js"
+  },
+
+  // GitLens (핵심 기능만 활성화하여 성능 확보)
+  "gitlens.currentLine.enabled": true, // 현재 줄 블레임 보기
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.codeLens.enabled": true, // 코드 위에 작성자 표시
+  "gitlens.mode.statusBar.enabled": true,
+  "gitlens.graph.layout": "panel", // 그래프 패널 하단 배치
+
+  // ----------------------------------------------------------------------
+  // 5. Database (PostgreSQL)
+  // ----------------------------------------------------------------------
+  "sqltools.useNodeRuntime": true // SQLTools 사용 시 필요
+}

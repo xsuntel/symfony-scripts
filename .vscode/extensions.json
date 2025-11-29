@@ -1,0 +1,31 @@
+{
+  "recommendations": [
+    // App - CSS & JS
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "marcoroth.stimulus-lsp",
+    
+    // App - PHP
+    "bmewburn.vscode-intelephense-client",
+    "xdebug.php-debug",
+    
+    // App - Symfony
+    "splashmich.symfony-for-vscode",
+    "sanderverschoor.symfony-ux-twig-component",
+    "mblode.twig-language-2", 
+
+    // Cache & DB
+    "redis.redis",
+    "ckolkman.vscode-postgres",
+
+    // Tools
+    "redhat.vscode-yaml",
+    "mikestead.dotenv",
+    "esbenp.prettier-vscode",
+    "davidanson.vscode-markdownlint",
+    "pkief.material-icon-theme",
+    "formulahendry.run-in-terminal",
+    "hediet.vscode-drawio",
+    "eamodio.gitlens"
+  ]
+}

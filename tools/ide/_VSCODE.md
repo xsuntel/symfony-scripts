@@ -30,35 +30,34 @@
 
 * App
   * CSS
-    * Tailwind CSS IntelliSense
+    * Tailwind CSS IntelliSense                (Tailwind Labs)
   * Javascript
-    * JavaScript (ES6) code snippets
+    * ESLint                                   (Microsoft)
+    * Stimulus LSP                             (Marco Roth)
   * PHP
-    * PHP Namespace Resolver
-    * PHP Intelephense
-    * PHP IntelliSenseCode-runner: Enable App Insights - false
-    * PHP Debug          (Xdebug)
-    * PHPDoc Comment
+    * PHP Intelephense                         (Intelephense)
+    * PHP Debug                                (Xdebug)
   * Symfony Framework
-    * Symfony for VSCode (fixed)
-    * Symfony UX Twig Component
-    * Modern Twig
-
+    * Symfony for VSCode (fixed)               (SplasHmiCH)
+    * Symfony UX Twig Component                (Sander Verschoor)
+    * Modern Twig                              (Stanislav Romanov)
 * Cache
-  * Redis for VS Code  (Redis)
-
+  * Redis for VS Code                          (Redis)
 * Database
-  * PostgreSQL (Microsoft)
-
+  * PostgreSQL                                 (Microsoft)
 * Tools
   * IDE
-    * Draw.io Integration
-    * Markdownlint
-    * Material Icon Theme
-    * Code Runner
-  * AI
-    * Gemni Code Assist (Google)
-    * Gemini CLI Companion
+    * YAML                                     (RedHat)
+    * DotENV                                   (mikestead)
+    * Prettier - Code formatter                (Prettier)
+    * Markdownlint                             (David Anson)
+    * Material Icon Theme                      (Philipp Kief)
+    * Run in Terminal                          (kortina)
+    * Draw.io Integration                      (Henning Dieterichs)
+    * GitLens -- Git superchaged               (GitKraken)
+  * AI (Options)
+    * Gemni Code Assist                        (Google)
+    * Gemini CLI Companion                     (Google)
 
 #### Settings
 
