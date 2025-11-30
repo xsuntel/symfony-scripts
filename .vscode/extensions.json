@@ -16,21 +16,22 @@
     "splashmich.symfony-vscode-fixed",
     "sanderverschoor.symfony-ux-twig-component",
     "mblode.twig-language-2",
-    "stanislav.vscode-twig",
 
-    // Cache
+    // Cache - Redis
     "redis.redis-for-vscode",
 
-    // Database
+    // Database - PostgreSQL
     "ms-ossdata.vscode-pgsql",
 
-    // Tools
+    // Tools - IDE
     "redhat.vscode-yaml",
     "mikestead.dotenv",
     "prettier.prettier-vscode",
     "davidanson.vscode-markdownlint",
     "pkief.material-icon-theme",
     "formulahendry.run-in-terminal",
+
+    // Util
     "hediet.vscode-drawio"
   ]
 }

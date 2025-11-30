@@ -4,28 +4,6 @@
 
 ### Config
 
-#### .vscode
-
-* Tasks
-
-```json
-{
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Deploy Shell-Script for Linux",
-            "type": "shell",
-            "command": "./scripts/deploy/linux/ubuntu/deploy.sh",
-            "group": "build",
-            "presentation": {
-                "reveal": "always",
-                "panel": "new"
-            }
-        }
-    ]
-}
-```
-
 #### Extension
 
 * App
@@ -43,7 +21,6 @@
     * Symfony for VSCode (fixed)               (SplasHmiCH)
     * Symfony UX Twig Component                (Sander Verschoor)
     * Twig Language 2                          (mblode)
-    * Modern Twig                              (Stanislav Romanov)
 * Cache
   * Redis for VS Code                          (Redis)
 * Database
@@ -56,11 +33,8 @@
     * Markdownlint                             (David Anson)
     * Material Icon Theme                      (Philipp Kief)
     * Run in Terminal                          (kortina)
-    * Draw.io Integration                      (Henning Dieterichs)
-    * GitLens -- Git superchaged               (GitKraken)
-  * AI (Options)
-    * Gemni Code Assist                        (Google)
-    * Gemini CLI Companion                     (Google)
+* Util
+  * Draw.io Integration                        (Henning Dieterichs)
 
 #### Settings
 
@@ -105,6 +79,28 @@ Code-runner: Run In Terminal - true
 ```text
 Chat: Disable AI Features - Disable (Checked)
 Pgsql › Copilot: Enable   - UnChecked
+```
+
+#### .vscode
+
+* Tasks
+
+```json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Deploy Shell-Script for Linux",
+            "type": "shell",
+            "command": "./scripts/deploy/linux/ubuntu/deploy.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }
+    ]
+}
 ```
 
 ## Reference
