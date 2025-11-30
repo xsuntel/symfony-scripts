@@ -32,7 +32,6 @@
     * Prettier - Code formatter                (Prettier)
     * Markdownlint                             (David Anson)
     * Material Icon Theme                      (Philipp Kief)
-    * Run in Terminal                          (kortina)
 * Util
   * Draw.io Integration                        (Henning Dieterichs)
 
@@ -89,10 +88,52 @@ Pgsql › Copilot: Enable   - UnChecked
 {
     "version": "2.0.0",
     "tasks": [
+        // -------------------------------------------------------------------------------
+        // App
+        // -------------------------------------------------------------------------------
         {
-            "label": "Deploy Shell-Script for Linux",
+            "label": "App - Deploy an application",
             "type": "shell",
-            "command": "./scripts/deploy/linux/ubuntu/deploy.sh",
+            "command": "./scripts/deploy/linux/ubuntu/deploy.sh",       // Select Platform
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        // -------------------------------------------------------------------------------
+        // Cache
+        // -------------------------------------------------------------------------------
+        {
+            "label": "Cache - Clear cache files",
+            "type": "shell",
+            "command": "./scripts/clear.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        // -------------------------------------------------------------------------------
+        // Database
+        // -------------------------------------------------------------------------------
+        {
+            "label": "Database - Execute migrations",
+            "type": "shell",
+            "command": "./scripts/migrate.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        // -------------------------------------------------------------------------------
+        // Server
+        // -------------------------------------------------------------------------------
+        {
+            "label": "Server - Check status of the server",
+            "type": "shell",
+            "command": "./scripts/status.sh",
             "group": "build",
             "presentation": {
                 "reveal": "always",
@@ -104,15 +145,6 @@ Pgsql › Copilot: Enable   - UnChecked
 ```
 
 ## Reference
-
-### Whale Browser
-
-* Update apt-key
-
-```bash
-sudo apt-key export EF6C07F6 | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/whale-key.gpg
-sudo apt update
-```
 
 ### IDE
 

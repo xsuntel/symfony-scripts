@@ -48,7 +48,7 @@
 * Disable some configurations
 
 ```text
-Settings / Appearance & Behavior / System Settings / Autosave / Sync external changes: 
+Settings / Appearance & Behavior / System Settings / Autosave / Sync external changes:
 
 
 Settings / Appearance & Behavior / System Settings / HTTP Proxy
@@ -57,19 +57,19 @@ Settings / Appearance & Behavior / System Settings / HTTP Proxy
 * Configure some configurations related Symfony Framework
 
 ```text
-Settings / PHP / Symfony / Container: 
+Settings / PHP / Symfony / Container:
 
 HTTP Profiler - https://127.0.0.1:8080
 ```
 
 ```text
-Settings / PHP / Symfony / Routing: 
+Settings / PHP / Symfony / Routing:
 
 app/var/cache/dev/url_generating_routes.php
 ```
 
 ```text
-Settings / PHP / Symfony / Profiler: 
+Settings / PHP / Symfony / Profiler:
 
 HTTP Profiler - https://127.0.0.1:8080
 ```
@@ -179,17 +179,6 @@ editor.zero.latency.typing=true
 # Updates Are Managed By ToolBox
 ##################################
 #-Dide.no.platform.update=true
-```
-
-## Tools
-
-### Whale Browser
-
-* Update apt-key
-
-```bash
-sudo apt-key export EF6C07F6 | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/whale-key.gpg
-sudo apt update
 ```
 
 ## Reference

@@ -1,10 +1,52 @@
 {
     "version": "2.0.0",
     "tasks": [
+        // -------------------------------------------------------------------------------
+        // App
+        // -------------------------------------------------------------------------------
         {
-            "label": "Deploy Shell-Script for Linux",
+            "label": "App - Deploy an application",
             "type": "shell",
-            "command": "./scripts/deploy/linux/ubuntu/deploy.sh",
+            "command": "./scripts/deploy/linux/ubuntu/deploy.sh",       // Select Platform
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        // -------------------------------------------------------------------------------
+        // Cache
+        // -------------------------------------------------------------------------------
+        {
+            "label": "Cache - Clear cache files",
+            "type": "shell",
+            "command": "./scripts/clear.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        // -------------------------------------------------------------------------------
+        // Database
+        // -------------------------------------------------------------------------------
+        {
+            "label": "Database - Execute migrations",
+            "type": "shell",
+            "command": "./scripts/migrate.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        // -------------------------------------------------------------------------------
+        // Server
+        // -------------------------------------------------------------------------------
+        {
+            "label": "Server - Check status of the server",
+            "type": "shell",
+            "command": "./scripts/status.sh",
             "group": "build",
             "presentation": {
                 "reveal": "always",

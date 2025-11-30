@@ -5,12 +5,12 @@
 ## Platform
 
 * Linux - Ubuntu Desktop
-    * App : PHP
-    * Cache : Redis
-    * Database : PostgreSQL
-    * Message : RabbitMQ
-    * Server : Nginx
-    * Tools
+  * App : PHP
+  * Cache : Redis
+  * Database : PostgreSQL
+  * Message : RabbitMQ
+  * Server : Nginx
+  * Tools
 
 ## Project
 
@@ -77,7 +77,7 @@ postgres=# create user symfony password '!ChangeMe!' superuser;
 CREATE ROLE
 postgres=# \du
                                    List of roles
- Role name |                         Attributes                         | Member of 
+ Role name |                         Attributes                         | Member of
 -----------+------------------------------------------------------------+-----------
  postgres  | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
  symfony   | Superuser                                                  | {}
@@ -133,7 +133,7 @@ http:
   no_tls: true
   daemon: true
   use_gzip: true
-  no_workers: true 
+  no_workers: true
 ```
 
 ## Deployment
@@ -151,7 +151,7 @@ http:
 * Clear cache
 
 ```bash
-./tools/cache.sh
+./tools/clear.sh
 ```
 
 #### Database
@@ -171,7 +171,5 @@ http:
 ```
 
 ## Reference
-
-### Platform
 
 * [Ubuntu Desktop](https://ubuntu.com/desktop)

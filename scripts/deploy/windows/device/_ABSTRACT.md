@@ -5,12 +5,12 @@
 ## Platform
 
 * Windows
-    * App : PHP
-    * Cache : Redis (Docker Container)
-    * Database : PostgreSQL (Docker Container)
-    * Message : RabbitMQ (Docker Container)
-    * Server : Symfony Local Server
-    * Tools : Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
+  * App : PHP
+  * Cache : Redis (Docker Container)
+  * Database : PostgreSQL (Docker Container)
+  * Message : RabbitMQ (Docker Container)
+  * Server : Symfony Local Server
+  * Tools : Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
 
 ## Project
 
@@ -151,7 +151,7 @@ http:
   no_tls: true
   daemon: true
   use_gzip: true
-  no_workers: true 
+  no_workers: true
 ```
 
 ## Deployment
@@ -169,7 +169,7 @@ http:
 * Clear cache
 
 ```bash
-./tools/cache.sh
+./tools/clear.sh
 ```
 
 #### Database
@@ -189,7 +189,5 @@ http:
 ```
 
 ## Reference
-
-### Platform
 
 * [Windows](https://www.microsoft.com/)
