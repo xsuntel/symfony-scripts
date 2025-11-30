@@ -1,33 +1,27 @@
 {
   // ----------------------------------------------------------------------
-  // 1. Core Editor & Formatting (기본 에디터 설정)
+  // VSCode - Core Editor & Formatting
   // ----------------------------------------------------------------------
-  "editor.tabSize": 4, // PHP PSR 표준 준수
+
+  // >>>> Base
+  "editor.tabSize": 4,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
-  "editor.formatOnSave": true, // 저장 시 자동 포맷팅 (필수)
-  "editor.renderWhitespace": "selection", // 선택된 영역만 공백 표시
-  "editor.wordWrap": "on", // 긴 줄 자동 줄바꿈
-  "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace", // 사용자 선호 폰트 유지
+  "editor.renderWhitespace": "selection",
+  "editor.wordWrap": "on",
 
-  // [수직 가이드 라인 표시 설정]
-  "editor.guides.indentation": true, // 기본적인 들여쓰기 수직선 표시
-  "editor.guides.highlightActiveIndentation": true, // 현재 커서가 위치한 블록의 수직선을 밝게 강조 (PhpStorm 스타일)
+  // >>>> Fonts
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace",
 
-  // [브라켓 페어 가이드 - 괄호 연결선]
-  // 괄호의 시작과 끝을 수직/수평선으로 연결해줍니다. (매우 추천)
+  // >>>> Guides
+  "editor.guides.indentation": true,
+  "editor.guides.highlightActiveIndentation": true,
   "editor.guides.bracketPairs": true,
-  "editor.guides.bracketPairsHorizontal": "active", // 현재 활성 블록은 수평선까지 표시
-
-  // [브라켓 색상화]
-  // 괄호 쌍( {, } )마다 다른 색상을 입혀 깊이를 구분하기 쉽게 만듭니다. (VSCode 내장 기능)
+  "editor.guides.bracketPairsHorizontal": "active",
   "editor.bracketPairColorization.enabled": true,
 
-  "files.trimTrailingWhitespace": true, // 줄 끝 공백 제거
-  "files.insertFinalNewline": true, // 파일 끝에 빈 줄 추가 (POSIX 표준)
-
-  // [중요] 포맷터 충돌 방지 설정
-  // 기본적으로 Prettier를 사용하되, PHP와 Twig는 전용 포맷터 사용
+  // >>>> Formetter
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[php]": {
     "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
@@ -42,25 +36,17 @@
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
 
-  // ----------------------------------------------------------------------
-  // 2. PHP & Symfony Configuration
-  // ----------------------------------------------------------------------
-  "php.validate.executablePath": "/usr/bin/php8.3", // 또는 docker 사용 시 경로 지정 필요
-  "php.suggest.basic": false, // 내장 제안 끄기 (Intelephense와 중복 방지)
-
-  // Symfony 관련 파일 연결
-  "files.associations": {
-    "*.html.twig": "twig",
-    "*.env": "properties",
-    "*.env.local": "properties"
-  },
+  // >>>> Files
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
 
   // ----------------------------------------------------------------------
-  // 3. Frontend (Tailwind, Stimulus, Emmet)
+  // App - CSS
   // ----------------------------------------------------------------------
-  // Tailwind CSS 설정
+
+  // >>>> Tailwind CSS
   "tailwindCSS.includeLanguages": {
-    "twig": "html", // Twig 파일에서도 Tailwind 자동완성 활성화
+    "twig": "html",
     "php": "html"
   },
   "tailwindCSS.classAttributes": [
@@ -68,13 +54,19 @@
     "className",
     "ngClass",
     "class:list",
-    "attributes" // Symfony Twig Component의 attributes 지원
+    "attributes"
   ],
+
+  // ----------------------------------------------------------------------
+  // App - HTML
+  // ----------------------------------------------------------------------
+
+  // >>>> Base
   "editor.quickSuggestions": {
-    "strings": true // 문자열(class="...") 내부에서도 자동완성 표시
+    "strings": true
   },
 
-  // Emmet (HTML 단축키) 설정
+  // >>>> Emmet
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
     "twig": "html",
@@ -82,14 +74,46 @@
   },
 
   // ----------------------------------------------------------------------
-  // 4. Tools & UI (GitLens, Icons, Explorer)
+  // App - PHP - Symfony Framework
   // ----------------------------------------------------------------------
-  // 아이콘 테마
-  "workbench.iconTheme": "material-icon-theme",
-  "material-icon-theme.activeIconPack": "nest", // 또는 "none"
 
-  // 파일 탐색기 깔끔하게 정리 (File Nesting)
-  // 예: .env 파일 아래에 .env.local 등을 숨겨서 보여줌
+  // >>>> Base
+  "php.validate.executablePath": "/usr/bin/php8.3",   // <-- Check your path
+  "php.suggest.basic": false,
+
+  // >>>> Files
+  "files.associations": {
+    "*.html.twig": "twig",
+    "*.env": "properties",
+    "*.env.local": "properties"
+  },
+
+  // ----------------------------------------------------------------------
+  // Cache (Redis)
+  // ----------------------------------------------------------------------
+
+  // >>>> Base
+
+  // ----------------------------------------------------------------------
+  // Database (PostgreSQL)
+  // ----------------------------------------------------------------------
+
+  // >>>> Base
+  "sqltools.useNodeRuntime": true,
+  "workbench.colorCustomizations": {
+    "editorIndentGuide.background": "#404040",
+    "editorIndentGuide.activeBackground": "#ffffff"
+  }
+
+  // ----------------------------------------------------------------------
+  // Tools & UI
+  // ----------------------------------------------------------------------
+
+  // >>>> Icon Theme
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.activeIconPack": "nest",
+
+  // >>>> Files
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
     "composer.json": "composer.lock, symfony.lock",
@@ -98,22 +122,14 @@
     "*.ts": "${capture}.js"
   },
 
-  // GitLens (핵심 기능만 활성화하여 성능 확보)
-  "gitlens.currentLine.enabled": true, // 현재 줄 블레임 보기
-  "gitlens.hovers.currentLine.over": "line",
-  "gitlens.codeLens.enabled": true, // 코드 위에 작성자 표시
-  "gitlens.mode.statusBar.enabled": true,
-  "gitlens.graph.layout": "panel", // 그래프 패널 하단 배치
+  // ----------------------------------------------------------------------
+  // Util
+  // ----------------------------------------------------------------------
 
-  // ----------------------------------------------------------------------
-  // 5. Database (PostgreSQL)
-  // ----------------------------------------------------------------------
-  "sqltools.useNodeRuntime": true,
-  "workbench.colorCustomizations": {
-    // 수직 가이드 라인 색상 (기본)
-    "editorIndentGuide.background": "#404040",
-    // 현재 활성화된(커서가 있는) 블록의 가이드 라인 색상 (강조)
-    "editorIndentGuide.activeBackground": "#ffffff"
-  },
-  "symfony-vscode.phpExecutablePath": "/usr/bin/php8.3" // SQLTools 사용 시 필요
+  // >>>> GitLens
+  "gitlens.currentLine.enabled": true,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.codeLens.enabled": true,
+  "gitlens.mode.statusBar.enabled": true,
+  "gitlens.graph.layout": "panel",
 }
