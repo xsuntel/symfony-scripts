@@ -5,7 +5,7 @@
         // Debug - PHP
         // -------------------------------------------------------------------------------
         {
-            "name": "1. Listen for Xdebug (PHP)",
+            "name": "App - Debug for PHP",
             "type": "php",
             "request": "launch",
             "hostname": "localhost",
@@ -18,7 +18,7 @@
         // Debug - Javascript
         // -------------------------------------------------------------------------------
         {
-            "name": "2. Launch Chrome (Frontend)",
+            "name": "App - Debug for Javascript",
             "type": "chrome",
             "request": "launch",
             "url": "http://127.0.0.1:8000",                       // Symfony Local Server
@@ -30,8 +30,8 @@
     ],
     "compounds": [
         {
-            "name": "Full Stack Debugging (PHP + Javascript)",
-            "configurations": ["1. Listen for Xdebug (PHP)", "2. Launch Chrome (Frontend)"]
+            "name": "App - Debug for Full-Stack (PHP & Javascript)",
+            "configurations": ["App - Debug for PHP", "App - Debug for Javascript"]
         }
     ]
 }
