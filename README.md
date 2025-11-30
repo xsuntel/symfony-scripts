@@ -4,6 +4,12 @@
 
 This project includes some shell-scripts for Full-Stack developer to develop a web application using Symfony Framework
 
+* App : PHP - Symfony Framework
+* Cache : Redis
+* Database : PostgreSQL
+* Message : RabbitMQ
+* Server : Nginx
+
 ## Platform
 
 * Linux
@@ -42,12 +48,6 @@ This project includes some shell-scripts for Full-Stack developer to develop a w
 ```
 
 ### Dev Environment
-
-* App : PHP - Symfony Framework
-* Cache : Redis
-* Database : PostgreSQL
-* Message : RabbitMQ
-* Server : Nginx
 
 #### Requirement
 
@@ -117,11 +117,10 @@ This project includes some shell-scripts for Full-Stack developer to develop a w
 
 #### Deployment
 
-* Platform
+* Platform : [Tested Devices](https://github.com/xsuntel/symfony-scripts/wiki)
   * Linux - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/linux/ubuntu/_ABSTRACT.md)
   * Macos - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/macos/device/_ABSTRACT.md)
   * Windows - [Document](https://github.com/xsuntel/symfony-scripts/blob/main/scripts/deploy/windows/device/_ABSTRACT.md)
-* Reference - [Devices](https://github.com/xsuntel/symfony-scripts/wiki)
 
 ### Prod Environment
 
