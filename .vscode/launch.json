@@ -1,31 +1,37 @@
 {
     "version": "0.2.0",
     "configurations": [
+        // -------------------------------------------------------------------------------
+        // Debug - PHP
+        // -------------------------------------------------------------------------------
         {
-            "name": "Listen for Xdebug (Docker/Server)",
+            "name": "1. Listen for Xdebug (PHP)",
             "type": "php",
             "request": "launch",
+            "hostname": "localhost",
             "port": 9003,
             "pathMappings": {
-                "/var/www/html": "${workspaceFolder}"
-            },
-            "hostname": "0.0.0.0",
-            "log": false
-        },
-        {
-            "name": "Launch currently open script",
-            "type": "php",
-            "request": "launch",
-            "program": "${file}",
-            "cwd": "${fileDirname}",
-            "port": 0,
-            "runtimeArgs": [
-                "-dxdebug.start_with_request=yes"
-            ],
-            "env": {
-                "XDEBUG_MODE": "debug,develop",
-                "XDEBUG_CONFIG": "client_port=${freePort}"
+                "${workspaceFolder}": "${workspaceFolder}"
             }
+        },
+        // -------------------------------------------------------------------------------
+        // Debug - Javascript
+        // -------------------------------------------------------------------------------
+        {
+            "name": "2. Launch Chrome (Frontend)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://127.0.0.1:8000",                       // Symfony Local Server
+            "webRoot": "${workspaceFolder}",
+            "sourceMapPathOverrides": {
+                "webpack:///*": "${workspaceFolder}/*"
+            }
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Full Stack Debugging (PHP + Javascript)",
+            "configurations": ["1. Listen for Xdebug (PHP)", "2. Launch Chrome (Frontend)"]
         }
     ]
 }
