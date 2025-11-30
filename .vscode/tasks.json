@@ -52,6 +52,19 @@
                 "reveal": "always",
                 "panel": "new"
             }
+        },
+        // -------------------------------------------------------------------------------
+        // Tools - Git
+        // -------------------------------------------------------------------------------
+        {
+            "label": "Tools - Git - Localhost",
+            "type": "shell",
+            "command": "./tools/git/localhost/clear.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
         }
     ]
 }
