@@ -31,6 +31,8 @@
 * App
   * CSS
     * Tailwind CSS IntelliSense                (Tailwind Labs)
+  * HTML
+    * Auto Closing Tags                        (Codegyan)
   * Javascript
     * ESLint                                   (Microsoft)
     * Stimulus LSP                             (Marco Roth)
@@ -40,6 +42,7 @@
   * Symfony Framework
     * Symfony for VSCode (fixed)               (SplasHmiCH)
     * Symfony UX Twig Component                (Sander Verschoor)
+    * Twig Language 2                          (mblode)
     * Modern Twig                              (Stanislav Romanov)
 * Cache
   * Redis for VS Code                          (Redis)

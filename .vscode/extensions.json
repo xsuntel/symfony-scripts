@@ -1,31 +1,36 @@
 {
   "recommendations": [
-    // App - CSS & JS
+    // App - CSS & HTML
     "bradlc.vscode-tailwindcss",
+    "codegyan.auto-closing-tags",
+
+    // App - Javascript
     "dbaeumer.vscode-eslint",
     "marcoroth.stimulus-lsp",
-    
+
     // App - PHP
     "bmewburn.vscode-intelephense-client",
     "xdebug.php-debug",
-    
-    // App - Symfony
-    "splashmich.symfony-for-vscode",
-    "sanderverschoor.symfony-ux-twig-component",
-    "mblode.twig-language-2", 
 
-    // Cache & DB
-    "redis.redis",
-    "ckolkman.vscode-postgres",
+    // App - Symfony
+    "splashmich.symfony-vscode-fixed",
+    "sanderverschoor.symfony-ux-twig-component",
+    "mblode.twig-language-2",
+    "stanislav.vscode-twig",
+
+    // Cache
+    "redis.redis-for-vscode",
+
+    // Database
+    "ms-ossdata.vscode-pgsql",
 
     // Tools
     "redhat.vscode-yaml",
     "mikestead.dotenv",
-    "esbenp.prettier-vscode",
+    "prettier.prettier-vscode",
     "davidanson.vscode-markdownlint",
     "pkief.material-icon-theme",
     "formulahendry.run-in-terminal",
-    "hediet.vscode-drawio",
-    "eamodio.gitlens"
+    "hediet.vscode-drawio"
   ]
 }
