@@ -75,7 +75,7 @@ This project includes some shell-scripts for Full-Stack developer to develop a w
 * Download this project
 
   ```bash
-  git clone https://github.com/xsuntel/symfony-scripts.git symfony
+  git clone https://github.com/xsuntel/symfony-scripts.git Symfony
 
   cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
   ```

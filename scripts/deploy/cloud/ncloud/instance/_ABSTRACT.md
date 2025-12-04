@@ -5,11 +5,11 @@
 ## Platform
 
 * Linux : [Ubuntu Server](https://ubuntu.com/download/server/)
-    * App : PHP
-    * Cache : Redis
-    * Database : PostgreSQL
-    * Message : RabbitMQ
-    * Server : Nginx
+  * App : PHP
+  * Cache : Redis
+  * Database : PostgreSQL
+  * Message : RabbitMQ
+  * Server : Nginx
 
 ### Client - Laptop
 
@@ -26,8 +26,8 @@ ssh -i "${KEY_PATH}/{your name}.pem/${KEY_NAME}" root@"{HOST}"
 ```bash
 rlim@gram:~$ ssh-keygen -f ~/.ssh/id_sourcecommit -t rsa -b 2048
 Generating public/private rsa key pair.
-Enter passphrase (empty for no passphrase): 
-Enter same passphrase again: 
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
 Your identification has been saved in id_sourcecommit
 Your public key has been saved in id_sourcecommit.pub
 The key fingerprint is:
@@ -44,7 +44,7 @@ The key's randomart image is:
 |  . o *.+..      |
 |   . o++ oo.     |
 +----[SHA256]-----+
-rlim@gram:~$ 
+rlim@gram:~$
 rlim@gram:~$ cat ~/.ssh/id_sourcecommit.pub
 
 rlim@gram:~$ vi ~/.ssh/config
@@ -142,7 +142,7 @@ cd /var/www/github && if [ -d symfony ]; then rm -rf symfony ; fi
 * Download this project
 
 ```bash
-git clone https://github.com/xsuntel/symfony-scripts.git symfony
+git clone https://github.com/xsuntel/symfony-scripts.git Symfony
 
 cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
 ```
@@ -166,11 +166,11 @@ cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
 ### Server
 
 * Cloud
-    * NCloud (Naver Cloud Platform)
-    * Solution
-        * [WebHosting](https://www.ncloud.com/solution/type/webHosting)
-    * System
-        * Compute
-            * [Server](https://www.ncloud.com/product/compute/server)
-        * Developer Tools
-            * [SourceCommit](https://guide.ncloud-docs.com/docs/ko/sourcecommit-use-client)
+  * NCloud (Naver Cloud Platform)
+  * Solution
+    * [WebHosting](https://www.ncloud.com/solution/type/webHosting)
+  * System
+    * Compute
+      * [Server](https://www.ncloud.com/product/compute/server)
+    * Developer Tools
+      * [SourceCommit](https://guide.ncloud-docs.com/docs/ko/sourcecommit-use-client)
