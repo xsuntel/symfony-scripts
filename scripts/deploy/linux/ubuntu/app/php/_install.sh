@@ -33,7 +33,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
             #fi
 
             # >>>> PHP-FPM - required packages
-            local addPackageList="php${PHP_VERSION} php${PHP_VERSION}-cgi php${PHP_VERSION}-cli php${PHP_VERSION}-common php${PHP_VERSION}-curl php${PHP_VERSION}-fpm php${PHP_VERSION}-gd php${PHP_VERSION}-mbstring php${PHP_VERSION}-intl php${PHP_VERSION}-uuid php${PHP_VERSION}-xml php${PHP_VERSION}-zip php${PHP_VERSION}-bcmath"
+            local addPackageList="php${PHP_VERSION} php${PHP_VERSION}-cli php${PHP_VERSION}-common php${PHP_VERSION}-curl php${PHP_VERSION}-fpm php${PHP_VERSION}-gd php${PHP_VERSION}-mbstring php${PHP_VERSION}-intl php${PHP_VERSION}-uuid php${PHP_VERSION}-xml php${PHP_VERSION}-zip php${PHP_VERSION}-bcmath"
             for pkgItem in ${addPackageList}; do
                 local APT_PKG_INFO
                 APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
@@ -58,7 +58,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
 
 
             # >>>> PHP-FPM - Remove some packages
-            local delUserList="apache2-bin libapache2-mod-php${PHP_VERSION}"
+            local delUserList="apache2-bin libapache2-mod-php${PHP_VERSION} php${PHP_VERSION}-cgi"
             for pkgItem in ${delUserList}; do
                 local APT_PKG_INFO
                 APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
@@ -81,7 +81,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
         echo
 
         # >>>> PHP - required packages
-        local addPackageList="php${PHP_VERSION} php${PHP_VERSION}-cgi php${PHP_VERSION}-cli php${PHP_VERSION}-common php${PHP_VERSION}-curl php${PHP_VERSION}-gd php${PHP_VERSION}-mbstring php${PHP_VERSION}-intl php${PHP_VERSION}-uuid php${PHP_VERSION}-xml php${PHP_VERSION}-zip php${PHP_VERSION}-bcmath"
+        local addPackageList="php${PHP_VERSION} php${PHP_VERSION}-cli php${PHP_VERSION}-common php${PHP_VERSION}-curl php${PHP_VERSION}-gd php${PHP_VERSION}-mbstring php${PHP_VERSION}-intl php${PHP_VERSION}-uuid php${PHP_VERSION}-xml php${PHP_VERSION}-zip php${PHP_VERSION}-bcmath"
         for pkgItem in ${addPackageList}; do
             local APT_PKG_INFO
             APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
@@ -117,7 +117,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
         echo
 
         # >>>> PHP - Remove some packages
-        local delUserList="php${PHP_VERSION}-fpm"
+        local delUserList="php${PHP_VERSION}-cgi php${PHP_VERSION}-fpm"
         for pkgItem in ${delUserList}; do
             local APT_PKG_INFO
             APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
