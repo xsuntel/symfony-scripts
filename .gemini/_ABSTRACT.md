@@ -4,11 +4,11 @@
 
 ### Config
 
-* /chat   : 대화 기록 저장, 재개 및 목록 확인
-* /memory : AI manigement - GEMINI.md
-* /clear  : 터미너 화면 및 대확 컨텍스트 삭제
-* /stats  : 현재 세션의 토큰 사용량 표시
-* /theme  : CLI의 시각적 테마 변경
+* /chat
+* /memory
+* /clear
+* /stats
+* /theme
 
 #### Settings
 
