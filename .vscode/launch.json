@@ -9,7 +9,7 @@
             "type": "php",
             "request": "launch",
             "hostname": "localhost",
-            "port": 9003,
+            "port": 8000,                                         // Symfony Local Server
             "pathMappings": {
                 "${workspaceFolder}": "${workspaceFolder}"
             }
