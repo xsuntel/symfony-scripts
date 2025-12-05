@@ -10,3 +10,8 @@ PROMPT
 * M : Mode, Message format
 * P : Point of View
 * T : Tone
+
+## Reference
+
+* MCP Servers
+  * [Context7](https://context7.com/)

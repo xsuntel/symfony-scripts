@@ -32,7 +32,7 @@
 
 ##### Rules
 
-```text
+```bash
 vi  ~/.agent/rules/
 ```
 
@@ -40,8 +40,42 @@ vi  ~/.agent/rules/
 
 * Project Context
 
-```text
+```bash
 vi  ~/{project_folder}/.gemini/GEMINI.md
+```
+
+### MCP Servers
+
+* Manage MCP Servers
+
+```bash
+vi  ~/{project_folder}/.mcp_config.json
+```
+
+```json
+{
+  "mcpServers": {
+
+    "context7": {
+      "serverUrl": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "YOUR_API_KEY"
+      }
+    },
+    
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>"
+      }
+    }
+  }
+}
+
 ```
 
 ## Reference
