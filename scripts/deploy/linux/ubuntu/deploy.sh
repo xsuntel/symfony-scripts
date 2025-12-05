@@ -336,15 +336,17 @@ setVM() {
   echo
 
   # >>>> App
-  local PHP_STATUS
-  PHP_STATUS=$(systemctl is-active php${PHP_VERSION}-fpm)
-  if [ "${PHP_STATUS}" == "inactive" ]; then
-    sudo systemctl start php${PHP_VERSION}-fpm
-    sudo systemctl status php${PHP_VERSION}-fpm --no-pager
+  if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+    local PHP_STATUS
+    PHP_STATUS=$(systemctl is-active php${PHP_VERSION}-fpm)
+    if [ "${PHP_STATUS}" == "inactive" ]; then
+        sudo systemctl start php${PHP_VERSION}-fpm
+        sudo systemctl status php${PHP_VERSION}-fpm --no-pager
+        echo
+    fi
+    echo "PHP-FPM    : ${PHP_STATUS}"
     echo
   fi
-  echo "PHP-FPM    : ${PHP_STATUS}"
-  echo
 
   # >>>> Cache
   if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
