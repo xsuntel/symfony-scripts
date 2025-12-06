@@ -93,7 +93,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
         echo
 
         # >>>> PHP - additional packages
-        local addPackageList="php${PHP_VERSION}-opcache php${PHP_VERSION}-redis php${PHP_VERSION}-pgsql php${PHP_VERSION}-amqp"
+        local addPackageList="php${PHP_VERSION}-redis php${PHP_VERSION}-amqp php${PHP_VERSION}-pgsql"
         for pkgItem in ${addPackageList}; do
             local APT_PKG_INFO
             APT_PKG_INFO=$(dpkg -l | grep -i "${pkgItem}" | awk '{print $2}' | cut -d ':' -f1 | awk "/^${pkgItem}$/")
@@ -213,12 +213,6 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
         if [ -f /etc/php/${PHP_VERSION}/cli/php.ini ]; then
             sudo cp -fv ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/app/php/${PHP_VERSION}/cli/php_${ENVIRONMENT_NAME}.ini /etc/php/${PHP_VERSION}/cli/php.ini
         fi
-
-        # >>>> PHP - conf.d/10-opcache.ini
-        if [ -f /etc/php/${PHP_VERSION}/cli/conf.d/10-opcache.ini ]; then
-            sudo cp -fv ${PROJECT_PATH}/scripts/deploy/linux/ubuntu/app/php/${PHP_VERSION}/cli/conf.d/10-opcache_${ENVIRONMENT_NAME}.ini /etc/php/${PHP_VERSION}/cli/conf.d/10-opcache.ini
-        fi
-
 
         # >>>> PHP - conf.d/20-xdebug.ini
         if [ -f /etc/php/${PHP_VERSION}/cli/conf.d/20-xdebug.ini ]; then
