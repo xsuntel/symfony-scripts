@@ -1,0 +1,256 @@
+#!/bin/bash
+# ======================================================================================================================
+# Scripts - Base - Symfony - Deployment                                  https://symfony.com/doc/current/deployment.html
+# ======================================================================================================================
+
+# >>>> Platform
+if [ "${PLATFORM_TYPE}" == "Linux" ]; then
+
+  # >>>> Environment
+  if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+
+    # >>>> Project - Git
+    if [ -d .git ]; then
+      echo ">>>> Git - Update this project"
+
+      DEFAULT_BRANCH=$(git config --get init.defaultBranch)
+
+      git config pull.rebase true
+
+      git reset --hard
+
+      git pull origin "${DEFAULT_BRANCH}" -f
+      echo
+
+    else
+      echo "There is not .git file"
+    fi
+    echo
+
+  fi
+
+fi
+
+# >>>> App
+if [ -d app ]; then
+  (
+    cd app || return
+
+    # >>>> App - Symfony Framework
+    if [ -f bin/console ]; then
+
+      # ----------------------------------------------------------------------------------------------------------------
+      # A) Check Requirements
+      # ----------------------------------------------------------------------------------------------------------------
+      echo ">>>> PHP - Symfony - Deployment - A) Check Requirements"
+      echo
+      if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+        symfony check:requirements
+      else
+        echo "Dev Environment"
+      fi
+      echo
+
+      # ----------------------------------------------------------------------------------------------------------------
+      # B) Configure your Environment Variables
+      # ----------------------------------------------------------------------------------------------------------------
+      echo ">>>> PHP - Symfony - Deployment - B) Configure your Environment Variables"
+      echo
+      # >>>> App - Symfony - .env files
+      if [ -f .env ]; then
+        rm -f .env.*
+        if [ -f ../.env.${ENVIRONMENT_NAME} ]; then
+          cp -fv ../.env.${ENVIRONMENT_NAME} ./.env.${ENVIRONMENT_NAME}
+        fi
+
+        # >>>> Dev Environment - Local
+        if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
+          if [ -f ../.env.${ENVIRONMENT_NAME}.local ]; then
+            cp -fv ../.env.${ENVIRONMENT_NAME}.local ./.env.${ENVIRONMENT_NAME}.local
+          fi
+        fi
+      else
+        echo "There is not a env file (.env)"
+        setExit
+      fi
+
+      if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+        # >>>> Deployment
+        APP_ENV=prod APP_DEBUG=0 composer dump-env ${ENVIRONMENT_NAME}
+        echo
+        # >>>> Performance - Optimize Composer Autoloader               https://symfony.com/doc/current/performance.html
+        APP_ENV=prod APP_DEBUG=0 composer dump-autoload --no-dev --classmap-authoritative
+      fi
+      echo
+
+      # ----------------------------------------------------------------------------------------------------------------
+      # C) Install/Update your Vendors
+      # ----------------------------------------------------------------------------------------------------------------
+      echo ">>>> PHP - Symfony - Deployment - C) Install/Update your Vendors"
+      echo
+      if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+        APP_ENV=prod APP_DEBUG=0 composer install --no-dev --optimize-autoloader
+      else
+        APP_ENV=dev  APP_DEBUG=1 composer install --ignore-platform-req=ext-redis --ignore-platform-req=ext-amqp --ignore-platform-req=ext-pdo_pgsql
+      fi
+      echo
+
+      # ----------------------------------------------------------------------------------------------------------------
+      # D) Clear your Symfony Cache
+      # ----------------------------------------------------------------------------------------------------------------
+      echo ">>>> PHP - Symfony - Deployment - D) Clear your Symfony Cache"
+      echo
+      # >>>> App - Symfony Framework - Remove cache files
+      if [ -d var/cache ]; then
+        # >>>> Platform
+        if [ "${PLATFORM_TYPE}" == "Linux" ]; then
+          if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+            sudo rm -rf var/cache/*
+          fi
+        fi
+        rm -rf var/cache/*
+      fi
+
+      if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+        # >>>> App - Symfony Framework - Clear cache
+        APP_ENV=prod APP_DEBUG=0 php bin/console cache:clear --env=prod --no-warmup --no-optional-warmers
+
+        # >>>> App - Symfony Framework - Setting up or Fixing File Permissions
+        if [ "${PLATFORM_TYPE}" == "Linux" ]; then
+          # ----------------------------------------------------------------------------------------------------------------
+          # Platform - Linux - Ubuntu
+          # ----------------------------------------------------------------------------------------------------------------
+          HTTPDUSER="$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)"
+
+          sudo usermod -a -G "${HTTPDUSER}" "$(whoami)"
+          sudo chown "${HTTPDUSER}":"${HTTPDUSER}" -R ./*
+
+          if [ -d var ]; then
+            sudo setfacl -dR -m g:"${HTTPDUSER}":rwX -m u:"$(whoami)":rwX ./var
+            sudo setfacl -R -m g:"${HTTPDUSER}":rwX -m u:"$(whoami)":rwX ./var
+
+            sudo chmod 777 -R ./var
+          fi
+        fi
+        echo
+      else
+        # >>>> App - Symfony Framework - Clear cache
+        APP_ENV=dev  APP_DEBUG=1 php bin/console cache:clear --env=dev
+
+        # >>>> App - Symfony Framework - Setting up or Fixing File Permissions
+        if [ "${PLATFORM_TYPE}" == "Linux" ]; then
+          # ----------------------------------------------------------------------------------------------------------------
+          # Platform - Linux - Ubuntu
+          # ----------------------------------------------------------------------------------------------------------------
+          chown -R "${LOGNAME}":"${LOGNAME}" -R ./*
+
+          if [ -d var ]; then
+            chmod 777 -R ./var
+          fi
+        fi
+        echo
+      fi
+
+      # >>>> App - Symfony Framework - Remove log files
+      if [ -d var/log ]; then
+        if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+          # >>>> var/log/prod.log
+          if [ -f var/log/prod.log ]; then
+            cat /dev/null > var/log/prod.log
+          else
+            touch var/log/prod.log
+          fi
+        else
+          # >>>> var/log/dev.log
+          if [ -f var/log/dev.log ]; then
+            cat /dev/null > var/log/dev.log
+          else
+            touch var/log/dev.log
+          fi
+        fi
+      fi
+
+      # ----------------------------------------------------------------------------------------------------------------
+      # E) Other Things - Running any database migrations
+      # ----------------------------------------------------------------------------------------------------------------
+      echo ">>>> PHP - Symfony - Deployment - E) Other Things - Running any database migrations"
+      echo
+
+      # >>>> Running any database migrations
+
+      # ----------------------------------------------------------------------------------------------------------------
+      # F) Other Things - Add/edit CRON jobs
+      # ----------------------------------------------------------------------------------------------------------------
+      echo ">>>> PHP - Symfony - Deployment - F) Other Things - Add/edit CRON jobs"
+      echo
+
+      # >>>> Add/edit CRON jobs
+
+      # ----------------------------------------------------------------------------------------------------------------
+      # G) Other Things - Restarting your workers for Messenger: Sync & Queued Message Handling
+      # ----------------------------------------------------------------------------------------------------------------
+      echo ">>>> PHP - Symfony - Deployment - G) Other Things - Restarting your workers for Messenger: Sync & Queued Message Handling"
+      echo
+
+      #symfony console messenger:setup-transports
+
+      # >>>> Restarting your workers
+      #if [ "${PLATFORM_TYPE}" == "Linux" ]; then
+      #  if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+      #    sudo supervisorctl restart messenger-consume:*
+      #    echo
+      #  fi
+      #fi
+
+      # ----------------------------------------------------------------------------------------------------------------
+      # H) Other Things - Webpack Encore or AssetMapper
+      # ----------------------------------------------------------------------------------------------------------------
+      echo ">>>> PHP - Symfony - Deployment - H) Other Things - Webpack Encore or AssetMapper"
+      echo
+
+      # >>>> Compile your assets if you're using the AssetMapper component
+
+      # >>>> TailwindBundle                                https://symfony.com/bundles/TailwindBundle/current/index.html
+      #if [ "${ENVIRONMENT_NAME}" == "prod" ]; then
+      #  echo '--> TailwindBundle : Building'
+      #  echo
+      #  symfony console tailwind:build --minify
+      #  echo
+
+      #else
+
+      #  echo '--> NPM : Update browserslist-db'
+      #  echo
+
+      # >>>> NPM : Update browserslist-db
+      #  npx -y update-browserslist-db@latest
+      #  echo
+
+      #  echo '--> TailwindBundle : Building'
+      #  echo
+
+      #  echo
+      #  symfony console tailwind:build -v
+      #  echo
+
+      #fi
+      #  echo '--> AssetMapper : Compiling'
+      #  echo
+
+      #  symfony console asset-map:compile
+      #  echo
+
+      # ----------------------------------------------------------------------------------------------------------------
+      # I) Other Things - Content Delivery Network
+      # ----------------------------------------------------------------------------------------------------------------
+      echo ">>>> PHP - Symfony - Deployment - I) Other Things - Content Delivery Network"
+      echo
+
+      # >>>> Pushing assets to a CDN
+
+    else
+      echo "[ ERROR ] There is not a command : app/bin/console"
+      setExit
+    fi
+  )
+fi

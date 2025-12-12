@@ -1,0 +1,145 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        // -------------------------------------------------------------------------------
+        // App                                                             Select Platform
+        // -------------------------------------------------------------------------------
+        // >>>> Dev Environment
+        {
+            "label": "App - Deploy app on Linux in Dev",
+            "type": "shell",
+            "command": "./scripts/deploy/dev/linux/ubuntu/deploy.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "App - Deploy app on MacOS in Dev",
+            "type": "shell",
+            "command": "./scripts/deploy/dev/macos/device/deploy.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "App - Deploy app on Windows in Dev",
+            "type": "shell",
+            "command": "./scripts/deploy/dev/windows/device/deploy.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        // >>>> Prod Environment
+        //{
+        //    "label": "App - Deploy app on Linux in Prod",
+        //    "type": "shell",
+        //    "command": "./scripts/deploy/prod/office/server/ubuntu/deploy.sh",
+        //    "group": "build",
+        //    "presentation": {
+        //        "reveal": "always",
+        //        "panel": "new"
+        //    }
+        //},
+        // -------------------------------------------------------------------------------
+        // Cache
+        // -------------------------------------------------------------------------------
+        {
+            "label": "Cache - Clear cache files",
+            "type": "shell",
+            "command": "./scripts/cachesh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        // -------------------------------------------------------------------------------
+        // Database
+        // -------------------------------------------------------------------------------
+        {
+            "label": "Database - Execute migrations",
+            "type": "shell",
+            "command": "./scripts/migrate.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        // -------------------------------------------------------------------------------
+        // Server
+        // -------------------------------------------------------------------------------
+        {
+            "label": "Server - Check status of the server",
+            "type": "shell",
+            "command": "./scripts/status.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        // -------------------------------------------------------------------------------
+        // Tools - Console
+        // -------------------------------------------------------------------------------
+        {
+            "label": "Tools - Console - Debug",
+            "type": "shell",
+            "command": "./scripts/console/app/symfony/debug.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Tools - Console - Asset Mapper",
+            "type": "shell",
+            "command": "./scripts/console/app/symfony/asset-map.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Tools - Console -Messenger",
+            "type": "shell",
+            "command": "./scripts/console/app/symfony/messenger.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Tools - Console - Scheduler",
+            "type": "shell",
+            "command": "./scripts/console/app/symfony/scheduler.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        // -------------------------------------------------------------------------------
+        // Tools - Git
+        // -------------------------------------------------------------------------------
+        {
+            "label": "Tools - Git - Backup",
+            "type": "shell",
+            "command": "./tools/git/localhost/backup.sh",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }
+    ]
+}

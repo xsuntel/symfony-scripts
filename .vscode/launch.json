@@ -1,0 +1,37 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        // -------------------------------------------------------------------------------
+        // Debug - PHP
+        // -------------------------------------------------------------------------------
+        {
+            "name": "App - Debug for PHP",
+            "type": "php",
+            "request": "launch",
+            "hostname": "localhost",
+            "port": 8000,                                         // Symfony Local Server
+            "pathMappings": {
+                "${workspaceFolder}": "${workspaceFolder}"
+            }
+        },
+        // -------------------------------------------------------------------------------
+        // Debug - Javascript
+        // -------------------------------------------------------------------------------
+        {
+            "name": "App - Debug for Javascript",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://127.0.0.1:8000",                       // Symfony Local Server
+            "webRoot": "${workspaceFolder}",
+            "sourceMapPathOverrides": {
+                "webpack:///*": "${workspaceFolder}/*"
+            }
+        }
+    ],
+    "compounds": [
+        {
+            "name": "App - Debug for Full-Stack (PHP & Javascript)",
+            "configurations": ["App - Debug for PHP", "App - Debug for Javascript"]
+        }
+    ]
+}
