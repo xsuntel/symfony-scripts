@@ -64,7 +64,7 @@ This project includes some shell-scripts for Full-Stack developer to develop a w
 
 #### Work Directory
 
-* Example folder
+* Create a folder (example)
 
   ```bash
   mkdir -p ~/Applications
