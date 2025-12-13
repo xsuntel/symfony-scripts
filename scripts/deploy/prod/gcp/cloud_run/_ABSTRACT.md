@@ -23,28 +23,69 @@
   * Code Run functions
   * Artifact Registry API
 
-#### 2. VPC Network
+#### 2. IAM & Admin
 
-1) VPC networks
+* Permissions for {project_name on GCP}
+  * Principal : {User}
+    * Role : Storage Object Viewer
 
-2) Serverless VPC access
+#### 3. VPC Network
 
-#### 3. Cloud Storage ( Database - PostgreSQL )
+* VPC networks
 
-#### 4. Memorystore ( Cache - Redis )
+* Serverless VPC access
 
-#### 5. Cloud Storage ( CDN )
+#### 4. Cloud Storage ( Database - PostgreSQL )
 
-#### 6. Cloud Run (App)
+#### 5. Memorystore ( Cache - Redis )
+
+#### 6. Cloud Storage ( CDN )
+
+#### 7. Artifact Registry (Docker Repogitory)
+
+* Google Cloud CLI
+
+  * Log into an account of GCP
+
+  ```bash
+  gcloud auth login
+  ```
+
+  * Log into an account of GCP
+
+  ```bash
+  gcloud config set project {project_name on GCP}
+  ```
+
+  * Create a repogitory on Artifact
+
+  ```bash
+  gcloud artifact repositories create {webapp_repo} --repository--format=docker --location={europe-west3} --description="Web App" --immutable-tags --asyc
+  ```
+
+  ```bash
+  gcloud auth configure-docker {europe-west4-docker.pkg.dev}
+  ```
+
+  ```bash
+  gcloud builds submit --tag europe-west4-docker.pkg.dev/{project_name on GCP}/{webapp_repo}/{image_name}:{tag}
+  ```
+
+* Test image in local
+
+  ```bash
+  docker build . --tag europe-west4-docker.pkg.dev/{project_name on GCP}/{webapp_repo}/{image_name}:{tag}
+  ```
+
+  ```bash
+  docker push europe-west4-docker.pkg.dev/{project_name on GCP}/{webapp_repo}/{image_name}:{tag}
+  ```
+
+#### 8. Cloud Run (App)
 
 * Docker - Contatiners - Dockerfile
   * App : PHP
   * Server : Nginx
-  * Tools : Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
-
-#### 7. Artifact Registry (Docker Repogitory)
-
-* Artifact Registry
 
 ## Project
 
@@ -102,3 +143,4 @@ NGINX_PORT=80
   * [Code Run](https://cloud.google.com/run)
     * [Google Cloud CLI](https://docs.cloud.google.com/sdk/docs/install-sdk)
       * [PHP](https://docs.cloud.google.com/run/docs/quickstarts/build-and-deploy/deploy-php-service)
+* Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
