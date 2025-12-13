@@ -2,13 +2,49 @@
 
 ## Environment - Prod
 
-## Platform
+## Platform - GCP (Google Cloud Platform) - [Console](https://console.cloud.google.com/)
 
-### GCP (Google Cloud Platform) - [Console](https://console.cloud.google.com/)
+* Products for Web App
+  * API & Services
+  * Billing
+  * IAM & Admin
+  * Cloud Storage                                            ( CDN )
+  * VPC Networks
+  * Cloud SQL                                                ( Database - PostgreSQL )
+  * Monitoring
+  * Memorystore                                              ( Cache - Redis )
+  * Cloud Run                                                ( App )
+
+### Products
+
+#### 1. API & Services
+
+* Enable services
+  * Code Run functions
+  * Artifact Registry API
+
+#### 2. VPC Network
+
+1) VPC networks
+
+2) Serverless VPC access
+
+#### 3. Cloud Storage ( Database - PostgreSQL )
+
+#### 4. Memorystore ( Cache - Redis )
+
+#### 5. Cloud Storage ( CDN )
+
+#### 6. Cloud Run (App)
 
 * Docker - Contatiners - Dockerfile
   * App : PHP
   * Server : Nginx
+  * Tools : Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
+
+#### 7. Artifact Registry (Docker Repogitory)
+
+* Artifact Registry
 
 ## Project
 
