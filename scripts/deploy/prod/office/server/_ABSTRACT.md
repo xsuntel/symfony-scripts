@@ -10,7 +10,6 @@
   * Database : PostgreSQL
   * Message : RabbitMQ
   * Server : Nginx
-  * Tools
 
 ## Project
 
@@ -106,9 +105,7 @@ http://localhost:15672
 ./scripts/cloud/office/server/ubuntu/deploy.sh
 ```
 
-### Scripts
-
-#### App
+### App
 
 * Clear cache
 
@@ -116,7 +113,7 @@ http://localhost:15672
 ./scripts/deploy/cache.sh
 ```
 
-#### Database
+### Database
 
 * Migrate databases
 
@@ -124,7 +121,7 @@ http://localhost:15672
 ./scripts/deploy/migrate.sh
 ```
 
-#### Server
+### Server
 
 * Check status
 

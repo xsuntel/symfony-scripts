@@ -144,9 +144,7 @@ http:
 ./scripts/deploy/dev/linux/ubuntu/deploy.sh
 ```
 
-### Scripts
-
-#### App
+### App
 
 * Clear cache
 
@@ -154,7 +152,7 @@ http:
 ./scripts/deploy/cache.sh
 ```
 
-#### Database
+### Database
 
 * Migrate databases
 
@@ -162,7 +160,7 @@ http:
 ./scripts/deploy/migrate.sh
 ```
 
-#### Server
+### Server
 
 * Check status
 

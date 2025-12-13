@@ -132,6 +132,8 @@ git clone https://github.com/xsuntel/symfony-scripts.git Symfony
 cd symfony && find ./scripts/ -type f -name "*.sh" -exec chmod 775 {} \;
 ```
 
+## Deployment
+
 * Deploy this project
 
 ```bash

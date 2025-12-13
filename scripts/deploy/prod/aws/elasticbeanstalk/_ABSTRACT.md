@@ -43,6 +43,8 @@ NGINX_HOST={Your Domain}
 NGINX_PORT=80
 ```
 
+## Deployment
+
 * Deploy this project
 
 ```bash

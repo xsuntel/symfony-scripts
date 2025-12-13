@@ -162,9 +162,7 @@ http:
 ./scripts/deploy/dev/windows/device/deploy.sh
 ```
 
-### Scripts
-
-#### App
+### App
 
 * Clear cache
 
@@ -172,7 +170,7 @@ http:
 ./scripts/deploy/cache.sh
 ```
 
-#### Database
+### Database
 
 * Migrate databases
 
@@ -180,7 +178,7 @@ http:
 ./scripts/deploy/migrate.sh
 ```
 
-#### Server
+### Server
 
 * Check status
 
