@@ -4,7 +4,9 @@
 
 ## Platform
 
-* Docker - Contatiners
+### GCP (Google Cloud Platform) - [Console](https://console.cloud.google.com/)
+
+* Docker - Contatiners - Dockerfile
   * App : PHP
   * Server : Nginx
 

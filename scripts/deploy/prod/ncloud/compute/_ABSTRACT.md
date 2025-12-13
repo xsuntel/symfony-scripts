@@ -4,14 +4,15 @@
 
 ## Platform
 
-* Linux : [Ubuntu Server](https://ubuntu.com/download/server/)
-  * App : PHP
-  * Cache : Redis
-  * Database : PostgreSQL
-  * Message : RabbitMQ
-  * Server : Nginx
+### Linux : [Ubuntu Server](https://ubuntu.com/download/server/)
 
-### Client - Laptop
+* App : PHP
+* Cache : Redis
+* Database : PostgreSQL
+* Message : RabbitMQ
+* Server : Nginx
+
+## Project
 
 * Connect Instance - [Document](https://guide.ncloud-docs.com/docs/ko/server-overview)
 

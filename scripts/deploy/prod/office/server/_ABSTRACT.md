@@ -4,12 +4,13 @@
 
 ## Platform
 
-* Linux - Ubuntu Desktop
-  * App : PHP
-  * Cache : Redis
-  * Database : PostgreSQL
-  * Message : RabbitMQ
-  * Server : Nginx
+### Linux - Ubuntu Desktop
+
+* App : PHP
+* Cache : Redis
+* Database : PostgreSQL
+* Message : RabbitMQ
+* Server : Nginx
 
 ## Project
 

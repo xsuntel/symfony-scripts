@@ -1,14 +1,15 @@
 # Scripts - Docker
 
-## Platform
+## Platform - Linux / MacOS / Windows
 
-* OS - Linux / MacOS / Windows
-  * App : PHP
-  * Cache : Redis (Docker Container)
-  * Database : PostgreSQL (Docker Container)
-  * Message : RabbitMQ (Docker Container)
-  * Server : Symfony Local Server
-  * Tools : Docker Desktop
+### Containers
+
+* App : PHP
+* Cache : Redis (Docker Container)
+* Database : PostgreSQL (Docker Container)
+* Message : RabbitMQ (Docker Container)
+* Server : Symfony Local Server
+* Tools : Docker Desktop
 
 ## Project
 

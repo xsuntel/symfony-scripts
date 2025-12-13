@@ -2,15 +2,16 @@
 
 ## Environment - Dev
 
-## Platform
+## Platform - Linux
 
-* Linux - Ubuntu Desktop
-  * App : PHP
-  * Cache : Redis
-  * Database : PostgreSQL
-  * Message : RabbitMQ
-  * Server : Nginx
-  * Tools
+### Ubuntu Desktop
+
+* App : PHP
+* Cache : Redis
+* Database : PostgreSQL
+* Message : RabbitMQ
+* Server : Symfony Local Server
+* Tools : Docker Desktop : [Download](https://www.docker.com/products/docker-desktop/)
 
 ## Project
 
