@@ -1,0 +1,73 @@
+# Tools - Git
+
+## Command
+
+### Config
+
+#### Global
+
+* Update default branch
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@examle.com"
+
+git config --global init.defaultBranch main
+git config --global credential.helper store
+
+git config --global --list
+```
+
+#### Local
+
+* Update Configuration
+
+```bash
+git config --local core.editor vi
+git config --local core.autocrlf false
+git config --local color.ui true
+git config --local diff.ui auto
+git config --local format.pretty oneline
+git config --local pull.rebase true
+git config --local push.default simple
+
+git config --local --list
+```
+
+* Reset password
+
+```bash
+git config --local --unset credential.helper
+```
+
+* Check global configurations
+
+```bash
+git config --local credential.helper store
+```
+
+## Tools
+
+* Update files
+
+```bash
+./tools/git/localhost/backup.sh
+```
+
+* Clear history & Re-initialize
+
+```bash
+./tools/git/localhost/clear.sh
+```
+
+* Delete a directory : ./app
+
+```bash
+./tools/git/localhost/delete.sh
+```
+
+## Reference
+
+### Cloud
+
+* Git            - [Documents](https://git-scm.com/)
