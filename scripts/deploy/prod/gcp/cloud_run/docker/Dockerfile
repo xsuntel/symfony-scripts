@@ -93,10 +93,10 @@ COPY --link scripts/deploy/prod/gcp/cloud_run/docker/php/etc/conf.d/docker-php-e
 # ----------------------------------------------------------------------------------------------------------------------
 RUN echo "[ PHP ] Copy source files"
 
-COPY --link ./app ./
+COPY --link ./app .
 
 RUN set -eux; \
-    chown -R www-data:www-data var; \
+    chown -R www-data:www-data .; \
     chmod -R 775 var;
 
 # ----------------------------------------------------------------------------------------------------------------------
