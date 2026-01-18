@@ -1,0 +1,80 @@
+{
+  "recommendations": [
+    // -------------------------------------------------------------------------------
+    // Architecture
+    // -------------------------------------------------------------------------------
+
+    // >>>> App - CSS & HTML
+    "bradlc.vscode-tailwindcss",
+    "codegyan.auto-closing-tags",
+
+    // >>>> App - Javascript
+    "dbaeumer.vscode-eslint",
+    "marcoroth.stimulus-lsp",
+
+    // >>>> App - PHP
+    "bmewburn.vscode-intelephense-client",
+    "xdebug.php-debug",
+
+    // >>>> App - Symfony
+    "splashmich.symfony-vscode-fixed",
+    "sanderverschoor.symfony-ux-twig-component",
+    "mblode.twig-language-2",
+
+    // >>>> Cache - Redis
+    "redis.redis-for-vscode",
+
+    // >>>> Database - PostgreSQL
+    "ms-ossdata.vscode-pgsql",
+
+    // -------------------------------------------------------------------------------
+    // CDN - Content Delivery Networks
+    // -------------------------------------------------------------------------------
+
+
+    // -------------------------------------------------------------------------------
+    // Docker - Containers
+    // -------------------------------------------------------------------------------
+
+
+    // -------------------------------------------------------------------------------
+    // Provider - Cloud Service Provider
+    // -------------------------------------------------------------------------------
+
+    // >>>> AWS (Amazon Web Services)
+
+    // >>>> GCP (Google Cloud Platform)
+    //"googlecloudtools.cloudcode",
+    //"ms-toolsai.jupyter",
+    //"ms-toolsai.vscode-jupyter-cell-tags",
+    //"ms-toolsai.jupyter-keymap",
+    //"ms-toolsai.vscode-jupyter-slideshow",
+
+    // -------------------------------------------------------------------------------
+    // VM - Instance
+    // -------------------------------------------------------------------------------
+
+    // >>>> GitHub
+    "github.vscode-pull-request-github",
+    "github.github-vscode-theme",
+
+    // >>>> Drawio
+    "hediet.vscode-drawio",
+
+    // >>>> PowerShell
+    "ms-vscode.powershell",
+
+    // -------------------------------------------------------------------------------
+    // Tools
+    // -------------------------------------------------------------------------------
+
+    // >>>> VSCode
+    "foxundermoon.shell-format",
+    "timonwong.shellcheck",
+    "redhat.vscode-yaml",
+    "mikestead.dotenv",
+    "prettier.prettier-vscode",
+    "davidanson.vscode-markdownlint",
+    "pkief.material-icon-theme"
+  ]
+}
