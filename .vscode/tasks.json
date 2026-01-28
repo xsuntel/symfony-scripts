@@ -1,0 +1,245 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    // -------------------------------------------------------------------------------
+    // Architecture
+    // -------------------------------------------------------------------------------
+
+    // >>>> App
+    {
+      "label": "App - Clear cache files",
+      "type": "shell",
+      "command": "./scripts/cache.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+
+    // >>>> App - Console
+    {
+      "label": "App - Console - Debug",
+      "type": "shell",
+      "command": "./scripts/console/app/symfony/debug.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "App - Console - Asset Mapper",
+      "type": "shell",
+      "command": "./scripts/console/app/symfony/asset-map.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "App - Console - Messenger",
+      "type": "shell",
+      "command": "./scripts/console/app/symfony/messenger.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "App - Console - Scheduler",
+      "type": "shell",
+      "command": "./scripts/console/app/symfony/scheduler.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+
+    // >>>> Database
+    {
+      "label": "Database - Execute migrations",
+      "type": "shell",
+      "command": "./scripts/migrate.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+
+    // >>>> Server
+    {
+      "label": "Server - Check status",
+      "type": "shell",
+      "command": "./scripts/status.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+
+    // -------------------------------------------------------------------------------
+    // CDN ( Content Delivery Networks )
+    // -------------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------------
+    // Docker - Containers
+    // -------------------------------------------------------------------------------
+
+    // >>>> Dev Environment
+    {
+      "label": "Docker - Deploy app on Localhost in Dev",
+      "type": "shell",
+      "command": "./scripts/containers/dev/deploy.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+
+    // >>>> Prod Environment
+    {
+      "label": "Docker - Debug app on Localhost for Prod",
+      "type": "shell",
+      "command": "./scripts/containers/prod/debug.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+
+    // -------------------------------------------------------------------------------
+    // Providers ( Cloud Service Provider )
+    // -------------------------------------------------------------------------------
+
+    // >>>> AWS (Amazon Web Services)
+    //{
+    //    "label": "Provider - Deploy app on AWS in Prod",
+    //    "type": "shell",
+    //    "command": "./scripts/deploy/prod/aws/elasticbeanstalk/deploy.sh",
+    //    "group": "build",
+    //    "presentation": {
+    //        "reveal": "always",
+    //        "panel": "new"
+    //    }
+    //},
+
+    // >>>> GCP (Google Cloud Platform)
+    //{
+    //    "label": "Provider - Debug app on GCP in Prod",
+    //    "type": "shell",
+    //    "command": "./scripts/deploy/prod/gcp/cloud_run/debug.sh",
+    //    "group": "build",
+    //    "presentation": {
+    //        "reveal": "always",
+    //        "panel": "new"
+    //    }
+    //},
+
+    // >>>> NCloud (Naver Cloud Platform)
+    //{
+    //    "label": "Provider - Deploy app on NCloud in Prod",
+    //    "type": "shell",
+    //    "command": "./scripts/deploy/prod/ncloud/compute/ubuntu/deploy.sh",
+    //    "group": "build",
+    //    "presentation": {
+    //        "reveal": "always",
+    //        "panel": "new"
+    //    }
+    //},
+
+    // -------------------------------------------------------------------------------
+    // VM ( Instance )
+    // -------------------------------------------------------------------------------
+
+    // >>>> Linux
+    {
+      "label": "VM - Deploy app on Linux in Dev",
+      "type": "shell",
+      "command": "./scripts/deploy/dev/linux/ubuntu/deploy.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+
+    // >>>> MacOS
+    {
+      "label": "VM - Deploy app on MacOS in Dev",
+      "type": "shell",
+      "command": "./scripts/deploy/dev/macos/device/deploy.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+
+    // >>>> Windows
+    {
+      "label": "VM - Deploy app on Windows in Dev",
+      "type": "shell",
+      "command": "./scripts/deploy/dev/windows/device/deploy.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+
+    // -------------------------------------------------------------------------------
+    // Tools - Git
+    // -------------------------------------------------------------------------------
+    {
+      "label": "Tools - Git - Backup",
+      "type": "shell",
+      "command": "./tools/git/localhost/backup.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+
+    {
+      "label": "Tools - Git - Clear",
+      "type": "shell",
+      "command": "./tools/git/localhost/clear.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+
+    {
+      "label": "Tools - Git - Delete",
+      "type": "shell",
+      "command": "./tools/git/localhost/delete.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+
+    {
+      "label": "Tutorial - Symfony Framework",
+      "type": "shell",
+      "command": "./tools/tutorial/symfony.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ]
+}
