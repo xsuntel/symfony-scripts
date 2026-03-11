@@ -12,7 +12,7 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
     # >>>> Environment
     if [ "${ENVIRONMENT_NAME}" == "dev" ]; then
 
-      echo ">>>> Linux - Network - Firewall"
+      echo ">>>> Linux - Network - UFW"
       echo
 
       # ----------------------------------------------------------------------------------------------------------------
@@ -36,17 +36,16 @@ if [ "${PLATFORM_TYPE}" == "Linux" ]; then
       # ----------------------------------------------------------------------------------------------------------------
 
       local UFW_STATUS
-      UFW_STATUS=$(systemctl is-active ufw)
+      UFW_STATUS=$(sudo ufw status | grep "Status" | awk '{print $2}')
+
       if [ "${UFW_STATUS}" != "active" ]; then
-        sudo ufw disable
+
+        # >>>> Remove package
+        sudo ufw --force disable
         sudo apt-get purge ufw -y
         sudo apt-get autoremove -y
         sudo apt-get update -y
         sudo apt-get install ufw -y
-
-        # >>>> Stop logging
-        sudo ufw logging off
-        sudo ufw disable
 
         # >>>> Reset current rules
         sudo ufw --force reset
