@@ -140,20 +140,6 @@ setPhp() {
   composer --version
   echo
 
-  # >>>> PHP-FPM
-  echo ">>>> PHP-FPM"
-  echo
-
-  local PHP_STATUS
-  PHP_STATUS=$(systemctl is-active php${PHP_VERSION}-fpm)
-  if [ "${PHP_STATUS}" == "inactive" ]; then
-    sudo systemctl start php${PHP_VERSION}-fpm
-    sudo systemctl status php${PHP_VERSION}-fpm --no-pager
-    echo
-  fi
-  echo "PHP-FPM    : ${PHP_STATUS}"
-  echo
-
   # >>>> Directory
   if [ -d app ]; then
     (
