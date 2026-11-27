@@ -1,0 +1,16 @@
+{
+  "integration": "claude",
+  "version": "1.4.3",
+  "installed_at": "2026-11-27T06:49:08.852771+00:00",
+  "files": {
+    ".claude/skills/speckit-analyze/SKILL.md": "28a5c9f6624459a11f8466f690674eafec3f7ace697ce9740461a1f9131c7ba7",
+    ".claude/skills/speckit-clarify/SKILL.md": "4051314626261cf370a0511d88b41cc444ccb7094a568b51e4660dd143494226",
+    ".claude/skills/speckit-constitution/SKILL.md": "2582e8c1dbd026200d7e623f384d36fda8e5400cf300e6eea0a7d52eab3aeba3",
+    ".claude/skills/speckit-implement/SKILL.md": "b487fb4bcac64f7e5c471a96117eff4138102d372b36371be123e2aa30629630",
+    ".claude/skills/speckit-converge/SKILL.md": "9ae318ab5f4f3a3aac87438cd85e883e71388bfb3723c05e52af95939c8040a9",
+    ".claude/skills/speckit-plan/SKILL.md": "c297d721a143e6e691c1bfa32ee72443944e5699e4d2c5c41bdc373a92c3afa8",
+    ".claude/skills/speckit-checklist/SKILL.md": "f8931736185d264d6eaeaf58582b9477693c95b642f2b40852ed3bd8b56f4817",
+    ".claude/skills/speckit-specify/SKILL.md": "1ee9e32550080b80a9d493e4b6fc16709db5cb07944ebf9122f16e74ed8476ba",
+    ".claude/skills/speckit-tasks/SKILL.md": "e4d021fd5bdab88497381c6b15a797a7425bada517f5632f15944ecc776f9e11"
+  }
+}
